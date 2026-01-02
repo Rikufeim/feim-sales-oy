@@ -420,7 +420,7 @@ const ServicesList = () => {
   ];
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden min-h-[800px] rounded-[2.5rem] border border-white/10">
+    <section id="services" className="relative py-24 overflow-hidden min-h-[800px]">
       
       {/* Tausta: Tummanharmaa ja musta sekoitus (musta dominoi) */}
       <div
@@ -588,7 +588,7 @@ const Hero = ({ onStartProject, onNavigate }: { onStartProject: () => void; onNa
   return (
     <section 
       id="hero" 
-      className="h-[50rem] rounded-[2.5rem] flex flex-col items-start justify-start bg-black antialiased relative overflow-hidden border border-white/10 mt-2 sm:mt-4"
+      className="h-[50rem] flex flex-col items-start justify-start bg-black antialiased relative overflow-hidden mt-2 sm:mt-4"
     >
       <FloatingDock onNavigate={onNavigate} />
       <Spotlight fill="white" />
