@@ -707,6 +707,9 @@ const WobbleCardDemo = () => {
           />
         </div>
       </div>
+      
+      {/* Bottom fade to black */}
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
     </section>
   );
 };
