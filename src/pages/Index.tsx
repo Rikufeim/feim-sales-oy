@@ -665,7 +665,7 @@ const WobbleCardDemo = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+          background: "radial-gradient(circle at 70% 80%, #555555 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
           filter: "brightness(0.6)",
           width: "100%",
           height: "100%",
