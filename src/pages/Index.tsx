@@ -661,7 +661,7 @@ const WobbleCard = ({ title, description, image, colSpan }: { title: string; des
  */
 const WobbleCardDemo = () => {
   return (
-    <section id="wobble" className="relative py-24 px-6 overflow-hidden">
+    <section id="wobble" className="relative py-24 px-6 overflow-hidden rounded-t-[2.5rem]">
       <div
         className="absolute inset-0 z-0"
         style={{
