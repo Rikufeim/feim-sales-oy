@@ -284,7 +284,7 @@ const ProjectAssistant = () => {
       }]);
     }, 600);
   };
-  return;
+  return null;
 };
 
 /**
@@ -527,7 +527,7 @@ const Hero = ({
 
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
-      <div className="p-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-36 flex flex-col items-start justify-start text-left">
+      <div className="px-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-36 flex flex-col items-start justify-start text-left">
         <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 pb-4 leading-tight">
           Sivut jotka <br /> <Cover>ajattelevat.</Cover>
         </h1>
@@ -613,7 +613,7 @@ const WobbleCardDemo = () => {
  * About
  */
 const About = () => {
-  return;
+  return null;
 };
 
 /**
