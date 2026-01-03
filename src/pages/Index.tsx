@@ -203,7 +203,7 @@ const FloatingDock = ({
     action: () => onNavigate('home')
   }];
   return <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl mx-auto px-6">
+      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
         <div onClick={() => onNavigate('home')} className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer">
           FEIM
         </div>
@@ -527,7 +527,7 @@ const Hero = ({
 
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
-      <div className="px-6 max-w-7xl mx-auto relative z-20 w-full pt-32 md:pt-36 flex flex-col items-start justify-start text-left">
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-36 flex flex-col items-start justify-start text-left">
         <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 pb-4 leading-tight">
           Sivut jotka <br /> <Cover>ajattelevat.</Cover>
         </h1>
