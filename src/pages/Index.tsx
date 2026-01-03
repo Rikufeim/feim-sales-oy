@@ -202,8 +202,8 @@ const FloatingDock = ({
     href: '#contact',
     action: () => onNavigate('home')
   }];
-  return <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
+  return <nav className="absolute top-0 left-0 right-0 z-50 py-6">
+      <div className="flex items-center justify-between w-full max-w-7xl mx-auto px-6">
         <div onClick={() => onNavigate('home')} className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer">
           FEIM
         </div>
