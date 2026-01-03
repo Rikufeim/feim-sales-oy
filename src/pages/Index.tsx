@@ -1,121 +1,92 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Menu, 
-  X, 
-  Twitter, 
-  Github, 
-  ArrowRight, 
-  Zap,
-  Send,
-  ArrowLeft,
-  CheckCircle2,
-  Cpu,
-  Globe, 
-  Smartphone, 
-  Bot,
-  Sparkles
-} from 'lucide-react';
+import { Menu, X, Twitter, Github, ArrowRight, Zap, Send, ArrowLeft, CheckCircle2, Cpu, Globe, Smartphone, Bot, Sparkles } from 'lucide-react';
 
 /**
  * Beam
  * Animated beam effect for the Cover component.
  */
-const Beam = ({ style, hovered, delay }: { style: React.CSSProperties; hovered: boolean; delay: number }) => {
-  return (
-    <div 
-      style={{ ...style, width: '100%', height: '1px' }} 
-      className="absolute left-0 pointer-events-none overflow-hidden z-10"
-    >
-        <div 
-            className="h-full w-[50%] bg-gradient-to-r from-transparent via-blue-500 to-transparent"
-            style={{
-                opacity: hovered ? 1 : 0.5,
-                transform: 'translateX(-200%)',
-                animation: `beam-move ${hovered ? 1 : 3}s linear infinite`,
-                animationDelay: `${delay}s`
-            }}
-        />
-    </div>
-  )
+const Beam = ({
+  style,
+  hovered,
+  delay
+}: {
+  style: React.CSSProperties;
+  hovered: boolean;
+  delay: number;
+}) => {
+  return <div style={{
+    ...style,
+    width: '100%',
+    height: '1px'
+  }} className="absolute left-0 pointer-events-none overflow-hidden z-10">
+        <div className="h-full w-[50%] bg-gradient-to-r from-transparent via-blue-500 to-transparent" style={{
+      opacity: hovered ? 1 : 0.5,
+      transform: 'translateX(-200%)',
+      animation: `beam-move ${hovered ? 1 : 3}s linear infinite`,
+      animationDelay: `${delay}s`
+    }} />
+    </div>;
 };
 
 /**
  * Cover
  * The container component that adds the "warp speed" box effect around text.
  */
-const Cover = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const Cover = ({
+  children,
+  className = ""
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   const [hovered, setHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const [beamPositions, setBeamPositions] = useState<number[]>([]);
-
   useEffect(() => {
     if (ref.current) {
       const height = ref.current.clientHeight ?? 0;
       const numberOfBeams = Math.floor(height / 10);
-      const positions = Array.from(
-        { length: numberOfBeams },
-        (_, i) => (i + 1) * (height / (numberOfBeams + 1))
-      );
+      const positions = Array.from({
+        length: numberOfBeams
+      }, (_, i) => (i + 1) * (height / (numberOfBeams + 1)));
       setBeamPositions(positions);
     }
   }, []);
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      ref={ref}
-      className={`relative group/cover inline-block px-2 py-2 transition duration-200 rounded-sm ${className}`}
-    >
+  return <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} ref={ref} className={`relative group/cover inline-block px-2 py-2 transition duration-200 rounded-sm ${className}`}>
       {/* Background Sparkles Effect */}
-      {hovered && (
-        <div className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none rounded-sm">
-            {[...Array(15)].map((_, i) => (
-                <div 
-                    key={i} 
-                    className="absolute bg-white rounded-full w-0.5 h-0.5 animate-star-move"
-                    style={{
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDuration: `${Math.random() * 1 + 0.5}s`,
-                        animationDelay: `${Math.random() * 0.5}s`
-                    }}
-                />
-            ))}
-        </div>
-      )}
+      {hovered && <div className="absolute inset-0 overflow-hidden w-full h-full pointer-events-none rounded-sm">
+            {[...Array(15)].map((_, i) => <div key={i} className="absolute bg-white rounded-full w-0.5 h-0.5 animate-star-move" style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 1 + 0.5}s`,
+        animationDelay: `${Math.random() * 0.5}s`
+      }} />)}
+        </div>}
 
       {/* Beams */}
-      {beamPositions.map((position, index) => (
-        <Beam
-          key={index}
-          hovered={hovered}
-          style={{ top: `${position}px` }}
-          delay={Math.random() * 2}
-        />
-      ))}
+      {beamPositions.map((position, index) => <Beam key={index} hovered={hovered} style={{
+      top: `${position}px`
+    }} delay={Math.random() * 2} />)}
 
       {/* Text Content */}
-      <span
-        className={`inline-block text-white relative z-20 group-hover/cover:text-white transition duration-200 ${
-            hovered 
-            ? 'font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-200 to-neutral-500 transform scale-90' 
-            : ''
-        }`}
-      >
+      <span className={`inline-block text-white relative z-20 group-hover/cover:text-white transition duration-200 ${hovered ? 'font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-neutral-200 to-neutral-500 transform scale-90' : ''}`}>
         {children}
       </span>
-    </div>
-  );
+    </div>;
 };
 
 /**
  * TypewriterTitle
  * Animates text character by character.
  */
-const TypewriterTitle = ({ text, className = "" }: { text: string; className?: string }) => {
+const TypewriterTitle = ({
+  text,
+  className = ""
+}: {
+  text: string;
+  className?: string;
+}) => {
   const [displayedText, setDisplayedText] = useState('');
-  
   useEffect(() => {
     setDisplayedText('');
     let i = 0;
@@ -129,25 +100,24 @@ const TypewriterTitle = ({ text, className = "" }: { text: string; className?: s
     }, 50);
     return () => clearInterval(timer);
   }, [text]);
-
-  return (
-    <h2 className={`inline-block ${className}`}>
+  return <h2 className={`inline-block ${className}`}>
       {displayedText}
       <span className="animate-pulse text-blue-500 ml-1">_</span>
-    </h2>
-  );
+    </h2>;
 };
 
 /**
  * GradientButton
  * Custom button: Black by default. On hover, fills completely with Electric Blue.
  */
-const GradientButton = ({ children, className = "", ...props }: React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode }) => {
-  return (
-    <button
-      className={`relative group inline-flex items-center justify-center rounded-[11px] min-w-[132px] px-9 py-4 text-base leading-[19px] font-[500] text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-transform duration-300 hover:scale-105 active:scale-95 overflow-hidden ${className}`}
-      {...props}
-    >
+const GradientButton = ({
+  children,
+  className = "",
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: React.ReactNode;
+}) => {
+  return <button className={`relative group inline-flex items-center justify-center rounded-[11px] min-w-[132px] px-9 py-4 text-base leading-[19px] font-[500] text-white font-sans font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 transition-transform duration-300 hover:scale-105 active:scale-95 overflow-hidden ${className}`} {...props}>
       {/* Base Layer: Black Background with subtle border */}
       <div className="absolute inset-0 bg-black border border-white/10 rounded-[11px] z-0" />
 
@@ -158,104 +128,95 @@ const GradientButton = ({ children, className = "", ...props }: React.ButtonHTML
       <span className="relative z-20 flex items-center gap-2">
         {children}
       </span>
-    </button>
-  );
+    </button>;
 };
 
 /**
  * Spotlight
  * Luo valokeilaefektin tai varjon.
  */
-const Spotlight = ({ className = "", fill = "white", fillOpacity = 0.15 }: { className?: string; fill?: string; fillOpacity?: number }) => {
+const Spotlight = ({
+  className = "",
+  fill = "white",
+  fillOpacity = 0.15
+}: {
+  className?: string;
+  fill?: string;
+  fillOpacity?: number;
+}) => {
   const gradientId = `spotlight-gradient-${fill.replace('#', '')}`;
-
-  return (
-    <svg
-      className={`pointer-events-none absolute z-[1] top-0 left-0 ${className}`}
-      width="500"
-      height="500"
-      viewBox="0 0 500 500"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ maxWidth: '100%', maxHeight: '100%' }}
-    >
+  return <svg className={`pointer-events-none absolute z-[1] top-0 left-0 ${className}`} width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" style={{
+    maxWidth: '100%',
+    maxHeight: '100%'
+  }}>
       <circle cx="0" cy="0" r="500" fill={`url(#${gradientId})`} fillOpacity={fillOpacity} />
       <defs>
-        <radialGradient
-          id={gradientId}
-          cx="0"
-          cy="0"
-          r="1"
-          gradientUnits="userSpaceOnUse"
-          gradientTransform="translate(0 0) rotate(90) scale(500)"
-        >
+        <radialGradient id={gradientId} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 0) rotate(90) scale(500)">
           <stop stopColor={fill} stopOpacity="1" />
           <stop offset="1" stopColor={fill} stopOpacity="0" />
         </radialGradient>
       </defs>
-    </svg>
-  );
+    </svg>;
 };
 
 /**
  * TextHoverEffect
  */
-const TextHoverEffect = ({ text }: { text: string }) => {
-  return (
-    <div className="flex justify-center select-none overflow-hidden py-4">
+const TextHoverEffect = ({
+  text
+}: {
+  text: string;
+}) => {
+  return <div className="flex justify-center select-none overflow-hidden py-4">
       <h1 className="flex text-6xl md:text-9xl font-black tracking-tighter text-white/10 transition-colors duration-300">
-        {text.split("").map((letter, index) => (
-          <span
-            key={index}
-            className="inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:text-white cursor-default"
-          >
+        {text.split("").map((letter, index) => <span key={index} className="inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:text-white cursor-default">
             {letter}
-          </span>
-        ))}
+          </span>)}
       </h1>
-    </div>
-  );
+    </div>;
 };
 
 /**
  * FloatingDock
  */
-const FloatingDock = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
+const FloatingDock = ({
+  onNavigate
+}: {
+  onNavigate: (dest: string) => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navLinks = [
-    { name: 'Etusivu', href: '#hero', action: () => onNavigate('home') },
-    { name: 'Palvelut', href: '#services', action: () => onNavigate('home') },
-    { name: 'Meistä', href: '#about', action: () => onNavigate('home') },
-    { name: 'Ota yhteyttä', href: '#contact', action: () => onNavigate('home') },
-  ];
-
-  return (
-    <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
+  const navLinks = [{
+    name: 'Etusivu',
+    href: '#hero',
+    action: () => onNavigate('home')
+  }, {
+    name: 'Palvelut',
+    href: '#services',
+    action: () => onNavigate('home')
+  }, {
+    name: 'Meistä',
+    href: '#about',
+    action: () => onNavigate('home')
+  }, {
+    name: 'Ota yhteyttä',
+    href: '#contact',
+    action: () => onNavigate('home')
+  }];
+  return <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
       <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
-        <div 
-          onClick={() => onNavigate('home')}
-          className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer"
-        >
+        <div onClick={() => onNavigate('home')} className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer">
           FEIM
         </div>
 
         <div className="hidden md:flex items-center gap-6 p-2 rounded-full backdrop-blur-sm bg-black/10 border border-white/5">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => {
-                if (link.href === '#hero') {
-                    e.preventDefault();
-                    link.action();
-                }
-              }}
-              className="text-sm font-medium text-gray-200 hover:text-white transition-colors duration-200 px-3 py-1"
-            >
+          {navLinks.map(link => <a key={link.name} href={link.href} onClick={e => {
+          if (link.href === '#hero') {
+            e.preventDefault();
+            link.action();
+          }
+        }} className="text-sm font-medium text-gray-200 hover:text-white transition-colors duration-200 px-3 py-1">
               {link.name}
-            </a>
-          ))}
+            </a>)}
           <div className="h-4 w-[1px] bg-gray-600 mx-1"></div>
           <div className="flex gap-4 px-2">
             <a href="#" className="text-gray-300 hover:text-white transition-colors">
@@ -267,33 +228,20 @@ const FloatingDock = ({ onNavigate }: { onNavigate: (dest: string) => void }) =>
           </div>
         </div>
 
-        <button 
-          className="md:hidden text-gray-200 hover:text-white"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className="md:hidden text-gray-200 hover:text-white" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {isOpen && (
-        <div className="absolute top-full mt-2 left-0 right-0 mx-4 bg-black border border-white/10 rounded-2xl p-4 flex flex-col gap-4 shadow-xl md:hidden animate-in fade-in slide-in-from-top-2 z-50">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => {
-                setIsOpen(false);
-                link.action();
-              }}
-              className="text-gray-200 hover:text-white font-medium py-2 px-4 hover:bg-white/5 rounded-xl transition-all"
-            >
+      {isOpen && <div className="absolute top-full mt-2 left-0 right-0 mx-4 bg-black border border-white/10 rounded-2xl p-4 flex flex-col gap-4 shadow-xl md:hidden animate-in fade-in slide-in-from-top-2 z-50">
+          {navLinks.map(link => <a key={link.name} href={link.href} onClick={() => {
+        setIsOpen(false);
+        link.action();
+      }} className="text-gray-200 hover:text-white font-medium py-2 px-4 hover:bg-white/5 rounded-xl transition-all">
               {link.name}
-            </a>
-          ))}
-        </div>
-      )}
-    </nav>
-  );
+            </a>)}
+        </div>}
+    </nav>;
 };
 
 /**
@@ -301,76 +249,61 @@ const FloatingDock = ({ onNavigate }: { onNavigate: (dest: string) => void }) =>
  */
 const ProjectAssistant = () => {
   const [input, setInput] = useState('');
-  const [conversation, setConversation] = useState([
-    { role: 'bot', text: 'Hei! Olen Feim-projektiavustaja. Voit kysyä minulta mitä esimerkiksi "nettisivut" tai "tekoäly" tarkoittavat, tai miten projektimme etenevät.' }
-  ]);
+  const [conversation, setConversation] = useState([{
+    role: 'bot',
+    text: 'Hei! Olen Feim-projektiavustaja. Voit kysyä minulta mitä esimerkiksi "nettisivut" tai "tekoäly" tarkoittavat, tai miten projektimme etenevät.'
+  }]);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   };
-
   useEffect(() => {
     scrollToBottom();
   }, [conversation]);
-
   const generateResponse = (query: string) => {
     const q = query.toLowerCase();
     if (q.includes('nettisivu') || q.includes('verkkosivu')) return "Teemme kaikkea 'landing page' -sivuista monimutkaisiin sovelluksiin.";
     if (q.includes('hinta')) return "Hinta riippuu laajuudesta. Kysy tarjous!";
     return "Kiitos kysymyksestäsi! Kerron mielelläni lisää.";
   };
-
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
-    const userMsg = { role: 'user', text: input };
+    const userMsg = {
+      role: 'user',
+      text: input
+    };
     setConversation(prev => [...prev, userMsg]);
     setInput('');
     setTimeout(() => {
-      setConversation(prev => [...prev, { role: 'bot', text: generateResponse(input) }]);
+      setConversation(prev => [...prev, {
+        role: 'bot',
+        text: generateResponse(input)
+      }]);
     }, 600);
   };
-
-  return (
-    <section id="assistant" className="relative py-12 px-6 rounded-[2.5rem] bg-black overflow-hidden border border-white/10">
-      <Spotlight fill="white" />
-      <div className="relative z-10 max-w-3xl mx-auto">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center p-2 bg-white/10 rounded-full mb-3"><Sparkles className="text-white" size={20} /></div>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Projektiavustaja</h2>
-          <p className="text-gray-400 text-sm">Kysy avustajalta lisätietoja.</p>
-        </div>
-        <div className="flex flex-col h-[350px]">
-          <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-2 space-y-4">
-            {conversation.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] px-4 py-2 rounded-2xl text-sm leading-relaxed ${msg.role === 'user' ? 'bg-white text-black rounded-br-none font-medium' : 'bg-[#111] text-gray-200 rounded-bl-none border border-white/10'}`}>{msg.text}</div>
-              </div>
-            ))}
-          </div>
-          <div className="pt-4">
-            <form onSubmit={handleSend} className="flex gap-2">
-              <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Kysy jotain..." className="flex-1 bg-[#111] text-white rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-1 focus:ring-white/20 border border-white/10" />
-              <button type="submit" disabled={!input.trim()} className="bg-white text-black p-3 rounded-full hover:bg-gray-200"><Send size={18} /></button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return;
 };
 
 /**
  * ServiceRow
  */
-const ServiceRow = ({ title, description, icon: Icon, index, ctaText }: { title: string; description: string; icon: React.ElementType; index: number; ctaText: string }) => {
-  return (
-    <div 
-      className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 w-full max-w-7xl mx-auto px-6 md:px-12`}
-    >
+const ServiceRow = ({
+  title,
+  description,
+  icon: Icon,
+  index,
+  ctaText
+}: {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  index: number;
+  ctaText: string;
+}) => {
+  return <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-16 w-full max-w-7xl mx-auto px-6 md:px-12`}>
       <div className="flex-1 space-y-6 text-left">
         <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-2xl mb-2 backdrop-blur-sm border border-white/10">
             <Icon size={32} className="text-white" />
@@ -387,51 +320,46 @@ const ServiceRow = ({ title, description, icon: Icon, index, ctaText }: { title:
       </div>
       <div className="flex-1 w-full h-64 md:h-96">
         <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#1a1a1a]">
-            <img 
-                src={`https://images.unsplash.com/photo-${getPhotoId(index)}?q=80&w=1000&auto=format&fit=crop`} 
-                alt={title} 
-                className="w-full h-full object-cover"
-            />
+            <img src={`https://images.unsplash.com/photo-${getPhotoId(index)}?q=80&w=1000&auto=format&fit=crop`} alt={title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 const getPhotoId = (i: number) => {
-    const ids = [
-        "1460925895917-afdab827c52f",
-        "1556761175-5973dc0f32e7",
-        "1518770660439-4636190af475",
-    ];
-    return ids[i % ids.length];
-}
+  const ids = ["1460925895917-afdab827c52f", "1556761175-5973dc0f32e7", "1518770660439-4636190af475"];
+  return ids[i % ids.length];
+};
 
 /**
  * ServicesList
  */
 const ServicesList = () => {
-  
-  const services = [
-    { title: "NOPEUS", icon: Zap, desc: "Markkinoiden nopeimmat toimitusajat. Hyödynnämme valmiita komponentteja ja tekoälyä, mikä leikkaa kehitysajan puoleen.", cta: "Lue lisää" },
-    { title: "HINTA", icon: CheckCircle2, desc: "Kiinteä hinnoittelu ilman yllätyksiä. Moderni teknologia mahdollistaa premium-laadun murto-osalla perinteisistä hinnoista.", cta: "Pyydä tarjous" },
-    { title: "JATKUVA KEHITYS", icon: Cpu, desc: "Digitaalinen maailma ei pysähdy. Sivustosi on elävä organismi, jota optimoimme jatkuvasti.", cta: "Tutustu malliin" },
-  ];
-
-  return (
-    <section id="services" className="relative py-24 overflow-hidden min-h-[800px]">
+  const services = [{
+    title: "NOPEUS",
+    icon: Zap,
+    desc: "Markkinoiden nopeimmat toimitusajat. Hyödynnämme valmiita komponentteja ja tekoälyä, mikä leikkaa kehitysajan puoleen.",
+    cta: "Lue lisää"
+  }, {
+    title: "HINTA",
+    icon: CheckCircle2,
+    desc: "Kiinteä hinnoittelu ilman yllätyksiä. Moderni teknologia mahdollistaa premium-laadun murto-osalla perinteisistä hinnoista.",
+    cta: "Pyydä tarjous"
+  }, {
+    title: "JATKUVA KEHITYS",
+    icon: Cpu,
+    desc: "Digitaalinen maailma ei pysähdy. Sivustosi on elävä organismi, jota optimoimme jatkuvasti.",
+    cta: "Tutustu malliin"
+  }];
+  return <section id="services" className="relative py-24 overflow-hidden min-h-[800px]">
       
       {/* Tausta: Tummanharmaa ja musta sekoitus (musta dominoi) */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "radial-gradient(circle at 30% 70%, #333333 0%, transparent 45%), radial-gradient(circle at 70% 30%, #333333 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-          filter: "brightness(0.6)",
-          width: "100%",
-          height: "100%",
-        }}
-      />
+      <div className="absolute inset-0 z-0" style={{
+      background: "radial-gradient(circle at 30% 70%, #333333 0%, transparent 45%), radial-gradient(circle at 70% 30%, #333333 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+      filter: "brightness(0.6)",
+      width: "100%",
+      height: "100%"
+    }} />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 mb-24">
         <div className="text-center">
@@ -441,49 +369,52 @@ const ServicesList = () => {
       </div>
 
       <div className="space-y-32 relative z-10">
-        {services.map((s, i) => (
-            <ServiceRow 
-                key={i}
-                index={i}
-                title={s.title} 
-                icon={s.icon} 
-                description={s.desc}
-                ctaText={s.cta}
-            />
-        ))}
+        {services.map((s, i) => <ServiceRow key={i} index={i} title={s.title} icon={s.icon} description={s.desc} ctaText={s.cta} />)}
       </div>
-    </section>
-  );
+    </section>;
 };
 
 /**
  * ProjectWizard
  */
-const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete: () => void }) => {
+const ProjectWizard = ({
+  onBack,
+  onComplete
+}: {
+  onBack: () => void;
+  onComplete: () => void;
+}) => {
   const [step, setStep] = useState(1);
   const [selection, setSelection] = useState({
     type: null as string | null,
     subType: null as string | null,
-    contact: { name: '', email: '', phone: '', message: '' }
+    contact: {
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    }
   });
-
   const handleTypeSelect = (type: string) => {
-    setSelection(prev => ({ ...prev, type, subType: null }));
+    setSelection(prev => ({
+      ...prev,
+      type,
+      subType: null
+    }));
     setStep(2);
   };
-
   const handleSubTypeSelect = (subType: string) => {
-    setSelection(prev => ({ ...prev, subType }));
+    setSelection(prev => ({
+      ...prev,
+      subType
+    }));
     setStep(3);
   };
-
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onComplete();
   };
-
-  const renderStep1 = () => (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+  const renderStep1 = () => <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="text-center space-y-4">
         <TypewriterTitle text="Mitä rakennetaan?" className="text-3xl md:text-5xl font-bold text-white" />
       </div>
@@ -501,48 +432,47 @@ const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete:
           <h3 className="text-xl font-bold text-white">Tekoäly</h3>
         </button>
       </div>
-    </div>
-  );
-
+    </div>;
   const renderStep2 = () => {
     let options = [];
-    
     if (selection.type === 'web') {
-      options = [
-        { id: 'landing', title: 'Landing page', desc: 'Yhden sivun myyvä kokonaisuus.' },
-        { id: 'multipage', title: 'Multi page', desc: 'Laaja sivusto usealla alasivulla.' },
-        { id: 'ai-site', title: 'CUSTOM AI-ENABLED PAGE', desc: 'Tekoälyllä rikastettu ratkaisu.' },
-      ];
+      options = [{
+        id: 'landing',
+        title: 'Landing page',
+        desc: 'Yhden sivun myyvä kokonaisuus.'
+      }, {
+        id: 'multipage',
+        title: 'Multi page',
+        desc: 'Laaja sivusto usealla alasivulla.'
+      }, {
+        id: 'ai-site',
+        title: 'CUSTOM AI-ENABLED PAGE',
+        desc: 'Tekoälyllä rikastettu ratkaisu.'
+      }];
     } else {
-        options = [
-            { id: 'mvp', title: 'MVP', desc: 'Nopea prototyyppi markkinointiin.' },
-            { id: 'full', title: 'Full Scale', desc: 'Täysimittainen tuotantoratkaisu.' }
-        ]
+      options = [{
+        id: 'mvp',
+        title: 'MVP',
+        desc: 'Nopea prototyyppi markkinointiin.'
+      }, {
+        id: 'full',
+        title: 'Full Scale',
+        desc: 'Täysimittainen tuotantoratkaisu.'
+      }];
     }
-
-    return (
-      <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
+    return <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500">
         <div className="text-center space-y-4">
           <TypewriterTitle text="Tarkennetaan" className="text-3xl md:text-5xl font-bold text-white" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {options.map((opt) => (
-            <button 
-              key={opt.id}
-              onClick={() => handleSubTypeSelect(opt.id)}
-              className="group bg-[#111] p-8 rounded-2xl border border-white/10 hover:border-white/30 text-left transition-all"
-            >
+          {options.map(opt => <button key={opt.id} onClick={() => handleSubTypeSelect(opt.id)} className="group bg-[#111] p-8 rounded-2xl border border-white/10 hover:border-white/30 text-left transition-all">
               <h3 className="text-xl font-bold text-white mb-2">{opt.title}</h3>
               {opt.desc && <p className="text-gray-400 text-sm">{opt.desc}</p>}
-            </button>
-          ))}
+            </button>)}
         </div>
-      </div>
-    );
+      </div>;
   };
-
-  const renderStep3 = () => (
-    <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500 max-w-2xl mx-auto">
+  const renderStep3 = () => <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500 max-w-2xl mx-auto">
         <div className="text-center">
             <TypewriterTitle text="Yhteystiedot" className="text-3xl md:text-5xl font-bold text-white" />
         </div>
@@ -551,22 +481,16 @@ const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete:
             <input required placeholder="Sähköposti" className="w-full bg-black border border-white/10 rounded-xl px-4 py-3 text-white" />
             <button type="submit" className="w-full bg-white text-black font-bold py-4 rounded-xl">Lähetä</button>
         </form>
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen flex flex-col relative overflow-hidden bg-black p-6 md:p-12">
+    </div>;
+  return <div className="min-h-screen flex flex-col relative overflow-hidden bg-black p-6 md:p-12">
         <Spotlight fill="white" />
         
-        <FloatingDock onNavigate={(dest) => {
-            if (dest === 'home') onBack();
-        }} />
+        <FloatingDock onNavigate={dest => {
+      if (dest === 'home') onBack();
+    }} />
 
         <div className="w-full max-w-5xl mx-auto mb-12 relative z-10 pt-24">
-            <button 
-                onClick={() => step === 1 ? onBack() : setStep(step-1)} 
-                className="text-white flex gap-2 items-center hover:text-gray-300 transition-colors"
-            >
+            <button onClick={() => step === 1 ? onBack() : setStep(step - 1)} className="text-white flex gap-2 items-center hover:text-gray-300 transition-colors">
                 <ArrowLeft size={20} /> 
                 Takaisin
             </button>
@@ -577,31 +501,29 @@ const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete:
             {step === 2 && renderStep2()}
             {step === 3 && renderStep3()}
         </div>
-    </div>
-  );
+    </div>;
 };
 
 /**
  * Hero
  */
-const Hero = ({ onStartProject, onNavigate }: { onStartProject: () => void; onNavigate: (view: string) => void }) => {
-  return (
-    <section 
-      id="hero" 
-      className="h-[50rem] rounded-[2.5rem] flex flex-col items-start justify-start bg-black antialiased relative overflow-hidden mt-2 sm:mt-4"
-    >
+const Hero = ({
+  onStartProject,
+  onNavigate
+}: {
+  onStartProject: () => void;
+  onNavigate: (view: string) => void;
+}) => {
+  return <section id="hero" className="h-[50rem] rounded-[2.5rem] flex flex-col items-start justify-start bg-black antialiased relative overflow-hidden mt-2 sm:mt-4">
       <FloatingDock onNavigate={onNavigate} />
       <Spotlight fill="white" />
       
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-          filter: "brightness(0.6)",
-          width: "100%",
-          height: "100%",
-        }}
-      />
+      <div className="absolute inset-0 z-0" style={{
+      background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+      filter: "brightness(0.6)",
+      width: "100%",
+      height: "100%"
+    }} />
 
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
@@ -615,34 +537,33 @@ const Hero = ({ onStartProject, onNavigate }: { onStartProject: () => void; onNa
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-start items-center mt-8">
-          <button 
-            onClick={onStartProject}
-            className="px-8 py-4 bg-white hover:bg-gray-200 text-black font-bold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2 group"
-          >
+          <button onClick={onStartProject} className="px-8 py-4 bg-white hover:bg-gray-200 text-black font-bold rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2 group">
             Aloita projekti
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 
 /**
  * WobbleCard
  */
-const WobbleCard = ({ title, description, image, colSpan }: { title: string; description: string; image: string; colSpan: string }) => {
-  return (
-    <div 
-      className={`relative group overflow-hidden rounded-2xl bg-black border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-[1.02] shadow-2xl ${colSpan}`}
-    >
+const WobbleCard = ({
+  title,
+  description,
+  image,
+  colSpan
+}: {
+  title: string;
+  description: string;
+  image: string;
+  colSpan: string;
+}) => {
+  return <div className={`relative group overflow-hidden rounded-2xl bg-black border border-white/10 hover:border-white/30 transition-all duration-500 hover:scale-[1.02] shadow-2xl ${colSpan}`}>
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
       
-      <img 
-        src={image} 
-        alt={title} 
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 grayscale group-hover:grayscale-0"
-      />
+      <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80 grayscale group-hover:grayscale-0" />
       
       <div className="relative z-20 h-full p-8 flex flex-col justify-end">
         <h3 className="text-2xl font-bold text-white mb-2 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -652,25 +573,20 @@ const WobbleCard = ({ title, description, image, colSpan }: { title: string; des
           {description}
         </p>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 /**
  * WobbleCardDemo
  */
 const WobbleCardDemo = () => {
-  return (
-    <section id="wobble" className="relative py-24 px-6 overflow-hidden rounded-t-[2.5rem] bg-black">
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: "radial-gradient(circle at 70% 80%, #555555 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-          filter: "brightness(0.6)",
-          width: "100%",
-          height: "100%",
-        }}
-      />
+  return <section id="wobble" className="relative py-24 px-6 overflow-hidden rounded-t-[2.5rem] bg-black">
+      <div className="absolute inset-0 z-0" style={{
+      background: "radial-gradient(circle at 70% 80%, #555555 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+      filter: "brightness(0.6)",
+      width: "100%",
+      height: "100%"
+    }} />
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Palvelumme</h2>
@@ -681,90 +597,30 @@ const WobbleCardDemo = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
-          <WobbleCard 
-            colSpan="md:col-span-2"
-            title="Verkkosivut & Web-sovellukset"
-            description="Räätälöidyt React- ja Next.js -ratkaisut, jotka skaalautuvat ja latautuvat salamannopeasti."
-            image="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop"
-          />
-          <WobbleCard 
-            colSpan="md:col-span-1"
-            title="UI/UX Suunnittelu"
-            description="Käyttäjäkokemuksen hiomista ja modernia käyttöliittymäsuunnittelua."
-            image="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop"
-          />
-          <WobbleCard 
-            colSpan="md:col-span-1"
-            title="SEO & Analytiikka"
-            description="Optimointia hakukoneille ja datalla johdettua markkinointia."
-            image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-          />
-          <WobbleCard 
-            colSpan="md:col-span-2"
-            title="Tekoälyratkaisut"
-            description="Räätälöidyt tekoälymallit, prosessien automaatio ja älykäs datan hyödyntäminen liiketoiminnassa."
-            image="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
-          />
+          <WobbleCard colSpan="md:col-span-2" title="Verkkosivut & Web-sovellukset" description="Räätälöidyt React- ja Next.js -ratkaisut, jotka skaalautuvat ja latautuvat salamannopeasti." image="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" />
+          <WobbleCard colSpan="md:col-span-1" title="UI/UX Suunnittelu" description="Käyttäjäkokemuksen hiomista ja modernia käyttöliittymäsuunnittelua." image="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" />
+          <WobbleCard colSpan="md:col-span-1" title="SEO & Analytiikka" description="Optimointia hakukoneille ja datalla johdettua markkinointia." image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" />
+          <WobbleCard colSpan="md:col-span-2" title="Tekoälyratkaisut" description="Räätälöidyt tekoälymallit, prosessien automaatio ja älykäs datan hyödyntäminen liiketoiminnassa." image="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop" />
         </div>
       </div>
       
       {/* Bottom fade to black */}
       <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none"></div>
-    </section>
-  );
+    </section>;
 };
 
 /**
  * About
  */
 const About = () => {
-  return (
-    <section id="about" className="relative py-24 px-6 rounded-[2.5rem] bg-black overflow-hidden border border-white/10">
-      <Spotlight fill="white" />
-
-      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-white">
-          Koodin ja luovuuden liitto
-        </h2>
-        
-        <div className="space-y-6 text-lg md:text-xl text-gray-200 leading-relaxed">
-          <p>
-            Sorvaamo syntyi intohimosta luoda digitaalisia kokemuksia, jotka eivät vain näytä hyvältä, 
-            vaan tuntuvat hyvältä käyttää. Uskomme, että paras lopputulos syntyy teknisen 
-            asiantuntijuuden ja luovan hulluuden tasapainosta.
-          </p>
-          <p>
-            Tiimimme koostuu kokeneista kehittäjistä, suunnittelijoista ja strategeista. 
-            Emme käytä valmiita malleja, vaan räätälöimme jokaisen pikselin palvelemaan 
-            juuri sinun brändisi tavoitteita.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-gray-800">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl font-bold text-white">50+</span>
-            <span className="text-gray-300">Onnistunutta projektia</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl font-bold text-white">5v</span>
-            <span className="text-gray-300">Kokemusta alalta</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-4xl font-bold text-white">100%</span>
-            <span className="text-gray-300">Asiakastyytyväisyys</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return;
 };
 
 /**
  * ContactForm
  */
 const ContactForm = () => {
-  return (
-    <section id="contact" className="relative py-24 px-6">
+  return <section id="contact" className="relative py-24 px-6">
       <div className="relative z-10 max-w-3xl mx-auto text-center mb-12">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Aloitetaan projekti</h2>
         <p className="text-gray-300">Jätä yhteystietosi, niin palaamme asiaan 24 tunnin sisällä.</p>
@@ -791,16 +647,14 @@ const ContactForm = () => {
           Lähetä viesti
         </button>
       </form>
-    </section>
-  );
+    </section>;
 };
 
 /**
  * Footer
  */
 const Footer = () => {
-  return (
-    <footer id="footer" className="relative pt-24 pb-8 px-6 overflow-hidden">
+  return <footer id="footer" className="relative pt-24 pb-8 px-6 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         
         <div className="text-center mb-12 space-y-4">
@@ -827,8 +681,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
 
 /**
@@ -836,23 +689,16 @@ const Footer = () => {
  */
 const Index = () => {
   const [view, setView] = useState('home');
-
   const handleStartProject = () => {
     setView('project');
     window.scrollTo(0, 0);
   };
-
   const handleNavigateHome = () => {
     setView('home');
     window.scrollTo(0, 0);
   };
-
-  return (
-    <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
-      {view === 'project' ? (
-        <ProjectWizard onBack={handleNavigateHome} onComplete={handleNavigateHome} />
-      ) : (
-        <div className="flex flex-col">
+  return <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
+      {view === 'project' ? <ProjectWizard onBack={handleNavigateHome} onComplete={handleNavigateHome} /> : <div className="flex flex-col">
           
           <div className="flex flex-col gap-24 mb-24">
              <Hero onStartProject={handleStartProject} onNavigate={setView} />
@@ -867,25 +713,19 @@ const Index = () => {
           </div>
 
           <div className="relative overflow-hidden">
-             <div
-                className="absolute inset-0 z-0"
-                style={{
-                  background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-                  filter: "brightness(0.6)",
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
+             <div className="absolute inset-0 z-0" style={{
+          background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
+          filter: "brightness(0.6)",
+          width: "100%",
+          height: "100%"
+        }} />
               <div className="relative z-10">
                   <ContactForm />
                   <Footer />
               </div>
           </div>
 
-        </div>
-      )}
-    </div>
-  );
+        </div>}
+    </div>;
 };
-
 export default Index;
