@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Twitter, Github, ArrowRight, Zap, Send, ArrowLeft, CheckCircle2, Cpu, Globe, Smartphone, Bot, Sparkles } from 'lucide-react';
+import { LogoCarouselDemo } from '@/components/LogoCarouselDemo';
 
 /**
  * Beam
@@ -702,6 +703,8 @@ const Index = () => {
           
           <div className="flex flex-col gap-24 mb-24">
              <Hero onStartProject={handleStartProject} onNavigate={setView} />
+             
+             <LogoCarouselDemo />
              
              <WobbleCardDemo />
              
