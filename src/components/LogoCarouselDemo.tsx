@@ -56,20 +56,18 @@ const TextColumn = React.memo(({ texts, index, currentTime }: { texts: TextItem[
   const currentText = useMemo(() => texts[currentIndex], [texts, currentIndex])
 
   return (
-    <div className="relative h-14 min-w-[200px] md:min-w-[280px] overflow-hidden flex items-center justify-center px-4">
-      <AnimatePresence mode="wait">
-        <motion.div
+    <div className="relative h-14 min-w-[200px] md:min-w-[280px] flex items-center justify-center px-4">
+      <AnimatePresence mode="popLayout">
+        <motion.span
           key={`${currentText.id}-${currentIndex}`}
-          initial={{ y: 20, opacity: 0, filter: "blur(8px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          exit={{ y: -20, opacity: 0, filter: "blur(8px)" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute inset-0 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
         >
-          <span className="text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center px-2">
-            {currentText.text}
-          </span>
-        </motion.div>
+          {currentText.text}
+        </motion.span>
       </AnimatePresence>
     </div>
   )
