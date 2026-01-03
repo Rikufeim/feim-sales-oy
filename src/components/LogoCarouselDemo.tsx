@@ -11,7 +11,7 @@ interface TextItem {
 }
 
 const allTexts: TextItem[] = [
-  { id: 1, text: "Yrityksesi tähän?" },
+  { id: 1, text: "Kasvu odottaa sinua?" },
   { id: 2, text: "Sinun logosi?" },
   { id: 3, text: "Seuraava asiakkaamme?" },
   { id: 4, text: "Tekoäly yrityksellesi?" },
