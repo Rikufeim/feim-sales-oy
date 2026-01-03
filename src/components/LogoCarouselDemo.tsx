@@ -56,7 +56,7 @@ const TextColumn = React.memo(({ texts, index, currentTime }: { texts: TextItem[
   const currentText = useMemo(() => texts[currentIndex], [texts, currentIndex])
 
   return (
-    <div className="relative h-12 w-40 md:h-16 md:w-56 overflow-hidden">
+    <div className="relative h-14 min-w-[200px] md:min-w-[280px] overflow-hidden flex items-center justify-center px-4">
       <AnimatePresence mode="wait">
         <motion.div
           key={`${currentText.id}-${currentIndex}`}
@@ -66,7 +66,7 @@ const TextColumn = React.memo(({ texts, index, currentTime }: { texts: TextItem[
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <span className="text-sm md:text-lg font-medium text-white/70 text-center whitespace-nowrap">
+          <span className="text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center px-2">
             {currentText.text}
           </span>
         </motion.div>
@@ -96,7 +96,7 @@ function TextCarousel({ texts, columnCount = 3 }: { texts: TextItem[]; columnCou
   }, [texts, columnCount])
 
   return (
-    <div className="flex gap-4 md:gap-8">
+    <div className="flex flex-wrap justify-center gap-2 md:gap-6">
       {textSets.map((texts, index) => (
         <TextColumn
           key={index}
@@ -111,16 +111,21 @@ function TextCarousel({ texts, columnCount = 3 }: { texts: TextItem[]; columnCou
 
 export function LogoCarouselDemo() {
   return (
-    <section className="relative py-16 md:py-24 bg-black">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex flex-col gap-2">
-            <GradientHeading variant="light" size="sm">
-              Referenssit
-            </GradientHeading>
-            <GradientHeading variant="secondary" size="xxs" weight="semi">
-              Pian tässä voi olla sinun yrityksesi
-            </GradientHeading>
+    <section className="relative py-16 md:py-24 bg-black overflow-hidden">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 opacity-30" style={{
+        background: "radial-gradient(circle at 50% 50%, #0021ff40 0%, transparent 50%)"
+      }} />
+      
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <div className="flex flex-col items-center text-center gap-10">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+              Feimiä.
+            </h2>
+            <p className="text-neutral-400 text-lg md:text-xl font-medium mt-2">
+              Liity mukaan
+            </p>
           </div>
 
           <TextCarousel texts={allTexts} columnCount={3} />
