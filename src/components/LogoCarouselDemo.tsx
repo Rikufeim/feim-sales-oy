@@ -112,7 +112,7 @@ export function LogoCarouselDemo() {
     <section className="relative py-16 md:py-24 bg-black overflow-hidden">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 opacity-30" style={{
-        background: "radial-gradient(circle at 50% 50%, #0021ff40 0%, transparent 50%)"
+        background: "linear-gradient(180deg, transparent 0%, #0021ff40 50%, transparent 100%)"
       }} />
       
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
