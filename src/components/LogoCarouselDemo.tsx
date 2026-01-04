@@ -58,7 +58,7 @@ const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: num
     const timeout = setTimeout(() => {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % texts.length)
-      }, 2500)
+      }, 4000)
       return () => clearInterval(interval)
     }, delay)
     
