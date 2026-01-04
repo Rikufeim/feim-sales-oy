@@ -12,13 +12,15 @@ interface TextItem {
 
 const allTexts: TextItem[] = [
   { id: 1, text: "Kasvu odottaa sinua" },
-  { id: 2, text: "Sinun logosi" },
-  { id: 3, text: "Seuraava asiakkaamme" },
-  { id: 4, text: "Tekoäly yrityksellesi" },
-  { id: 5, text: "Sivut jotka myyvät" },
-  { id: 6, text: "Digitaalinen kasvu" },
-  { id: 7, text: "Web-sovellus ideallesi" },
-  { id: 8, text: "Automaatio liiketoimintaasi" },
+  { id: 2, text: "Seuraava asiakkaamme" },
+  { id: 3, text: "Tekoäly yrityksellesi" },
+  { id: 4, text: "Sivut jotka myyvät" },
+  { id: 5, text: "Digitaalinen kasvu" },
+  { id: 6, text: "Web-sovellus ideallesi" },
+  { id: 7, text: "Automaatio liiketoimintaasi" },
+  { id: 8, text: "Tuloksia, ei lupauksia" },
+  { id: 9, text: "Ideasta toteutukseen" },
+  { id: 10, text: "Moderni digitaalinen kumppani" },
 ];
 
 const shuffleArray = <T,>(array: T[]): T[] => {
