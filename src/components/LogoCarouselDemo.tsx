@@ -1,9 +1,6 @@
 "use client";
 
-import React from "react";
-import { GradientHeading } from "@/components/ui/gradient-heading";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 
 interface TextItem {
   id: number;
@@ -23,91 +20,54 @@ const allTexts: TextItem[] = [
   { id: 10, text: "Moderni digitaalinen kumppani" },
 ];
 
-const shuffleArray = <T,>(array: T[]): T[] => {
-  const shuffled = [...array]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
+const TextColumn = ({ texts, delayMs }: { texts: string[]; delayMs: number }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
-const distributeTexts = (allTexts: TextItem[], columnCount: number): TextItem[][] => {
-  const shuffled = shuffleArray(allTexts)
-  const columns: TextItem[][] = Array.from({ length: columnCount }, () => [])
-
-  shuffled.forEach((item, index) => {
-    columns[index % columnCount].push(item)
-  })
-
-  const maxLength = Math.max(...columns.map((col) => col.length))
-  columns.forEach((col) => {
-    while (col.length < maxLength) {
-      col.push(shuffled[Math.floor(Math.random() * shuffled.length)])
-    }
-  })
-
-  return columns
-}
-
-const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: number }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  
   useEffect(() => {
-    const delay = index * 800
-    let intervalId: NodeJS.Timeout
+    let intervalId: NodeJS.Timeout;
     
     const timeoutId = setTimeout(() => {
       intervalId = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % texts.length)
-      }, 4000)
-    }, delay)
-    
+        setIsVisible(false);
+        setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % texts.length);
+          setIsVisible(true);
+        }, 300);
+      }, 4000);
+    }, delayMs);
+
     return () => {
-      clearTimeout(timeoutId)
-      if (intervalId) clearInterval(intervalId)
-    }
-  }, [texts.length, index])
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [texts.length, delayMs]);
 
   return (
     <div className="relative h-14 w-[220px] md:w-[300px] flex items-center justify-center">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0 flex items-center justify-center text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
-        >
-          {texts[currentIndex]?.text}
-        </motion.span>
-      </AnimatePresence>
+      <span
+        className={`text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap transition-opacity duration-300 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {texts[currentIndex]}
+      </span>
     </div>
-  )
-})
+  );
+};
 
-TextColumn.displayName = "TextColumn"
-
-function TextCarousel({ texts, columnCount = 3 }: { texts: TextItem[]; columnCount?: number }) {
-  const [textSets, setTextSets] = useState<TextItem[][]>([])
-
-  useEffect(() => {
-    const distributedTexts = distributeTexts(texts, columnCount)
-    setTextSets(distributedTexts)
-  }, [texts, columnCount])
+function TextCarousel() {
+  const column1 = ["Kasvu odottaa sinua", "Tekoäly yrityksellesi", "Automaatio liiketoimintaasi", "Moderni digitaalinen kumppani"];
+  const column2 = ["Seuraava asiakkaamme", "Sivut jotka myyvät", "Tuloksia, ei lupauksia"];
+  const column3 = ["Digitaalinen kasvu", "Web-sovellus ideallesi", "Ideasta toteutukseen"];
 
   return (
     <div className="flex flex-wrap justify-center gap-2 md:gap-6">
-      {textSets.map((columnTexts, index) => (
-        <TextColumn
-          key={index}
-          texts={columnTexts}
-          index={index}
-        />
-      ))}
+      <TextColumn texts={column1} delayMs={0} />
+      <TextColumn texts={column2} delayMs={800} />
+      <TextColumn texts={column3} delayMs={1600} />
     </div>
-  )
+  );
 }
 
 export function LogoCarouselDemo() {
@@ -145,7 +105,7 @@ export function LogoCarouselDemo() {
             </div>
           </div>
 
-          <TextCarousel texts={allTexts} columnCount={3} />
+          <TextCarousel />
         </div>
       </div>
     </section>
