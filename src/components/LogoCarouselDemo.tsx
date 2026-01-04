@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface TextItem {
   id: number;
@@ -20,52 +21,52 @@ const allTexts: TextItem[] = [
   { id: 10, text: "Moderni digitaalinen kumppani" },
 ];
 
-const TextColumn = ({ texts, delayMs }: { texts: string[]; delayMs: number }) => {
+const column1 = [allTexts[0], allTexts[3], allTexts[6], allTexts[9]];
+const column2 = [allTexts[1], allTexts[4], allTexts[7]];
+const column3 = [allTexts[2], allTexts[5], allTexts[8]];
+
+const TextColumn = ({ texts, delayMs }: { texts: TextItem[]; delayMs: number }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-    
-    const timeoutId = setTimeout(() => {
-      intervalId = setInterval(() => {
-        setIsVisible(false);
-        setTimeout(() => {
-          setCurrentIndex((prev) => (prev + 1) % texts.length);
-          setIsVisible(true);
-        }, 300);
-      }, 4000);
+    timeoutRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }, 3500);
     }, delayMs);
 
     return () => {
-      clearTimeout(timeoutId);
-      if (intervalId) clearInterval(intervalId);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [texts.length, delayMs]);
 
   return (
-    <div className="relative h-14 w-[220px] md:w-[300px] flex items-center justify-center">
-      <span
-        className={`text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap transition-opacity duration-300 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {texts[currentIndex]}
-      </span>
+    <div className="relative h-14 w-[220px] md:w-[300px] flex items-center justify-center overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={currentIndex}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="absolute text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
+        >
+          {texts[currentIndex].text}
+        </motion.span>
+      </AnimatePresence>
     </div>
   );
 };
 
 function TextCarousel() {
-  const column1 = ["Kasvu odottaa sinua", "Tekoäly yrityksellesi", "Automaatio liiketoimintaasi", "Moderni digitaalinen kumppani"];
-  const column2 = ["Seuraava asiakkaamme", "Sivut jotka myyvät", "Tuloksia, ei lupauksia"];
-  const column3 = ["Digitaalinen kasvu", "Web-sovellus ideallesi", "Ideasta toteutukseen"];
-
   return (
     <div className="flex flex-wrap justify-center gap-2 md:gap-6">
       <TextColumn texts={column1} delayMs={0} />
-      <TextColumn texts={column2} delayMs={800} />
-      <TextColumn texts={column3} delayMs={1600} />
+      <TextColumn texts={column2} delayMs={600} />
+      <TextColumn texts={column3} delayMs={1200} />
     </div>
   );
 }
