@@ -349,7 +349,7 @@ const ServicesList = () => {
   }, {
     title: "JATKUVA KEHITYS",
     icon: Cpu,
-    desc: "Digitaalinen maailma ei pysähdy. Sivustosi on elävä organismi, jota optimoimme jatkuvasti.",
+    desc: "Digitaalinen maailma ei pysähdy. Ajattelevat sivut seuraa tulevaisuutta, eikä jämähdä paikoilleen.",
     cta: "Tutustu malliin"
   }];
   return <section id="services" className="relative py-24 overflow-hidden min-h-[800px]">
