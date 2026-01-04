@@ -54,15 +54,19 @@ const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: num
   const [currentIndex, setCurrentIndex] = useState(0)
   
   useEffect(() => {
-    const delay = index * 300
-    const timeout = setTimeout(() => {
-      const interval = setInterval(() => {
+    const delay = index * 800
+    let intervalId: NodeJS.Timeout
+    
+    const timeoutId = setTimeout(() => {
+      intervalId = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % texts.length)
       }, 4000)
-      return () => clearInterval(interval)
     }, delay)
     
-    return () => clearTimeout(timeout)
+    return () => {
+      clearTimeout(timeoutId)
+      if (intervalId) clearInterval(intervalId)
+    }
   }, [texts.length, index])
 
   return (
@@ -70,10 +74,10 @@ const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: num
       <AnimatePresence mode="wait">
         <motion.span
           key={currentIndex}
-          initial={{ y: 15, opacity: 0, filter: "blur(6px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          exit={{ y: -15, opacity: 0, filter: "blur(6px)" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
           className="absolute inset-0 flex items-center justify-center text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
         >
           {texts[currentIndex]?.text}
