@@ -50,25 +50,33 @@ const distributeTexts = (allTexts: TextItem[], columnCount: number): TextItem[][
   return columns
 }
 
-const TextColumn = React.memo(({ texts, index, currentTime }: { texts: TextItem[]; index: number; currentTime: number }) => {
-  const cycleInterval = 2500
-  const columnDelay = index * 300
-  const adjustedTime = (currentTime + columnDelay) % (cycleInterval * texts.length)
-  const currentIndex = Math.floor(adjustedTime / cycleInterval)
-  const currentText = useMemo(() => texts[currentIndex], [texts, currentIndex])
+const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: number }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  
+  useEffect(() => {
+    const delay = index * 300
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % texts.length)
+      }, 2500)
+      return () => clearInterval(interval)
+    }, delay)
+    
+    return () => clearTimeout(timeout)
+  }, [texts.length, index])
 
   return (
     <div className="relative h-14 min-w-[200px] md:min-w-[280px] flex items-center justify-center">
       <AnimatePresence mode="wait">
         <motion.span
-          key={`${currentText.id}-${currentIndex}`}
+          key={currentIndex}
           initial={{ y: 15, opacity: 0, filter: "blur(6px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: -15, opacity: 0, filter: "blur(6px)" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="absolute text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
         >
-          {currentText.text}
+          {texts[currentIndex]?.text}
         </motion.span>
       </AnimatePresence>
     </div>
@@ -79,16 +87,6 @@ TextColumn.displayName = "TextColumn"
 
 function TextCarousel({ texts, columnCount = 3 }: { texts: TextItem[]; columnCount?: number }) {
   const [textSets, setTextSets] = useState<TextItem[][]>([])
-  const [currentTime, setCurrentTime] = useState(0)
-
-  const updateTime = useCallback(() => {
-    setCurrentTime((prevTime) => prevTime + 100)
-  }, [])
-
-  useEffect(() => {
-    const intervalId = setInterval(updateTime, 100)
-    return () => clearInterval(intervalId)
-  }, [updateTime])
 
   useEffect(() => {
     const distributedTexts = distributeTexts(texts, columnCount)
@@ -97,12 +95,11 @@ function TextCarousel({ texts, columnCount = 3 }: { texts: TextItem[]; columnCou
 
   return (
     <div className="flex flex-wrap justify-center gap-2 md:gap-6">
-      {textSets.map((texts, index) => (
+      {textSets.map((columnTexts, index) => (
         <TextColumn
           key={index}
-          texts={texts}
+          texts={columnTexts}
           index={index}
-          currentTime={currentTime}
         />
       ))}
     </div>
