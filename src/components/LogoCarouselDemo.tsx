@@ -66,7 +66,7 @@ const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: num
   }, [texts.length, index])
 
   return (
-    <div className="relative h-14 min-w-[200px] md:min-w-[280px] flex items-center justify-center">
+    <div className="relative h-14 w-[220px] md:w-[300px] flex items-center justify-center">
       <AnimatePresence mode="wait">
         <motion.span
           key={currentIndex}
@@ -74,7 +74,7 @@ const TextColumn = React.memo(({ texts, index }: { texts: TextItem[]; index: num
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
           exit={{ y: -15, opacity: 0, filter: "blur(6px)" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="absolute text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
+          className="absolute inset-0 flex items-center justify-center text-base md:text-xl font-semibold bg-gradient-to-r from-blue-400 via-white to-blue-400 bg-clip-text text-transparent text-center whitespace-nowrap"
         >
           {texts[currentIndex]?.text}
         </motion.span>
