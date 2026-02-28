@@ -71,14 +71,14 @@ function TextCarousel() {
   );
 }
 
-export function LogoCarouselDemo() {
+export function LogoCarouselDemo({ onStartProject }: { onStartProject?: () => void }) {
   return (
-    <section className="relative py-16 md:py-24 bg-black overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-black overflow-hidden rounded-[2.5rem] mx-2 sm:mx-4">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 opacity-30" style={{
         background: "linear-gradient(180deg, transparent 0%, #0021ff40 50%, transparent 100%)"
       }} />
-      
+
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
         <div className="flex flex-col items-center text-center gap-10">
           <div className="flex flex-col gap-1">
@@ -89,14 +89,15 @@ export function LogoCarouselDemo() {
               <p className="text-neutral-400 text-lg md:text-xl font-medium">
                 Liity mukaan
               </p>
-              <a 
-                href="#" 
+              <a
+                href="#"
+                onClick={e => { e.preventDefault(); onStartProject?.(); }}
                 className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group"
               >
-                <svg 
-                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
