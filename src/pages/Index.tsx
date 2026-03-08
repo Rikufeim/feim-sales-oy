@@ -403,9 +403,12 @@ const Showcase = () => (
 
 /* ─── 6. Tulokset & hyödyt ─── */
 
-const benefitsRight = [
+const benefitsLeft = [
   { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
   { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
+];
+
+const benefitsRight = [
   { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
   { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
   { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
@@ -420,9 +423,22 @@ const Benefits = () => (
           <div className="lg:sticky lg:top-32">
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tulokset</p>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä saat<br />käytännössä.</h2>
-            <p className="text-neutral-400 text-lg leading-relaxed">
+            <p className="text-neutral-400 text-lg leading-relaxed mb-10">
               Verkkosivuja, sovelluksia ja prototyyppejä — jokainen rakennettu tuottamaan konkreettisia liiketoimintatuloksia.
             </p>
+            <div className="space-y-8">
+              {benefitsLeft.map((b, i) => (
+                <div key={i} className="flex gap-5">
+                  <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
+                    <CheckCircle2 size={18} className="text-blue-400/70" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
+                    <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </FadeIn>
         <div className="space-y-8">
