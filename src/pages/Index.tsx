@@ -1020,7 +1020,7 @@ const Index = () => {
           <Hero onStartProject={handleStartProject} />
           <Services />
           <WhyFeim />
-          <Process />
+          
           <Showcase />
           <Benefits />
           <AboutSection />
