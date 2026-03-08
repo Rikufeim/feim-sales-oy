@@ -14,6 +14,7 @@ export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: 
           brightness={0.5}
           swirl={0.1}
         />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black to-transparent" />
       </div>
 
       {children && (
