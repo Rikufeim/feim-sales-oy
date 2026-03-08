@@ -220,36 +220,26 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
 const servicesData = [
   {
     title: "Verkkosivut",
-    desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
-    icon: "🌐",
+    desc: "Modernit ja liiketoimintaa tukevat verkkosivut, jotka viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
     link: "/verkkosivut"
   },
   {
     title: "Web-sovellukset",
-    desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
-    icon: "⚡",
+    desc: "Räätälöityjä web-sovelluksia — asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita.",
     link: "/web-sovellukset"
   },
   {
     title: "Prototyypit ja MVP:t",
-    desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin, jolla ideaa voidaan testata ja esitellä.",
-    icon: "◆",
+    desc: "Ideasta ensimmäinen versio — klikattava prototyyppi, MVP tai konsepti, jolla ideaa voidaan testata ja esitellä.",
     link: "/prototyypit"
   },
   {
-    title: "UI/UX-suunnittelu",
-    desc: "Käyttöliittymä- ja käyttäjäkokemussuunnittelua, jossa jokainen elementti palvelee käyttäjän matkaa. Intuitiivinen, kaunis ja funktionaalinen — ilman kompromisseja.",
-    icon: "✦"
-  },
-  {
     title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä.",
-    icon: "🎯"
+    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa.",
   },
   {
-    title: "Jatkuva kehitys & tekninen toteutus",
-    desc: "Toteutamme modernilla teknologialla, joka takaa suorituskyvyn, tietoturvan ja skaalautuvuuden. Jatkuva kehitys pitää tuotteenne kilpailukykyisenä.",
-    icon: "📈"
+    title: "Jatkuva kehitys",
+    desc: "Jatkuva kehitys pitää tuotteenne kilpailukykyisenä ja teknisesti ajan tasalla.",
   },
 ];
 
@@ -275,20 +265,23 @@ const Services = () => (
         </div>
       </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+      <div className="mt-16 space-y-0 divide-y divide-white/[0.06]">
         {servicesData.map((s, i) => (
-          <FadeIn key={i} delay={i * 0.08}>
+          <FadeIn key={i} delay={i * 0.06}>
             {s.link ? (
-              <Link to={s.link} className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full block">
-                <span className="text-2xl mb-5 block">{s.icon}</span>
-                <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">{s.title} <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-blue-400" /></h3>
-                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              <Link to={s.link} className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 md:py-10 hover:pl-4 transition-all duration-500">
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
+                    {s.title}
+                    <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-blue-400" />
+                  </h3>
+                </div>
+                <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-md md:text-right">{s.desc}</p>
               </Link>
             ) : (
-              <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-                <span className="text-2xl mb-5 block">{s.icon}</span>
-                <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
-                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 md:py-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-white/60">{s.title}</h3>
+                <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-md md:text-right">{s.desc}</p>
               </div>
             )}
           </FadeIn>

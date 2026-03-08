@@ -31,11 +31,6 @@ const services = [
     link: "/prototyypit"
   },
   {
-    icon: "✦",
-    title: "UI/UX-suunnittelu",
-    desc: "Käyttöliittymä- ja käyttäjäkokemussuunnittelua, jossa jokainen elementti palvelee käyttäjän matkaa. Intuitiivinen, kaunis ja funktionaalinen.",
-  },
-  {
     icon: "🎯",
     title: "Landing page -sivut",
     desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä.",
