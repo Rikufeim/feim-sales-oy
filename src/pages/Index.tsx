@@ -166,7 +166,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
         <p className="text-sm md:text-base font-medium text-blue-400/80 tracking-widest uppercase mb-6">Premium-verkkosivut & digitaaliset palvelut</p>
       </FadeIn>
       <FadeIn delay={0.1}>
-        <h1 className="text-5xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.05] max-w-5xl">
+        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.05] max-w-5xl">
           Rakennamme sivut,<br />jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
