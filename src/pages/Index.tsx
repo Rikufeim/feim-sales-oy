@@ -3,6 +3,7 @@ import { Menu, X, ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
+import rikuImg from '@/assets/riku-miettinen.jpeg';
 
 /* ─── Utility Components ─── */
 
