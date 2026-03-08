@@ -1006,11 +1006,21 @@ const Index = () => {
   const handleNavigateHome = () => { setView('home'); window.scrollTo(0, 0); };
 
   return (
-    <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
+    <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white relative">
       {view === 'project' ? (
         <ProjectWizard onBack={handleNavigateHome} onComplete={handleNavigateHome} />
       ) : (
-        <main>
+        <main className="relative">
+          {/* Unified page background accents */}
+          <div className="absolute inset-0 z-0 pointer-events-none" style={{
+            background: `
+              radial-gradient(circle at 20% 15%, #0021ff18 0%, transparent 40%),
+              radial-gradient(circle at 80% 35%, #0021ff10 0%, transparent 40%),
+              radial-gradient(circle at 30% 55%, #0021ff12 0%, transparent 40%),
+              radial-gradient(circle at 70% 75%, #0021ff10 0%, transparent 40%),
+              radial-gradient(circle at 25% 90%, #0021ff18 0%, transparent 40%)
+            `
+          }} />
           <Navigation onNavigate={dest => { if (dest === 'home') window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
           <Hero onStartProject={handleStartProject} />
           <Services />
