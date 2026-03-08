@@ -233,14 +233,6 @@ const servicesData = [
     desc: "Ideasta ensimmäinen versio — klikattava prototyyppi, MVP tai konsepti, jolla ideaa voidaan testata ja esitellä.",
     link: "/prototyypit"
   },
-  {
-    title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa.",
-  },
-  {
-    title: "Jatkuva kehitys",
-    desc: "Jatkuva kehitys pitää tuotteenne kilpailukykyisenä ja teknisesti ajan tasalla.",
-  },
 ];
 
 const Services = () => (
