@@ -905,7 +905,7 @@ const Footer = () => (
           <ul className="space-y-3 text-neutral-500 text-sm">
             <li><a href="#meista" className="hover:text-white transition-colors">Meistä</a></li>
             <li><a href="#prosessi" className="hover:text-white transition-colors">Prosessi</a></li>
-            <li><a href="#yhteystiedot" className="hover:text-white transition-colors">Yhteystiedot</a></li>
+            <li><Link to="/yhteystiedot" className="hover:text-white transition-colors">Yhteystiedot</Link></li>
             <li><a href="#ukk" className="hover:text-white transition-colors">UKK</a></li>
           </ul>
         </div>
