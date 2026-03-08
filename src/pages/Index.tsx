@@ -135,7 +135,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             )
           ))}
           <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
-            Aloita projekti
+            Tilaa vedos
           </Link>
         </div>
         <button className="lg:hidden text-neutral-200 hover:text-white" onClick={() => setIsOpen(!isOpen)} aria-label="Navigaatiovalikko">
@@ -159,7 +159,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
                 </Link>
               )
             ))}
-            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</Link>
+            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
         )}
       </AnimatePresence>
