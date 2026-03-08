@@ -248,9 +248,6 @@ const Services = () => (
           <p>
             Autamme yrityksiä kasvamaan verkossa, mutta myös yksityisiä ja tiimejä, joilla on idea sovelluksesta, palvelusta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus.
           </p>
-          <p className="text-neutral-500 italic">
-            Sinulla ei tarvitse olla valmista suunnitelmaa — joskus hyvä idea riittää alkuun.
-          </p>
         </div>
       </FadeIn>
 

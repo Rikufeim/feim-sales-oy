@@ -160,7 +160,7 @@ const Palvelut = () => (
             <p className="text-neutral-400 text-lg leading-relaxed">
               Autamme myös yksityisiä ja tiimejä, joilla on idea sovelluksesta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis sovellus.
             </p>
-            <p className="text-neutral-500 italic mt-4">Sinulla ei tarvitse olla valmista suunnitelmaa — joskus hyvä idea riittää alkuun.</p>
+            
           </FadeIn>
         </div>
       </div>
