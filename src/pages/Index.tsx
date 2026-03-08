@@ -181,7 +181,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <a href="#yhteystiedot" className={`inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group ${isDark ? 'bg-white hover:bg-neutral-200 text-black' : 'bg-neutral-900 hover:bg-neutral-800 text-white'}`}>
+          <a href="#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
