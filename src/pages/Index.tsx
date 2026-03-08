@@ -423,9 +423,22 @@ const Benefits = () => (
           <div className="lg:sticky lg:top-32">
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tulokset</p>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä saat<br />käytännössä.</h2>
-            <p className="text-neutral-400 text-lg leading-relaxed">
+            <p className="text-neutral-400 text-lg leading-relaxed mb-10">
               Verkkosivuja, sovelluksia ja prototyyppejä — jokainen rakennettu tuottamaan konkreettisia liiketoimintatuloksia.
             </p>
+            <div className="space-y-8">
+              {benefitsLeft.map((b, i) => (
+                <div key={i} className="flex gap-5">
+                  <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
+                    <CheckCircle2 size={18} className="text-blue-400/70" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
+                    <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </FadeIn>
         <div className="space-y-8">
