@@ -93,8 +93,8 @@ const Yhteystiedot = () => {
               <div className="lg:sticky lg:top-32 space-y-12">
                 {/* Contact person */}
                 <div className="flex items-start gap-6">
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0">
-                    <img src={rikuImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-500" />
+                  <div className="w-40 h-40 rounded-full overflow-hidden shrink-0">
+                    <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
                   </div>
                   <div>
                     <p className="text-white font-semibold text-xl">Riku Miettinen</p>
