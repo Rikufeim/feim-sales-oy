@@ -113,7 +113,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'py-3 bg-black/80 backdrop-blur-xl border-b border-white/5' : 'py-6'}`}>
+    <nav className="absolute top-0 left-0 right-0 z-50 py-6">
       <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
         <div onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer">
           FEIM
