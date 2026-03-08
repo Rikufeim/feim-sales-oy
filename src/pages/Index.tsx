@@ -69,15 +69,6 @@ const Spotlight = ({ className = "", fill = "white", fillOpacity = 0.15 }: { cla
   );
 };
 
-const TextHoverEffect = ({ text }: { text: string }) => (
-  <div className="flex justify-center select-none overflow-hidden py-4">
-    <h2 className="flex text-6xl md:text-9xl font-black tracking-tighter text-white/10 transition-colors duration-300">
-      {text.split("").map((letter, index) => (
-        <span key={index} className="inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:text-white cursor-default">{letter}</span>
-      ))}
-    </h2>
-  </div>
-);
 
 const TypewriterTitle = ({ text, className = "" }: { text: string; className?: string }) => {
   const [displayedText, setDisplayedText] = useState('');
