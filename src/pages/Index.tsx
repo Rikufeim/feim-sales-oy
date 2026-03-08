@@ -111,7 +111,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
     { name: 'Referenssit', href: '/referenssit' },
     { name: 'Meistä', href: '/meista' },
     { name: 'UKK', href: '/ukk' },
-    { name: 'Yhteystiedot', href: '#yhteystiedot' },
+    { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
   const isHash = (href: string) => href.startsWith('#');
@@ -134,9 +134,9 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
               </Link>
             )
           ))}
-          <a href="#yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
+          <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Aloita projekti
-          </a>
+          </Link>
         </div>
         <button className="lg:hidden text-neutral-200 hover:text-white" onClick={() => setIsOpen(!isOpen)} aria-label="Navigaatiovalikko">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -159,7 +159,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
                 </Link>
               )
             ))}
-            <a href="#yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</a>
+            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</Link>
           </motion.div>
         )}
       </AnimatePresence>
@@ -905,7 +905,7 @@ const Footer = () => (
           <ul className="space-y-3 text-neutral-500 text-sm">
             <li><a href="#meista" className="hover:text-white transition-colors">Meistä</a></li>
             <li><a href="#prosessi" className="hover:text-white transition-colors">Prosessi</a></li>
-            <li><a href="#yhteystiedot" className="hover:text-white transition-colors">Yhteystiedot</a></li>
+            <li><Link to="/yhteystiedot" className="hover:text-white transition-colors">Yhteystiedot</Link></li>
             <li><a href="#ukk" className="hover:text-white transition-colors">UKK</a></li>
           </ul>
         </div>
