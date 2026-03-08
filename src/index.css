@@ -119,6 +119,13 @@ All colors MUST be HSL.
     font-family: 'Inter', sans-serif;
   }
 
+  /* Remove focus outline on nav links and buttons, keep for keyboard accessibility */
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+
   /* Hide scrollbar */
   html {
     scrollbar-width: none; /* Firefox */
