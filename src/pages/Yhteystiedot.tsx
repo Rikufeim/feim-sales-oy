@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Zap, TrendingUp, Target, Palette } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import rikuNightImg from '@/assets/riku-night.jpeg';
+import HeroBackground from '@/components/HeroBackground';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -64,24 +65,53 @@ const Yhteystiedot = () => {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-40 md:pt-48 pb-20 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 z-0" style={{
-          background: "radial-gradient(circle at 25% 70%, #0021ff25 0%, transparent 45%), radial-gradient(circle at 75% 25%, #2201ff20 0%, transparent 45%), #000",
-        }} />
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-          <FadeIn>
-            <div className="text-center max-w-3xl mx-auto">
-              <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Yhteystiedot</p>
-              <h1 className="text-4xl md:text-6xl font-bold text-white leading-[1.08] mb-6">
-                Aloitetaan projektisi
-              </h1>
-              <p className="text-neutral-400 text-lg leading-relaxed">
-                Kerro mitä tarvitset, niin palaamme asiaan henkilökohtaisesti 24 tunnin sisällä.
-              </p>
+      <HeroBackground className="!min-h-screen flex items-end pb-20">
+        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+        
+        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+            <div className="lg:col-span-7">
+              <FadeIn delay={0.05}>
+                <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Yhteystiedot</p>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08]">
+                  Aloitetaan projektisi
+                </h1>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">
+                  Kerro mitä tarvitset, niin palaamme asiaan henkilökohtaisesti 24 tunnin sisällä.
+                </p>
+              </FadeIn>
             </div>
-          </FadeIn>
+            
+            <div className="lg:col-span-5">
+              <FadeIn delay={0.25}>
+                <div className="space-y-4">
+                  {["Maksuton vedos", "Vastaus 24h sisällä", "Henkilökohtainen palvelu", "Ei sitoumuksia"].map((point, i) => {
+                    const icons = [Zap, TrendingUp, Target, Palette];
+                    const Icon = icons[i % icons.length];
+                    return (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <Icon size={18} className="text-blue-400/70 shrink-0" />
+                        <p className="text-white text-sm font-medium">{point}</p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </FadeIn>
+            </div>
+          </div>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* Contact content */}
       <section className="relative pb-32 overflow-hidden">

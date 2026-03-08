@@ -159,101 +159,61 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         </HeroBackground>
       )}
 
-      {heroVariant === 'technical' && (
-        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-          <div className="absolute inset-0 z-0" style={{
-            background: "radial-gradient(circle at 90% 50%, #0021ff25 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00ff8815 0%, transparent 35%), #000",
-          }} />
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px"
-          }} />
+      {(heroVariant === 'technical' || heroVariant === 'creative') && (
+        <HeroBackground className="!min-h-screen flex items-end pb-20">
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
           
-          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
-            
-            <div className="flex items-center gap-3 mb-8">
-              <FadeIn delay={0.05}>
-                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono tracking-wider uppercase">
-                  <Code2 size={14} /> {hero.label}
-                </span>
-              </FadeIn>
+          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+              <div className="lg:col-span-7">
+                <FadeIn delay={0.05}>
+                  <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">{hero.label}</p>
+                </FadeIn>
+                <FadeIn delay={0.1}>
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08]">
+                    {hero.title}
+                  </h1>
+                </FadeIn>
+                {hero.intro && (
+                  <FadeIn delay={0.2}>
+                    <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
+                  </FadeIn>
+                )}
+                {hero.cta && (
+                  <FadeIn delay={0.3}>
+                    <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
+                      {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </FadeIn>
+                )}
+              </div>
+              
+              <div className="lg:col-span-5">
+                <FadeIn delay={0.25}>
+                  <div className="space-y-4">
+                    {(heroTrustPoints || []).map((point, i) => {
+                      const icons = [Zap, TrendingUp, Target, Palette];
+                      const Icon = icons[i % icons.length];
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                          className="flex items-center gap-3"
+                        >
+                          <Icon size={18} className="text-blue-400/70 shrink-0" />
+                          <p className="text-white text-sm font-medium">{point}</p>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </FadeIn>
+              </div>
             </div>
-            
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white pb-4 leading-[1.08] max-w-5xl">
-                {hero.title}
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">{hero.intro}</p>
-            </FadeIn>
-            
-            {/* Tech stack badges */}
-            <FadeIn delay={0.3}>
-              <div className="flex flex-wrap gap-3 mt-10">
-                {(heroTrustPoints || ["React", "TypeScript", "Tailwind", "Skaalautuva"]).map((tech, i) => (
-                  <span key={i} className="px-4 py-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-sm font-mono">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </FadeIn>
-            
-            <FadeIn delay={0.4}>
-              <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group mt-10">
-                {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-            </FadeIn>
           </div>
-        </section>
-      )}
-
-      {heroVariant === 'creative' && (
-        <section className="relative min-h-[65vh] flex items-center overflow-hidden">
-          <div className="absolute inset-0 z-0" style={{
-            background: "radial-gradient(circle at 50% 100%, #6b21a820 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0021ff20 0%, transparent 40%), #000",
-          }} />
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-          
-          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20 text-center">
-            <FadeIn delay={0.05}>
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <Lightbulb size={18} className="text-blue-400/60" />
-                <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase">{hero.label}</p>
-              </div>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 via-neutral-200 to-neutral-500 pb-4 leading-[1.08] max-w-4xl mx-auto">
-                {hero.title}
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mx-auto">{hero.intro}</p>
-            </FadeIn>
-            
-            {/* Process steps inline */}
-            <FadeIn delay={0.3}>
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-12">
-                {(heroTrustPoints || ["Idea", "Prototyyppi", "MVP", "Tuote"]).map((step, i) => (
-                  <React.Fragment key={i}>
-                    {i > 0 && <ArrowRight size={14} className="text-neutral-600 hidden sm:block" />}
-                    <span className="px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-sm font-medium">
-                      {step}
-                    </span>
-                  </React.Fragment>
-                ))}
-              </div>
-            </FadeIn>
-            
-            <FadeIn delay={0.4}>
-              <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group mt-10">
-                {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-            </FadeIn>
-          </div>
-        </section>
+        </HeroBackground>
       )}
 
       {/* Content Sections */}
