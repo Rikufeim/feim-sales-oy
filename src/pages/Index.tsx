@@ -108,9 +108,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 
   const navLinks = [
     { name: 'Etusivu', href: '/' },
-    { name: 'Verkkosivut', href: '/verkkosivut' },
-    { name: 'Web-sovellukset', href: '/web-sovellukset' },
-    { name: 'Prototyypit', href: '/prototyypit' },
+    { name: 'Meistä', href: '/meista' },
     { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
