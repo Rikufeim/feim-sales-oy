@@ -417,9 +417,6 @@ const benefitsBottom = [
 
 const Benefits = () => (
   <section id="hyodyt" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 80% 20%, #0021ff15 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <FadeIn>
