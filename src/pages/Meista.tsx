@@ -78,11 +78,6 @@ const Meista = () => (
         background: "radial-gradient(circle at 30% 50%, #0021ff15 0%, transparent 45%), #000",
       }} />
       <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
-        <FadeIn>
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12 group">
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
-          </Link>
-        </FadeIn>
         
         <div className="max-w-4xl">
           <FadeIn delay={0.1}>
