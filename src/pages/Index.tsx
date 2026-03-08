@@ -1009,13 +1009,13 @@ const Index = () => {
           {/* Unified page background accents */}
           <div className="absolute inset-0 z-0 pointer-events-none" style={{
             background: `
-              radial-gradient(ellipse 80% 50% at 20% 10%, #0021ff40 0%, transparent 60%),
-              radial-gradient(ellipse 60% 40% at 85% 25%, #0a0e3a 0%, transparent 55%),
-              radial-gradient(ellipse 70% 45% at 15% 40%, #0a1040 0%, transparent 50%),
-              radial-gradient(ellipse 80% 50% at 75% 55%, #0021ff25 0%, transparent 55%),
-              radial-gradient(ellipse 60% 40% at 30% 70%, #0c1445 0%, transparent 50%),
-              radial-gradient(ellipse 90% 50% at 60% 85%, #0021ff30 0%, transparent 55%),
-              radial-gradient(ellipse 50% 30% at 80% 95%, #0a0e3a 0%, transparent 50%)
+              radial-gradient(ellipse 60% 35% at 20% 8%, #0021ff20 0%, transparent 60%),
+              radial-gradient(ellipse 50% 30% at 85% 22%, #0a0e3a80 0%, transparent 50%),
+              radial-gradient(ellipse 50% 30% at 10% 38%, #0a104060 0%, transparent 45%),
+              radial-gradient(ellipse 60% 35% at 80% 52%, #0021ff15 0%, transparent 50%),
+              radial-gradient(ellipse 45% 25% at 25% 68%, #0c144560 0%, transparent 45%),
+              radial-gradient(ellipse 55% 30% at 65% 82%, #0021ff18 0%, transparent 50%),
+              radial-gradient(ellipse 40% 20% at 80% 95%, #0a0e3a60 0%, transparent 45%)
             `
           }} />
           <Navigation onNavigate={dest => { if (dest === 'home') window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
