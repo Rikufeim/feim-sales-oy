@@ -8,6 +8,7 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 
 /* ─── Utility Components ─── */
 
