@@ -154,8 +154,11 @@ html.theme-light .hover\:bg-white\/\[0\.1\]:hover,
 html.theme-light .hover\:bg-white\/5:hover { background-color: rgba(0, 0, 0, 0.06) !important; }
 html.theme-light .hover\:border-white\/\[0\.12\]:hover,
 html.theme-light .hover\:border-white\/\[0\.15\]:hover { border-color: rgba(0, 0, 0, 0.15) !important; }
-html.theme-light .bg-white { background-color: #111111 !important; color: #ffffff !important; }
-html.theme-light .hover\:bg-neutral-200:hover { background-color: #333333 !important; }
+/* Buttons with bg-white get inverted — but not small decorative elements */
+html.theme-light a.bg-white,
+html.theme-light button.bg-white { background-color: #111111 !important; color: #ffffff !important; }
+html.theme-light a.hover\:bg-neutral-200:hover,
+html.theme-light button.hover\:bg-neutral-200:hover { background-color: #333333 !important; }
 html.theme-light .text-black { color: #ffffff !important; }
 html.theme-light .bg-black\/95 { background-color: rgba(255, 255, 255, 0.97) !important; }
 html.theme-light .text-white\/10 { color: rgba(0, 0, 0, 0.08) !important; }
