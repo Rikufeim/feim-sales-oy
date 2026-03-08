@@ -12,7 +12,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ children, className = "
       <div className="absolute inset-0 z-0">
         <MeshGradient
           style={{ width: '100%', height: '100%' }}
-          colors={["#000000", "#000000", "#000000", "#000000"]}
+          colors={["#050510", "#0a0a1a", "#080818", "#060614"]}
           speed={0.25}
           distortion={0.6}
           swirl={0.15}
