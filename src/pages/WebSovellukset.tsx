@@ -14,7 +14,7 @@ const WebSovellukset = () => (
       title: "Rakennamme web-sovelluksia ja digitaalisia tuotteita",
       intro: "Jos ideasi vaatii enemmän kuin verkkosivun, rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — suunnittelusta tuotantoon.",
       cta: "Keskustele sovellusideastasi",
-      ctaHref: "/#yhteystiedot"
+      ctaHref: "/yhteystiedot"
     }}
     sections={[
       {
