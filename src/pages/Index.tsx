@@ -108,9 +108,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 
   const navLinks = [
     { name: 'Etusivu', href: '/' },
-    { name: 'Verkkosivut', href: '/verkkosivut' },
-    { name: 'Web-sovellukset', href: '/web-sovellukset' },
-    { name: 'Prototyypit', href: '/prototyypit' },
+    { name: 'Meistä', href: '/meista' },
     { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
@@ -123,17 +121,21 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
           FEIM
         </div>
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map(link => (
-            isHash(link.href) ? (
-              <a key={link.name} href={link.href} className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
-                {link.name}
-              </a>
-            ) : (
-              <Link key={link.name} to={link.href} className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
-                {link.name}
-              </Link>
-            )
-          ))}
+          <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
+          <div className="relative group">
+            <Link to="/verkkosivut" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5 inline-flex items-center gap-1">
+              Verkkosivut
+            </Link>
+            <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div className="bg-black/95 backdrop-blur-xl border border-white/10 rounded-xl p-2 min-w-[200px] shadow-xl">
+                <Link to="/verkkosivut" className="block text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors">Verkkosivut</Link>
+                <Link to="/web-sovellukset" className="block text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors">Web-sovellukset</Link>
+                <Link to="/prototyypit" className="block text-sm text-neutral-300 hover:text-white hover:bg-white/5 px-4 py-2.5 rounded-lg transition-colors">Prototyypit</Link>
+              </div>
+            </div>
+          </div>
+          <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
+          <Link to="/yhteystiedot" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
           <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
           </Link>
@@ -146,19 +148,12 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
         {isOpen && (
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="absolute top-full mt-2 left-0 right-0 mx-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col gap-1 shadow-xl lg:hidden z-50">
-            {navLinks.map(link => (
-              isHash(link.href) ? (
-                <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
-                  className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">
-                  {link.name}
-                </a>
-              ) : (
-                <Link key={link.name} to={link.href} onClick={() => setIsOpen(false)}
-                  className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">
-                  {link.name}
-                </Link>
-              )
-            ))}
+            <Link to="/" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Etusivu</Link>
+            <Link to="/verkkosivut" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Verkkosivut</Link>
+            <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
+            <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
+            <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
+            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
         )}
