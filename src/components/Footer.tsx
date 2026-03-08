@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import feimLogo from '@/assets/feim-logo.png';
 
 const TextHoverEffect = ({ text }: { text: string }) => (
   <div className="flex justify-center select-none overflow-hidden py-4">
