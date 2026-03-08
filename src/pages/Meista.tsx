@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import ContactCard from '@/components/ContactCard';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -175,6 +176,7 @@ const Meista = () => (
           <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
             Ota yhteyttä <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
+          <div className="mt-12"><ContactCard /></div>
         </FadeIn>
       </div>
     </section>

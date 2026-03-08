@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import ContactCard from '@/components/ContactCard';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -193,7 +194,9 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, sections, au
               {cta.buttonText}
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <p className="text-neutral-600 text-sm mt-4">Palaamme sinulle henkilökohtaisesti 24 tunnin sisällä.</p>
+
+            {/* Contact card */}
+            <div className="mt-12"><ContactCard /></div>
           </FadeIn>
         </div>
       </section>
