@@ -34,6 +34,7 @@ const App = () => (
             <Route path="/prosessi" element={<Prosessi />} />
             <Route path="/referenssit" element={<Referenssit />} />
             <Route path="/meista" element={<Meista />} />
+            <Route path="/yhteystiedot" element={<Yhteystiedot />} />
             <Route path="/ukk" element={<UKK />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
