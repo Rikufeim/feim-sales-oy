@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/components/ThemeContext";
-import ThemeToggle from "@/components/ThemeToggle";
+import MessageBubble from "@/components/MessageBubble";
 import Index from "./pages/Index";
 import Verkkosivut from "./pages/Verkkosivut";
 import WebSovellukset from "./pages/WebSovellukset";
@@ -27,7 +27,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <ThemeToggle />
+          <MessageBubble />
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
