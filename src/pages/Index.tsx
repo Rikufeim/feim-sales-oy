@@ -568,15 +568,19 @@ const FounderSection = () => (
               </p>
 
               <p className="text-white font-semibold">
-                Tavoitteemme on yksinkertainen: tehdä digitaalisista ratkaisuista kilpailuetu, joka oikeasti näkyy liiketoiminnassa.
+                Uskon, että tekoäly ei korvaa ihmisen luovuutta — se vapauttaa sen. Se poistaa esteitä ja antaa jokaiselle mahdollisuuden toteuttaa oma visio, riippumatta teknisestä taustasta tai resursseista.
               </p>
 
               <p>
-                Perustin FEIMin koska näin liian monta yritystä, jotka eivät saa digitaalisista investoinneistaan sitä mitä ansaitsevat. Liian hidasta, liian kallista, liian geneeristä. Tekoälyn avulla se vanha malli on vihdoin mahdollista rikkoa.
+                Perustin FEIMin koska näin maailman, jossa luovuus ja teknologia eivät enää tarvitse olla erillisiä. Tekoäly on antanut meille työkalut, joilla kuka tahansa voi rakentaa jotain merkityksellistä — nopeammin, rohkeammin ja vapaammin kuin koskaan aiemmin. Se on mahdollisuus, ei uhka.
+              </p>
+
+              <p>
+                Jokaisella on oikeus luovuuteen. Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä. FEIM on olemassa siksi, että tämä lupaus toteutuu.
               </p>
 
               <p className="text-neutral-500 mt-4">
-                Kerro tavoitteenne — rakennetaan yhdessä jotain vaikuttavaa.
+                Kerro visiosi — tehdään siitä totta.
               </p>
             </div>
           </FadeIn>
