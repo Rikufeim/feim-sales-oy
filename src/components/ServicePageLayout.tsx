@@ -113,14 +113,18 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                     {hero.title}
                   </h1>
                 </FadeIn>
-                <FadeIn delay={0.2}>
-                  <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
-                </FadeIn>
-                <FadeIn delay={0.3}>
-                  <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
-                    {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </FadeIn>
+                {hero.intro && (
+                  <FadeIn delay={0.2}>
+                    <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
+                  </FadeIn>
+                )}
+                {hero.cta && (
+                  <FadeIn delay={0.3}>
+                    <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
+                      {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </FadeIn>
+                )}
               </div>
               
               {/* Trust points / performance metrics on right */}
