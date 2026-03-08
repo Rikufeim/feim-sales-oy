@@ -113,20 +113,24 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                     {hero.title}
                   </h1>
                 </FadeIn>
-                <FadeIn delay={0.2}>
-                  <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
-                </FadeIn>
-                <FadeIn delay={0.3}>
-                  <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
-                    {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </FadeIn>
+                {hero.intro && (
+                  <FadeIn delay={0.2}>
+                    <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
+                  </FadeIn>
+                )}
+                {hero.cta && (
+                  <FadeIn delay={0.3}>
+                    <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
+                      {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </FadeIn>
+                )}
               </div>
               
               {/* Trust points / performance metrics on right */}
               <div className="lg:col-span-5">
                 <FadeIn delay={0.25}>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-4">
                     {(heroTrustPoints || [
                       "Nopeus & suorituskyky",
                       "SEO-optimoitu",
@@ -138,13 +142,13 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                       return (
                         <motion.div
                           key={i}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                          className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500"
+                          className="flex items-center gap-3"
                         >
-                          <Icon size={20} className="text-blue-400/70 mb-3" />
+                          <Icon size={18} className="text-blue-400/70 shrink-0" />
                           <p className="text-white text-sm font-medium">{point}</p>
                         </motion.div>
                       );
