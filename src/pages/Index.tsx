@@ -312,9 +312,9 @@ const WhyFeim = () => (
         <div>
           <FadeIn>
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Miksi FEIM</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Emme tee<br />geneerisiä sivuja.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
-              Olemme digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan designin ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus.
+              Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
