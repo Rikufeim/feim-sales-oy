@@ -196,7 +196,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
         </div>
       </FadeIn>
     </div>
-  </section>
+  </HeroBackground>
 );
 
 /* ─── 2. Palvelut ─── */
