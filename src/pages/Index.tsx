@@ -191,7 +191,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
           <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
           <a href="#palvelut" className={`inline-flex items-center justify-center gap-2 px-8 py-4 border font-medium rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
           </a>
