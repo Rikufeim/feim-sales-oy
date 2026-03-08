@@ -131,7 +131,6 @@ const Meista = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.15}>
-            <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Mitä rakennamme</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
               Rakennamme verkkosivuja, web-sovelluksia ja prototyyppejä. Autamme yrityksiä kasvamaan verkossa, mutta myös tiimejä joilla on idea uudesta tuotteesta.
