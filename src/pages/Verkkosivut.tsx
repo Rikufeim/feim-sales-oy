@@ -2,6 +2,8 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 
 const Verkkosivut = () => (
   <ServicePageLayout
+    heroVariant="commercial"
+    heroTrustPoints={["Nopeus & suorituskyky", "SEO-optimoitu", "Konversio-suunnittelu", "Premium design"]}
     seo={{
       title: "Verkkosivut yritykselle — FEIM Digital Studio",
       description: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",

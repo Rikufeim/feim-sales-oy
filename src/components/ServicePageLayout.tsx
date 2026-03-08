@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ArrowLeft, Zap, Shield, TrendingUp, Palette, Code2, Lightbulb, Rocket, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -30,6 +30,8 @@ interface ServicePageProps {
     cta: string;
     ctaHref: string;
   };
+  heroVariant?: 'commercial' | 'technical' | 'creative';
+  heroTrustPoints?: string[];
   sections: ServiceSection[];
   audience?: {
     title: string;
@@ -43,7 +45,7 @@ interface ServicePageProps {
   };
 }
 
-const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, sections, audience, cta }) => {
+const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta }) => {
   return (
     <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
       <Helmet>
@@ -76,16 +78,12 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, sections, au
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 py-6">
         <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-          <Link to="/" className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg">
-            FEIM
-          </Link>
+          <Link to="/" className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg">FEIM</Link>
           <div className="hidden lg:flex items-center gap-1">
             <Link to="/verkkosivut" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Verkkosivut</Link>
             <Link to="/web-sovellukset" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Web-sovellukset</Link>
             <Link to="/prototyypit" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Prototyypit</Link>
-            <Link to="/#yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
-              Tilaa vedos
-            </Link>
+            <Link to="/#yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">Tilaa vedos</Link>
           </div>
           <Link to="/" className="lg:hidden text-sm font-medium text-neutral-400 hover:text-white transition-colors flex items-center gap-1">
             <ArrowLeft size={16} /> Takaisin
@@ -93,41 +91,180 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, sections, au
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative min-h-[70vh] flex flex-col items-start justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0" style={{
-          background: "radial-gradient(circle at 30% 70%, #0021ff50 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff40 0%, transparent 45%), #000",
-          filter: "brightness(0.6)"
-        }} />
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+      {/* Hero — variant-based */}
+      {heroVariant === 'commercial' && (
+        <section className="relative min-h-[80vh] flex items-end overflow-hidden pb-20">
+          <div className="absolute inset-0 z-0" style={{
+            background: "radial-gradient(ellipse at 80% 20%, #0021ff30 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, #0021ff15 0%, transparent 50%), #000",
+          }} />
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+          
+          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+              <div className="lg:col-span-7">
+                <FadeIn>
+                  <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
+                    <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
+                  </Link>
+                </FadeIn>
+                <FadeIn delay={0.05}>
+                  <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">{hero.label}</p>
+                </FadeIn>
+                <FadeIn delay={0.1}>
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08]">
+                    {hero.title}
+                  </h1>
+                </FadeIn>
+                <FadeIn delay={0.2}>
+                  <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">{hero.intro}</p>
+                </FadeIn>
+                <FadeIn delay={0.3}>
+                  <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
+                    {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </FadeIn>
+              </div>
+              
+              {/* Trust points / performance metrics on right */}
+              <div className="lg:col-span-5">
+                <FadeIn delay={0.25}>
+                  <div className="grid grid-cols-2 gap-4">
+                    {(heroTrustPoints || [
+                      "Nopeus & suorituskyky",
+                      "SEO-optimoitu",
+                      "Konversio-suunnittelu",
+                      "Premium design"
+                    ]).map((point, i) => {
+                      const icons = [Zap, TrendingUp, Target, Palette];
+                      const Icon = icons[i % icons.length];
+                      return (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                          className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500"
+                        >
+                          <Icon size={20} className="text-blue-400/70 mb-3" />
+                          <p className="text-white text-sm font-medium">{point}</p>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </FadeIn>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
-          <FadeIn>
-            <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
-            </Link>
-          </FadeIn>
-          <FadeIn delay={0.05}>
-            <p className="text-sm md:text-base font-medium text-blue-400/80 tracking-widest uppercase mb-6">{hero.label}</p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
-              {hero.title}
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-              {hero.intro}
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.3}>
-            <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group mt-10">
-              {hero.cta}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-          </FadeIn>
-        </div>
-      </section>
+      {heroVariant === 'technical' && (
+        <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0 z-0" style={{
+            background: "radial-gradient(circle at 90% 50%, #0021ff25 0%, transparent 40%), radial-gradient(circle at 10% 90%, #00ff8815 0%, transparent 35%), #000",
+          }} />
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px"
+          }} />
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+          
+          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
+            <FadeIn>
+              <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
+                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
+              </Link>
+            </FadeIn>
+            
+            <div className="flex items-center gap-3 mb-8">
+              <FadeIn delay={0.05}>
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono tracking-wider uppercase">
+                  <Code2 size={14} /> {hero.label}
+                </span>
+              </FadeIn>
+            </div>
+            
+            <FadeIn delay={0.1}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white pb-4 leading-[1.08] max-w-5xl">
+                {hero.title}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">{hero.intro}</p>
+            </FadeIn>
+            
+            {/* Tech stack badges */}
+            <FadeIn delay={0.3}>
+              <div className="flex flex-wrap gap-3 mt-10">
+                {(heroTrustPoints || ["React", "TypeScript", "Tailwind", "Skaalautuva"]).map((tech, i) => (
+                  <span key={i} className="px-4 py-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-sm font-mono">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.4}>
+              <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group mt-10">
+                {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {heroVariant === 'creative' && (
+        <section className="relative min-h-[65vh] flex items-center overflow-hidden">
+          <div className="absolute inset-0 z-0" style={{
+            background: "radial-gradient(circle at 50% 100%, #6b21a820 0%, transparent 50%), radial-gradient(circle at 80% 20%, #0021ff20 0%, transparent 40%), #000",
+          }} />
+          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+          
+          <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20 text-center">
+            <FadeIn>
+              <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group mx-auto">
+                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <Lightbulb size={18} className="text-blue-400/60" />
+                <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase">{hero.label}</p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 via-neutral-200 to-neutral-500 pb-4 leading-[1.08] max-w-4xl mx-auto">
+                {hero.title}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mx-auto">{hero.intro}</p>
+            </FadeIn>
+            
+            {/* Process steps inline */}
+            <FadeIn delay={0.3}>
+              <div className="flex flex-wrap items-center justify-center gap-3 mt-12">
+                {(heroTrustPoints || ["Idea", "Prototyyppi", "MVP", "Tuote"]).map((step, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && <ArrowRight size={14} className="text-neutral-600 hidden sm:block" />}
+                    <span className="px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-sm font-medium">
+                      {step}
+                    </span>
+                  </React.Fragment>
+                ))}
+              </div>
+            </FadeIn>
+            
+            <FadeIn delay={0.4}>
+              <a href={hero.ctaHref} className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group mt-10">
+                {hero.cta} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </FadeIn>
+          </div>
+        </section>
+      )}
 
       {/* Content Sections */}
       {sections.map((section, i) => (
@@ -191,11 +328,8 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, sections, au
             <h2 className="text-3xl md:text-6xl font-bold text-white mb-6">{cta.title}</h2>
             <p className="text-neutral-400 text-lg max-w-xl mx-auto mb-10">{cta.description}</p>
             <a href={cta.buttonHref} className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group">
-              {cta.buttonText}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              {cta.buttonText} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
-
-            {/* Contact card */}
             <div className="mt-12"><ContactCard /></div>
           </FadeIn>
         </div>
