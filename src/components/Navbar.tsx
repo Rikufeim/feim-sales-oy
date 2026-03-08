@@ -37,9 +37,6 @@ const Navbar: React.FC = () => {
           <Link to="/tekoaly" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5 inline-flex items-center gap-1.5">
             <Sparkles size={14} className="text-blue-400" />Tekoäly
           </Link>
-          <Link to="/yhteystiedot" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
-            Yhteystiedot
-          </Link>
           <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
           </Link>
@@ -68,7 +65,6 @@ const Navbar: React.FC = () => {
             <Link to="/tekoaly" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all inline-flex items-center gap-2">
               <Sparkles size={14} className="text-blue-400" />Tekoäly
             </Link>
-            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
         )}
