@@ -261,11 +261,19 @@ const Services = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
         {servicesData.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
-            <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-              <span className="text-2xl mb-5 block">{s.icon}</span>
-              <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
-              <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
-            </div>
+            {s.link ? (
+              <Link to={s.link} className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full block">
+                <span className="text-2xl mb-5 block">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">{s.title} <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-blue-400" /></h3>
+                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              </Link>
+            ) : (
+              <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
+                <span className="text-2xl mb-5 block">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
+                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              </div>
+            )}
           </FadeIn>
         ))}
       </div>
