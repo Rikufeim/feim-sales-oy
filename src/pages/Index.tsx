@@ -425,12 +425,12 @@ const Showcase = () => (
 /* ─── 6. Tulokset & hyödyt ─── */
 
 const benefits = [
-  { title: "Vahvempi ensivaikutelma", desc: "Sivusto, joka herättää luottamusta heti ensimmäisellä sekunnilla — professionaalisuus näkyy jokaisessa yksityiskohdassa." },
-  { title: "Enemmän yhteydenottoja", desc: "Konversioon optimoitu rakenne ja selkeät toimintakehotukset muuntavat kävijät liideiksi tehokkaammin." },
-  { title: "Parempi löydettävyys", desc: "Hakukoneystävällinen tekninen toteutus ja sisältörakenne varmistavat, että asiakkaanne löytävät teidät." },
+  { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
+  { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
+  { title: "Prototyyppi, joka validoi idean", desc: "Nopea, toimiva prototyyppi osoittaa konseptin toimivuuden — ennen kuin käytät aikaa ja rahaa täyteen kehitykseen." },
+  { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
   { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
-  { title: "Skaalautuva läsnäolo", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
-  { title: "Kilpailuetu", desc: "Premium-tasoinen verkkosivusto erottaa teidät kilpailijoista ja positioi yrityksenne markkinajohtajaksi." },
+  { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
 ];
 
 const Benefits = () => (
