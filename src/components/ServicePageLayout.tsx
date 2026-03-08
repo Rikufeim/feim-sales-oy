@@ -160,8 +160,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             </div>
           </div>
         </section>
+      )}
 
-        {/* Mesh Gradient Band */}
+      {/* Mesh Gradient Band — full width after hero */}
+      {heroVariant === 'commercial' && (
         <div className="relative w-full h-[200px] md:h-[300px] overflow-hidden">
           <MeshGradient
             style={{ width: '100%', height: '100%' }}
