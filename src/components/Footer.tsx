@@ -1,18 +1,21 @@
 import { Link } from 'react-router-dom';
 import feimLogo from '@/assets/feim-logo.png';
+import { useTheme } from './ThemeContext';
 
-const TextHoverEffect = ({ text }: { text: string }) => (
+const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) => (
   <div className="flex justify-center select-none overflow-hidden py-4">
-    <h2 className="flex text-6xl md:text-9xl font-black tracking-tighter text-white/10 transition-colors duration-300">
+    <h2 className={`flex text-6xl md:text-9xl font-black tracking-tighter transition-colors duration-300 ${isDark ? 'text-white/10' : 'text-black/10'}`}>
       {text.split("").map((letter, index) => (
-        <span key={index} className="inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:text-white cursor-default">{letter}</span>
+        <span key={index} className={`inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 cursor-default ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>{letter}</span>
       ))}
     </h2>
   </div>
 );
 
-const Footer = () => (
-  <footer className="relative pt-24 pb-8 px-6 overflow-hidden border-t border-white/[0.04] bg-black">
+const Footer = () => {
+  const { isDark } = useTheme();
+  return (
+  <footer className={`relative pt-24 pb-8 px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
     <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-2">

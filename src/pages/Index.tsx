@@ -164,7 +164,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
   return (
   <HeroBackground className="!min-h-screen flex flex-col items-start justify-center antialiased">
     <div 
-      className="absolute bottom-0 left-0 w-full h-64 z-20 pointer-events-none" 
+      className="absolute bottom-0 left-0 w-full h-64 z-10 pointer-events-none" 
       style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? '#000000' : '#ffffff'}, transparent)` }}
     />
 

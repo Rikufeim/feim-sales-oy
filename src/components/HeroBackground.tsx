@@ -6,7 +6,7 @@ export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: 
   const { isDark } = useTheme();
   const colors = isDark
     ? ["#000000", "#000000", "#100085", "#000000"]
-    : ["#ffffff", "#ffffff", "#c0c0c0", "#ffffff"];
+    : ["#ffffff", "#f5f5f5", "#6b6b6b", "#e0e0e0"];
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden ${className}`}>
