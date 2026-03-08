@@ -8,6 +8,11 @@ import Index from "./pages/Index";
 import Verkkosivut from "./pages/Verkkosivut";
 import WebSovellukset from "./pages/WebSovellukset";
 import Prototyypit from "./pages/Prototyypit";
+import Palvelut from "./pages/Palvelut";
+import Prosessi from "./pages/Prosessi";
+import Referenssit from "./pages/Referenssit";
+import Meista from "./pages/Meista";
+import UKK from "./pages/UKK";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,9 +26,14 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/palvelut" element={<Palvelut />} />
             <Route path="/verkkosivut" element={<Verkkosivut />} />
             <Route path="/web-sovellukset" element={<WebSovellukset />} />
             <Route path="/prototyypit" element={<Prototyypit />} />
+            <Route path="/prosessi" element={<Prosessi />} />
+            <Route path="/referenssit" element={<Referenssit />} />
+            <Route path="/meista" element={<Meista />} />
+            <Route path="/ukk" element={<UKK />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

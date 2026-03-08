@@ -104,13 +104,15 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Palvelut', href: '#palvelut' },
-    { name: 'Prosessi', href: '#prosessi' },
-    { name: 'Referenssit', href: '#referenssit' },
-    { name: 'Meistä', href: '#meista' },
-    { name: 'UKK', href: '#ukk' },
+    { name: 'Palvelut', href: '/palvelut' },
+    { name: 'Prosessi', href: '/prosessi' },
+    { name: 'Referenssit', href: '/referenssit' },
+    { name: 'Meistä', href: '/meista' },
+    { name: 'UKK', href: '/ukk' },
     { name: 'Yhteystiedot', href: '#yhteystiedot' },
   ];
+
+  const isHash = (href: string) => href.startsWith('#');
 
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 py-6">
@@ -120,9 +122,15 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
         </div>
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map(link => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
-              {link.name}
-            </a>
+            isHash(link.href) ? (
+              <a key={link.name} href={link.href} className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
+                {link.name}
+              </a>
+            ) : (
+              <Link key={link.name} to={link.href} className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
+                {link.name}
+              </Link>
+            )
           ))}
           <a href="#yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Aloita projekti
