@@ -221,7 +221,7 @@ const Verkkosivut = () => (
           title: "Mitä hyvät verkkosivut tekevät",
           description: "Verkkosivusto on yrityksenne tärkein digitaalinen omaisuus. Se on ensivaikutelma, myyjä ja brändin ääni — samanaikaisesti, ympäri vuorokauden.",
           bullets: [
-            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin",
+            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin — myös tekoälyagenteille optimoitu (GEO), jotta sivustonne palvelee sekä ihmisiä että AI-pohjaisia hakuja",
             "Konversioon suunniteltu käyttäjäkokemus",
             "Nopeus ja tekninen laatu — jokainen sekunti ratkaisee",
             "Hakukoneystävällinen rakenne, joka tuo orgaanista liikennettä",
