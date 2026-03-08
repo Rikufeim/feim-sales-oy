@@ -1,19 +1,12 @@
 import React from 'react';
 import { MeshGradient } from "@paper-design/shaders-react";
+import { useTheme } from './ThemeContext';
 
-interface HeroBackgroundProps {
-  children?: React.ReactNode;
-  className?: string;
-  variant?: 'dark' | 'light';
-}
-
-export const HeroBackground: React.FC<HeroBackgroundProps> = ({ children, className = "", variant = "dark" }) => {
-  const isDark = variant === 'dark';
+export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
+  const { isDark } = useTheme();
   const colors = isDark
     ? ["#000000", "#000000", "#100085", "#000000"]
     : ["#ffffff", "#ffffff", "#c0c0c0", "#ffffff"];
-  const fadeFrom = isDark ? 'from-black' : 'from-white';
-  const fadeVia = isDark ? 'via-black' : 'via-white';
 
   return (
     <div className={`relative w-full min-h-screen overflow-hidden ${className}`}>
@@ -27,7 +20,7 @@ export const HeroBackground: React.FC<HeroBackgroundProps> = ({ children, classN
           brightness={isDark ? 0.5 : 1.2}
           swirl={0.1}
         />
-        <div className={`absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t ${fadeFrom} ${fadeVia} to-transparent`} />
+        <div className={`absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t ${isDark ? 'from-black via-black' : 'from-white via-white'} to-transparent`} />
       </div>
 
       {children && (
