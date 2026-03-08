@@ -12,7 +12,7 @@ const TextHoverEffect = ({ text }: { text: string }) => (
 );
 
 const Footer = () => (
-  <footer className="relative pt-24 pb-8 px-6 overflow-hidden border-t border-white/[0.04]">
+  <footer className="relative pt-24 pb-8 px-6 overflow-hidden border-t border-white/[0.04] bg-black">
     <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-2">
