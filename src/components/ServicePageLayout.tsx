@@ -142,13 +142,13 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                       return (
                         <motion.div
                           key={i}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                          className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-500"
+                          className="flex items-center gap-3"
                         >
-                          <Icon size={20} className="text-blue-400/70 mb-3" />
+                          <Icon size={18} className="text-blue-400/70 shrink-0" />
                           <p className="text-white text-sm font-medium">{point}</p>
                         </motion.div>
                       );
