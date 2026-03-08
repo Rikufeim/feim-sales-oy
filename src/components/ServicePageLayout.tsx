@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, ArrowLeft, Zap, Shield, TrendingUp, Palette, Code2, Lightbulb, Rocket, Target } from 'lucide-react';
 import { MeshGradient } from "@paper-design/shaders-react";
+import HeroBackground from '@/components/HeroBackground';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -164,18 +165,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
 
       {/* Mesh Gradient Band — full width after hero */}
       {heroVariant === 'commercial' && (
-        <div className="relative w-full h-[200px] md:h-[300px] overflow-hidden">
-          <MeshGradient
-            style={{ width: '100%', height: '100%' }}
-            speed={0.08}
-            colors={["#0021ff", "#000000", "#1a1a2e", "#0021ff"]}
-            distortion={0.4}
-            swirl={0.1}
-            maxPixelCount={400000}
-          />
+        <HeroBackground className="!min-h-0 h-[200px] md:h-[300px]">
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black to-transparent z-10" />
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent z-10" />
-        </div>
+        </HeroBackground>
       )}
 
       {heroVariant === 'technical' && (
