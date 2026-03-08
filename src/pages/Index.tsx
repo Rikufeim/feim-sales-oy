@@ -201,14 +201,19 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
 
 const servicesData = [
   {
-    title: "Verkkosivut yritykselle",
-    desc: "Suunnittelemme ja toteutamme modernit, hakukoneystävälliset verkkosivut, jotka viestivät brändinne arvoa ja muuntavat kävijät asiakkaiksi. Jokainen sivusto rakennetaan liiketoimintanne tavoitteiden pohjalta.",
+    title: "Verkkosivut",
+    desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
     icon: "🌐"
   },
   {
-    title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä. Testattu rakenne, viimeistelty kokemus.",
-    icon: "🎯"
+    title: "Web-sovellukset",
+    desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
+    icon: "⚡"
+  },
+  {
+    title: "Prototyypit ja MVP:t",
+    desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin, jolla ideaa voidaan testata ja esitellä.",
+    icon: "◆"
   },
   {
     title: "UI/UX-suunnittelu",
@@ -216,19 +221,14 @@ const servicesData = [
     icon: "✦"
   },
   {
-    title: "Brändiä tukevat digitaaliset kokemukset",
-    desc: "Rakennamme digitaalisia kokonaisuuksia, jotka vahvistavat brändi-identiteettiä visuaalisen tarinankerronnan, animaatioiden ja huoliteltujen yksityiskohtien avulla.",
-    icon: "◆"
+    title: "Landing page -sivut",
+    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä.",
+    icon: "🎯"
   },
   {
-    title: "Konversio-optimointi",
-    desc: "Analysoimme ja optimoimme sivustonne rakenteen, käyttäjäpolut ja CTA-elementit niin, että jokainen kävijä lähestyy haluttua toimenpidettä tehokkaammin.",
+    title: "Jatkuva kehitys & tekninen toteutus",
+    desc: "Toteutamme modernilla teknologialla, joka takaa suorituskyvyn, tietoturvan ja skaalautuvuuden. Jatkuva kehitys pitää tuotteenne kilpailukykyisenä.",
     icon: "📈"
-  },
-  {
-    title: "Tekninen toteutus & jatkokehitys",
-    desc: "Toteutamme sivustot modernilla teknologialla, joka takaa erinomaisen suorituskyvyn, tietoturvan ja skaalautuvuuden. Jatkuva kehitys pitää sivuston ajan tasalla ja kilpailukykyisenä.",
-    icon: "⚡"
   },
 ];
 
@@ -240,13 +240,21 @@ const Services = () => (
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Palvelut</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-3xl">Kokonaisvaltaiset digitaaliset palvelut</h2>
-        <p className="text-neutral-400 text-lg max-w-2xl mb-20">
-          Tarjoamme kaiken, mitä moderni yritys tarvitsee erottuakseen digitaalisessa ympäristössä — strategiasta suunnitteluun, toteutuksesta optimointiin.
-        </p>
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">Verkkosivut, web-sovellukset ja digitaaliset tuotteet</h2>
+        <div className="text-neutral-400 text-lg max-w-2xl mb-6 space-y-4">
+          <p>
+            FEIM suunnittelee ja rakentaa moderneja digitaalisia ratkaisuja — verkkosivuista ja landing pageista aina web-sovelluksiin ja uusiin tuoteideoihin.
+          </p>
+          <p>
+            Autamme yrityksiä kasvamaan verkossa, mutta myös yksityisiä ja tiimejä, joilla on idea sovelluksesta, palvelusta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus.
+          </p>
+          <p className="text-neutral-500 italic">
+            Sinulla ei tarvitse olla valmista suunnitelmaa — joskus hyvä idea riittää alkuun.
+          </p>
+        </div>
       </FadeIn>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
         {servicesData.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
             <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
