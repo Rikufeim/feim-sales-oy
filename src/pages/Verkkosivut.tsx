@@ -108,7 +108,7 @@ const PricingSection = () => (
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           {pricingPlans.map((plan, i) => (
             <FadeIn key={i} delay={i * 0.08}>
               <div className={`relative h-full rounded-2xl p-8 transition-all duration-500 flex flex-col ${
