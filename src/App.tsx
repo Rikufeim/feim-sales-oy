@@ -31,7 +31,7 @@ const App = () => (
             <Route path="/verkkosivut" element={<Verkkosivut />} />
             <Route path="/web-sovellukset" element={<WebSovellukset />} />
             <Route path="/prototyypit" element={<Prototyypit />} />
-            <Route path="/prosessi" element={<Prosessi />} />
+            
             <Route path="/referenssit" element={<Referenssit />} />
             <Route path="/meista" element={<Meista />} />
             <Route path="/yhteystiedot" element={<Yhteystiedot />} />
