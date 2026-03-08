@@ -281,6 +281,9 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         </section>
       ))}
 
+      {/* Pricing Slot */}
+      {pricingSlot}
+
       {/* Audience */}
       {audience && (
         <section className="relative py-24 overflow-hidden">
