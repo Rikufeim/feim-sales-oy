@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
 import feimLogo from '@/assets/feim-logo.png';
+import Navbar from '@/components/Navbar';
 
 type Message = {
   role: 'user' | 'assistant';
@@ -206,45 +207,36 @@ const Tekoaly = () => {
   const hasMessages = messages.length > 0;
 
   return (
-    <div className="bg-black min-h-screen font-sans antialiased flex flex-col h-screen overflow-hidden">
+    <div className="bg-black min-h-screen font-sans antialiased flex flex-col">
       <Helmet>
         <title>FEIM Tekoäly — AI-avustaja</title>
         <meta name="description" content="FEIM Tekoäly auttaa sinua ideoimaan verkkosivuja, sovelluksia ja strategioita tekoälyn avulla." />
       </Helmet>
 
-      {/* Header */}
-      <header className="border-b border-white/[0.06] bg-black/90 backdrop-blur-2xl sticky top-0 z-50 shrink-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Link to="/" className="hover:opacity-80 transition-opacity">
-              <img src={feimLogo} alt="FEIM" className="h-8 w-auto" />
-            </Link>
-            <div className="h-5 w-px bg-white/[0.08]" />
-            <div className="flex items-center gap-1.5">
-              <Sparkles size={14} className="text-blue-400" />
-              <span className="text-white font-semibold text-sm tracking-tight">Tekoäly</span>
-              <span className="text-[9px] font-semibold text-blue-400/80 bg-blue-400/[0.08] px-1.5 py-0.5 rounded-md uppercase tracking-wider">Beta</span>
-            </div>
-          </div>
+      {/* Shared nav */}
+      <Navbar />
+
+      {/* Chat sub-header */}
+      <div className="border-b border-white/[0.04] bg-black/90 backdrop-blur-2xl sticky top-0 z-40 shrink-0">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            {hasMessages && (
-              <motion.button
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                onClick={clearChat}
-                className="text-neutral-500 hover:text-neutral-300 p-2 rounded-lg hover:bg-white/5 transition-all"
-                title="Uusi keskustelu"
-              >
-                <RotateCcw size={15} />
-              </motion.button>
-            )}
-            <Link to="/" className="text-neutral-500 hover:text-white text-sm flex items-center gap-1 transition-colors p-2 rounded-lg hover:bg-white/5">
-              <ArrowLeft size={14} />
-              <span className="hidden sm:inline">Takaisin</span>
-            </Link>
+            <Sparkles size={14} className="text-blue-400" />
+            <span className="text-white font-semibold text-sm tracking-tight">FEIM Tekoäly</span>
+            <span className="text-[9px] font-semibold text-blue-400/80 bg-blue-400/[0.08] px-1.5 py-0.5 rounded-md uppercase tracking-wider">Beta</span>
           </div>
+          {hasMessages && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              onClick={clearChat}
+              className="text-neutral-500 hover:text-neutral-300 p-2 rounded-lg hover:bg-white/5 transition-all text-sm flex items-center gap-1.5"
+              title="Uusi keskustelu"
+            >
+              <RotateCcw size={14} /> Uusi
+            </motion.button>
+          )}
         </div>
-      </header>
+      </div>
 
       {/* Chat area */}
       <div className="flex-1 flex flex-col overflow-hidden">

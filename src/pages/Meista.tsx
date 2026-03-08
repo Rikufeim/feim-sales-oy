@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import { Link } from 'react-router-dom';
@@ -78,30 +79,7 @@ const Meista = () => {
         <meta property="og:url" content="https://feim.fi/meista" />
       </Helmet>
 
-      <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-        <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-          <Link to="/"><img src={feimLogo} alt="FEIM" className="h-16 w-auto drop-shadow-lg" /></Link>
-          <div className="hidden lg:flex items-center gap-1">
-            <Link to="/" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Etusivu</Link>
-            <div className="relative group">
-              <Link to="/verkkosivut" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full inline-flex items-center gap-1 ${navText}`}>
-                Verkkosivut
-              </Link>
-              <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className={`backdrop-blur-xl border rounded-xl p-2 min-w-[200px] shadow-xl ${dropdownBg}`}>
-                  <Link to="/verkkosivut" className={`block text-sm px-4 py-2.5 rounded-lg transition-colors ${dropdownItem}`}>Verkkosivut</Link>
-                  <Link to="/web-sovellukset" className={`block text-sm px-4 py-2.5 rounded-lg transition-colors ${dropdownItem}`}>Web-sovellukset</Link>
-                  <Link to="/prototyypit" className={`block text-sm px-4 py-2.5 rounded-lg transition-colors ${dropdownItem}`}>Prototyypit</Link>
-                </div>
-              </div>
-            </div>
-            <Link to="/meista" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Meistä</Link>
-            <Link to="/yhteystiedot" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Yhteystiedot</Link>
-            <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>Tilaa vedos</Link>
-          </div>
-          <Link to="/" className={`lg:hidden text-sm flex items-center gap-1 ${mobileBack}`}><ArrowLeft size={16} /> Takaisin</Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero */}
       <HeroBackground className="!min-h-screen flex items-end pb-20">
