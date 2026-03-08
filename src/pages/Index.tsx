@@ -101,7 +101,6 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 
 const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled] = useState(false);
 
   const navLinks = [
     { name: 'Palvelut', href: '#palvelut' },
