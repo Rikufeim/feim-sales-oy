@@ -9,7 +9,7 @@ const ThemeToggle: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 z-[100] w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg bg-neutral-900 text-white hover:bg-neutral-800"
+      className="fixed bottom-6 right-0 z-[100] w-12 h-12 rounded-l-2xl rounded-r-none flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-lg bg-neutral-900 text-white hover:bg-neutral-800"
       aria-label={isDark ? 'Vaihda vaaleaan teemaan' : 'Vaihda tummaan teemaan'}
     >
       <AnimatePresence mode="wait">
