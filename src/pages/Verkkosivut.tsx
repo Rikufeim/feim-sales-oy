@@ -221,12 +221,23 @@ const Verkkosivut = () => (
           title: "Mitä hyvät verkkosivut tekevät",
           description: "Verkkosivusto on yrityksenne tärkein digitaalinen omaisuus. Se on ensivaikutelma, myyjä ja brändin ääni — samanaikaisesti, ympäri vuorokauden.",
           bullets: [
-            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin — myös tekoälyagenteille optimoitu (GEO), jotta sivustonne palvelee sekä ihmisiä että AI-pohjaisia hakuja",
+            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin",
             "Konversioon suunniteltu käyttäjäkokemus",
             "Nopeus ja tekninen laatu — jokainen sekunti ratkaisee",
             "Hakukoneystävällinen rakenne, joka tuo orgaanista liikennettä",
             "Visuaalinen identiteetti, joka erottaa teidät kilpailijoista",
             "Responsiivinen toteutus joka laitteelle"
+          ]
+        },
+        {
+          title: "Tekoälyagenteille optimoitu (GEO)",
+          description: "Perinteinen SEO ei enää riitä. Yhä useampi haku tapahtuu tekoälypohjaisten agenttien kautta — ChatGPT, Perplexity, Google AI Overviews. GEO (Generative Engine Optimization) varmistaa, että sivustonne löytyy myös niistä.",
+          bullets: [
+            "Rakenteinen data ja semanttinen HTML, jota tekoälyagentit ymmärtävät",
+            "Selkeä, korkealaatuinen sisältö, joka päätyy AI-vastauksiin",
+            "Optimoitu sivurakenne, joka palvelee sekä ihmisiä että koneita",
+            "Valmius toimia alustana AI-chatboteille ja -agenteille",
+            "Jatkuvasti kehittyvä optimointi hakuteknologian mukana"
           ]
         }
       ]}
