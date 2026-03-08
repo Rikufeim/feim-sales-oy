@@ -673,7 +673,9 @@ const Contact = () => {
 
               <div className="mt-12 pt-10 border-t border-white/[0.06]">
                 <div className="flex items-start gap-5">
-                  <img src={rikuImg} alt="Riku Miettinen" className="w-28 h-28 rounded-2xl object-cover object-[center_15%] scale-150 grayscale hover:grayscale-0 transition-all duration-500" />
+                  <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0">
+                    <img src={rikuImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-500" />
+                  </div>
                   <div>
                     <p className="text-white font-semibold text-lg">Riku Miettinen</p>
                     <p className="text-neutral-500 text-sm mb-3">CEO, FEIM</p>
