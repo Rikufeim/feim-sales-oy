@@ -113,7 +113,7 @@ const Referenssit = () => (
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
                 <div className="relative overflow-hidden rounded-2xl aspect-[4/5] mt-8 lg:mt-12">
-                  <img src={referenssi2} alt="FEIM projekti" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
+                  <img src={referenssi2} alt="Lambardos — FEIM projekti" className="w-full h-full object-cover object-top opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
               </div>
