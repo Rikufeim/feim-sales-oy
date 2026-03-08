@@ -158,7 +158,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 
 const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
   <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center bg-black antialiased overflow-hidden">
-    <Spotlight fill="white" />
     <div className="absolute inset-0 z-0 bg-black" />
     <SectionFade />
 
