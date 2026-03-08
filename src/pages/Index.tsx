@@ -524,68 +524,213 @@ const FAQ = () => (
   </section>
 );
 
-/* ─── 9. Kontakti ─── */
+/* ─── 9. Tilaa maksuton vedos ─── */
 
-const Contact = () => (
-  <section id="yhteystiedot" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 30% 70%, #0021ff40 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff40 0%, transparent 45%), #000",
-      filter: "brightness(0.7)"
-    }} />
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+const serviceOptions = [
+  {
+    id: 'verkkosivut',
+    icon: '🌐',
+    title: 'Verkkosivut',
+    desc: 'Myyvät, modernit ja liiketoimintaa tukevat sivut.',
+    detail: 'Sopii yrityksille, jotka haluavat vahvemman digitaalisen ensivaikutelman ja enemmän yhteydenottoja.',
+  },
+  {
+    id: 'web-sovellus',
+    icon: '⚙️',
+    title: 'Web-sovellus',
+    desc: 'Käyttöliittymä- ja tuoteajattelua yhdistävä kokonaisuus.',
+    detail: 'Sopii palveluille, asiakasportaaleille, SaaS-ideoille ja digitaalisille työkaluille.',
+  },
+  {
+    id: 'prototyyppi',
+    icon: '◆',
+    title: 'Prototyyppi',
+    desc: 'Nopea tapa konkretisoida idea ennen täyttä toteutusta.',
+    detail: 'Sopii MVP-ajatteluun, konsepteihin, pitchaukseen ja tuotekehityksen alkuvaiheeseen.',
+  },
+];
+
+const vedosBullets = [
+  'Saat konkreettisen suunnan siihen, miten projektisi kannattaa rakentaa',
+  'Näet millaista FEIMin kanssa työskentely on — jo ennen yhteistyön alkua',
+  'Vedos auttaa hahmottamaan rakennetta, sisältöä ja käyttökokemusta',
+  'Maksuton vedos ei sido sinua mihinkään — mutta antaa selkeän lähtöpisteen jatkolle',
+];
+
+const Contact = () => {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
+  return (
+    <section id="yhteystiedot" className="relative py-32 md:py-40 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 z-0" style={{
+        background: "radial-gradient(circle at 25% 70%, #0021ff35 0%, transparent 45%), radial-gradient(circle at 75% 25%, #2201ff30 0%, transparent 45%), #000",
+        filter: "brightness(0.7)"
+      }} />
+      <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
+        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
+      }} />
+
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+
+        {/* ── Headline ── */}
         <FadeIn>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Aloitetaan</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennetaan yhdessä<br />jotain vaikuttavaa.</h2>
-          <p className="text-neutral-400 text-lg leading-relaxed mb-10">
-            Kerro meille projektistanne, niin palaamme asiaan vuorokauden sisällä konkreettisella ehdotuksella. Ei sitovia sopimuksia — vain rehellinen keskustelu siitä, miten voimme auttaa.
-          </p>
-          <div className="space-y-6">
-            <div>
-              <p className="text-neutral-500 text-sm mb-1">Sähköposti</p>
-              <a href="mailto:hello@feim.fi" className="text-white text-lg font-medium hover:text-blue-400 transition-colors">hello@feim.fi</a>
-            </div>
-            <div>
-              <p className="text-neutral-500 text-sm mb-1">Vastausaika</p>
-              <p className="text-white text-lg font-medium">Alle 24 tuntia</p>
-            </div>
+          <div className="text-center max-w-4xl mx-auto mb-8">
+            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
+            <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.08] mb-6">
+              Tilaa maksuton{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
+              <br className="hidden md:block" /> digitaalisesta ratkaisustasi
+            </h2>
+            <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+              FEIM ei tee pelkkiä verkkosivuja. Suunnittelemme ja luonnostelemme kokonaisia digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin. Kerro, mitä tarvitset, ja me näytämme mitä se voisi olla.
+            </p>
           </div>
         </FadeIn>
-        <FadeIn delay={0.15}>
-          <form className="space-y-5" onSubmit={e => e.preventDefault()}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-neutral-400 ml-1">Nimi</label>
-                <input type="text" placeholder="Matti Meikäläinen" required
-                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-neutral-400 ml-1">Sähköposti</label>
-                <input type="email" placeholder="matti@yritys.fi" required
-                  className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-neutral-400 ml-1">Yritys</label>
-              <input type="text" placeholder="Yrityksen nimi"
-                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-neutral-400 ml-1">Kerro projektistanne</label>
-              <textarea rows={5} placeholder="Millainen projekti on mielessänne? Mitä tavoitteita sillä on?"
-                className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors resize-none placeholder-neutral-600 text-[15px]" />
-            </div>
-            <button type="submit"
-              className="w-full bg-white text-black font-bold text-base py-4 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] mt-2">
-              Lähetä viesti
-            </button>
-            <p className="text-neutral-600 text-xs text-center">Vastaamme kaikkiin viesteihin vuorokauden sisällä.</p>
-          </form>
+
+        {/* ── Palvelukortit ── */}
+        <FadeIn delay={0.1}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto mt-16 mb-20">
+            {serviceOptions.map((s) => (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => setSelectedService(s.id)}
+                className={`group relative text-left p-7 md:p-8 rounded-2xl border transition-all duration-500 ${
+                  selectedService === s.id
+                    ? 'bg-blue-500/[0.08] border-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)]'
+                    : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.12]'
+                }`}
+              >
+                {selectedService === s.id && (
+                  <div className="absolute top-4 right-4">
+                    <CheckCircle2 size={20} className="text-blue-400" />
+                  </div>
+                )}
+                <span className="text-2xl mb-4 block">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-white mb-2">{s.title}</h3>
+                <p className="text-neutral-300 text-[15px] leading-relaxed mb-2">{s.desc}</p>
+                <p className="text-neutral-500 text-sm leading-relaxed">{s.detail}</p>
+              </button>
+            ))}
+          </div>
         </FadeIn>
+
+        {/* ── Main content: benefits left, form right ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+          {/* Left: Benefits */}
+          <FadeIn delay={0.15}>
+            <div className="lg:sticky lg:top-32">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Mitä maksuton vedos sinulle antaa?</h3>
+              <div className="space-y-5">
+                {vedosBullets.map((bullet, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <div className="shrink-0 w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">
+                      <CheckCircle2 size={16} className="text-blue-400/80" />
+                    </div>
+                    <p className="text-neutral-300 leading-relaxed">{bullet}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 pt-10 border-t border-white/[0.06]">
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-neutral-500 text-sm mb-1">Sähköposti</p>
+                    <a href="mailto:hello@feim.fi" className="text-white text-lg font-medium hover:text-blue-400 transition-colors">hello@feim.fi</a>
+                  </div>
+                  <div>
+                    <p className="text-neutral-500 text-sm mb-1">Vastausaika</p>
+                    <p className="text-white text-lg font-medium">Alle 24 tuntia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Right: Form */}
+          <FadeIn delay={0.2}>
+            <div className="bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 md:p-10 backdrop-blur-sm">
+              <h3 className="text-2xl font-bold text-white mb-2">Jätä vedostilaus</h3>
+              <p className="text-neutral-500 text-sm mb-8">Täytä alla olevat tiedot, niin aloitamme vedoksen valmistelun.</p>
+
+              <form className="space-y-5" onSubmit={e => e.preventDefault()}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-neutral-400 ml-1">Yritys</label>
+                    <input type="text" placeholder="Yrityksen nimi" required
+                      className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-neutral-400 ml-1">Nimi</label>
+                    <input type="text" placeholder="Etunimi Sukunimi" required
+                      className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-neutral-400 ml-1">Sähköpostiosoite</label>
+                    <input type="email" placeholder="nimi@yritys.fi" required
+                      className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-neutral-400 ml-1">Puhelinnumero</label>
+                    <input type="tel" placeholder="+358 40 123 4567"
+                      className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                  </div>
+                </div>
+
+                {/* Service selection in form */}
+                <div className="space-y-3">
+                  <label className="text-sm font-medium text-neutral-400 ml-1">Mitä haluat tilata?</label>
+                  <div className="grid grid-cols-3 gap-3">
+                    {serviceOptions.map((s) => (
+                      <button
+                        key={s.id}
+                        type="button"
+                        onClick={() => setSelectedService(s.id)}
+                        className={`py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
+                          selectedService === s.id
+                            ? 'bg-blue-500/15 border-blue-500/30 text-blue-300'
+                            : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
+                        }`}
+                      >
+                        {s.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-neutral-400 ml-1">Kuvaus tarpeesta tai tavoitteesta</label>
+                  <textarea rows={4} placeholder="Kerro lyhyesti, mitä haluaisit rakentaa ja mitä tavoitteita projektillasi on."
+                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors resize-none placeholder-neutral-600 text-[15px]" />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-neutral-400 ml-1">Lisätietoa tai aikataulu <span className="text-neutral-600">(valinnainen)</span></label>
+                  <textarea rows={2} placeholder="Esim. toivottu aikataulu tai budjettihaarukka"
+                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors resize-none placeholder-neutral-600 text-[15px]" />
+                </div>
+
+                <button type="submit"
+                  className="w-full bg-white text-black font-bold text-base py-4 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] mt-3 group flex items-center justify-center gap-2">
+                  Tilaa maksuton vedos
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+                <p className="text-neutral-600 text-xs text-center mt-2">
+                  Palaamme sinulle henkilökohtaisesti ja ehdotamme sopivaa etenemistapaa.
+                </p>
+              </form>
+            </div>
+          </FadeIn>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ─── Footer ─── */
 
