@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft, CheckCircle2, Zap, TrendingUp, Target, Palette } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Zap, TrendingUp, Target, Palette, Paperclip } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
