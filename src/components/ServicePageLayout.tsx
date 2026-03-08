@@ -46,7 +46,7 @@ interface ServicePageProps {
   pricingSlot?: React.ReactNode;
 }
 
-const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta }) => {
+const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta, pricingSlot }) => {
   return (
     <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
       <Helmet>
