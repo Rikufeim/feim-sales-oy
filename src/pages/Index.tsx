@@ -616,9 +616,6 @@ const faqData = [
 
 const FAQ = () => (
   <section id="ukk" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%)"
-    }} />
     <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Usein kysyttyä</p>
