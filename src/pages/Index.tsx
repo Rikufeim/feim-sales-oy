@@ -453,7 +453,7 @@ const Benefits = () => (
           </div>
         </FadeIn>
         <div className="space-y-8">
-          {benefits.map((b, i) => (
+          {benefitsRight.map((b, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="flex gap-5">
                 <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
@@ -467,6 +467,23 @@ const Benefits = () => (
             </FadeIn>
           ))}
         </div>
+      </div>
+      {/* Bottom row — full width two columns */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16">
+        {benefitsBottom.map((b, i) => (
+          <FadeIn key={i} delay={i * 0.06}>
+            <div className="flex gap-5">
+              <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
+                <CheckCircle2 size={18} className="text-blue-400/70" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
       </div>
     </div>
   </section>
