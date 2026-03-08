@@ -81,16 +81,16 @@ const Referenssit = () => (
       </div>
     </nav>
 
-    {/* Hero — Gallery / portfolio feel with image mosaic hint */}
-    <section className="relative pt-32 md:pt-40 pb-12 overflow-hidden">
+    {/* Hero */}
+    <section className="relative pt-40 md:pt-52 pb-24 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
         background: "radial-gradient(circle at 40% 80%, #0021ff15 0%, transparent 45%), #000",
       }} />
       <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <div className="lg:col-span-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
+          <div className="lg:col-span-5">
             <FadeIn delay={0.05}>
-              <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4">Referenssit</p>
+              <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
             </FadeIn>
             <FadeIn delay={0.1}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">
@@ -98,22 +98,24 @@ const Referenssit = () => (
               </h1>
             </FadeIn>
             <FadeIn delay={0.15}>
-              <p className="mt-4 text-lg text-neutral-400 max-w-xl leading-relaxed">
+              <p className="mt-6 text-lg text-neutral-400 max-w-xl leading-relaxed">
                 Jokainen projekti on uniikki kokonaisuus, suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta.
               </p>
             </FadeIn>
           </div>
           
-          {/* Image mosaic preview */}
-          <div className="lg:col-span-6">
+          {/* Hero images */}
+          <div className="lg:col-span-7">
             <FadeIn delay={0.2}>
-              <div className="grid grid-cols-3 gap-2 h-48 lg:h-56">
-                {projects.map((p, i) => (
-                  <div key={i} className="relative overflow-hidden rounded-xl">
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-40 hover:opacity-70 transition-opacity duration-500" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  </div>
-                ))}
+              <div className="grid grid-cols-2 gap-4 lg:gap-6">
+                <div className="relative overflow-hidden rounded-2xl aspect-[4/5]">
+                  <img src={referenssi1} alt="FEIM projekti" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+                <div className="relative overflow-hidden rounded-2xl aspect-[4/5] mt-8 lg:mt-12">
+                  <img src={referenssi2} alt="FEIM projekti" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
               </div>
             </FadeIn>
           </div>
