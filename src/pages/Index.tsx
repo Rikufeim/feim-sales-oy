@@ -767,10 +767,10 @@ const Footer = () => (
         <div>
           <p className="text-sm font-semibold text-neutral-300 uppercase tracking-wider mb-4">Palvelut</p>
           <ul className="space-y-3 text-neutral-500 text-sm">
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Verkkosivut</a></li>
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Landing paget</a></li>
+            <li><Link to="/verkkosivut" className="hover:text-white transition-colors">Verkkosivut</Link></li>
+            <li><Link to="/web-sovellukset" className="hover:text-white transition-colors">Web-sovellukset</Link></li>
+            <li><Link to="/prototyypit" className="hover:text-white transition-colors">Prototyypit</Link></li>
             <li><a href="#palvelut" className="hover:text-white transition-colors">UI/UX-suunnittelu</a></li>
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Konversio-optimointi</a></li>
           </ul>
         </div>
         <div>
