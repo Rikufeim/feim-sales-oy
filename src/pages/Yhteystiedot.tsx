@@ -3,7 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import rikuImg from '@/assets/riku-miettinen.jpeg';
+import rikuNightImg from '@/assets/riku-night.jpeg';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -53,7 +53,7 @@ const Yhteystiedot = () => {
           <div className="hidden lg:flex items-center gap-1">
             <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
             <Link to="/palvelut" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Palvelut</Link>
-            <Link to="/prosessi" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Prosessi</Link>
+            
             <Link to="/referenssit" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Referenssit</Link>
             <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
             <Link to="/yhteystiedot" className="text-sm font-medium text-white px-4 py-2 rounded-full bg-white/5">Yhteystiedot</Link>
@@ -93,8 +93,8 @@ const Yhteystiedot = () => {
               <div className="lg:sticky lg:top-32 space-y-12">
                 {/* Contact person */}
                 <div className="flex items-start gap-6">
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0">
-                    <img src={rikuImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-500" />
+                  <div className="w-40 h-40 rounded-full overflow-hidden shrink-0">
+                    <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
                   </div>
                   <div>
                     <p className="text-white font-semibold text-xl">Riku Miettinen</p>
