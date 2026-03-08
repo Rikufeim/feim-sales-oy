@@ -2,6 +2,7 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@/components/ThemeContext';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -96,106 +97,125 @@ const maintenancePlans = [
   },
 ];
 
-const PricingSection = () => (
-  <>
-    {/* Main pricing */}
-    <section className="relative py-24 overflow-hidden">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-        <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 max-w-3xl">Hinnasto</h2>
-          <p className="text-neutral-500 text-lg max-w-2xl mb-16 leading-relaxed">
-            Valitse yrityksellesi sopiva paketti. Kaikki hinnat + ALV.
-          </p>
-        </FadeIn>
+const PricingSection = () => {
+  const { isDark } = useTheme();
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-          {pricingPlans.map((plan, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <div className={`relative h-full rounded-2xl p-8 transition-all duration-500 flex flex-col ${
-                plan.highlighted
-                  ? 'bg-black/[0.03] border-2 border-neutral-400/40 hover:border-neutral-400/60'
-                  : 'bg-black/[0.02] border border-black/[0.06] hover:bg-black/[0.04] hover:border-black/[0.12]'
-              }`}>
-                {plan.highlighted && (
-                  <span className="absolute -top-3 left-8 px-4 py-1 bg-neutral-800 text-white text-xs font-bold rounded-full uppercase tracking-wider">
-                    Suosituin
-                  </span>
-                )}
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-neutral-900 mb-1">{plan.name}</h3>
-                  <p className="text-neutral-500 text-sm">{plan.subtitle}</p>
-                </div>
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="text-4xl font-bold text-neutral-900">{plan.price} €</span>
-                  <span className="text-neutral-500 text-sm">+ ALV</span>
-                </div>
-                <p className="text-neutral-500 text-sm leading-relaxed mb-6">{plan.description}</p>
-                
-                <div className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feature, j) => (
-                    <div key={j} className="flex items-start gap-3">
-                      <CheckCircle2 size={16} className="text-neutral-400 mt-0.5 shrink-0" />
-                      <p className="text-neutral-600 text-sm leading-relaxed">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-                
-                <p className="text-neutral-400 text-xs leading-relaxed mb-6 border-t border-black/[0.06] pt-6">{plan.footer}</p>
-                
-                <Link
-                  to="/yhteystiedot"
-                  className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 group text-sm ${
-                    plan.highlighted
-                      ? 'bg-black text-white hover:bg-neutral-800'
-                      : 'bg-black/[0.05] text-neutral-900 border border-black/[0.1] hover:bg-black/[0.1]'
-                  }`}
-                >
-                  Tilaa vedos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
+  const heading = isDark ? 'text-white' : 'text-neutral-900';
+  const desc = isDark ? 'text-neutral-400' : 'text-neutral-500';
+  const cardBase = isDark
+    ? 'bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.12]'
+    : 'bg-black/[0.02] border border-black/[0.06] hover:bg-black/[0.04] hover:border-black/[0.12]';
+  const cardHighlighted = isDark
+    ? 'bg-white/[0.06] border-2 border-blue-500/30 hover:border-blue-500/50'
+    : 'bg-black/[0.03] border-2 border-neutral-400/40 hover:border-neutral-400/60';
+  const badgeBg = isDark ? 'bg-blue-500' : 'bg-neutral-800';
+  const priceColor = isDark ? 'text-white' : 'text-neutral-900';
+  const featureIcon = isDark ? 'text-blue-500/70' : 'text-neutral-400';
+  const featureText = isDark ? 'text-neutral-300' : 'text-neutral-600';
+  const footerBorder = isDark ? 'border-white/[0.06]' : 'border-black/[0.06]';
+  const btnHighlighted = isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800';
+  const btnNormal = isDark
+    ? 'bg-white/[0.06] text-white border border-white/[0.1] hover:bg-white/[0.1]'
+    : 'bg-black/[0.05] text-neutral-900 border border-black/[0.1] hover:bg-black/[0.1]';
+  const radialBg = isDark
+    ? 'radial-gradient(circle at 50% 50%, #0021ff10 0%, transparent 50%), #000'
+    : 'radial-gradient(circle at 50% 50%, #00000008 0%, transparent 50%), #fff';
 
-    {/* Maintenance pricing */}
-    <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 50% 50%, #00000008 0%, transparent 50%), #fff"
-      }} />
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-        <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 mb-4 max-w-3xl">Ylläpito</h2>
-          <p className="text-neutral-500 text-lg max-w-2xl mb-12 leading-relaxed">
-            Pidä sivustosi ajan tasalla ja toimintakunnossa.
-          </p>
-        </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
-          {maintenancePlans.map((plan, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
-              <div className="bg-black/[0.02] border border-black/[0.06] rounded-2xl p-8 hover:bg-black/[0.04] hover:border-black/[0.12] transition-all duration-500 h-full flex flex-col">
-                <h3 className="text-lg font-bold text-neutral-900 mb-4">{plan.name}</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-3xl font-bold text-neutral-900">{plan.price} €</span>
-                  <span className="text-neutral-500 text-sm">{plan.unit}</span>
+  return (
+    <>
+      {/* Main pricing */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+          <FadeIn>
+            <h2 className={`text-3xl md:text-5xl font-bold mb-4 max-w-3xl ${heading}`}>Hinnasto</h2>
+            <p className={`text-lg max-w-2xl mb-16 leading-relaxed ${desc}`}>
+              Valitse yrityksellesi sopiva paketti. Kaikki hinnat + ALV.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {pricingPlans.map((plan, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div className={`relative h-full rounded-2xl p-8 transition-all duration-500 flex flex-col ${
+                  plan.highlighted ? cardHighlighted : cardBase
+                }`}>
+                  {plan.highlighted && (
+                    <span className={`absolute -top-3 left-8 px-4 py-1 ${badgeBg} text-white text-xs font-bold rounded-full uppercase tracking-wider`}>
+                      Suosituin
+                    </span>
+                  )}
+                  <div className="mb-6">
+                    <h3 className={`text-xl font-bold mb-1 ${priceColor}`}>{plan.name}</h3>
+                    <p className="text-neutral-500 text-sm">{plan.subtitle}</p>
+                  </div>
+                  <div className="flex items-baseline gap-1 mb-4">
+                    <span className={`text-4xl font-bold ${priceColor}`}>{plan.price} €</span>
+                    <span className="text-neutral-500 text-sm">+ ALV</span>
+                  </div>
+                  <p className={`text-sm leading-relaxed mb-6 ${desc}`}>{plan.description}</p>
+                  
+                  <div className="space-y-3 mb-8 flex-1">
+                    {plan.features.map((feature, j) => (
+                      <div key={j} className="flex items-start gap-3">
+                        <CheckCircle2 size={16} className={`${featureIcon} mt-0.5 shrink-0`} />
+                        <p className={`text-sm leading-relaxed ${featureText}`}>{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <p className={`text-neutral-500 text-xs leading-relaxed mb-6 border-t ${footerBorder} pt-6`}>{plan.footer}</p>
+                  
+                  <Link
+                    to="/yhteystiedot"
+                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 group text-sm ${
+                      plan.highlighted ? btnHighlighted : btnNormal
+                    }`}
+                  >
+                    Tilaa vedos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                <div className="space-y-3 flex-1">
-                  {plan.features.map((feature, j) => (
-                    <div key={j} className="flex items-start gap-3">
-                      <CheckCircle2 size={16} className="text-neutral-400 mt-0.5 shrink-0" />
-                      <p className="text-neutral-600 text-sm leading-relaxed">{feature}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  </>
-);
+      </section>
+
+      {/* Maintenance pricing */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+          <FadeIn>
+            <h2 className={`text-3xl md:text-5xl font-bold mb-4 max-w-3xl ${heading}`}>Ylläpito</h2>
+            <p className={`text-lg max-w-2xl mb-12 leading-relaxed ${desc}`}>
+              Pidä sivustosi ajan tasalla ja toimintakunnossa.
+            </p>
+          </FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            {maintenancePlans.map((plan, i) => (
+              <FadeIn key={i} delay={i * 0.08}>
+                <div className={`rounded-2xl p-8 transition-all duration-500 h-full flex flex-col ${cardBase}`}>
+                  <h3 className={`text-lg font-bold mb-4 ${priceColor}`}>{plan.name}</h3>
+                  <div className="flex items-baseline gap-1 mb-6">
+                    <span className={`text-3xl font-bold ${priceColor}`}>{plan.price} €</span>
+                    <span className="text-neutral-500 text-sm">{plan.unit}</span>
+                  </div>
+                  <div className="space-y-3 flex-1">
+                    {plan.features.map((feature, j) => (
+                      <div key={j} className="flex items-start gap-3">
+                        <CheckCircle2 size={16} className={`${featureIcon} mt-0.5 shrink-0`} />
+                        <p className={`text-sm leading-relaxed ${featureText}`}>{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
 const Verkkosivut = () => (
   <>
