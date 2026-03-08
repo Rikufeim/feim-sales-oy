@@ -244,10 +244,27 @@ const Yhteystiedot = () => {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label className={`text-sm font-medium ml-1 ${bodyText}`}>Kerro projektistasi</label>
-                  <textarea rows={5} placeholder="Kerro lyhyesti, mitä haluaisit rakentaa ja mitä tavoitteita projektillasi on."
-                    className={`w-full border rounded-xl px-5 py-4 focus:outline-none transition-colors resize-none text-[15px] ${inputBg}`} />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className={`text-sm font-medium ml-1 ${bodyText}`}>Kerro projektistasi</label>
+                    <textarea rows={5} placeholder="Kerro lyhyesti, mitä haluaisit rakentaa ja mitä tavoitteita projektillasi on."
+                      className={`w-full border rounded-xl px-5 py-4 focus:outline-none transition-colors resize-none text-[15px] ${inputBg}`} />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className={`text-sm font-medium ml-1 ${bodyText}`}>Lisätietoja</label>
+                    <div className={`border-2 border-dashed rounded-xl px-5 py-8 text-center transition-colors cursor-pointer hover:border-opacity-30 ${isDark ? 'border-white/[0.12] hover:bg-white/[0.02]' : 'border-black/[0.12] hover:bg-black/[0.02]'}`}>
+                      <Paperclip size={24} className={`mx-auto mb-3 ${bodyText}`} />
+                      <p className={`text-sm font-medium ${headingText}`}>Lisätietoja</p>
+                      <p className={`text-xs mt-1 ${bodyText}`}>PDF, DOC</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`flex items-start gap-3 mt-2 border-l-2 pl-4 ${isDark ? 'border-blue-400/30' : 'border-neutral-300'}`}>
+                  <p className={`text-xs leading-relaxed ${bodyText}`}>
+                    Tämä lomake kerää yhteystietosi, jotta voimme olla sinuun yhteydessä. Tutustu <a href="#" className={`font-semibold underline ${headingText}`}>tietosuojaselosteeseen</a> saadaksesi lisätietoja siitä, miten käsittelemme ja suojaamme tietojasi.
+                  </p>
                 </div>
 
                 <button type="submit"
@@ -256,9 +273,6 @@ const Yhteystiedot = () => {
                   Lähetä viesti
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <p className={`text-xs mt-2 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
-                  Palaamme sinulle henkilökohtaisesti 24 tunnin sisällä.
-                </p>
               </form>
             </div>
           </FadeIn>
