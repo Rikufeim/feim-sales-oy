@@ -1,62 +1,244 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import { motion } from 'framer-motion';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
+  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
+    {children}
+  </motion.div>
+);
+
+const pricingPlans = [
+  {
+    name: "Yksinkertainen käyntikortti",
+    subtitle: "Landing page / 1 sivu",
+    price: "499",
+    features: [
+      "1-sivuinen landing page",
+      "Moderni ja selkeä ulkoasu",
+      "Yrityksen ja palveluiden esittely",
+      "Yhteystiedot",
+      "Mobiiliystävällinen toteutus",
+    ],
+    description: "Selkeä ja laadukas verkkokäyntikortti yritykselle, joka haluaa ammattimaisen ensivaikutelman verkossa.",
+    footer: "Sopii yrityksille, jotka haluavat yksinkertaisen mutta toimivan verkkoratkaisun.",
+  },
+  {
+    name: "Moderni käyntikortti",
+    subtitle: "2–3 sivua",
+    price: "699",
+    features: [
+      "2–3 sivua",
+      "Räätälöidyt komponentit ja visuaalinen toteutus",
+      "Fontit ja animaatiot",
+      "Tarjous- / yhteydenottolomake",
+      "Sähköposti-integraatio",
+      "Responsiivinen toteutus",
+    ],
+    description: "Moderni ja myyvä nettisivu, joka erottuu edukseen ja tukee myyntiä.",
+    footer: "Erinomainen valinta yrityksille, jotka haluavat modernin ja uskottavan nettisivun.",
+  },
+  {
+    name: "Multipage",
+    subtitle: "4–7 sivua",
+    price: "899",
+    highlighted: true,
+    features: [
+      "4–7 sivua",
+      "Täysin räätälöidyt UI-komponentit ja animaatiot",
+      "Visuaalinen toteutus brändin mukaan",
+      "Tekoälyystävällinen ja helposti jatkokehitettävä rakenne",
+      "Kertaluontoinen hakukoneoptimointi (SEO)",
+      "Tarjouslomake ja sähköposti-integraatio",
+    ],
+    description: "Laajempi kokonaisuus yrityksille, jotka haluavat kasvattaa näkyvyyttä ja asiakasmäärää.",
+    footer: "Sopii pk-yrityksille, jotka haluavat enemmän kuin vain perussivut.",
+  },
+  {
+    name: "Kasvupaketti",
+    subtitle: "Täysi digitaalinen kokonaisuus",
+    price: "1200",
+    features: [
+      "Laaja, räätälöity monisivuinen nettisivusto",
+      "Edistynyt UI Design ja UX-ajattelu",
+      "Tekoälyoptimointi ja skaalautuva tekninen rakenne",
+      "Hakukoneoptimointi ja analytiikka",
+      "Valmis pohja automaatioille ja integraatioille",
+      "Mahdollisuus jatkokehitykseen ja laajennuksiin",
+    ],
+    description: "Täysi digitaalinen kokonaisuus kasvuhakuisille yrityksille.",
+    footer: "Paras valinta yrityksille, jotka haluavat pitkäjänteistä kasvua ja modernin teknisen pohjan.",
+  },
+];
+
+const maintenancePlans = [
+  {
+    name: "Perusylläpito",
+    price: "200",
+    unit: "/ vuosi",
+    features: [
+      "Sivuston kunnossapito",
+      "Pienet päivitykset",
+      "Kävijäseuranta ja perusanalytiikka",
+    ],
+  },
+  {
+    name: "Laajennettu ylläpito",
+    price: "450",
+    unit: "/ vuosi",
+    features: [
+      "Kaikki perusylläpidon palvelut",
+      "Jatkuva tekoälyoptimointi",
+      "Sisällön päivitykset ja kehitys",
+      "Laajempi analytiikka ja raportointi",
+    ],
+  },
+];
+
+const PricingSection = () => (
+  <>
+    {/* Main pricing */}
+    <section className="relative py-24 overflow-hidden">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <FadeIn>
+          <div className="w-12 h-px bg-blue-500/50 mb-8" />
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 max-w-3xl">Hinnasto</h2>
+          <p className="text-neutral-400 text-lg max-w-2xl mb-16 leading-relaxed">
+            Valitse yrityksellesi sopiva paketti. Kaikki hinnat + ALV.
+          </p>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {pricingPlans.map((plan, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div className={`relative h-full rounded-2xl p-8 transition-all duration-500 flex flex-col ${
+                plan.highlighted
+                  ? 'bg-white/[0.06] border-2 border-blue-500/30 hover:border-blue-500/50'
+                  : 'bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.12]'
+              }`}>
+                {plan.highlighted && (
+                  <span className="absolute -top-3 left-8 px-4 py-1 bg-blue-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                    Suosituin
+                  </span>
+                )}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-white mb-1">{plan.name}</h3>
+                  <p className="text-neutral-500 text-sm">{plan.subtitle}</p>
+                </div>
+                <div className="flex items-baseline gap-1 mb-4">
+                  <span className="text-4xl font-bold text-white">{plan.price} €</span>
+                  <span className="text-neutral-500 text-sm">+ ALV</span>
+                </div>
+                <p className="text-neutral-400 text-sm leading-relaxed mb-6">{plan.description}</p>
+                
+                <div className="space-y-3 mb-8 flex-1">
+                  {plan.features.map((feature, j) => (
+                    <div key={j} className="flex items-start gap-3">
+                      <CheckCircle2 size={16} className="text-blue-500/70 mt-0.5 shrink-0" />
+                      <p className="text-neutral-300 text-sm leading-relaxed">{feature}</p>
+                    </div>
+                  ))}
+                </div>
+                
+                <p className="text-neutral-500 text-xs leading-relaxed mb-6 border-t border-white/[0.06] pt-6">{plan.footer}</p>
+                
+                <Link
+                  to="/yhteystiedot"
+                  className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 group text-sm ${
+                    plan.highlighted
+                      ? 'bg-white text-black hover:bg-neutral-200'
+                      : 'bg-white/[0.06] text-white border border-white/[0.1] hover:bg-white/[0.1]'
+                  }`}
+                >
+                  Tilaa vedos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Maintenance pricing */}
+    <section className="relative py-24 overflow-hidden">
+      <div className="absolute inset-0 z-0" style={{
+        background: "radial-gradient(circle at 50% 50%, #0021ff10 0%, transparent 50%), #000"
+      }} />
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <FadeIn>
+          <div className="w-12 h-px bg-blue-500/50 mb-8" />
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 max-w-3xl">Ylläpito</h2>
+          <p className="text-neutral-400 text-lg max-w-2xl mb-12 leading-relaxed">
+            Pidä sivustosi ajan tasalla ja toimintakunnossa.
+          </p>
+        </FadeIn>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+          {maintenancePlans.map((plan, i) => (
+            <FadeIn key={i} delay={i * 0.08}>
+              <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full flex flex-col">
+                <h3 className="text-lg font-bold text-white mb-4">{plan.name}</h3>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-3xl font-bold text-white">{plan.price} €</span>
+                  <span className="text-neutral-500 text-sm">{plan.unit}</span>
+                </div>
+                <div className="space-y-3 flex-1">
+                  {plan.features.map((feature, j) => (
+                    <div key={j} className="flex items-start gap-3">
+                      <CheckCircle2 size={16} className="text-blue-500/70 mt-0.5 shrink-0" />
+                      <p className="text-neutral-300 text-sm leading-relaxed">{feature}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  </>
+);
 
 const Verkkosivut = () => (
-  <ServicePageLayout
-    heroVariant="commercial"
-    heroTrustPoints={["Nopeus & suorituskyky", "SEO-optimoitu", "Konversio-suunnittelu", "Premium design"]}
-    seo={{
-      title: "Verkkosivut yritykselle — FEIM Digital Studio",
-      description: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",
-      url: "https://feim.fi/verkkosivut"
-    }}
-    hero={{
-      label: "Verkkosivut",
-      title: "Verkkosivut jotka tekevät enemmän kuin näyttävät hyvältä",
-      intro: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",
-      cta: "Tilaa maksuton vedos",
-      ctaHref: "/yhteystiedot"
-    }}
-    sections={[
-      {
-        title: "Mitä hyvät verkkosivut tekevät",
-        description: "Verkkosivusto on yrityksenne tärkein digitaalinen omaisuus. Se on ensivaikutelma, myyjä ja brändin ääni — samanaikaisesti, ympäri vuorokauden.",
-        bullets: [
-          "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin",
-          "Konversioon suunniteltu käyttäjäkokemus",
-          "Nopeus ja tekninen laatu — jokainen sekunti ratkaisee",
-          "Hakukoneystävällinen rakenne, joka tuo orgaanista liikennettä",
-          "Visuaalinen identiteetti, joka erottaa teidät kilpailijoista",
-          "Responsiivinen toteutus joka laitteelle"
-        ]
-      },
-      {
-        title: "Mitä FEIM tekee",
-        description: "Emme tee pelkkiä sivuja — rakennamme kokonaisvaltaisen digitaalisen työkalun liiketoimintanne tueksi.",
-        bullets: [
-          "Strategia: ymmärrämme liiketoiminnan tavoitteet ennen ensimmäistäkään viivaa",
-          "Rakenne ja sisältö: suunnittelemme sivuston rakenteen ja käyttäjäpolut",
-          "Design: luomme visuaalisen ilmeen, joka viestii brändin arvon",
-          "Tekninen toteutus: rakennamme modernilla teknologialla nopeasti ja skaalautuvasti",
-          "Optimointi: SEO, suorituskyky ja konversio-optimointi ovat osa jokaista projektia",
-          "Jatkuva kehitys: sivustonne ei jää yksin julkaisun jälkeen"
-        ]
-      }
-    ]}
-    audience={{
-      title: "Millaisille yrityksille tämä sopii",
-      items: [
-        "Kasvavat yritykset, jotka tarvitsevat verkkosivuston joka tukee kasvutavoitteita ja viestii ammattimaisuutta.",
-        "Yritykset jotka uudistavat brändiään ja haluavat digitaalisen läsnäolon joka vastaa uutta suuntaa.",
-        "Yritykset jotka haluavat enemmän liidejä ja yhteydenottoja verkosta — sivusto joka myy, ei vain esittelee."
-      ]
-    }}
-    cta={{
-      title: "Tilaa maksuton vedos verkkosivustasi",
-      description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",
-      buttonText: "Tilaa maksuton vedos",
-      buttonHref: "/yhteystiedot"
-    }}
-  />
+  <>
+    <ServicePageLayout
+      heroVariant="commercial"
+      heroTrustPoints={["Nopeus & suorituskyky", "SEO-optimoitu", "Konversio-suunnittelu", "Premium design"]}
+      seo={{
+        title: "Verkkosivut yritykselle — FEIM Digital Studio",
+        description: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",
+        url: "https://feim.fi/verkkosivut"
+      }}
+      hero={{
+        label: "Verkkosivut",
+        title: "Verkkosivut jotka tekevät enemmän kuin näyttävät hyvältä",
+        intro: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",
+        cta: "Tilaa maksuton vedos",
+        ctaHref: "/yhteystiedot"
+      }}
+      sections={[
+        {
+          title: "Mitä hyvät verkkosivut tekevät",
+          description: "Verkkosivusto on yrityksenne tärkein digitaalinen omaisuus. Se on ensivaikutelma, myyjä ja brändin ääni — samanaikaisesti, ympäri vuorokauden.",
+          bullets: [
+            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin",
+            "Konversioon suunniteltu käyttäjäkokemus",
+            "Nopeus ja tekninen laatu — jokainen sekunti ratkaisee",
+            "Hakukoneystävällinen rakenne, joka tuo orgaanista liikennettä",
+            "Visuaalinen identiteetti, joka erottaa teidät kilpailijoista",
+            "Responsiivinen toteutus joka laitteelle"
+          ]
+        }
+      ]}
+      cta={{
+        title: "Tilaa maksuton vedos verkkosivustasi",
+        description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",
+        buttonText: "Tilaa maksuton vedos",
+        buttonHref: "/yhteystiedot"
+      }}
+      pricingSlot={<PricingSection />}
+    />
+  </>
 );
 
 export default Verkkosivut;
