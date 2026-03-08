@@ -187,14 +187,6 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
           </a>
         </div>
       </FadeIn>
-      <FadeIn delay={0.5}>
-        <div className="flex flex-wrap gap-8 mt-16 text-sm text-neutral-500">
-          <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500/70" /> Kiinteä hinnoittelu</div>
-          <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500/70" /> Nopeat toimitukset</div>
-          <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500/70" /> SEO-optimoitu</div>
-          <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-blue-500/70" /> Jatkuva kehitys</div>
-        </div>
-      </FadeIn>
     </div>
   </HeroBackground>
 );
