@@ -98,10 +98,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
 
       {/* Hero — variant-based */}
       {heroVariant === 'commercial' && (
-        <section className="relative min-h-[80vh] flex items-end overflow-hidden pb-20">
-          <div className="absolute inset-0 z-0" style={{
-            background: "radial-gradient(ellipse at 80% 20%, #0021ff30 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, #0021ff15 0%, transparent 50%), #000",
-          }} />
+        <HeroBackground className="!min-h-[80vh] flex items-end pb-20">
           <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
           
           <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
@@ -129,7 +126,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 )}
               </div>
               
-              {/* Trust points / performance metrics on right */}
               <div className="lg:col-span-5">
                 <FadeIn delay={0.25}>
                   <div className="space-y-4">
@@ -160,14 +156,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
               </div>
             </div>
           </div>
-        </section>
-      )}
-
-      {/* Mesh Gradient Band — full width after hero */}
-      {heroVariant === 'commercial' && (
-        <HeroBackground className="!min-h-0 h-[200px] md:h-[300px]">
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black to-transparent z-10" />
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent z-10" />
         </HeroBackground>
       )}
 
