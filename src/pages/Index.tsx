@@ -236,9 +236,6 @@ const servicesData = [
 
 const Services = () => (
   <section id="palvelut" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 70% 80%, #111 0%, transparent 45%), linear-gradient(180deg, #000 0%, #000 100%)"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Palvelut</p>
@@ -295,9 +292,6 @@ const whyData = [
 
 const WhyFeim = () => (
   <section id="miksi-feim" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 20% 30%, #0021ff30 0%, transparent 50%), radial-gradient(circle at 80% 70%, #1a1a1a 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div>
@@ -342,9 +336,6 @@ const processSteps = [
 
 const Process = () => (
   <section id="prosessi" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 60% 20%, #111 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Prosessi</p>
@@ -380,9 +371,6 @@ const showcaseItems = [
 
 const Showcase = () => (
   <section id="referenssit" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 40% 80%, #0021ff20 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Työnäytteet</p>
@@ -429,9 +417,6 @@ const benefitsBottom = [
 
 const Benefits = () => (
   <section id="hyodyt" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 80% 20%, #0021ff15 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <FadeIn>
@@ -483,9 +468,6 @@ const Benefits = () => (
 
 const AboutSection = () => (
   <section id="meista" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 30% 50%, #111 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <div className="max-w-4xl">
         <FadeIn>
@@ -528,9 +510,6 @@ const AboutSection = () => (
 
 const FounderSection = () => (
   <section className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 30% 60%, #0021ff15 0%, transparent 50%), #000"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
 
       {/* Header */}
@@ -637,9 +616,6 @@ const faqData = [
 
 const FAQ = () => (
   <section id="ukk" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%)"
-    }} />
     <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Usein kysyttyä</p>
@@ -701,11 +677,6 @@ const Contact = () => {
 
   return (
     <section id="yhteystiedot" className="relative py-32 md:py-40 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 25% 70%, #0021ff35 0%, transparent 45%), radial-gradient(circle at 75% 25%, #2201ff30 0%, transparent 45%), #000",
-        filter: "brightness(0.7)"
-      }} />
       <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
       }} />
@@ -1030,11 +1001,21 @@ const Index = () => {
   const handleNavigateHome = () => { setView('home'); window.scrollTo(0, 0); };
 
   return (
-    <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
+    <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white relative">
       {view === 'project' ? (
         <ProjectWizard onBack={handleNavigateHome} onComplete={handleNavigateHome} />
       ) : (
-        <main>
+        <main className="relative">
+          {/* Unified page background accents */}
+          <div className="absolute inset-0 z-0 pointer-events-none" style={{
+            background: `
+              radial-gradient(circle at 20% 15%, #0021ff18 0%, transparent 40%),
+              radial-gradient(circle at 80% 35%, #0021ff10 0%, transparent 40%),
+              radial-gradient(circle at 30% 55%, #0021ff12 0%, transparent 40%),
+              radial-gradient(circle at 70% 75%, #0021ff10 0%, transparent 40%),
+              radial-gradient(circle at 25% 90%, #0021ff18 0%, transparent 40%)
+            `
+          }} />
           <Navigation onNavigate={dest => { if (dest === 'home') window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
           <Hero onStartProject={handleStartProject} />
           <Services />
