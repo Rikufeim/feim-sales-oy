@@ -293,7 +293,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             <a href={cta.buttonHref} className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-black hover:bg-neutral-800 text-white font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(0,0,0,0.15)] group">
               {cta.buttonText} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <div className="mt-12"><ContactCard /></div>
+            <div className="mt-12"><ContactCard variant="light" /></div>
           </FadeIn>
         </div>
       </section>
