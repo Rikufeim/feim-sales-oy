@@ -195,16 +195,7 @@ html.theme-light .hover\:bg-neutral-800:hover { background-color: #262626 !impor
 html.theme-light button.bg-neutral-900 .text-white,
 html.theme-light button.bg-neutral-900 { color: #ffffff !important; }
 
-/* Footer stays dark always */
-html.theme-light footer.bg-black { background-color: #000000 !important; }
-html.theme-light footer .text-white,
-html.theme-light footer .hover\:text-white:hover { color: #ffffff !important; }
-html.theme-light footer .text-white\/10 { color: rgba(255, 255, 255, 0.1) !important; }
-html.theme-light footer .text-neutral-300 { color: #d4d4d4 !important; }
-html.theme-light footer .text-neutral-500 { color: #737373 !important; }
-html.theme-light footer .text-neutral-600 { color: #525252 !important; }
-html.theme-light footer .border-white\/\[0\.04\] { border-color: rgba(255, 255, 255, 0.04) !important; }
-html.theme-light footer .bg-white\/\[0\.06\] { background-color: rgba(255, 255, 255, 0.06) !important; }
+/* Footer is now theme-aware via React */
 
 /* Custom Animations */
 @keyframes beam-move {
