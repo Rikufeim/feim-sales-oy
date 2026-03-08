@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, CheckCircle2, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight, CheckCircle2, ChevronDown, Sparkles, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
 import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
+import salesApp1 from '@/assets/sales-app-1.png';
+import salesApp2 from '@/assets/sales-app-2.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
