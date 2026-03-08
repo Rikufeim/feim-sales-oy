@@ -525,8 +525,8 @@ const FounderSection = () => (
         <div className="lg:col-span-4">
           <FadeIn delay={0.1}>
             <div className="lg:sticky lg:top-32">
-              <div className="rounded-3xl overflow-hidden aspect-[3/4] mb-8">
-                <img src={rikuNightImg} alt="Riku Miettinen — FEIM Founder" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-700" />
+              <div className="w-40 h-40 rounded-full overflow-hidden mb-8">
+                <img src={rikuNightImg} alt="Riku Miettinen — FEIM Founder" className="w-full h-full object-cover object-[center_20%]" />
               </div>
               <p className="text-white font-semibold text-xl">Riku Miettinen</p>
               <p className="text-neutral-500 text-sm mb-6">Founder & CEO</p>
