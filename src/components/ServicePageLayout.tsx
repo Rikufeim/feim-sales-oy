@@ -110,7 +110,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       {/* Hero — variant-based */}
       {heroVariant === 'commercial' && (
         <HeroBackground className="!min-h-screen flex items-end pb-20">
-          <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+           <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black to-transparent z-20 pointer-events-none" />
           
           <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
