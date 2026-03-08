@@ -159,7 +159,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
                 </Link>
               )
             ))}
-            <a href="#yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</a>
+            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</Link>
           </motion.div>
         )}
       </AnimatePresence>
