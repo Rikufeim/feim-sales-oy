@@ -9,7 +9,7 @@ import Verkkosivut from "./pages/Verkkosivut";
 import WebSovellukset from "./pages/WebSovellukset";
 import Prototyypit from "./pages/Prototyypit";
 import Palvelut from "./pages/Palvelut";
-import Prosessi from "./pages/Prosessi";
+
 import Referenssit from "./pages/Referenssit";
 import Meista from "./pages/Meista";
 import Yhteystiedot from "./pages/Yhteystiedot";
