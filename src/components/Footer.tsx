@@ -16,7 +16,7 @@ const Footer = () => (
     <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-2">
-          <img src={feimLogo} alt="FEIM" className="h-8 w-auto mb-4" />
+          <img src={feimLogo} alt="FEIM" className="h-12 w-auto mb-4" />
           <p className="text-neutral-500 max-w-sm leading-relaxed">
             Moderni digitaalinen studio, joka suunnittelee ja toteuttaa premium-verkkosivuja ja digitaalisia kokemuksia yrityksille, jotka haluavat erottua.
           </p>
