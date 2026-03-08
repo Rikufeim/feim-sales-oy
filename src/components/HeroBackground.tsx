@@ -10,6 +10,7 @@ export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: 
           colors={["#000000", "#000000", "#100085", "#000000"]}
           speed={0.3}
           distortion={0.8}
+          // @ts-ignore - brightness supported at runtime
           brightness={0.5}
           swirl={0.1}
         />
