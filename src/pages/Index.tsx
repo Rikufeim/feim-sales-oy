@@ -1037,6 +1037,7 @@ const Index = () => {
           <Showcase />
           <Benefits />
           <AboutSection />
+          <FounderSection />
           <FAQ />
           <Contact />
           <Footer />
