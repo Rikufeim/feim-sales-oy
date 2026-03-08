@@ -294,12 +294,12 @@ const Services = () => (
 /* ─── 3. Miksi FEIM ─── */
 
 const whyData = [
-  { title: "Strateginen ajattelu", desc: "Emme ala suunnitella ennen kuin ymmärrämme liiketoimintanne tavoitteet. Jokainen ratkaisu perustuu selkeään strategiaan." },
-  { title: "Moderni design", desc: "Visuaalinen ilme, joka erottaa teidät kilpailijoista. Ei geneerisiä malleja — jokaiselle asiakkaalle räätälöity kokonaisuus." },
-  { title: "Tekninen huippulaatu", desc: "Toteutamme modernilla teknologialla, joka takaa nopean, turvallisen ja skaalautuvan lopputuloksen." },
-  { title: "Suorituskyky & SEO", desc: "Hakukoneystävällinen rakenne ja salamannopea latautumisnopeus ovat osa jokaista projektia — eivät lisäpalvelu." },
-  { title: "Konversiofokus", desc: "Rakennamme sivustot, jotka eivät vain näytä hyvältä, vaan tuottavat konkreettisia liiketoimintatuloksia." },
-  { title: "Pitkäjänteinen kumppanuus", desc: "Digitaalinen maailma ei pysähdy. Tarjoamme jatkuvaa kehitystä, jotta sivustonne pysyy kilpailukykyisenä." },
+  { title: "Verkkosivut, jotka myyvät", desc: "Rakennamme verkkosivuja, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, rakentavat brändiä ja tukevat liiketoimintaa." },
+  { title: "Web-sovellukset liiketoiminnan ytimeen", desc: "Kehitämme räätälöityjä web-sovelluksia, jotka automatisoivat prosesseja, palvelevat asiakkaita ja skaalautuvat kasvun mukana." },
+  { title: "Prototyypit nopeasti käyntiin", desc: "Validoimme ideasi nopeasti toimivalla prototyypillä — ennen kuin investoit täyteen tuotekehitykseen." },
+  { title: "Vibe-koodaus uudella tavalla", desc: "Hyödynnämme tekoälyä ja moderneja työkaluja, jotta saat laadukkaan lopputuloksen nopeammin ja kustannustehokkaammin." },
+  { title: "Strategia ennen suunnittelua", desc: "Jokainen projekti alkaa liiketoimintatavoitteiden ymmärtämisestä. Emme ala suunnitella ennen kuin tiedämme miksi." },
+  { title: "Pitkäjänteinen kumppanuus", desc: "Digitaalinen maailma ei pysähdy. Tarjoamme jatkuvaa kehitystä, jotta ratkaisunne pysyy kilpailukykyisenä." },
 ];
 
 const WhyFeim = () => (
@@ -312,9 +312,9 @@ const WhyFeim = () => (
         <div>
           <FadeIn>
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Miksi FEIM</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Emme tee<br />geneerisiä sivuja.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
-              Olemme digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan designin ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus.
+              Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
@@ -425,12 +425,12 @@ const Showcase = () => (
 /* ─── 6. Tulokset & hyödyt ─── */
 
 const benefits = [
-  { title: "Vahvempi ensivaikutelma", desc: "Sivusto, joka herättää luottamusta heti ensimmäisellä sekunnilla — professionaalisuus näkyy jokaisessa yksityiskohdassa." },
-  { title: "Enemmän yhteydenottoja", desc: "Konversioon optimoitu rakenne ja selkeät toimintakehotukset muuntavat kävijät liideiksi tehokkaammin." },
-  { title: "Parempi löydettävyys", desc: "Hakukoneystävällinen tekninen toteutus ja sisältörakenne varmistavat, että asiakkaanne löytävät teidät." },
+  { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
+  { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
+  { title: "Prototyyppi, joka validoi idean", desc: "Nopea, toimiva prototyyppi osoittaa konseptin toimivuuden — ennen kuin käytät aikaa ja rahaa täyteen kehitykseen." },
+  { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
   { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
-  { title: "Skaalautuva läsnäolo", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
-  { title: "Kilpailuetu", desc: "Premium-tasoinen verkkosivusto erottaa teidät kilpailijoista ja positioi yrityksenne markkinajohtajaksi." },
+  { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
 ];
 
 const Benefits = () => (
@@ -443,9 +443,9 @@ const Benefits = () => (
         <FadeIn>
           <div className="lg:sticky lg:top-32">
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tulokset</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä asiakas<br />käytännössä saa.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä saat<br />käytännössä.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
-              Emme myy pelkkiä verkkosivuja. Myymme digitaalista kilpailuetua, joka näkyy suoraan liiketoiminnan tuloksissa.
+              Verkkosivuja, sovelluksia ja prototyyppejä — jokainen rakennettu tuottamaan konkreettisia liiketoimintatuloksia.
             </p>
           </div>
         </FadeIn>
