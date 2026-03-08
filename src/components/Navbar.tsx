@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowLeft, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import feimLogo from '@/assets/feim-logo.png';
