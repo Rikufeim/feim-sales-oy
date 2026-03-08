@@ -228,6 +228,17 @@ const Verkkosivut = () => (
             "Visuaalinen identiteetti, joka erottaa teidät kilpailijoista",
             "Responsiivinen toteutus joka laitteelle"
           ]
+        },
+        {
+          title: "Tekoälyagenteille optimoitu (GEO)",
+          description: "Perinteinen SEO ei enää riitä. Yhä useampi haku tapahtuu tekoälypohjaisten agenttien kautta — ChatGPT, Perplexity, Google AI Overviews. GEO (Generative Engine Optimization) varmistaa, että sivustonne löytyy myös niistä.",
+          bullets: [
+            "Rakenteinen data ja semanttinen HTML, jota tekoälyagentit ymmärtävät",
+            "Selkeä, korkealaatuinen sisältö, joka päätyy AI-vastauksiin",
+            "Optimoitu sivurakenne, joka palvelee sekä ihmisiä että koneita",
+            "Valmius toimia alustana AI-chatboteille ja -agenteille",
+            "Jatkuvasti kehittyvä optimointi hakuteknologian mukana"
+          ]
         }
       ]}
       cta={{
