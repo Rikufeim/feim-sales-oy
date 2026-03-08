@@ -6,7 +6,7 @@ const MessageBubble: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-0 right-0 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -14,7 +14,7 @@ const MessageBubble: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.9 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="absolute bottom-16 right-0 w-72 rounded-2xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl overflow-hidden"
+            className="absolute bottom-14 right-0 w-72 rounded-2xl border border-white/10 bg-neutral-900/95 backdrop-blur-xl shadow-2xl overflow-hidden"
           >
             <div className="p-5">
               <p className="text-white font-semibold text-sm mb-1">Ota yhteyttä 👋</p>
@@ -59,7 +59,7 @@ const MessageBubble: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105"
+        className="w-12 h-12 rounded-tl-2xl bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-105"
         aria-label="Ota yhteyttä"
       >
         <AnimatePresence mode="wait">
