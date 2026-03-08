@@ -6,7 +6,7 @@ const MessageBubble: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className="fixed bottom-0 right-0 z-[100]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
