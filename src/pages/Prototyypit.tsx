@@ -14,7 +14,7 @@ const Prototyypit = () => (
       title: "Muuta sovellusidea konkreettiseksi prototyypiksi",
       intro: "Kaikkien digitaalisten tuotteiden ei tarvitse alkaa täydellisellä sovelluksella. Usein paras ensimmäinen askel on prototyyppi tai MVP — konkreettinen versio, jolla ideaa voidaan testata, esitellä ja kehittää eteenpäin.",
       cta: "Tilaa maksuton vedos ideastasi",
-      ctaHref: "/#yhteystiedot"
+      ctaHref: "/yhteystiedot"
     }}
     sections={[
       {
