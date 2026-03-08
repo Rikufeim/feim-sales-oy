@@ -101,13 +101,7 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 
 const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isScrolled] = useState(false);
 
   const navLinks = [
     { name: 'Palvelut', href: '#palvelut' },
