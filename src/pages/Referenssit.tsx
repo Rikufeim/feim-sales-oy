@@ -71,7 +71,7 @@ const Referenssit = () => (
 
     <nav className="absolute top-0 left-0 right-0 z-50 py-6">
       <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-        <Link to="/" className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg">FEIM</Link>
+        <Link to="/"><img src={feimLogo} alt="FEIM" className="h-8 w-auto drop-shadow-lg" /></Link>
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
           <div className="relative group">
