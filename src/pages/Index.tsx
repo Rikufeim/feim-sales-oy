@@ -131,9 +131,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             </div>
           </div>
           <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
-          <Link to="/tekoaly" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5 inline-flex items-center gap-1.5">
-            <Sparkles size={14} className="text-blue-400" />Tekoäly
-          </Link>
           <Link to="/yhteystiedot" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
           <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
@@ -152,9 +149,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
             <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
             <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
-            <Link to="/tekoaly" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all inline-flex items-center gap-2">
-              <Sparkles size={14} className="text-blue-400" />Tekoäly
-            </Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
@@ -446,39 +440,39 @@ const Benefits = () => (
   </section>
 );
 
-/* ─── 7. Meistä ─── */
+/* ─── 7. Tekoäly ─── */
 
-const AboutSection = () => (
-  <section id="meista" className="relative py-32 overflow-hidden">
+const AISection = () => (
+  <section id="tekoaly" className="relative py-32 overflow-hidden">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-      <div className="max-w-4xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <FadeIn>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Meistä</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-10">Digitaalinen studio,<br />jolla on visio.</h2>
+          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tekoäly</p>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.08]">
+            Tekoäly on<br />työkalu, ei trendi.
+          </h2>
+          <p className="text-neutral-400 text-lg leading-relaxed mb-6">
+            Hyödynnämme tekoälyä jokaisessa projektissa — suunnittelussa, kehityksessä ja sisällöntuotannossa. Lopputulos on nopeampi, laadukkaampi ja kustannustehokkaampi.
+          </p>
+          <p className="text-neutral-500 text-[15px] leading-relaxed">
+            Vibe-koodaus tarkoittaa meillä sitä, että tekoäly tekee raskaan työn ja ihminen ohjaa laadun. Ei kompromisseja — vain fiksumpaa tekemistä.
+          </p>
         </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <FadeIn delay={0.1}>
-            <p className="text-neutral-400 text-lg leading-relaxed">
-              FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja teknisen osaamisen. Uskomme, että laadukas digitaalinen läsnäolo ei ole kulu — se on investointi, joka maksaa itsensä takaisin.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-neutral-400 text-lg leading-relaxed">
-              Emme tee kaikille kaikkea. Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille, jotka ymmärtävät digitaalisen läsnäolon merkityksen. Jokaisessa projektissa yhdistyvät design, teknologia ja kaupallinen ajattelu — lopputuloksena sivusto, jolla on oikeasti vaikutus.
-            </p>
-          </FadeIn>
-        </div>
-        <FadeIn delay={0.3}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-white/[0.06]">
+        <FadeIn delay={0.15}>
+          <div className="space-y-6">
             {[
-              { num: "50+", label: "Valmistunutta projektia" },
-              { num: "98%", label: "Asiakastyytyväisyys" },
-              { num: "<2s", label: "Keskimääräinen latausaika" },
-              { num: "24h", label: "Vastausaika" },
-            ].map((stat, i) => (
-              <div key={i} className="text-center md:text-left">
-                <p className="text-3xl md:text-4xl font-bold text-white">{stat.num}</p>
-                <p className="text-neutral-500 text-sm mt-1">{stat.label}</p>
+              { label: "Nopeampi toteutus", desc: "Projektit valmistuvat viikkojen sijaan päivissä tekoälyavusteisen kehityksen ansiosta." },
+              { label: "Pienempi hinta, sama laatu", desc: "Automaatio vähentää manuaalista työtä — säästö siirtyy suoraan sinulle." },
+              { label: "Älykäs suunnittelu", desc: "Tekoäly analysoi parhaat käytännöt ja auttaa rakentamaan optimoidun käyttökokemuksen." },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-5 items-start">
+                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">
+                  <Sparkles size={16} className="text-blue-400/70" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">{item.label}</h3>
+                  <p className="text-neutral-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -947,7 +941,7 @@ const Index = () => {
           
           
           <Benefits />
-          <AboutSection />
+          <AISection />
           <FounderSection />
           <FAQ />
           <Contact />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowLeft, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import feimLogo from '@/assets/feim-logo.png';
@@ -34,9 +34,6 @@ const Navbar: React.FC = () => {
           <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">
             Meistä
           </Link>
-          <Link to="/tekoaly" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5 inline-flex items-center gap-1.5">
-            <Sparkles size={14} className="text-blue-400" />Tekoäly
-          </Link>
           <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
           </Link>
@@ -62,9 +59,6 @@ const Navbar: React.FC = () => {
             <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
             <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
             <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
-            <Link to="/tekoaly" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all inline-flex items-center gap-2">
-              <Sparkles size={14} className="text-blue-400" />Tekoäly
-            </Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
         )}
