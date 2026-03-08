@@ -95,7 +95,7 @@ const Meista = () => {
                 </div>
               </div>
             </div>
-            <Link to="/meista" className={`text-sm font-medium px-4 py-2 rounded-full ${activeNav}`}>Meistä</Link>
+            <Link to="/meista" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Meistä</Link>
             <Link to="/yhteystiedot" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Yhteystiedot</Link>
             <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>Tilaa vedos</Link>
           </div>
