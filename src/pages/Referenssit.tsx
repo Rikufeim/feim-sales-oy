@@ -124,8 +124,8 @@ const Referenssit = () => (
     </section>
 
     {/* Project Cards – large format */}
-    <section className="relative py-16 overflow-hidden">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10 space-y-24">
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10 space-y-32 lg:space-y-40">
         {projects.map((project, i) => (
           <FadeIn key={i} delay={i * 0.1}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
