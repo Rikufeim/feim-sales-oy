@@ -947,7 +947,7 @@ const Index = () => {
           
           
           <Benefits />
-          <AboutSection />
+          <AISection />
           <FounderSection />
           <FAQ />
           <Contact />
