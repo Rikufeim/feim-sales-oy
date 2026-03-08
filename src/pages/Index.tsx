@@ -220,36 +220,26 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
 const servicesData = [
   {
     title: "Verkkosivut",
-    desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
-    icon: "🌐",
+    desc: "Modernit ja liiketoimintaa tukevat verkkosivut, jotka viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
     link: "/verkkosivut"
   },
   {
     title: "Web-sovellukset",
-    desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
-    icon: "⚡",
+    desc: "Räätälöityjä web-sovelluksia — asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita.",
     link: "/web-sovellukset"
   },
   {
     title: "Prototyypit ja MVP:t",
-    desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin, jolla ideaa voidaan testata ja esitellä.",
-    icon: "◆",
+    desc: "Ideasta ensimmäinen versio — klikattava prototyyppi, MVP tai konsepti, jolla ideaa voidaan testata ja esitellä.",
     link: "/prototyypit"
   },
   {
-    title: "UI/UX-suunnittelu",
-    desc: "Käyttöliittymä- ja käyttäjäkokemussuunnittelua, jossa jokainen elementti palvelee käyttäjän matkaa. Intuitiivinen, kaunis ja funktionaalinen — ilman kompromisseja.",
-    icon: "✦"
-  },
-  {
     title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä.",
-    icon: "🎯"
+    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa.",
   },
   {
-    title: "Jatkuva kehitys & tekninen toteutus",
-    desc: "Toteutamme modernilla teknologialla, joka takaa suorituskyvyn, tietoturvan ja skaalautuvuuden. Jatkuva kehitys pitää tuotteenne kilpailukykyisenä.",
-    icon: "📈"
+    title: "Jatkuva kehitys",
+    desc: "Jatkuva kehitys pitää tuotteenne kilpailukykyisenä ja teknisesti ajan tasalla.",
   },
 ];
 
