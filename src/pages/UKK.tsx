@@ -82,11 +82,6 @@ const UKK = () => (
     {/* Hero — Ultra-compact, utility-focused */}
     <section className="relative pt-32 md:pt-40 pb-8 overflow-hidden">
       <div className="px-6 lg:px-16 max-w-4xl mx-auto relative z-20 w-full">
-        <FadeIn>
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
-          </Link>
-        </FadeIn>
         <FadeIn delay={0.1}>
           <h1 className="text-3xl md:text-5xl font-bold text-white pb-4 leading-[1.12]">
             Usein kysyttyä

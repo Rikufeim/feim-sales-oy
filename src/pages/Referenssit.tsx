@@ -87,11 +87,6 @@ const Referenssit = () => (
       <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-6">
-            <FadeIn>
-              <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
-                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
-              </Link>
-            </FadeIn>
             <FadeIn delay={0.05}>
               <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4">Referenssit</p>
             </FadeIn>
