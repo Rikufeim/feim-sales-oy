@@ -175,7 +175,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
+        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`} style={!isDark ? { textShadow: '0 1px 20px rgba(255,255,255,0.9)' } : undefined}>
           Suunnittelemme ja toteutamme premium-verkkosivuja, jotka yhdistävät modernin designin, teknisen huippulaadun ja kaupallisen älykkyyden — sivustoja, jotka vahvistavat brändiäsi ja tuottavat konkreettisia tuloksia.
         </p>
       </FadeIn>
