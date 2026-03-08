@@ -8,6 +8,7 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
 import HeroBackground from '@/components/HeroBackground';
 import { useTheme } from '@/components/ThemeContext';
 
