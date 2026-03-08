@@ -111,7 +111,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
     { name: 'Referenssit', href: '/referenssit' },
     { name: 'Meistä', href: '/meista' },
     { name: 'UKK', href: '/ukk' },
-    { name: 'Yhteystiedot', href: '#yhteystiedot' },
+    { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
   const isHash = (href: string) => href.startsWith('#');
