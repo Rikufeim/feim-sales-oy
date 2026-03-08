@@ -497,14 +497,10 @@ const FounderSection = () => {
   const headingColor = isDark ? 'text-white' : 'text-white';
   const gradientText = isDark ? 'from-blue-400 to-blue-500' : 'from-blue-300 to-blue-400';
   const nameColor = isDark ? 'text-white' : 'text-white';
-  const subtitleColor = isDark ? 'text-neutral-500' : 'text-neutral-400';
   const bodyColor = isDark ? 'text-neutral-400' : 'text-neutral-300';
   const quoteColor = isDark ? 'text-white' : 'text-white';
   const quoteBorder = isDark ? 'border-blue-500/30' : 'border-blue-400/30';
   const strongColor = isDark ? 'text-white' : 'text-white';
-  const contactColor = isDark ? 'text-neutral-300 hover:text-blue-400' : 'text-neutral-300 hover:text-blue-300';
-  const dotColor = isDark ? 'text-neutral-700' : 'text-neutral-500';
-  const whatsappColor = isDark ? 'text-green-400/80 hover:text-green-400' : 'text-green-300/80 hover:text-green-300';
   const closingColor = isDark ? 'text-neutral-500' : 'text-neutral-400';
 
   return (
