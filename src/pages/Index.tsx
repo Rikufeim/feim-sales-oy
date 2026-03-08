@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
+import ContactCard from '@/components/ContactCard';
 
 /* ─── Utility Components ─── */
 
