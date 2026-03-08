@@ -404,15 +404,12 @@ const Showcase = () => (
 /* ─── 6. Tulokset & hyödyt ─── */
 
 const benefitsRight = [
+  { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
+  { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
+  { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
   { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
   { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
   { title: "Prototyyppi, joka validoi idean", desc: "Nopea, toimiva prototyyppi osoittaa konseptin toimivuuden — ennen kuin käytät aikaa ja rahaa täyteen kehitykseen." },
-  { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
-];
-
-const benefitsBottom = [
-  { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
-  { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
 ];
 
 const Benefits = () => (
@@ -443,22 +440,6 @@ const Benefits = () => (
             </FadeIn>
           ))}
         </div>
-      </div>
-      {/* Bottom row — full width two columns */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16">
-        {benefitsBottom.map((b, i) => (
-          <FadeIn key={i} delay={i * 0.06}>
-            <div className="flex gap-5">
-              <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
-                <CheckCircle2 size={18} className="text-blue-400/70" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
-              </div>
-            </div>
-          </FadeIn>
-        ))}
       </div>
     </div>
   </section>
