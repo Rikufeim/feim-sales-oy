@@ -44,7 +44,6 @@ const Yhteystiedot = () => {
   const navText = isDark ? 'text-neutral-400 hover:text-white hover:bg-white/5' : 'text-neutral-500 hover:text-black hover:bg-black/5';
   const dropdownBg = isDark ? 'bg-black/95 border-white/10' : 'bg-white/95 border-black/10';
   const dropdownItem = isDark ? 'text-neutral-300 hover:text-white hover:bg-white/5' : 'text-neutral-600 hover:text-black hover:bg-black/5';
-  const activeNav = isDark ? 'text-white bg-white/5' : 'text-black bg-black/5';
   const headingGrad = isDark ? 'from-neutral-50 to-neutral-400' : 'from-neutral-900 to-neutral-500';
   const bodyText = isDark ? 'text-neutral-400' : 'text-neutral-500';
   const headingText = isDark ? 'text-white' : 'text-neutral-900';
