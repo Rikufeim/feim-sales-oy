@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, CheckCircle2, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight, CheckCircle2, ChevronDown, Sparkles, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
 import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
+import salesApp1 from '@/assets/sales-app-1.png';
+import salesApp2 from '@/assets/sales-app-2.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -277,9 +279,6 @@ const WhyFeim = () => (
           <FadeIn>
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Miksi FEIM</p>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
-            <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
-              Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
-            </p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <a href="#yhteystiedot" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
@@ -287,17 +286,32 @@ const WhyFeim = () => (
             </a>
           </FadeIn>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {whyData.map((item, i) => (
-            <FadeIn key={i} delay={i * 0.06}>
-              <div className="space-y-3">
-                
-                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">{item.desc}</p>
+        <FadeIn delay={0.15}>
+          <div className="flex flex-col gap-5">
+            {/* Kuvat */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                <img src={salesApp1} alt="FEIM Sales -sovellus näkymä 1" className="w-full h-full object-cover" />
               </div>
-            </FadeIn>
-          ))}
-        </div>
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                <img src={salesApp2} alt="FEIM Sales -sovellus näkymä 2" className="w-full h-full object-cover" />
+              </div>
+            </div>
+            {/* Linkki */}
+            <a
+              href="https://feimsales.lovable.app/landing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+            >
+              <div className="flex-1">
+                <p className="text-xs text-neutral-500 uppercase tracking-widest mb-1">Case study</p>
+                <p className="text-white font-semibold text-sm leading-snug">Tutustu meidän rakentamaan myyntisovellukseen →</p>
+              </div>
+              <ExternalLink size={18} className="text-neutral-400 group-hover:text-white transition-colors shrink-0" />
+            </a>
+          </div>
+        </FadeIn>
       </div>
     </div>
   </section>
