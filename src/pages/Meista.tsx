@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
@@ -84,27 +85,27 @@ const Meista = () => (
       </div>
     </nav>
 
-    {/* Hero — Personal / editorial, centered with founder image */}
-    <section className="relative pt-32 md:pt-40 pb-20 overflow-hidden">
-      <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 30% 50%, #0021ff15 0%, transparent 45%), #000",
-      }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
-        
-        <div className="max-w-4xl">
-          <FadeIn delay={0.1}>
-            <blockquote className="border-l-2 border-blue-500/30 pl-8">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-8">
-                Digitaalinen studio, jolla on visio
-              </h1>
-              <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed italic">
-                "FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus."
-              </p>
-            </blockquote>
+    {/* Hero */}
+    <HeroBackground className="!min-h-screen flex items-end pb-20">
+      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
+      
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+        <div className="lg:col-span-7 max-w-4xl">
+          <FadeIn delay={0.05}>
+            <p className="text-sm font-medium text-neutral-500 tracking-widest uppercase mb-6">Meistä</p>
           </FadeIn>
-          
+          <FadeIn delay={0.1}>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08]">
+              Digitaalinen studio, jolla on visio
+            </h1>
+          </FadeIn>
           <FadeIn delay={0.2}>
-            <div className="flex items-center gap-4 mt-10 ml-10">
+            <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-xl leading-relaxed">
+              FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <div className="flex items-center gap-4 mt-10">
               <img src={rikuImg} alt="Riku Miettinen" className="w-12 h-12 rounded-full object-cover grayscale" />
               <div>
                 <p className="text-white text-sm font-medium">Riku Miettinen</p>
@@ -114,7 +115,7 @@ const Meista = () => (
           </FadeIn>
         </div>
       </div>
-    </section>
+    </HeroBackground>
 
     {/* Story */}
     <section className="relative py-24 overflow-hidden">
