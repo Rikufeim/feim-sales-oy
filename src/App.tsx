@@ -13,7 +13,7 @@ import Prosessi from "./pages/Prosessi";
 import Referenssit from "./pages/Referenssit";
 import Meista from "./pages/Meista";
 import Yhteystiedot from "./pages/Yhteystiedot";
-import UKK from "./pages/UKK";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,7 +35,7 @@ const App = () => (
             <Route path="/referenssit" element={<Referenssit />} />
             <Route path="/meista" element={<Meista />} />
             <Route path="/yhteystiedot" element={<Yhteystiedot />} />
-            <Route path="/ukk" element={<UKK />} />
+            
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
