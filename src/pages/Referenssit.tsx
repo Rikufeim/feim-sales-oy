@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
+import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import referenssi1 from '@/assets/referenssi-1.jpeg';
