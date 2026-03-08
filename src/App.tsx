@@ -9,7 +9,7 @@ import Verkkosivut from "./pages/Verkkosivut";
 import WebSovellukset from "./pages/WebSovellukset";
 import Prototyypit from "./pages/Prototyypit";
 import Palvelut from "./pages/Palvelut";
-import Prosessi from "./pages/Prosessi";
+
 import Referenssit from "./pages/Referenssit";
 import Meista from "./pages/Meista";
 import Yhteystiedot from "./pages/Yhteystiedot";
@@ -31,7 +31,7 @@ const App = () => (
             <Route path="/verkkosivut" element={<Verkkosivut />} />
             <Route path="/web-sovellukset" element={<WebSovellukset />} />
             <Route path="/prototyypit" element={<Prototyypit />} />
-            <Route path="/prosessi" element={<Prosessi />} />
+            
             <Route path="/referenssit" element={<Referenssit />} />
             <Route path="/meista" element={<Meista />} />
             <Route path="/yhteystiedot" element={<Yhteystiedot />} />

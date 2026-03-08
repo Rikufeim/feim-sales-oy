@@ -60,7 +60,7 @@ const Palvelut = () => (
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
           <Link to="/palvelut" className="text-sm font-medium text-white px-4 py-2 rounded-full bg-white/5">Palvelut</Link>
-          <Link to="/prosessi" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Prosessi</Link>
+          
           <Link to="/referenssit" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Referenssit</Link>
           <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
           <Link to="/yhteystiedot" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
