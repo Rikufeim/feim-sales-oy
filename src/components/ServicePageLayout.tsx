@@ -3,7 +3,6 @@ import { ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import rikuImg from '@/assets/riku-miettinen.jpeg';
 import ContactCard from '@/components/ContactCard';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
