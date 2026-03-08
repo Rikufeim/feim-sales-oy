@@ -134,9 +134,9 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
               </Link>
             )
           ))}
-          <a href="#yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
+          <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Aloita projekti
-          </a>
+          </Link>
         </div>
         <button className="lg:hidden text-neutral-200 hover:text-white" onClick={() => setIsOpen(!isOpen)} aria-label="Navigaatiovalikko">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
