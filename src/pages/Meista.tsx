@@ -122,7 +122,6 @@ const Meista = () => (
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <FadeIn>
-            <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Emme tee kaikille kaikkea</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
               Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille ja yksilöille, jotka ymmärtävät digitaalisen läsnäolon merkityksen.
@@ -132,7 +131,6 @@ const Meista = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.15}>
-            <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Mitä rakennamme</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
               Rakennamme verkkosivuja, web-sovelluksia ja prototyyppejä. Autamme yrityksiä kasvamaan verkossa, mutta myös tiimejä joilla on idea uudesta tuotteesta.
@@ -166,14 +164,14 @@ const Meista = () => (
     <section className="relative py-24 overflow-hidden">
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
         <FadeIn>
-          <div className="w-12 h-px bg-blue-500/50 mb-8" />
+          
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-16">Miten ajattelemme</h2>
         </FadeIn>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((v, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-                <div className="w-8 h-px bg-blue-500/50 mb-6" />
+                
                 <h3 className="text-xl font-semibold text-white mb-3">{v.title}</h3>
                 <p className="text-neutral-400 leading-relaxed text-[15px]">{v.desc}</p>
               </div>

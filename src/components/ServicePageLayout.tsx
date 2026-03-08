@@ -232,7 +232,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         <section key={i} className="relative py-24 overflow-hidden">
           <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
             <FadeIn>
-              <div className="w-12 h-px bg-blue-500/50 mb-8" />
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 max-w-3xl">{section.title}</h2>
               {section.description && (
                 <p className="text-neutral-400 text-lg max-w-2xl mb-10 leading-relaxed">{section.description}</p>
@@ -265,7 +264,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
           }} />
           <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
             <FadeIn>
-              <div className="w-12 h-px bg-blue-500/50 mb-8" />
+              
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 max-w-3xl">{audience.title}</h2>
             </FadeIn>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
