@@ -40,6 +40,7 @@ const App = () => (
               <Route path="/referenssit" element={<Referenssit />} />
               <Route path="/meista" element={<Meista />} />
               <Route path="/yhteystiedot" element={<Yhteystiedot />} />
+              <Route path="/tekoaly" element={<Tekoaly />} />
               
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
