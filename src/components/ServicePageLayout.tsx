@@ -160,6 +160,20 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             </div>
           </div>
         </section>
+
+        {/* Mesh Gradient Band */}
+        <div className="relative w-full h-[200px] md:h-[300px] overflow-hidden">
+          <MeshGradient
+            style={{ width: '100%', height: '100%' }}
+            speed={0.15}
+            color1="#0021ff"
+            color2="#000000"
+            color3="#1a1a2e"
+            color4="#0021ff"
+          />
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black to-transparent z-10" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent z-10" />
+        </div>
       )}
 
       {heroVariant === 'technical' && (
