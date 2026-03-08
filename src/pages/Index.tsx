@@ -170,12 +170,12 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
 
     <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
       <FadeIn delay={0.1}>
-        <h1 className={`text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`} style={!isDark ? { textShadow: '0 1px 30px rgba(255,255,255,0.8)' } : undefined}>
+        <h1 className={`text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
           Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`} style={!isDark ? { textShadow: '0 1px 20px rgba(255,255,255,0.9)' } : undefined}>
+        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
           Suunnittelemme ja toteutamme premium-verkkosivuja, jotka yhdistävät modernin designin, teknisen huippulaadun ja kaupallisen älykkyyden — sivustoja, jotka vahvistavat brändiäsi ja tuottavat konkreettisia tuloksia.
         </p>
       </FadeIn>
