@@ -3,7 +3,9 @@ import rikuImg from '@/assets/riku-miettinen.jpeg';
 
 const ContactCard = ({ className = "" }: { className?: string }) => (
   <div className={`inline-flex items-start gap-5 text-left bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 ${className}`}>
-    <img src={rikuImg} alt="Riku Miettinen" className="w-16 h-16 rounded-xl object-cover object-top grayscale hover:grayscale-0 transition-all duration-500" />
+    <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
+      <img src={rikuImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-500" />
+    </div>
     <div>
       <p className="text-white font-semibold">Riku Miettinen</p>
       <p className="text-neutral-500 text-sm mb-2">CEO, FEIM</p>
