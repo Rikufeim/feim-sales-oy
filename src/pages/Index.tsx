@@ -106,11 +106,10 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Palvelut', href: '/palvelut' },
-    { name: 'Prosessi', href: '/prosessi' },
-    { name: 'Referenssit', href: '/referenssit' },
-    { name: 'Meistä', href: '/meista' },
-    
+    { name: 'Etusivu', href: '/' },
+    { name: 'Verkkosivut', href: '/verkkosivut' },
+    { name: 'Web-sovellukset', href: '/web-sovellukset' },
+    { name: 'Prototyypit', href: '/prototyypit' },
     { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
