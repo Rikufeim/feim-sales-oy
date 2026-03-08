@@ -279,6 +279,9 @@ const WhyFeim = () => (
           <FadeIn>
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Miksi FEIM</p>
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
+            <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
+              Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
+            </p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <a href="#yhteystiedot" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
