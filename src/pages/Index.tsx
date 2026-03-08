@@ -151,6 +151,9 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
             <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
             <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
+            <Link to="/tekoaly" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all inline-flex items-center gap-2">
+              <Sparkles size={14} className="text-blue-400" />Tekoäly
+            </Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
             <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
