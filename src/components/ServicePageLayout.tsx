@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ContactCard from '@/components/ContactCard';
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import feimLogo from '@/assets/feim-logo.png';
 import { useTheme } from './ThemeContext';
