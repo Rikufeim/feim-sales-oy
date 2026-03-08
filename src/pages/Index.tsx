@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
+import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
@@ -109,8 +110,8 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   return (
     <nav className="absolute top-0 left-0 right-0 z-50 py-6">
       <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-        <div onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg cursor-pointer">
-          FEIM
+        <div onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="cursor-pointer">
+          <img src={feimLogo} alt="FEIM" className="h-8 w-auto drop-shadow-lg" />
         </div>
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>

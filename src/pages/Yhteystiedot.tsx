@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '@/components/Footer';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import HeroBackground from '@/components/HeroBackground';
+import feimLogo from '@/assets/feim-logo.png';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -51,7 +52,7 @@ const Yhteystiedot = () => {
 
       <nav className="absolute top-0 left-0 right-0 z-50 py-6">
         <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
-          <Link to="/" className="text-xl font-bold text-white tracking-wider uppercase drop-shadow-lg">FEIM</Link>
+          <Link to="/"><img src={feimLogo} alt="FEIM" className="h-8 w-auto drop-shadow-lg" /></Link>
           <div className="hidden lg:flex items-center gap-1">
             <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
             <div className="relative group">
