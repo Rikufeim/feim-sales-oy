@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, CheckCircle2, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+import { Link } from 'react-router-dom';
 
 /* ─── Utility Components ─── */
 
@@ -203,17 +204,20 @@ const servicesData = [
   {
     title: "Verkkosivut",
     desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
-    icon: "🌐"
+    icon: "🌐",
+    link: "/verkkosivut"
   },
   {
     title: "Web-sovellukset",
     desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
-    icon: "⚡"
+    icon: "⚡",
+    link: "/web-sovellukset"
   },
   {
     title: "Prototyypit ja MVP:t",
     desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin, jolla ideaa voidaan testata ja esitellä.",
-    icon: "◆"
+    icon: "◆",
+    link: "/prototyypit"
   },
   {
     title: "UI/UX-suunnittelu",
@@ -257,11 +261,19 @@ const Services = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
         {servicesData.map((s, i) => (
           <FadeIn key={i} delay={i * 0.08}>
-            <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-              <span className="text-2xl mb-5 block">{s.icon}</span>
-              <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
-              <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
-            </div>
+            {s.link ? (
+              <Link to={s.link} className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full block">
+                <span className="text-2xl mb-5 block">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">{s.title} <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-blue-400" /></h3>
+                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              </Link>
+            ) : (
+              <div className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
+                <span className="text-2xl mb-5 block">{s.icon}</span>
+                <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
+                <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+              </div>
+            )}
           </FadeIn>
         ))}
       </div>
@@ -755,10 +767,10 @@ const Footer = () => (
         <div>
           <p className="text-sm font-semibold text-neutral-300 uppercase tracking-wider mb-4">Palvelut</p>
           <ul className="space-y-3 text-neutral-500 text-sm">
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Verkkosivut</a></li>
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Landing paget</a></li>
+            <li><Link to="/verkkosivut" className="hover:text-white transition-colors">Verkkosivut</Link></li>
+            <li><Link to="/web-sovellukset" className="hover:text-white transition-colors">Web-sovellukset</Link></li>
+            <li><Link to="/prototyypit" className="hover:text-white transition-colors">Prototyypit</Link></li>
             <li><a href="#palvelut" className="hover:text-white transition-colors">UI/UX-suunnittelu</a></li>
-            <li><a href="#palvelut" className="hover:text-white transition-colors">Konversio-optimointi</a></li>
           </ul>
         </div>
         <div>
