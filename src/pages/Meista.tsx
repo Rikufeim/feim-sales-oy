@@ -57,7 +57,6 @@ const Meista = () => {
   const navText = isDark ? 'text-neutral-400 hover:text-white hover:bg-white/5' : 'text-neutral-500 hover:text-black hover:bg-black/5';
   const dropdownBg = isDark ? 'bg-black/95 border-white/10' : 'bg-white/95 border-black/10';
   const dropdownItem = isDark ? 'text-neutral-300 hover:text-white hover:bg-white/5' : 'text-neutral-600 hover:text-black hover:bg-black/5';
-  const activeNav = isDark ? 'text-white bg-white/5' : 'text-black bg-black/5';
   const headingGrad = isDark ? 'from-neutral-50 to-neutral-400' : 'from-neutral-900 to-neutral-500';
   const bodyText = isDark ? 'text-neutral-400' : 'text-neutral-500';
   const headingText = isDark ? 'text-white' : 'text-neutral-900';
@@ -96,7 +95,7 @@ const Meista = () => {
                 </div>
               </div>
             </div>
-            <Link to="/meista" className={`text-sm font-medium px-4 py-2 rounded-full ${activeNav}`}>Meistä</Link>
+            <Link to="/meista" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Meistä</Link>
             <Link to="/yhteystiedot" className={`text-sm font-medium transition-colors px-4 py-2 rounded-full ${navText}`}>Yhteystiedot</Link>
             <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>Tilaa vedos</Link>
           </div>
