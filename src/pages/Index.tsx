@@ -9,6 +9,7 @@ import rikuNightImg from '@/assets/riku-night.jpeg';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
+import { useTheme } from '@/components/ThemeContext';
 
 /* ─── Utility Components ─── */
 
@@ -158,35 +159,41 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 
 /* ─── 1. Hero ─── */
 
-const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
+const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
+  const { isDark } = useTheme();
+  return (
   <HeroBackground className="!min-h-screen flex flex-col items-start justify-center antialiased">
-    <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black to-transparent z-20 pointer-events-none" />
+    <div 
+      className="absolute bottom-0 left-0 w-full h-64 z-20 pointer-events-none" 
+      style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? '#000000' : '#ffffff'}, transparent)` }}
+    />
 
     <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
       <FadeIn delay={0.1}>
-        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.05] max-w-5xl">
+        <h1 className={`text-4xl md:text-6xl font-bold bg-clip-text text-transparent pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-gradient-to-b from-neutral-50 to-neutral-400' : 'bg-gradient-to-b from-neutral-900 to-neutral-500'}`}>
           Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
+        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
           Suunnittelemme ja toteutamme premium-verkkosivuja, jotka yhdistävät modernin designin, teknisen huippulaadun ja kaupallisen älykkyyden — sivustoja, jotka vahvistavat brändiäsi ja tuottavat konkreettisia tuloksia.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <a href="#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-200 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group">
+          <a href="#yhteystiedot" className={`inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group ${isDark ? 'bg-white hover:bg-neutral-200 text-black' : 'bg-neutral-900 hover:bg-neutral-800 text-white'}`}>
             Pyydä tarjous
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="#palvelut" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 transition-all duration-300">
+          <a href="#palvelut" className={`inline-flex items-center justify-center gap-2 px-8 py-4 border font-medium rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
           </a>
         </div>
       </FadeIn>
     </div>
   </HeroBackground>
-);
+  );
+};
 
 /* ─── 2. Palvelut ─── */
 

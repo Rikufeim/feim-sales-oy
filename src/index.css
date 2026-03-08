@@ -154,8 +154,11 @@ html.theme-light .hover\:bg-white\/\[0\.1\]:hover,
 html.theme-light .hover\:bg-white\/5:hover { background-color: rgba(0, 0, 0, 0.06) !important; }
 html.theme-light .hover\:border-white\/\[0\.12\]:hover,
 html.theme-light .hover\:border-white\/\[0\.15\]:hover { border-color: rgba(0, 0, 0, 0.15) !important; }
-html.theme-light .bg-white { background-color: #111111 !important; color: #ffffff !important; }
-html.theme-light .hover\:bg-neutral-200:hover { background-color: #333333 !important; }
+/* Buttons with bg-white get inverted — but not small decorative elements */
+html.theme-light a.bg-white,
+html.theme-light button.bg-white { background-color: #111111 !important; color: #ffffff !important; }
+html.theme-light a.hover\:bg-neutral-200:hover,
+html.theme-light button.hover\:bg-neutral-200:hover { background-color: #333333 !important; }
 html.theme-light .text-black { color: #ffffff !important; }
 html.theme-light .bg-black\/95 { background-color: rgba(255, 255, 255, 0.97) !important; }
 html.theme-light .text-white\/10 { color: rgba(0, 0, 0, 0.08) !important; }
@@ -167,11 +170,15 @@ html.theme-light .text-blue-500 { color: #555555 !important; }
 html.theme-light .bg-blue-500 { background-color: #333333 !important; }
 html.theme-light .border-blue-500\/30 { border-color: rgba(0, 0, 0, 0.15) !important; }
 html.theme-light .hover\:border-blue-500\/50:hover { border-color: rgba(0, 0, 0, 0.25) !important; }
-html.theme-light .from-black { --tw-gradient-from: #ffffff !important; }
-html.theme-light .via-black { --tw-gradient-via: #ffffff !important; }
-html.theme-light .via-black\/80 { --tw-gradient-via: rgba(255, 255, 255, 0.8) !important; }
-html.theme-light .from-neutral-50 { --tw-gradient-from: #171717 !important; }
-html.theme-light .to-neutral-400 { --tw-gradient-to: #737373 !important; }
+html.theme-light .bg-gradient-to-t.from-black.via-black {
+  background: linear-gradient(to top, #ffffff, #ffffff, transparent) !important;
+}
+html.theme-light .bg-gradient-to-t.from-black.via-black\/80 {
+  background: linear-gradient(to top, #ffffff, rgba(255,255,255,0.8), transparent) !important;
+}
+html.theme-light .bg-gradient-to-b.from-neutral-50.to-neutral-400 {
+  background: linear-gradient(to bottom, #171717, #737373) !important;
+}
 html.theme-light .hover\:shadow-\[0_0_30px_rgba\(255\,255\,255\,0\.15\)\]:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1) !important;
 }
@@ -181,6 +188,12 @@ html.theme-light .text-green-400\/80 { color: rgba(22, 163, 74, 0.9) !important;
 html.theme-light .hover\:text-green-400:hover { color: rgb(22, 163, 74) !important; }
 html.theme-light .focus\:border-blue-500\/40:focus { border-color: rgba(0, 0, 0, 0.2) !important; }
 html.theme-light .placeholder-neutral-600::placeholder { color: #a3a3a3 !important; }
+
+/* Theme toggle stays dark always */
+html.theme-light .bg-neutral-900 { background-color: #171717 !important; }
+html.theme-light .hover\:bg-neutral-800:hover { background-color: #262626 !important; }
+html.theme-light button.bg-neutral-900 .text-white,
+html.theme-light button.bg-neutral-900 { color: #ffffff !important; }
 
 /* Footer stays dark always */
 html.theme-light footer.bg-black { background-color: #000000 !important; }
