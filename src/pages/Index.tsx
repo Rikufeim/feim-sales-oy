@@ -8,6 +8,7 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 
 /* ─── Utility Components ─── */
 
@@ -158,9 +159,8 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 /* ─── 1. Hero ─── */
 
 const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
-  <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center bg-black antialiased overflow-hidden">
-    <div className="absolute inset-0 z-0 bg-black" />
-    <SectionFade />
+  <HeroBackground className="!min-h-screen flex flex-col items-start justify-center antialiased">
+    <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black to-transparent z-20 pointer-events-none" />
 
     <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
       <FadeIn>
@@ -196,7 +196,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
         </div>
       </FadeIn>
     </div>
-  </section>
+  </HeroBackground>
 );
 
 /* ─── 2. Palvelut ─── */
