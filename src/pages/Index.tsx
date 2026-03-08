@@ -145,10 +145,17 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
           <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
             className="absolute top-full mt-2 left-0 right-0 mx-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col gap-1 shadow-xl lg:hidden z-50">
             {navLinks.map(link => (
-              <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
-                className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">
-                {link.name}
-              </a>
+              isHash(link.href) ? (
+                <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
+                  className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">
+                  {link.name}
+                </a>
+              ) : (
+                <Link key={link.name} to={link.href} onClick={() => setIsOpen(false)}
+                  className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">
+                  {link.name}
+                </Link>
+              )
             ))}
             <a href="#yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Aloita projekti</a>
           </motion.div>
