@@ -484,7 +484,6 @@ const Benefits = () => (
           </FadeIn>
         ))}
       </div>
-      </div>
     </div>
   </section>
 );
