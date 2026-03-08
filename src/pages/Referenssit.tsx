@@ -186,12 +186,7 @@ const Referenssit = () => (
       </div>
     </section>
 
-    <footer className="relative pt-16 pb-8 px-6 border-t border-white/[0.04]">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-neutral-600 text-sm gap-4">
-        <p>&copy; {new Date().getFullYear()} FEIM Digital Studio.</p>
-        <Link to="/" className="text-neutral-500 hover:text-white transition-colors">Takaisin etusivulle</Link>
-      </div>
-    </footer>
+    <Footer />
   </div>
 );
 

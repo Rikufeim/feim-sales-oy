@@ -299,15 +299,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="relative pt-24 pb-8 px-6 overflow-hidden border-t border-white/[0.04]">
-        <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center text-neutral-600 text-sm gap-4">
-            <p>&copy; {new Date().getFullYear()} FEIM Digital Studio. Kaikki oikeudet pidätetään.</p>
-            <Link to="/" className="text-neutral-500 hover:text-white transition-colors">Takaisin etusivulle</Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
