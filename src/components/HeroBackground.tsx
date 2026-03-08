@@ -5,7 +5,7 @@ import { useTheme } from './ThemeContext';
 export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
   const { isDark } = useTheme();
   const colors = isDark
-    ? ["#000000", "#000000", "#100085", "#000000"]
+    ? ["#000000", "#000000", "#001a66", "#000000"]
     : ["#f8f8f8", "#e8e8ec", "#8a8a9a", "#d0d0d8"];
 
   return (
