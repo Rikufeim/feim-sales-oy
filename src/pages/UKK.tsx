@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -42,6 +42,8 @@ const faqCategories = [
   },
 ];
 
+const totalQuestions = faqCategories.reduce((sum, cat) => sum + cat.items.length, 0);
+
 const UKK = () => (
   <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
     <Helmet>
@@ -77,31 +79,34 @@ const UKK = () => (
       </div>
     </nav>
 
-    {/* Hero */}
-    <section className="relative min-h-[50vh] flex flex-col items-start justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 50% 50%, #0021ff30 0%, transparent 45%), #000",
-        filter: "brightness(0.6)"
-      }} />
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
+    {/* Hero — Ultra-compact, utility-focused */}
+    <section className="relative pt-32 md:pt-40 pb-8 overflow-hidden">
+      <div className="px-6 lg:px-16 max-w-4xl mx-auto relative z-20 w-full">
         <FadeIn>
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
           </Link>
         </FadeIn>
-        <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">UKK</p>
-        </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
+          <h1 className="text-3xl md:text-5xl font-bold text-white pb-4 leading-[1.12]">
             Usein kysyttyä
           </h1>
         </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-            Vastauksia yleisimpiin kysymyksiin palveluistamme, prosessistamme ja yhteistyöstä. Jos et löydä vastausta, ota yhteyttä — vastaamme mielellämme.
+        <FadeIn delay={0.15}>
+          <p className="mt-2 text-neutral-500 text-base">
+            {totalQuestions} vastausta {faqCategories.length} kategoriassa
           </p>
+        </FadeIn>
+        
+        {/* Category jump links */}
+        <FadeIn delay={0.2}>
+          <div className="flex flex-wrap gap-2 mt-6 pb-8 border-b border-white/[0.06]">
+            {faqCategories.map((cat, i) => (
+              <a key={i} href={`#faq-cat-${i}`} className="px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-400 text-sm hover:bg-white/[0.08] hover:text-white transition-all duration-300">
+                {cat.title}
+              </a>
+            ))}
+          </div>
         </FadeIn>
       </div>
     </section>
@@ -111,7 +116,7 @@ const UKK = () => (
       <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10 space-y-20">
         {faqCategories.map((cat, ci) => (
           <FadeIn key={ci} delay={ci * 0.1}>
-            <div>
+            <div id={`faq-cat-${ci}`}>
               <div className="w-12 h-px bg-blue-500/50 mb-6" />
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{cat.title}</h2>
               <Accordion type="single" collapsible className="space-y-2">
@@ -138,7 +143,7 @@ const UKK = () => (
       <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10 text-center">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Etkö löytänyt vastausta?</h2>
-          <p className="text-neutral-400 text-lg max-w-xl mx-auto mb-10">Ota yhteyttä — vastaamme mielellämme kaikkiin kysymyksiin projektistasi, prosessistamme tai yhteistyöstä.</p>
+          <p className="text-neutral-400 text-lg max-w-xl mx-auto mb-10">Ota yhteyttä — vastaamme mielellämme kaikkiin kysymyksiin.</p>
           <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
             Ota yhteyttä <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>

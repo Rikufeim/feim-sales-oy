@@ -79,32 +79,48 @@ const Referenssit = () => (
       </div>
     </nav>
 
-    {/* Hero */}
-    <section className="relative min-h-[60vh] flex flex-col items-start justify-center overflow-hidden">
+    {/* Hero — Gallery / portfolio feel with image mosaic hint */}
+    <section className="relative pt-32 md:pt-40 pb-12 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 40% 80%, #0021ff40 0%, transparent 45%), #000",
-        filter: "brightness(0.6)"
+        background: "radial-gradient(circle at 40% 80%, #0021ff15 0%, transparent 45%), #000",
       }} />
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
-        <FadeIn>
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
-            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
-          </Link>
-        </FadeIn>
-        <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
-            Valikoituja projekteja
-          </h1>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-            Jokainen projekti on uniikki kokonaisuus, joka on suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta. Tässä muutamia esimerkkejä siitä, mitä rakennamme.
-          </p>
-        </FadeIn>
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div className="lg:col-span-6">
+            <FadeIn>
+              <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
+                <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
+              </Link>
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4">Referenssit</p>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">
+                Valikoituja projekteja
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <p className="mt-4 text-lg text-neutral-400 max-w-xl leading-relaxed">
+                Jokainen projekti on uniikki kokonaisuus, suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta.
+              </p>
+            </FadeIn>
+          </div>
+          
+          {/* Image mosaic preview */}
+          <div className="lg:col-span-6">
+            <FadeIn delay={0.2}>
+              <div className="grid grid-cols-3 gap-2 h-48 lg:h-56">
+                {projects.map((p, i) => (
+                  <div key={i} className="relative overflow-hidden rounded-xl">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover opacity-40 hover:opacity-70 transition-opacity duration-500" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -148,7 +164,7 @@ const Referenssit = () => (
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Jokainen projekti on erilainen</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-10">
-              Emme käytä valmiita malleja. Jokainen ratkaisu suunnitellaan alusta asti asiakkaan brändin, tavoitteiden ja kohderyhmän mukaan. Siksi lopputulokset eivät näytä eikä tunnu samalta.
+              Emme käytä valmiita malleja. Jokainen ratkaisu suunnitellaan alusta asti asiakkaan brändin, tavoitteiden ja kohderyhmän mukaan.
             </p>
             <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
               Aloita oma projektisi <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
