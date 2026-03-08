@@ -172,9 +172,9 @@ const Palvelut = () => (
         <FadeIn>
           <h2 className="text-3xl md:text-6xl font-bold text-white mb-6">Tilaa maksuton vedos</h2>
           <p className="text-neutral-400 text-lg max-w-xl mx-auto mb-10">Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.</p>
-          <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
+          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
             Tilaa maksuton vedos <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
           <div className="mt-12"><ContactCard /></div>
         </FadeIn>
       </div>

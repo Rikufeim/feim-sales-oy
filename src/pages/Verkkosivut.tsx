@@ -54,7 +54,7 @@ const Verkkosivut = () => (
       title: "Tilaa maksuton vedos verkkosivustasi",
       description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",
       buttonText: "Tilaa maksuton vedos",
-      buttonHref: "/#yhteystiedot"
+      buttonHref: "/yhteystiedot"
     }}
   />
 );

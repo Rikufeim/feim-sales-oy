@@ -166,9 +166,9 @@ const Referenssit = () => (
             <p className="text-neutral-400 text-lg leading-relaxed mb-10">
               Emme käytä valmiita malleja. Jokainen ratkaisu suunnitellaan alusta asti asiakkaan brändin, tavoitteiden ja kohderyhmän mukaan.
             </p>
-            <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
+            <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
               Aloita oma projektisi <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             <div className="mt-12"><ContactCard /></div>
           </div>
         </FadeIn>
