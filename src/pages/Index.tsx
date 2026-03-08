@@ -204,17 +204,20 @@ const servicesData = [
   {
     title: "Verkkosivut",
     desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
-    icon: "🌐"
+    icon: "🌐",
+    link: "/verkkosivut"
   },
   {
     title: "Web-sovellukset",
     desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
-    icon: "⚡"
+    icon: "⚡",
+    link: "/web-sovellukset"
   },
   {
     title: "Prototyypit ja MVP:t",
     desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin, jolla ideaa voidaan testata ja esitellä.",
-    icon: "◆"
+    icon: "◆",
+    link: "/prototyypit"
   },
   {
     title: "UI/UX-suunnittelu",
