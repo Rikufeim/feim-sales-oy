@@ -236,9 +236,6 @@ const servicesData = [
 
 const Services = () => (
   <section id="palvelut" className="relative py-32 overflow-hidden">
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 70% 80%, #111 0%, transparent 45%), linear-gradient(180deg, #000 0%, #000 100%)"
-    }} />
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Palvelut</p>
