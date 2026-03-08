@@ -443,9 +443,9 @@ const Benefits = () => (
         <FadeIn>
           <div className="lg:sticky lg:top-32">
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tulokset</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä asiakas<br />käytännössä saa.</h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä saat<br />käytännössä.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
-              Emme myy pelkkiä verkkosivuja. Myymme digitaalista kilpailuetua, joka näkyy suoraan liiketoiminnan tuloksissa.
+              Verkkosivuja, sovelluksia ja prototyyppejä — jokainen rakennettu tuottamaan konkreettisia liiketoimintatuloksia.
             </p>
           </div>
         </FadeIn>
