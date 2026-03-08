@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import rikuImg from '@/assets/riku-miettinen.jpeg';
