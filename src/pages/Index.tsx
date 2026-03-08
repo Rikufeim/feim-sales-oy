@@ -294,12 +294,12 @@ const Services = () => (
 /* ─── 3. Miksi FEIM ─── */
 
 const whyData = [
-  { title: "Strateginen ajattelu", desc: "Emme ala suunnitella ennen kuin ymmärrämme liiketoimintanne tavoitteet. Jokainen ratkaisu perustuu selkeään strategiaan." },
-  { title: "Moderni design", desc: "Visuaalinen ilme, joka erottaa teidät kilpailijoista. Ei geneerisiä malleja — jokaiselle asiakkaalle räätälöity kokonaisuus." },
-  { title: "Tekninen huippulaatu", desc: "Toteutamme modernilla teknologialla, joka takaa nopean, turvallisen ja skaalautuvan lopputuloksen." },
-  { title: "Suorituskyky & SEO", desc: "Hakukoneystävällinen rakenne ja salamannopea latautumisnopeus ovat osa jokaista projektia — eivät lisäpalvelu." },
-  { title: "Konversiofokus", desc: "Rakennamme sivustot, jotka eivät vain näytä hyvältä, vaan tuottavat konkreettisia liiketoimintatuloksia." },
-  { title: "Pitkäjänteinen kumppanuus", desc: "Digitaalinen maailma ei pysähdy. Tarjoamme jatkuvaa kehitystä, jotta sivustonne pysyy kilpailukykyisenä." },
+  { title: "Verkkosivut, jotka myyvät", desc: "Rakennamme verkkosivuja, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, rakentavat brändiä ja tukevat liiketoimintaa." },
+  { title: "Web-sovellukset liiketoiminnan ytimeen", desc: "Kehitämme räätälöityjä web-sovelluksia, jotka automatisoivat prosesseja, palvelevat asiakkaita ja skaalautuvat kasvun mukana." },
+  { title: "Prototyypit nopeasti käyntiin", desc: "Validoimme ideasi nopeasti toimivalla prototyypillä — ennen kuin investoit täyteen tuotekehitykseen." },
+  { title: "Vibe-koodaus uudella tavalla", desc: "Hyödynnämme tekoälyä ja moderneja työkaluja, jotta saat laadukkaan lopputuloksen nopeammin ja kustannustehokkaammin." },
+  { title: "Strategia ennen suunnittelua", desc: "Jokainen projekti alkaa liiketoimintatavoitteiden ymmärtämisestä. Emme ala suunnitella ennen kuin tiedämme miksi." },
+  { title: "Pitkäjänteinen kumppanuus", desc: "Digitaalinen maailma ei pysähdy. Tarjoamme jatkuvaa kehitystä, jotta ratkaisunne pysyy kilpailukykyisenä." },
 ];
 
 const WhyFeim = () => (
