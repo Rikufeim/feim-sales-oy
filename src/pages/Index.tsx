@@ -423,8 +423,8 @@ const Benefits = () => (
           {benefitsRight.map((b, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="flex gap-5">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-1">
-                  <CheckCircle2 size={18} className="text-blue-400/70" />
+                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-800/15 border border-blue-700/25 flex items-center justify-center mt-1">
+                  <CheckCircle2 size={18} className="text-blue-700" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
