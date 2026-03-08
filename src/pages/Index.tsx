@@ -536,8 +536,8 @@ const FounderSection = () => (
           <FadeIn>
             <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Perustajan terveiset</p>
             <h2 className="text-4xl md:text-6xl font-bold text-white leading-[1.08] mb-8">
-              Kaikki alkaa halusta rakentaa{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">paremmin.</span>
+              Tekoäly muuttaa kaiken —{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-500">me autamme hyödyntämään sen.</span>
             </h2>
           </FadeIn>
 
@@ -556,35 +556,27 @@ const FounderSection = () => (
           <FadeIn delay={0.15}>
             <div className="space-y-6 text-neutral-400 text-[16px] leading-relaxed">
               <p className="text-white font-semibold text-lg">
-                Digitaalinen maailma on täynnä keskinkertaisuutta. Geneerisiä sivuja, samoja malleja, samaa ilmettä. Harva erottuu — ja vielä harvempi jää mieleen.
+                Elämme aikaa, jossa tekoäly muuttaa perustavanlaatuisesti sen, miten digitaalisia tuotteita suunnitellaan ja rakennetaan. FEIM on rakennettu tämän murroksen ytimeen.
               </p>
 
               <p>
-                FEIM syntyi halusta muuttaa tätä. Halusin rakentaa studion, joka tekee digitaalisia ratkaisuja joilla on oikeasti merkitystä — sekä käyttäjille että liiketoiminnalle.
+                Hyödynnämme tekoälyä kaikessa mitä teemme — suunnittelussa, kehityksessä ja strategiassa. Se tarkoittaa nopeampia projekteja, älykkäämpiä ratkaisuja ja parempaa lopputulosta. Mutta tekoäly ei korvaa näkemystä — se vahvistaa sitä.
               </p>
 
               <p>
-                Kun yhdistetään strateginen ajattelu, moderni design ja tekninen osaaminen, syntyy verkkosivuja ja sovelluksia joista puhutaan. Tuotteita jotka toimivat, myyvät ja erottuvat.
+                FEIM on kokonaisvaltainen digitaalinen kumppani. Rakennamme <strong className="text-white">verkkosivuja</strong> jotka myyvät ja erottuvat, <strong className="text-white">web-sovelluksia</strong> jotka automatisoivat ja skaalautuvat, sekä <strong className="text-white">prototyyppejä ja MVP:itä</strong> joilla ideat validoidaan nopeasti. Kaikki yhdistettynä strategiseen osaamiseen ja moderniin teknologiaan.
               </p>
 
               <p className="text-white font-semibold">
-                Ne hetket, kun luodaan jotain aidosti vaikuttavaa, ovat syy miksi tätä tehdään. Ratkaisuja jotka näyttävät hyvältä, tuntuvat oikealta ja ennen kaikkea toimivat liiketoiminnallisesti.
+                Tavoitteemme on yksinkertainen: tehdä digitaalisista ratkaisuista kilpailuetu, joka oikeasti näkyy liiketoiminnassa.
               </p>
 
               <p>
-                Kiinnostukseni teknologiaan ja designiin syntyi jo varhain. Oman studion rakentaminen on ollut aina unelma — ja FEIM on sen toteutuma.
-              </p>
-
-              <p>
-                Haluan tuoda tämän osaamisen, näkemyksen ja intohimon myös teidän projekteihinne.
-              </p>
-
-              <p className="text-white font-semibold">
-                Siksi emme tee vain kauniita sivuja, vaan ratkaisuja jotka vaikuttavat.
+                Perustin FEIMin koska näin liian monta yritystä, jotka eivät saa digitaalisista investoinneistaan sitä mitä ansaitsevat. Liian hidasta, liian kallista, liian geneeristä. Tekoälyn avulla se vanha malli on vihdoin mahdollista rikkoa.
               </p>
 
               <p className="text-neutral-500 mt-4">
-                Mikä on teidän tavoitteenne? Jutellaan.
+                Kerro tavoitteenne — rakennetaan yhdessä jotain vaikuttavaa.
               </p>
             </div>
           </FadeIn>
