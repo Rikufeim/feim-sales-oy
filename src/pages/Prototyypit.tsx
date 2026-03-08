@@ -50,7 +50,7 @@ const Prototyypit = () => (
       title: "Tilaa maksuton vedos ideastasi",
       description: "Kerro ideasi — rakennamme yhdessä ensimmäisen konkreettisen askeleen kohti valmista tuotetta.",
       buttonText: "Tilaa maksuton vedos",
-      buttonHref: "/#yhteystiedot"
+      buttonHref: "/yhteystiedot"
     }}
   />
 );

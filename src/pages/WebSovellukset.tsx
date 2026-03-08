@@ -65,7 +65,7 @@ const WebSovellukset = () => (
       title: "Kerro ideastasi",
       description: "Olitpa vasta ideointivaiheessa tai sinulla on selkeä konsepti — keskustellaan miten lähdetään liikkeelle.",
       buttonText: "Keskustele sovellusideastasi",
-      buttonHref: "/#yhteystiedot"
+      buttonHref: "/yhteystiedot"
     }}
   />
 );

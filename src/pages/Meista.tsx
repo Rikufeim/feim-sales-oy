@@ -178,7 +178,7 @@ const Meista = () => (
         <FadeIn>
           <h2 className="text-3xl md:text-6xl font-bold text-white mb-6">Kiinnostaako yhteistyö?</h2>
           <p className="text-neutral-400 text-lg max-w-xl mx-auto mb-10">Kerro projektistasi — rakennetaan yhdessä jotain, millä on merkitystä.</p>
-          <a href="/#yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
+          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
             Ota yhteyttä <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
           <div className="mt-12"><ContactCard /></div>
