@@ -12,8 +12,8 @@ const WebSovellukset = () => (
     hero={{
       label: "Web-sovellukset",
       title: "Rakennamme web-sovelluksia ja digitaalisia tuotteita",
-      intro: "Jos ideasi vaatii enemmän kuin verkkosivun, rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — suunnittelusta tuotantoon.",
-      cta: "Keskustele sovellusideastasi",
+      intro: "",
+      cta: "",
       ctaHref: "/yhteystiedot"
     }}
     sections={[
