@@ -403,9 +403,12 @@ const Showcase = () => (
 
 /* ─── 6. Tulokset & hyödyt ─── */
 
-const benefitsRight = [
+const benefitsLeft = [
   { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
   { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
+];
+
+const benefitsRight = [
   { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
   { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
   { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
