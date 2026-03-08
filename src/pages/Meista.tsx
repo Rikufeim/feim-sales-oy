@@ -171,7 +171,7 @@ const Meista = () => (
           {values.map((v, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-                <div className="w-8 h-px bg-blue-500/50 mb-6" />
+                
                 <h3 className="text-xl font-semibold text-white mb-3">{v.title}</h3>
                 <p className="text-neutral-400 leading-relaxed text-[15px]">{v.desc}</p>
               </div>

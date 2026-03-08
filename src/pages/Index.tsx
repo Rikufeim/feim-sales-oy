@@ -293,7 +293,7 @@ const WhyFeim = () => (
           {whyData.map((item, i) => (
             <FadeIn key={i} delay={i * 0.06}>
               <div className="space-y-3">
-                <div className="w-8 h-px bg-blue-500/50" />
+                
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                 <p className="text-neutral-500 text-sm leading-relaxed">{item.desc}</p>
               </div>

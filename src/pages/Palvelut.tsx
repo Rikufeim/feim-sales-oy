@@ -164,7 +164,7 @@ const Palvelut = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="w-12 h-px bg-blue-500/50 mb-8" />
+            
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Sinulla on idea? Me teemme siitä todellisen.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
               Autamme myös yksityisiä ja tiimejä, joilla on idea sovelluksesta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis sovellus.
