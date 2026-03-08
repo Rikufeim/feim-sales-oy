@@ -110,7 +110,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
     { name: 'Prosessi', href: '/prosessi' },
     { name: 'Referenssit', href: '/referenssit' },
     { name: 'Meistä', href: '/meista' },
-    { name: 'UKK', href: '/ukk' },
+    
     { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
