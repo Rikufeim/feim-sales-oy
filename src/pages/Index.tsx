@@ -160,8 +160,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
   <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center bg-black antialiased overflow-hidden">
     <Spotlight fill="white" />
     <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 30% 70%, #0021ff70 0%, transparent 45%), radial-gradient(circle at 70% 30%, #2201ff70 0%, transparent 45%), linear-gradient(180deg, #000000 0%, #000000 100%)",
-      filter: "brightness(0.6)"
+      background: "radial-gradient(circle at 30% 70%, #0021ff40 0%, transparent 40%), radial-gradient(circle at 70% 30%, #2201ff30 0%, transparent 40%), linear-gradient(180deg, #000000 0%, #000000 100%)"
     }} />
     <SectionFade />
 
