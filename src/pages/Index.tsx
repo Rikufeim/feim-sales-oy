@@ -159,9 +159,7 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
   <section id="hero" className="relative min-h-screen flex flex-col items-start justify-center bg-black antialiased overflow-hidden">
     <Spotlight fill="white" />
-    <div className="absolute inset-0 z-0" style={{
-      background: "radial-gradient(circle at 30% 70%, #0021ff40 0%, transparent 40%), radial-gradient(circle at 70% 30%, #2201ff30 0%, transparent 40%), linear-gradient(180deg, #000000 0%, #000000 100%)"
-    }} />
+    <div className="absolute inset-0 z-0 bg-black" />
     <SectionFade />
 
     <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
@@ -941,17 +939,6 @@ const Index = () => {
       ) : (
         <main className="relative">
           {/* Unified page background accents */}
-          <div className="absolute inset-0 z-0 pointer-events-none" style={{
-            background: `
-              radial-gradient(ellipse 60% 35% at 20% 8%, #0021ff20 0%, transparent 60%),
-              radial-gradient(ellipse 50% 30% at 85% 22%, #0a0e3a80 0%, transparent 50%),
-              radial-gradient(ellipse 50% 30% at 10% 38%, #0a104060 0%, transparent 45%),
-              radial-gradient(ellipse 60% 35% at 80% 52%, #0021ff15 0%, transparent 50%),
-              radial-gradient(ellipse 45% 25% at 25% 68%, #0c144560 0%, transparent 45%),
-              radial-gradient(ellipse 55% 30% at 65% 82%, #0021ff18 0%, transparent 50%),
-              radial-gradient(ellipse 40% 20% at 80% 95%, #0a0e3a60 0%, transparent 45%)
-            `
-          }} />
           <Navigation onNavigate={dest => { if (dest === 'home') window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
           <Hero onStartProject={handleStartProject} />
           <Services />
