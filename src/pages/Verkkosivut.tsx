@@ -14,7 +14,7 @@ const Verkkosivut = () => (
       title: "Verkkosivut jotka tekevät enemmän kuin näyttävät hyvältä",
       intro: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",
       cta: "Tilaa maksuton vedos",
-      ctaHref: "/#yhteystiedot"
+      ctaHref: "/yhteystiedot"
     }}
     sections={[
       {
@@ -54,7 +54,7 @@ const Verkkosivut = () => (
       title: "Tilaa maksuton vedos verkkosivustasi",
       description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",
       buttonText: "Tilaa maksuton vedos",
-      buttonHref: "/#yhteystiedot"
+      buttonHref: "/yhteystiedot"
     }}
   />
 );
