@@ -2,6 +2,8 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 
 const WebSovellukset = () => (
   <ServicePageLayout
+    heroVariant="technical"
+    heroTrustPoints={["React & TypeScript", "Skaalautuva arkkitehtuuri", "API-integraatiot", "Tietoturva"]}
     seo={{
       title: "Web-sovellukset — FEIM Digital Studio",
       description: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — SaaS-palveluja, asiakasportaaleja, hallintajärjestelmiä ja uusia digitaalisia tuotteita.",

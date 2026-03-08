@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import rikuImg from '@/assets/riku-miettinen.jpeg';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -14,27 +15,27 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
 const values = [
   {
     title: "Strateginen ajattelu",
-    desc: "Emme ala suunnitella ennen kuin ymmärrämme liiketoimintanne tavoitteet. Jokainen ratkaisu perustuu selkeään strategiaan, joka yhdistää brändin, käyttäjät ja liiketoiminnan."
+    desc: "Emme ala suunnitella ennen kuin ymmärrämme liiketoimintanne tavoitteet. Jokainen ratkaisu perustuu selkeään strategiaan."
   },
   {
     title: "Moderni design",
-    desc: "Visuaalinen ilme, joka erottaa teidät kilpailijoista. Ei geneerisiä malleja — jokaiselle asiakkaalle räätälöity kokonaisuus, joka viestii ammattimaisuutta ja laatua."
+    desc: "Visuaalinen ilme, joka erottaa teidät kilpailijoista. Ei geneerisiä malleja — jokaiselle asiakkaalle räätälöity kokonaisuus."
   },
   {
     title: "Tekninen huippulaatu",
-    desc: "Toteutamme modernilla teknologialla: React, TypeScript, Tailwind CSS. Nopea, turvallinen ja skaalautuva lopputulos on standardi, ei lisäpalvelu."
+    desc: "Toteutamme modernilla teknologialla: React, TypeScript, Tailwind CSS. Nopea, turvallinen ja skaalautuva lopputulos."
   },
   {
     title: "Konversiofokus",
-    desc: "Rakennamme sivustot ja sovellukset, jotka eivät vain näytä hyvältä, vaan tuottavat konkreettisia liiketoimintatuloksia — yhteydenottoja, liidejä ja asiakkaita."
+    desc: "Rakennamme sivustot ja sovellukset, jotka tuottavat konkreettisia liiketoimintatuloksia."
   },
   {
     title: "Pitkäjänteinen kumppanuus",
-    desc: "Digitaalinen maailma ei pysähdy. Tarjoamme jatkuvaa kehitystä, jotta ratkaisunne pysyy kilpailukykyisenä ja kasvaa liiketoimintanne mukana."
+    desc: "Tarjoamme jatkuvaa kehitystä, jotta ratkaisunne pysyy kilpailukykyisenä."
   },
   {
     title: "Läpinäkyvyys",
-    desc: "Pidämme teidät ajan tasalla jokaisessa vaiheessa. Selkeä kommunikaatio, realistiset aikataulut ja rehellinen palaute ovat toimintamme perusta."
+    desc: "Selkeä kommunikaatio, realistiset aikataulut ja rehellinen palaute ovat toimintamme perusta."
   },
 ];
 
@@ -49,7 +50,7 @@ const Meista = () => (
   <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
     <Helmet>
       <title>Meistä — FEIM Digital Studio</title>
-      <meta name="description" content="FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan designin ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus." />
+      <meta name="description" content="FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan designin ja modernin teknologian." />
       <link rel="canonical" href="https://feim.fi/meista" />
       <meta property="og:title" content="Meistä — FEIM Digital Studio" />
       <meta property="og:description" content="Digitaalinen studio, jolla on visio. Strategia, design ja teknologia yhdessä." />
@@ -71,32 +72,40 @@ const Meista = () => (
       </div>
     </nav>
 
-    {/* Hero */}
-    <section className="relative min-h-[60vh] flex flex-col items-start justify-center overflow-hidden">
+    {/* Hero — Personal / editorial, centered with founder image */}
+    <section className="relative pt-32 md:pt-40 pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 30% 50%, #0021ff40 0%, transparent 45%), #000",
-        filter: "brightness(0.6)"
+        background: "radial-gradient(circle at 30% 50%, #0021ff15 0%, transparent 45%), #000",
       }} />
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <FadeIn>
-          <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12 group">
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
           </Link>
         </FadeIn>
-        <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Meistä</p>
-        </FadeIn>
-        <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
-            Digitaalinen studio, jolla on visio
-          </h1>
-        </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-            FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus.
-          </p>
-        </FadeIn>
+        
+        <div className="max-w-4xl">
+          <FadeIn delay={0.1}>
+            <blockquote className="border-l-2 border-blue-500/30 pl-8">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-8">
+                Digitaalinen studio, jolla on visio
+              </h1>
+              <p className="text-xl md:text-2xl text-neutral-400 leading-relaxed italic">
+                "FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus."
+              </p>
+            </blockquote>
+          </FadeIn>
+          
+          <FadeIn delay={0.2}>
+            <div className="flex items-center gap-4 mt-10 ml-10">
+              <img src={rikuImg} alt="Riku Miettinen" className="w-12 h-12 rounded-full object-cover grayscale" />
+              <div>
+                <p className="text-white text-sm font-medium">Riku Miettinen</p>
+                <p className="text-neutral-500 text-sm">Perustaja, FEIM</p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
 
@@ -108,20 +117,20 @@ const Meista = () => (
             <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Emme tee kaikille kaikkea</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
-              Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille ja yksilöille, jotka ymmärtävät digitaalisen läsnäolon merkityksen. Jokaisessa projektissa yhdistyvät design, teknologia ja kaupallinen ajattelu.
+              Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille ja yksilöille, jotka ymmärtävät digitaalisen läsnäolon merkityksen.
             </p>
             <p className="text-neutral-400 text-lg leading-relaxed">
-              Uskomme, että laadukas digitaalinen läsnäolo ei ole kulu — se on investointi, joka maksaa itsensä takaisin. Siksi jokainen FEIM-projekti suunnitellaan niin, että se palvelee sekä käyttäjiä että liiketoimintaa.
+              Uskomme, että laadukas digitaalinen läsnäolo ei ole kulu — se on investointi, joka maksaa itsensä takaisin.
             </p>
           </FadeIn>
           <FadeIn delay={0.15}>
             <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Mitä rakennamme</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
-              Rakennamme verkkosivuja, web-sovelluksia ja prototyyppejä. Autamme yrityksiä kasvamaan verkossa, mutta myös yksityisiä ja tiimejä, joilla on idea sovelluksesta tai digitaalisesta tuotteesta.
+              Rakennamme verkkosivuja, web-sovelluksia ja prototyyppejä. Autamme yrityksiä kasvamaan verkossa, mutta myös tiimejä joilla on idea uudesta tuotteesta.
             </p>
             <p className="text-neutral-400 text-lg leading-relaxed">
-              Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus. Sinulla ei tarvitse olla valmista suunnitelmaa — joskus hyvä idea riittää alkuun.
+              Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus.
             </p>
           </FadeIn>
         </div>

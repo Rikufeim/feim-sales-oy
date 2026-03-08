@@ -15,30 +15,30 @@ const services = [
   {
     icon: "🌐",
     title: "Verkkosivut",
-    desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille. Rakennamme sivuja jotka viestivät brändin arvon, toimivat nopeasti ja hakukoneystävällisesti — ja muuttavat kävijät asiakkaiksi.",
+    desc: "Modernit ja liiketoimintaa tukevat verkkosivut yrityksille.",
     link: "/verkkosivut"
   },
   {
     icon: "⚡",
     title: "Web-sovellukset",
-    desc: "Rakennamme räätälöityjä web-sovelluksia ja digitaalisia palveluja — asiakasportaaleja, SaaS-palveluja, varaus- ja hallintajärjestelmiä sekä täysin uusia digitaalisia tuotteita.",
+    desc: "Räätälöityjä web-sovelluksia ja digitaalisia palveluja.",
     link: "/web-sovellukset"
   },
   {
     icon: "◆",
     title: "Prototyypit ja MVP:t",
-    desc: "Jos sinulla on idea sovelluksesta tai digitaalisesta palvelusta, autamme tekemään siitä ensimmäisen version — klikattavan prototyypin, MVP-version tai konseptin.",
+    desc: "Ideasta ensimmäinen versio — prototyyppi, MVP tai konsepti.",
     link: "/prototyypit"
   },
   {
     icon: "🎯",
     title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut, jotka ohjaavat kävijää kohti toimintaa — olipa kyse yhteydenottopyynnöstä, tilauksesta tai liidien keräämisestä.",
+    desc: "Konversioon optimoidut laskeutumissivut.",
   },
   {
     icon: "📈",
     title: "Jatkuva kehitys",
-    desc: "Toteutamme modernilla teknologialla, joka takaa suorituskyvyn, tietoturvan ja skaalautuvuuden. Jatkuva kehitys pitää tuotteenne kilpailukykyisenä.",
+    desc: "Jatkuva kehitys pitää tuotteenne kilpailukykyisenä.",
   },
 ];
 
@@ -68,56 +68,75 @@ const Palvelut = () => (
       </div>
     </nav>
 
-    {/* Hero */}
-    <section className="relative min-h-[60vh] flex flex-col items-start justify-center overflow-hidden">
+    {/* Hero — Compact overview with inline service anchors */}
+    <section className="relative pt-32 md:pt-40 pb-8 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 70% 80%, #0021ff40 0%, transparent 45%), #000",
-        filter: "brightness(0.6)"
+        background: "radial-gradient(circle at 70% 80%, #0021ff20 0%, transparent 45%), #000",
       }} />
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <FadeIn>
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
           </Link>
         </FadeIn>
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Palvelut</p>
+          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4">Palvelut</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
-            Verkkosivut, web-sovellukset ja digitaaliset tuotteet
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12] max-w-4xl">
+            Mitä rakennamme
           </h1>
         </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-            FEIM suunnittelee ja rakentaa moderneja digitaalisia ratkaisuja — verkkosivuista ja landing pageista aina web-sovelluksiin ja uusiin tuoteideoihin. Autamme yrityksiä ja yksilöitä, joilla on visio.
+        <FadeIn delay={0.15}>
+          <p className="mt-4 text-lg text-neutral-400 max-w-2xl leading-relaxed">
+            Suunnittelemme ja toteutamme moderneja digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin.
           </p>
+        </FadeIn>
+        
+        {/* Inline service tags */}
+        <FadeIn delay={0.25}>
+          <div className="flex flex-wrap gap-3 mt-8 pb-8 border-b border-white/[0.06]">
+            {services.map((s, i) => (
+              s.link ? (
+                <Link key={i} to={s.link} className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-sm font-medium hover:bg-white/[0.08] hover:border-white/[0.15] hover:text-white transition-all duration-300">
+                  <span>{s.icon}</span> {s.title}
+                  <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
+                </Link>
+              ) : (
+                <span key={i} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] text-neutral-500 text-sm font-medium">
+                  <span>{s.icon}</span> {s.title}
+                </span>
+              )
+            ))}
+          </div>
         </FadeIn>
       </div>
     </section>
 
     {/* Service Cards */}
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-16 overflow-hidden">
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-0 divide-y divide-white/[0.06]">
           {services.map((s, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
+            <FadeIn key={i} delay={i * 0.06}>
               {s.link ? (
-                <Link to={s.link} className="group relative bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full block">
-                  <span className="text-2xl mb-5 block">{s.icon}</span>
-                  <h3 className="text-xl font-semibold text-white mb-3 flex items-center gap-2">
-                    {s.title}
-                    <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-blue-400" />
-                  </h3>
-                  <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
-                  <p className="text-blue-400/60 text-sm mt-4 group-hover:text-blue-400 transition-colors">Lue lisää →</p>
+                <Link to={s.link} className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-10 hover:pl-4 transition-all duration-500">
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl">{s.icon}</span>
+                    <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-blue-400 transition-colors flex items-center gap-3">
+                      {s.title}
+                      <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-blue-400" />
+                    </h3>
+                  </div>
+                  <p className="text-neutral-500 text-[15px] md:max-w-sm md:text-right">{s.desc}</p>
                 </Link>
               ) : (
-                <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-500 h-full">
-                  <span className="text-2xl mb-5 block">{s.icon}</span>
-                  <h3 className="text-xl font-semibold text-white mb-3">{s.title}</h3>
-                  <p className="text-neutral-400 leading-relaxed text-[15px]">{s.desc}</p>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-10">
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl">{s.icon}</span>
+                    <h3 className="text-xl md:text-2xl font-semibold text-white">{s.title}</h3>
+                  </div>
+                  <p className="text-neutral-500 text-[15px] md:max-w-sm md:text-right">{s.desc}</p>
                 </div>
               )}
             </FadeIn>

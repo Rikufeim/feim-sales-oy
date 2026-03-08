@@ -106,31 +106,45 @@ const Prosessi = () => (
       </div>
     </nav>
 
-    {/* Hero */}
-    <section className="relative min-h-[60vh] flex flex-col items-start justify-center overflow-hidden">
+    {/* Hero — Timeline preview with horizontal steps */}
+    <section className="relative pt-32 md:pt-40 pb-16 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
-        background: "radial-gradient(circle at 60% 20%, #0021ff40 0%, transparent 45%), #000",
-        filter: "brightness(0.6)"
+        background: "radial-gradient(circle at 60% 20%, #0021ff20 0%, transparent 45%), #000",
       }} />
-      <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent z-20 pointer-events-none" />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40 pb-20">
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <FadeIn>
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-8 group">
             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Takaisin etusivulle
           </Link>
         </FadeIn>
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Prosessi</p>
+          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4">Prosessi</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.08] max-w-5xl">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12] max-w-4xl">
             Ideasta valmiiksi — viidessä vaiheessa
           </h1>
         </FadeIn>
-        <FadeIn delay={0.2}>
-          <p className="mt-8 text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-            Selkeä prosessi varmistaa, että projekti etenee aikataulussa, budjetissa ja ilman yllätyksiä. Jokainen vaihe on suunniteltu niin, että tiedät aina missä mennään.
+        <FadeIn delay={0.15}>
+          <p className="mt-4 text-lg text-neutral-400 max-w-2xl leading-relaxed">
+            Selkeä prosessi varmistaa, että projekti etenee aikataulussa, budjetissa ja ilman yllätyksiä.
           </p>
+        </FadeIn>
+        
+        {/* Horizontal timeline preview */}
+        <FadeIn delay={0.3}>
+          <div className="mt-12 grid grid-cols-5 gap-0 relative">
+            {/* Connecting line */}
+            <div className="absolute top-4 left-[10%] right-[10%] h-px bg-white/[0.08] z-0 hidden md:block" />
+            {processSteps.map((step, i) => (
+              <div key={i} className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-xs font-mono text-blue-400 mb-3">
+                  {step.num}
+                </div>
+                <p className="text-neutral-400 text-xs md:text-sm font-medium leading-tight hidden md:block">{step.title}</p>
+              </div>
+            ))}
+          </div>
         </FadeIn>
       </div>
     </section>

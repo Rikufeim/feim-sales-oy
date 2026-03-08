@@ -2,6 +2,8 @@ import ServicePageLayout from '@/components/ServicePageLayout';
 
 const Prototyypit = () => (
   <ServicePageLayout
+    heroVariant="creative"
+    heroTrustPoints={["Idea", "Prototyyppi", "MVP", "Tuote"]}
     seo={{
       title: "Prototyypit ja MVP — FEIM Digital Studio",
       description: "Muuta sovellusidea konkreettiseksi prototyypiksi tai MVP:ksi. FEIM auttaa rakentamaan ensimmäisen version nopeasti — ideasta testaukseen.",
