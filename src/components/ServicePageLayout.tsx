@@ -43,6 +43,7 @@ interface ServicePageProps {
     buttonText: string;
     buttonHref: string;
   };
+  pricingSlot?: React.ReactNode;
 }
 
 const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta }) => {
