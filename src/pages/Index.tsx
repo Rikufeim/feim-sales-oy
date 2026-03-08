@@ -284,9 +284,9 @@ const WhyFeim = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <a href="#yhteystiedot" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
+            <Link to="/yhteystiedot" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
               Keskustellaan projektistanne <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </FadeIn>
         </div>
         <FadeIn delay={0.15}>
