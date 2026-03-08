@@ -167,8 +167,11 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         <div className="relative w-full h-[200px] md:h-[300px] overflow-hidden">
           <MeshGradient
             style={{ width: '100%', height: '100%' }}
-            speed={0.15}
+            speed={0.08}
             colors={["#0021ff", "#000000", "#1a1a2e", "#0021ff"]}
+            distortion={0.4}
+            swirl={0.1}
+            maxPixelCount={400000}
           />
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black to-transparent z-10" />
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black to-transparent z-10" />
