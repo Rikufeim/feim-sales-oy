@@ -163,12 +163,9 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => (
     <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-black via-black to-transparent z-20 pointer-events-none" />
 
     <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
-      <FadeIn>
-        <p className="text-sm md:text-base font-medium text-blue-400/80 tracking-widest uppercase mb-6">Premium-verkkosivut & digitaaliset palvelut</p>
-      </FadeIn>
       <FadeIn delay={0.1}>
         <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 pb-4 leading-[1.05] max-w-5xl">
-          Rakennamme sivut,<br />jotka <Cover>ajattelevat.</Cover>
+          Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
