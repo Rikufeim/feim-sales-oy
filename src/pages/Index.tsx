@@ -939,7 +939,7 @@ const Index = () => {
       ) : (
         <main className="relative">
           {/* Unified page background accents */}
-          <Navigation onNavigate={dest => { if (dest === 'home') window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+          <Navbar />
           <Hero onStartProject={handleStartProject} />
           <Services />
           <WhyFeim />
