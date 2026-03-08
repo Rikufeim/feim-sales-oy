@@ -122,7 +122,6 @@ const Meista = () => (
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           <FadeIn>
-            <div className="w-12 h-px bg-blue-500/50 mb-8" />
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Emme tee kaikille kaikkea</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-6">
               Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille ja yksilöille, jotka ymmärtävät digitaalisen läsnäolon merkityksen.
