@@ -119,7 +119,12 @@ All colors MUST be HSL.
     font-family: 'Inter', sans-serif;
   }
 
-  /* Remove focus outline on nav links and buttons, keep for keyboard accessibility */
+  /* Remove focus/active background persistence on nav links */
+  a:active,
+  a:focus:not(:focus-visible) {
+    background-color: transparent !important;
+  }
+
   a:focus:not(:focus-visible),
   button:focus:not(:focus-visible) {
     outline: none;
