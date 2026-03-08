@@ -130,7 +130,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
               {/* Trust points / performance metrics on right */}
               <div className="lg:col-span-5">
                 <FadeIn delay={0.25}>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-4">
                     {(heroTrustPoints || [
                       "Nopeus & suorituskyky",
                       "SEO-optimoitu",
