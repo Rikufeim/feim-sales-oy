@@ -1,14 +1,15 @@
-import React from 'react';
-import { ArrowRight, ArrowLeft, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
-import ContactCard from '@/components/ContactCard';
+import React, { useEffect, useState } from 'react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/Footer';
-
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import referenssi1 from '@/assets/referenssi-1.jpeg';
 import referenssi2 from '@/assets/referenssi-2.jpeg';
-import feimLogo from '@/assets/feim-logo.png';
+import refLujainfra from '@/assets/ref-lujainfra.png';
+import refSodergard from '@/assets/ref-sodergard.png';
+import salesApp1 from '@/assets/sales-app-1.png';
+import salesApp2 from '@/assets/sales-app-2.png';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -16,47 +17,126 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
   </motion.div>
 );
 
-const projects = [
+// Reference data
+const references = [
   {
-    title: "E-commerce Platform",
-    category: "Verkkokauppa • UI/UX • Kehitys",
-    desc: "Kokonaisvaltainen verkkokauppakokemus, joka yhdistää viimeistellyn visuaalisen ilmeen ja sujuvan ostopolun.",
-    result: "+180% konversioaste",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
-    details: [
-      "Responsiivinen verkkokauppa-alusta",
-      "Käyttäjäpolkujen optimointi",
-      "Integraatio maksujärjestelmiin",
-      "Tuote- ja kategoriahallinta"
-    ]
+    id: 1,
+    name: "Luja Infra",
+    category: "Verkkosivut",
+    image: refLujainfra,
+    url: "https://lujainfra.fi"
   },
   {
-    title: "SaaS Dashboard",
-    category: "Web-sovellus • Design System",
-    desc: "Datavetoinen hallintapaneeli, jossa monimutkaiset toiminnot yksinkertaistettiin selkeiksi käyttäjäpoluiksi.",
-    result: "Modulaarinen design-systeemi",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
-    details: [
-      "Räätälöity design system ja komponenttikirjasto",
-      "Reaaliaikainen data-visualisointi",
-      "Roolipohjainen käyttöoikeushallinta",
-      "API-integraatiot ja automaatiot"
-    ]
+    id: 2,
+    name: "Restaurointi Södergård",
+    category: "Verkkosivut",
+    image: refSodergard,
+    url: "https://restaurointisodergard.fi"
   },
   {
-    title: "Brand Experience",
-    category: "Brändi • Verkkosivut • Animaatio",
-    desc: "Premium-brändin digitaalinen identiteetti, joka yhdistää elokuvamaisen tarinankerronnan ja teknisen viimeistelyn.",
-    result: "3x enemmän sivukäyntejä",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop",
-    details: [
-      "Cinematic scroll-animaatiot",
-      "Brändi-identiteetin digitaalinen toteutus",
-      "Performanssi-optimoitu animaatiokerros",
-      "Immersive käyttäjäkokemus"
-    ]
+    id: 3,
+    name: "FEIM Sales",
+    category: "Mobiilisovellus",
+    image: salesApp1,
+    url: null
+  },
+  {
+    id: 4,
+    name: "FEIM Sales Pro",
+    category: "Mobiilisovellus",
+    image: salesApp2,
+    url: null
   },
 ];
+
+// Two-layer carousel component
+const ReferenceCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const itemsPerView = 2;
+  const totalItems = references.length;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % totalItems);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [totalItems]);
+
+  const getVisibleItems = () => {
+    const items = [];
+    for (let i = 0; i < itemsPerView; i++) {
+      const index = (currentIndex + i) % totalItems;
+      items.push({ ...references[index], position: i });
+    }
+    return items;
+  };
+
+  return (
+    <div className="relative w-full max-w-5xl mx-auto">
+      {/* Two-layer grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <AnimatePresence mode="popLayout">
+          {getVisibleItems().map((ref) => (
+            <motion.div
+              key={`${ref.id}-${ref.position}`}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: -20 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="group relative"
+            >
+              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 backdrop-blur-sm">
+                <div className="aspect-[16/10] overflow-hidden">
+                  <img
+                    src={ref.image}
+                    alt={ref.name}
+                    className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+                  <p className="text-xs font-medium text-blue-400/80 tracking-wider uppercase mb-1">
+                    {ref.category}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg lg:text-xl font-bold text-white">{ref.name}</h3>
+                    {ref.url && (
+                      <a
+                        href={ref.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                      >
+                        <ExternalLink size={16} className="text-white" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {/* Progress indicators */}
+      <div className="flex justify-center gap-2 mt-8">
+        {references.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex || index === (currentIndex + 1) % totalItems
+                ? 'bg-blue-500 w-6'
+                : 'bg-white/20 hover:bg-white/40'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const Referenssit = () => (
   <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
@@ -70,84 +150,39 @@ const Referenssit = () => (
       <meta property="og:url" content="https://feim.fi/referenssit" />
     </Helmet>
 
-    
-
     {/* Hero */}
-    <section className="relative pt-40 md:pt-52 pb-24 md:pb-32 overflow-hidden">
+    <section className="relative pt-40 md:pt-52 pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
         background: "radial-gradient(circle at 40% 80%, #0021ff15 0%, transparent 45%), #000",
       }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
-          <div className="lg:col-span-5">
-            <FadeIn delay={0.05}>
-              <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">
-                Valikoituja projekteja
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <p className="mt-6 text-lg text-neutral-400 max-w-xl leading-relaxed">
-                Jokainen projekti on uniikki kokonaisuus, suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta.
-              </p>
-            </FadeIn>
-          </div>
-          
-          {/* Hero images */}
-          <div className="lg:col-span-7">
-            <FadeIn delay={0.2}>
-              <div className="grid grid-cols-2 gap-4 lg:gap-6">
-                <div className="relative overflow-hidden rounded-2xl">
-                  <img src={referenssi1} alt="Luja Infra — FEIM projekti" className="w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                </div>
-                <div className="relative overflow-hidden rounded-2xl mt-8 lg:mt-12">
-                  <img src={referenssi2} alt="Lambardos — FEIM projekti" className="w-full h-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-500" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-        </div>
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full text-center">
+        <FadeIn delay={0.05}>
+          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">
+            Valikoituja projekteja
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Jokainen projekti on uniikki kokonaisuus, suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta.
+          </p>
+        </FadeIn>
       </div>
     </section>
 
-    {/* Project Cards – large format */}
+    {/* Reference Carousel */}
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
+        <FadeIn delay={0.2}>
+          <ReferenceCarousel />
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* CTA */}
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10 space-y-32 lg:space-y-40">
-        {projects.map((project, i) => (
-          <FadeIn key={i} delay={i * 0.1}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-              <div className={`relative overflow-hidden rounded-2xl ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <img src={project.image} alt={project.title} className="w-full h-80 lg:h-[28rem] object-cover opacity-70 hover:opacity-90 transition-opacity duration-500" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              </div>
-              <div className={i % 2 === 1 ? 'lg:order-1' : ''}>
-                <p className="text-xs font-medium text-blue-400/60 tracking-wider uppercase mb-4">{project.category}</p>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{project.title}</h2>
-                <p className="text-neutral-400 text-lg leading-relaxed mb-6">{project.desc}</p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-medium mb-8">
-                  {project.result}
-                </div>
-                <div className="space-y-3">
-                  {project.details.map((d, j) => (
-                    <div key={j} className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50 mt-2 shrink-0" />
-                      <p className="text-neutral-300 text-[15px]">{d}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        ))}
-      </div>
-    </section>
-
-    {/* Approach */}
-    <section className="relative py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 50% 50%, #0021ff15 0%, transparent 50%), #000" }} />
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
         <FadeIn>
@@ -159,7 +194,6 @@ const Referenssit = () => (
             <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
               Aloita oma projektisi <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            
           </div>
         </FadeIn>
       </div>
