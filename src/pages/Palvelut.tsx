@@ -79,7 +79,7 @@ const Palvelut = () => (
           </p>
         </FadeIn>
         <FadeIn delay={0.26}>
-          <div className="flex flex-col sm:flex-row gap-4 mt-12">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-12">
             <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group">
               Pyydä tarjous <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
