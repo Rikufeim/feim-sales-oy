@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
@@ -15,26 +15,35 @@ const FadeIn = ({ children, className = "", delay = 0 }: { children: React.React
   </motion.div>
 );
 
-const references = [
-  { id: 1, name: "Luja Infra", category: "Verkkosivut", image: refLujainfra, url: "https://lujainfra.fi" },
-  { id: 2, name: "Restaurointi Södergård", category: "Verkkosivut", image: refSodergard, url: "https://restaurointisodergard.fi" },
-  { id: 3, name: "FEIM Sales", category: "Mobiilisovellus", image: salesApp1, url: null },
-  { id: 4, name: "FEIM Sales Pro", category: "Mobiilisovellus", image: salesApp2, url: null },
+const categories = [
+  {
+    title: "Verkkosivut",
+    items: [
+      { id: 1, name: "Luja Infra", description: "Modernit verkkosivut maarakennusalan yritykselle", image: refLujainfra, url: "https://lujainfra.fi" },
+      { id: 2, name: "Restaurointi Södergård", description: "Brändiä tukevat verkkosivut restaurointiyritykselle", image: refSodergard, url: "https://restaurointisodergard.fi" },
+    ],
+  },
+  {
+    title: "Web-sovellukset",
+    items: [
+      { id: 3, name: "FEIM Sales", description: "Myyntityökalu tiimien käyttöön — reaaliaikainen data ja hallintapaneeli", image: salesApp1, url: null },
+    ],
+  },
+  {
+    title: "Prototyypit",
+    items: [
+      { id: 4, name: "FEIM Sales Pro", description: "Kehitetty versio myyntisovelluksesta — prototyypistä tuotteeksi", image: salesApp2, url: null },
+    ],
+  },
 ];
 
-const pairs = [
-  [references[0], references[1]],
-  [references[2], references[3]],
-];
-
-const RefCard = ({ item }: { item: typeof references[0] }) => (
-  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 group">
+const RefCard = ({ item }: { item: { id: number; name: string; description: string; image: string; url: string | null } }) => (
+  <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 group hover:border-white/20 transition-colors duration-300">
     <div className="p-3 lg:p-4">
       <img src={item.image} alt={item.name} className="w-full h-auto rounded-xl object-contain" loading="lazy" />
     </div>
     <div className="px-4 pb-4 lg:px-5 lg:pb-5">
-      <p className="text-xs font-medium text-blue-400/80 tracking-wider uppercase mb-1">{item.category}</p>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-1">
         <h3 className="text-lg lg:text-xl font-bold text-white">{item.name}</h3>
         {item.url && (
           <a href={item.url} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
@@ -42,53 +51,10 @@ const RefCard = ({ item }: { item: typeof references[0] }) => (
           </a>
         )}
       </div>
+      <p className="text-sm text-neutral-400 leading-relaxed">{item.description}</p>
     </div>
   </div>
 );
-
-const ReferenceCarousel = () => {
-  const [activePair, setActivePair] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>();
-
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setActivePair((p) => (p + 1) % pairs.length);
-    }, 4000);
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  return (
-    <div className="relative w-full max-w-5xl mx-auto">
-      <div className="relative">
-        {pairs.map((pair, pairIndex) => (
-          <div
-            key={pairIndex}
-            className={`grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 transition-opacity duration-700 ease-in-out ${
-              pairIndex === 0 ? 'relative' : 'absolute inset-0'
-            }`}
-            style={{ opacity: pairIndex === activePair ? 1 : 0, pointerEvents: pairIndex === activePair ? 'auto' : 'none' }}
-          >
-            {pair.map((item) => (
-              <RefCard key={item.id} item={item} />
-            ))}
-          </div>
-        ))}
-      </div>
-
-      <div className="flex justify-center gap-2 mt-8">
-        {pairs.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => { setActivePair(index); clearInterval(intervalRef.current); }}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === activePair ? 'bg-blue-500 w-6' : 'bg-white/20 hover:bg-white/40 w-2'
-            }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 const Referenssit = () => (
   <div className="bg-black min-h-screen font-sans antialiased selection:bg-white/30 selection:text-white">
@@ -119,13 +85,22 @@ const Referenssit = () => (
       </div>
     </section>
 
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
-        <FadeIn delay={0.2}>
-          <ReferenceCarousel />
-        </FadeIn>
-      </div>
-    </section>
+    {categories.map((cat, catIndex) => (
+      <section key={cat.title} className="relative py-16 md:py-24 overflow-hidden">
+        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
+          <FadeIn delay={0.05}>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">{cat.title}</h2>
+          </FadeIn>
+          <div className={`grid grid-cols-1 ${cat.items.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-2'} gap-6 lg:gap-8`}>
+            {cat.items.map((item, i) => (
+              <FadeIn key={item.id} delay={0.1 + i * 0.1}>
+                <RefCard item={item} />
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
 
     <section className="relative py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 50% 50%, #0021ff15 0%, transparent 50%), #000" }} />
