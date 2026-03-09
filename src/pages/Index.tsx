@@ -957,7 +957,7 @@ const Index = () => {
           <Services />
           <WhyFeim />
           
-          <Benefits />
+          <ClientRefs />
           <FounderSection />
           <FAQ />
           <Contact />
