@@ -623,7 +623,7 @@ const faqData = [
   { q: "Voiko sivustoa kehittää julkaisun jälkeen?", a: "Ehdottomasti. Digitaalinen maailma muuttuu jatkuvasti, ja sivustonne tulisi muuttua sen mukana. Tarjoamme jatkuvan kehityksen palvelua, jossa päivitämme, optimoimme ja laajennamme sivustoanne kuukausittain." },
   { q: "Toteutetaanko sivut mobiili edellä?", a: "Kyllä. Jokainen sivusto suunnitellaan ja toteutetaan responsiivisesti kaikille laitteille. Mobiilikokemus on meille yhtä tärkeä kuin työpöytäversio — usein jopa tärkeämpi." },
   { q: "Miten verkkosivusto tukee myyntiä?", a: "Rakennamme sivustot konversiokeskeisesti: selkeät toimintakehotukset, optimoidut käyttäjäpolut ja luottamusta herättävä design ohjaavat kävijöitä kohti yhteydenottoa tai ostopäätöstä." },
-  { q: "Mitä alustaa käytätte?", a: "Käytämme useita moderneja vibe-koodaus- ja tekoälytyökaluja riippuen projektin luonteesta. Pääasiallisina alustoina meillä on Lovable, Antigravity/Cursor sekä Beyondflow. Näiden yhdistelmällä pystymme toimittamaan laadukkaita ratkaisuja nopeammin kuin perinteisellä kehityksellä." },
+  { q: "Mitä alustaa käytätte?", a: "Käytämme useita moderneja vibe-koodaus- ja tekoälytyökaluja riippuen projektin luonteesta. Pääasiallisina alustoina meillä on Lovable, Antigravity/Cursor sekä Beymflow. Näiden yhdistelmällä pystymme toimittamaan laadukkaita ratkaisuja nopeammin kuin perinteisellä kehityksellä." },
 ];
 
 const FAQ = () => (
