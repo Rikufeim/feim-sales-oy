@@ -588,8 +588,8 @@ const FounderSection = () => {
 
           <FadeIn delay={0.5}>
             <div className="pl-8 mt-10 flex items-center gap-5">
-              <div className="w-16 h-16 rounded-full overflow-hidden shrink-0">
-                <img src={rikuImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
+              <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
+                <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
               </div>
               <div>
                 <p className={`font-semibold ${nameColor}`}>Riku Miettinen</p>
