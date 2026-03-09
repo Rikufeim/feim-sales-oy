@@ -587,13 +587,13 @@ const FounderSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.5}>
-            <div className="pl-8 mt-10 flex items-center gap-5">
-              <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
+            <div className="pl-8 mt-10 flex items-center gap-6">
+              <div className="w-28 h-28 rounded-full overflow-hidden shrink-0">
                 <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
               </div>
               <div>
-                <p className={`font-semibold ${nameColor}`}>Riku Miettinen</p>
-                <p className={`text-sm mb-2 ${bodyColor}`}>CEO, FEIM</p>
+                <p className={`font-semibold text-lg ${nameColor}`}>Riku Miettinen</p>
+                <p className={`text-sm mb-2 ${bodyColor}`}>Founder, FEIM</p>
                 <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
                   <a href="mailto:riku@feim.fi" className={`transition-colors ${bodyColor} hover:text-white`}>riku@feim.fi</a>
                   <a href="tel:+358413282218" className={`transition-colors ${bodyColor} hover:text-white`}>041 328 2218</a>
