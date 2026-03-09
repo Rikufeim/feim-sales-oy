@@ -80,11 +80,11 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile actions */}
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-2 sm:gap-3">
           <Link
             to="/yhteystiedot"
             onClick={() => setIsOpen(false)}
-            className="text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
+            className="text-xs sm:text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
           >
             Tilaa vedos
           </Link>
