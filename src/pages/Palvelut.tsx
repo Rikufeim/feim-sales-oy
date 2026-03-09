@@ -134,10 +134,10 @@ const Palvelut = () => (
               Ei pelkkiä verkkosivuja —<br />kokonaisia digitaalisia ratkaisuja.
             </h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
-              FEIM ei ole tavallinen verkkosivutoimisto. Rakennamme kokonaisia digitaalisia tuotteita ja palveluja, jotka tukevat liiketoimintaa, ratkaisevat oikeita ongelmia ja skaalautuvat tarpeen mukaan.
+              FEIM ei ole mainostoimisto. Rakennamme kokonaisia digitaalisia tuotteita ja palveluja, jotka tukevat liiketoimintaa, ratkaisevat oikeita ongelmia ja skaalautuvat tarpeen mukaan.
             </p>
             <p className="text-neutral-500 text-lg leading-relaxed mt-5">
-              Autamme myös yksityisiä ja tiimejä, joilla on idea sovelluksesta tai digitaalisesta tuotteesta. Ideasta rakennetaan nopeasti prototyyppi, testattava MVP tai valmis sovellus.
+              Palvelumme eivät ole vain yrityksille. Autamme myös yksityishenkilöitä ja tiimejä, joilla on idea sovelluksesta tai digitaalisesta tuotteesta — ideasta rakennetaan nopeasti prototyyppi, testattava MVP tai valmis sovellus.
             </p>
           </FadeIn>
           <div className="space-y-10 lg:pt-16">
