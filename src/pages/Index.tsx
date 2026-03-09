@@ -397,62 +397,89 @@ const Showcase = () => (
   </section>
 );
 
-/* ─── 6. Tulokset & hyödyt ─── */
+/* ─── 6. Referenssit ─── */
 
-const benefitsLeft = [
-  { title: "Nopeampi time-to-market", desc: "Vibe-koodauksen ansiosta saat laadukkaan lopputuloksen viikkojen, ei kuukausien päässä." },
-  { title: "Skaalautuva pohja kasvulle", desc: "Moderni teknologia ja jatkuvan kehityksen malli varmistavat, että digitaalinen läsnäolonne kasvaa liiketoimintanne mukana." },
+const clientRefs = [
+  {
+    name: "Lujainfra",
+    category: "Infra- ja maanrakennus • Verkkosivut",
+    desc: "Modernit verkkosivut luotettavalle infra- ja maanrakentamisen ammattilaiselle. Selkeä rakenne, vahva brändi ja toimiva mobiilikokemus.",
+    url: "https://lujainfra.fi/",
+    accent: "#F97316",
+    preview: "user-uploads://Screenshot_2026-03-09_at_3.26.23.png",
+  },
+  {
+    name: "Restaurointi Södergård",
+    category: "Restaurointipalvelut • Verkkosivut",
+    desc: "Tyylikäs ja perinteitä kunnioittava verkkopresenssi rakennuskannan restaurointiyritykselle. Visuaalinen identiteetti, joka heijastaa osaamista ja arvoja.",
+    url: "https://srgd.fi/",
+    accent: "#B8973A",
+    preview: "user-uploads://Screenshot_2026-03-09_at_3.27.08.png",
+  },
 ];
 
-const benefitsRight = [
-  { title: "Vahvempi digitaalinen brändi", desc: "Yhtenäinen visuaalinen identiteetti ja huoliteltu kokemus rakentavat brändiarvoa jokaisessa kosketuspisteessä." },
-  { title: "Verkkosivut, jotka konvertoivat", desc: "Optimoitu rakenne, nopeus ja SEO varmistavat, että kävijät löytävät teidät ja muuttuvat asiakkaiksi." },
-  { title: "Sovellus, joka tehostaa toimintaa", desc: "Räätälöity web-sovellus automatisoi rutiineja, vähentää manuaalista työtä ja vapauttaa aikaa olennaiseen." },
-  { title: "Prototyyppi, joka validoi idean", desc: "Nopea, toimiva prototyyppi osoittaa konseptin toimivuuden — ennen kuin käytät aikaa ja rahaa täyteen kehitykseen." },
-];
-
-const Benefits = () => (
-  <section id="hyodyt" className="relative py-32 overflow-hidden">
+const ClientRefs = () => (
+  <section id="referenssit" className="relative py-32 overflow-hidden">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-        <FadeIn>
-          <div className="lg:sticky lg:top-32">
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tulokset</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Mitä saat<br />käytännössä.</h2>
-            <p className="text-neutral-400 text-lg leading-relaxed mb-10">
-              Verkkosivuja, sovelluksia ja prototyyppejä — jokainen rakennettu tuottamaan konkreettisia liiketoimintatuloksia.
-            </p>
-            <div className="space-y-8">
-              {benefitsLeft.map((b, i) => (
-                <div key={i} className="flex gap-5">
-                  <div className="shrink-0 w-10 h-10 rounded-full bg-blue-800/15 border border-blue-700/25 flex items-center justify-center mt-1">
-                    <CheckCircle2 size={18} className="text-blue-700" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
-                    <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
-        <div className="space-y-8">
-          {benefitsRight.map((b, i) => (
-            <FadeIn key={i} delay={i * 0.06}>
-              <div className="flex gap-5">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-800/15 border border-blue-700/25 flex items-center justify-center mt-1">
-                  <CheckCircle2 size={18} className="text-blue-700" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">{b.title}</h3>
-                  <p className="text-neutral-500 text-sm leading-relaxed">{b.desc}</p>
+      <FadeIn>
+        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Referenssit</p>
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Projekteja, joista<br />olemme ylpeitä.</h2>
+        <p className="text-neutral-400 text-lg max-w-2xl mb-20">
+          Jokainen asiakasprojekti on ainutlaatuinen — rakennettu liiketoimintatavoitteiden pohjalta, ei templaten mukaan.
+        </p>
+      </FadeIn>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {clientRefs.map((ref, i) => (
+          <FadeIn key={i} delay={i * 0.12}>
+            <a
+              href={ref.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block relative overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.02] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-1"
+            >
+              {/* Screenshot preview */}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={ref.preview}
+                  alt={ref.name}
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                {/* External link icon */}
+                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ExternalLink size={15} className="text-white" />
                 </div>
               </div>
-            </FadeIn>
-          ))}
-        </div>
+
+              {/* Info */}
+              <div className="p-8">
+                <p className="text-xs font-medium tracking-widest uppercase mb-3" style={{ color: ref.accent }}>
+                  {ref.category}
+                </p>
+                <h3 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                  {ref.name}
+                  <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-neutral-400" />
+                </h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">{ref.desc}</p>
+              </div>
+            </a>
+          </FadeIn>
+        ))}
       </div>
+
+      <FadeIn delay={0.25}>
+        <div className="mt-12 text-center">
+          <Link
+            to="/referenssit"
+            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-300 group"
+          >
+            Katso kaikki referenssit
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </FadeIn>
     </div>
   </section>
 );
