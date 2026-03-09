@@ -100,15 +100,6 @@ const Meista = () => {
                 FEIM on moderni digitaalinen studio, joka yhdistää strategisen ajattelun, huippuluokan muotoilun ja modernin teknologian. Rakennamme ratkaisuja, joilla on vaikutus.
               </p>
             </FadeIn>
-            <FadeIn delay={0.3}>
-              <div className="flex items-center gap-4 mt-10">
-                <img src={rikuImg} alt="Riku Miettinen" className="w-12 h-12 rounded-full object-cover grayscale" />
-                <div>
-                  <p className={`text-sm font-medium ${headingText}`}>Riku Miettinen</p>
-                  <p className={`text-sm ${labelColor}`}>Perustaja, FEIM</p>
-                </div>
-              </div>
-            </FadeIn>
           </div>
         </div>
       </HeroBackground>
