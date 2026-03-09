@@ -221,7 +221,7 @@ const servicesData = [
 ];
 
 const Services = () => (
-  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto content-auto">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
@@ -272,26 +272,27 @@ const whyData = [
 
 const WhyFeim = () => (
   <section id="miksi-feim" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
-    {/* Starfield background */}
-    <div className="absolute inset-0 z-0">
-      {Array.from({ length: 120 }).map((_, i) => (
+    {/* Starfield background — reduced count + GPU-optimized */}
+    <div className="absolute inset-0 z-0" style={{ contain: 'strict' }}>
+      {Array.from({ length: 40 }).map((_, i) => (
         <div
           key={i}
           className="absolute rounded-full bg-white"
           style={{
-            width: `${Math.random() * 2 + 0.5}px`,
-            height: `${Math.random() * 2 + 0.5}px`,
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            opacity: Math.random() * 0.6 + 0.1,
-            animation: `twinkle ${Math.random() * 4 + 2}s ease-in-out infinite`,
-            animationDelay: `${Math.random() * 5}s`,
+            width: `${(i % 3) * 0.7 + 0.5}px`,
+            height: `${(i % 3) * 0.7 + 0.5}px`,
+            top: `${(i * 2.5) % 100}%`,
+            left: `${(i * 7.3) % 100}%`,
+            opacity: (i % 5) * 0.12 + 0.1,
+            animation: `twinkle ${(i % 4) + 2}s ease-in-out infinite`,
+            animationDelay: `${(i % 5) * 1}s`,
+            willChange: 'opacity, transform',
           }}
         />
       ))}
       {/* Subtle nebula glow */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/8 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/[0.08] rounded-full blur-[100px]" />
     </div>
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20">
@@ -351,7 +352,7 @@ const processSteps = [
 ];
 
 const Process = () => (
-  <section id="prosessi" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="prosessi" className="relative py-16 sm:py-24 md:py-32 ov content-autoerflow-hidden">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Prosessi</p>
@@ -386,7 +387,7 @@ const showcaseItems = [
 ];
 
 const Showcase = () => (
-  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Työnäytteet</p>
@@ -507,7 +508,7 @@ const ClientRefs = () => (
 /* ─── 7. Tekoäly ─── */
 
 const AISection = () => (
-  <section id="tekoaly" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="tekoaly" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
         <FadeIn>
@@ -635,7 +636,7 @@ const faqData = [
 ];
 
 const FAQ = () => (
-  <section id="ukk" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="ukk" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Usein kysyttyä</p>
@@ -696,7 +697,7 @@ const Contact = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   return (
-    <section id="yhteystiedot" className="relative py-16 sm:py-24 md:py-40 overflow-hidden">
+    <section id="yhteystiedot" className="relative py-16 sm:py-24 md:py-40 overflow-hidden content-auto">
       <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
       }} />
