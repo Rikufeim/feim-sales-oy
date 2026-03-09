@@ -408,7 +408,7 @@ const clientRefs = [
     desc: "Modernit verkkosivut luotettavalle infra- ja maanrakentamisen ammattilaiselle. Selkeä rakenne, vahva brändi ja toimiva mobiilikokemus.",
     url: "https://lujainfra.fi/",
     accent: "#F97316",
-    preview: "user-uploads://Screenshot_2026-03-09_at_3.26.23.png",
+    preview: refLujainfra,
   },
   {
     name: "Restaurointi Södergård",
