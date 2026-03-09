@@ -416,7 +416,7 @@ const clientRefs = [
     desc: "Tyylikäs ja perinteitä kunnioittava verkkopresenssi rakennuskannan restaurointiyritykselle. Visuaalinen identiteetti, joka heijastaa osaamista ja arvoja.",
     url: "https://srgd.fi/",
     accent: "#B8973A",
-    preview: "user-uploads://Screenshot_2026-03-09_at_3.27.08.png",
+    preview: refSodergard,
   },
 ];
 
