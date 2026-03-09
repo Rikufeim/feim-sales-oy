@@ -6,9 +6,11 @@ import feimLogo from "@/assets/feim-logo.png";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isContactPage = location.pathname === "/yhteystiedot";
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
+    <nav className={`${isContactPage ? "fixed" : "absolute"} top-0 left-0 right-0 z-50 py-4 sm:py-6`}>
       <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <Link to="/" aria-label="FEIM etusivulle">
           <img
