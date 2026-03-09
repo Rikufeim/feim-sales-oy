@@ -115,10 +115,10 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const isHash = (href: string) => href.startsWith('#');
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
+    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
+      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <div onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="cursor-pointer">
-          <img src={feimLogo} alt="FEIM" className="h-16 w-auto drop-shadow-lg" />
+          <img src={feimLogo} alt="FEIM" className="h-10 sm:h-16 w-auto drop-shadow-lg" />
         </div>
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
