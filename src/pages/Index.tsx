@@ -572,8 +572,8 @@ const FounderSection = () => {
   const closingColor = isDark ? 'text-neutral-500' : 'text-neutral-400';
 
   return (
-  <section className={`relative py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section className={`relative py-16 sm:py-24 md:py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
       {/* Header */}
       <FadeIn>
