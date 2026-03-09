@@ -150,14 +150,6 @@ const Yhteystiedot = () => {
                 </div>
               </div>
 
-              {/* Company info */}
-              <div className="space-y-4">
-                <h3 className={`text-lg font-semibold ${headingText}`}>FEIM Digital Studio</h3>
-                <div className={`space-y-2 text-sm ${bodyText}`}>
-                  <p>Y-tunnus: 3492270-5</p>
-                  <p>Helsinki, Suomi</p>
-                </div>
-              </div>
 
               {/* What we do */}
               <div className="space-y-4">
