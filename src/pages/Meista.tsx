@@ -105,11 +105,11 @@ const Meista = () => {
       </HeroBackground>
 
       {/* Story */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+      <section className="relative py-14 sm:py-24 overflow-hidden">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-24">
             <FadeIn>
-              <h2 className={`text-3xl md:text-5xl font-bold mb-6 ${headingText}`}>Emme tee kaikille kaikkea</h2>
+              <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 ${headingText}`}>Emme tee kaikille kaikkea</h2>
               <p className={`text-lg leading-relaxed mb-6 ${bodyText}`}>
                 Keskitymme harkittuihin, laadukkaisiin ratkaisuihin yrityksille ja yksilöille, jotka ymmärtävät digitaalisen läsnäolon merkityksen.
               </p>
