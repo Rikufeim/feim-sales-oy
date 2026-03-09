@@ -102,64 +102,74 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full mt-2 left-0 right-0 mx-3 sm:mx-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col gap-0.5 sm:gap-1 shadow-xl lg:hidden z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-xl flex flex-col items-center justify-center gap-2 lg:hidden z-50"
           >
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white p-2"
+              onClick={() => setIsOpen(false)}
+              aria-label="Sulje valikko"
+            >
+              <X size={28} />
+            </button>
+
             <Link
               to="/"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
               Etusivu
             </Link>
             <Link
               to="/palvelut"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
               Palvelut
             </Link>
             <Link
               to="/verkkosivut"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm"
+              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
             >
               Verkkosivut
             </Link>
             <Link
               to="/web-sovellukset"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm"
+              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
             >
               Web-sovellukset
             </Link>
             <Link
               to="/prototyypit"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm"
+              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
             >
               Prototyypit
             </Link>
             <Link
               to="/referenssit"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
               Referenssit
             </Link>
             <Link
               to="/meista"
               onClick={() => setIsOpen(false)}
-              className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
               Meistä
             </Link>
             <Link
               to="/yhteystiedot"
               onClick={() => setIsOpen(false)}
-              className="mt-2 text-center bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3 px-4 rounded-xl transition-colors"
+              className="mt-4 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full transition-colors"
             >
               Tilaa vedos
             </Link>
