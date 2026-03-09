@@ -124,13 +124,13 @@ const Palvelut = () => (
     </section>
 
     {/* ── Lähestymistapa ── */}
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 30% 50%, #0021ff12 0%, transparent 55%), #000" }} />
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-start">
           <FadeIn>
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Lähestymistapamme</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-8">
+            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Lähestymistapamme</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-6 sm:mb-8">
               Ei pelkkiä verkkosivuja —<br />kokonaisia digitaalisia ratkaisuja.
             </h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
