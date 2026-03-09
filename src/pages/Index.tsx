@@ -941,6 +941,13 @@ const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete:
 
 const Index = () => {
   const [view, setView] = useState('home');
+  const { setHidden } = useNavbarVisibility();
+
+  useEffect(() => {
+    setHidden(view === 'project');
+    return () => setHidden(false);
+  }, [view, setHidden]);
+
   const handleStartProject = () => { setView('project'); window.scrollTo(0, 0); };
   const handleNavigateHome = () => { setView('home'); window.scrollTo(0, 0); };
 
