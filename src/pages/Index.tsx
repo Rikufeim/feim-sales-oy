@@ -563,50 +563,35 @@ const FounderSection = () => {
         </h2>
       </FadeIn>
 
-      <div className="max-w-4xl">
-
-        {/* Thoughts as staggered quote-style blocks */}
-        <div className="space-y-12">
+      <div className="max-w-3xl">
+        {/* Clean text flow without border lines */}
+        <div className="space-y-10">
           <FadeIn delay={0.15}>
-            <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
-              <p className={`font-semibold text-lg md:text-xl leading-relaxed ${quoteColor}`}>
-                Perustin FEIMin koska näin maailman, jossa luovuus ja teknologia eivät enää tarvitse olla erillisiä. Tekoäly on antanut meille työkalut, joilla kuka tahansa voi rakentaa jotain merkityksellistä — nopeammin, rohkeammin ja vapaammin kuin koskaan aiemmin. Se on mahdollisuus, ei uhka.
-              </p>
-            </blockquote>
+            <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
+              Perustin FEIMin koska näin maailman, jossa luovuus ja teknologia eivät enää tarvitse olla erillisiä. Tekoäly on antanut meille työkalut, joilla kuka tahansa voi rakentaa jotain merkityksellistä — nopeammin, rohkeammin ja vapaammin kuin koskaan aiemmin.
+            </p>
           </FadeIn>
 
           <FadeIn delay={0.25}>
-            <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
-              <p className={`font-semibold text-lg md:text-xl leading-relaxed ${quoteColor}`}>
-                Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä.
-              </p>
-            </blockquote>
+            <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
+              Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä.
+            </p>
           </FadeIn>
 
-          <FadeIn delay={0.4}>
-            <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
-              <p className={`font-semibold text-xl md:text-2xl leading-relaxed italic ${quoteColor}`}>
-                "Uskon, että tekoäly ei korvaa ihmisen luovuutta — se vapauttaa sen."
-              </p>
-            </blockquote>
+          <FadeIn delay={0.35}>
+            <p className={`text-2xl md:text-3xl font-semibold leading-snug italic ${quoteColor}`}>
+              "Uskon, että tekoäly ei korvaa ihmisen luovuutta — se vapauttaa sen."
+            </p>
           </FadeIn>
 
-          <FadeIn delay={0.5}>
-            <div className="pl-8 mt-10 flex items-center gap-6">
-              <div className="w-28 h-28 rounded-full overflow-hidden shrink-0">
+          <FadeIn delay={0.45}>
+            <div className="mt-12 flex items-center gap-6">
+              <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
                 <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
               </div>
               <div>
                 <p className={`font-semibold text-lg ${nameColor}`}>Riku Miettinen</p>
-                <p className={`text-sm mb-2 ${bodyColor}`}>Founder, FEIM</p>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-                  <a href="mailto:riku@feim.fi" className={`transition-colors ${bodyColor} hover:text-white`}>riku@feim.fi</a>
-                  <a href="tel:+358413282218" className={`transition-colors ${bodyColor} hover:text-white`}>041 328 2218</a>
-                  <a href="https://wa.me/358413282218" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-green-400/80 hover:text-green-400 transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    WhatsApp
-                  </a>
-                </div>
+                <p className={`text-sm ${bodyColor}`}>Founder, FEIM</p>
               </div>
             </div>
           </FadeIn>
