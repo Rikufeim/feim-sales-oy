@@ -10,7 +10,7 @@ import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
-
+import { useNavbarVisibility } from '@/components/NavbarVisibility';
 import HeroBackground from '@/components/HeroBackground';
 import { useTheme } from '@/components/ThemeContext';
 
