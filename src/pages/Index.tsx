@@ -10,7 +10,7 @@ import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import { useNavbarVisibility } from '@/components/NavbarVisibility';
 import HeroBackground from '@/components/HeroBackground';
 import { useTheme } from '@/components/ThemeContext';
 
@@ -941,6 +941,13 @@ const ProjectWizard = ({ onBack, onComplete }: { onBack: () => void; onComplete:
 
 const Index = () => {
   const [view, setView] = useState('home');
+  const { setHidden } = useNavbarVisibility();
+
+  useEffect(() => {
+    setHidden(view === 'project');
+    return () => setHidden(false);
+  }, [view, setHidden]);
+
   const handleStartProject = () => { setView('project'); window.scrollTo(0, 0); };
   const handleNavigateHome = () => { setView('home'); window.scrollTo(0, 0); };
 
@@ -951,7 +958,7 @@ const Index = () => {
       ) : (
         <main className="relative">
           {/* Unified page background accents */}
-          <Navbar />
+          
           <Hero onStartProject={handleStartProject} />
           <Services />
           <WhyFeim />

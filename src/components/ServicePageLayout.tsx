@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ContactCard from '@/components/ContactCard';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import feimLogo from '@/assets/feim-logo.png';
 import { useTheme } from './ThemeContext';
@@ -109,10 +109,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
           }
         })}</script>
       </Helmet>
-
-      {/* Navigation */}
-      <Navbar />
-
       {/* Hero */}
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />

@@ -3,7 +3,7 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import feimLogo from '@/assets/feim-logo.png';
@@ -57,7 +57,7 @@ const Palvelut = () => (
       <meta property="og:url" content="https://feim.fi/palvelut" />
     </Helmet>
 
-    <Navbar />
+    
 
     {/* Hero — Compact overview with inline service anchors */}
     <section className="relative pt-32 md:pt-40 pb-8 overflow-hidden">
