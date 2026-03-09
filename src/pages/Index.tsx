@@ -274,7 +274,7 @@ const whyData = [
 ];
 
 const WhyFeim = () => (
-  <section id="miksi-feim" className="relative py-32 overflow-hidden bg-black">
+  <section id="miksi-feim" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
     {/* Starfield background */}
     <div className="absolute inset-0 z-0">
       {Array.from({ length: 120 }).map((_, i) => (
