@@ -675,74 +675,40 @@ const Contact = () => {
 
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
 
-        {/* ── Headline ── */}
-        <FadeIn>
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
-            <h2 className="text-4xl md:text-7xl font-bold text-white leading-[1.08] mb-6">
-              Tilaa maksuton{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
-              <br className="hidden md:block" /> digitaalisesta ratkaisustasi
-            </h2>
-            <p className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              FEIM ei tee pelkkiä verkkosivuja. Suunnittelemme ja luonnostelemme kokonaisia digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin. Kerro, mitä tarvitset, ja me näytämme mitä se voisi olla.
-            </p>
-          </div>
-        </FadeIn>
+        {/* ── Full-width two-column layout ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20 items-start">
 
-        {/* ── Palvelukortit ── */}
-        <FadeIn delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto mt-16 mb-20">
-            {serviceOptions.map((s) => (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => setSelectedService(s.id)}
-                className={`group relative text-left p-7 md:p-8 rounded-2xl border transition-all duration-500 ${
-                  selectedService === s.id
-                    ? 'bg-blue-500/[0.08] border-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.15)]'
-                    : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/[0.12]'
-                }`}
-              >
-                {selectedService === s.id && (
-                  <div className="absolute top-4 right-4">
-                    <CheckCircle2 size={20} className="text-blue-400" />
-                  </div>
-                )}
-                <span className="text-2xl mb-4 block">{s.icon}</span>
-                <h3 className="text-xl font-semibold text-white mb-2">{s.title}</h3>
-                <p className="text-neutral-300 text-[15px] leading-relaxed mb-2">{s.desc}</p>
-                <p className="text-neutral-500 text-sm leading-relaxed">{s.detail}</p>
-              </button>
-            ))}
-          </div>
-        </FadeIn>
-
-        {/* ── Main content: benefits left, form right ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-          {/* Left: Benefits */}
-          <FadeIn delay={0.15}>
+          {/* Left: Headline + benefits + contact */}
+          <FadeIn delay={0.05}>
             <div className="lg:sticky lg:top-32">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Mitä maksuton vedos sinulle antaa?</h3>
-              <div className="space-y-5">
+              <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
+              <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-6">
+                Tilaa maksuton{' '}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
+                {' '}digitaalisesta ratkaisustasi
+              </h2>
+              <p className="text-neutral-400 text-lg leading-relaxed mb-10">
+                Suunnittelemme ja luonnostelemme kokonaisia digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin. Kerro, mitä tarvitset, ja me näytämme mitä se voisi olla.
+              </p>
+
+              <div className="space-y-4 mb-12">
                 {vedosBullets.map((bullet, i) => (
                   <div key={i} className="flex gap-4 items-start">
-                    <div className="shrink-0 w-8 h-8 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">
-                      <CheckCircle2 size={16} className="text-blue-400/80" />
+                    <div className="shrink-0 w-7 h-7 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">
+                      <CheckCircle2 size={14} className="text-blue-400/80" />
                     </div>
-                    <p className="text-neutral-300 leading-relaxed">{bullet}</p>
+                    <p className="text-neutral-300 leading-relaxed text-[15px]">{bullet}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-12 pt-10 border-t border-white/[0.06]">
+              <div className="pt-8 border-t border-white/[0.06]">
                 <div className="flex items-start gap-5">
-                  <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0">
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden shrink-0">
                     <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale hover:grayscale-0 transition-all duration-500" />
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-lg">Riku Miettinen</p>
+                    <p className="text-white font-semibold">Riku Miettinen</p>
                     <p className="text-neutral-500 text-sm mb-3">Founder, FEIM</p>
                     <div className="space-y-1.5">
                       <a href="mailto:riku@feim.fi" className="text-neutral-300 text-sm hover:text-blue-400 transition-colors block">riku@feim.fi</a>
@@ -759,7 +725,7 @@ const Contact = () => {
           </FadeIn>
 
           {/* Right: Form */}
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.15}>
             <div className="bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 md:p-10 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-white mb-2">Jätä vedostilaus</h3>
               <p className="text-neutral-500 text-sm mb-8">Täytä alla olevat tiedot, niin aloitamme vedoksen valmistelun.</p>
@@ -806,7 +772,7 @@ const Contact = () => {
                             : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
                         }`}
                       >
-                        {s.title}
+                        {s.icon} {s.title}
                       </button>
                     ))}
                   </div>
