@@ -80,14 +80,14 @@ const Yhteystiedot = () => {
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
         
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <FadeIn delay={0.05}>
-                <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Yhteystiedot</p>
+                <p className={`text-xs sm:text-sm font-medium tracking-widest uppercase mb-4 sm:mb-6 ${labelColor}`}>Yhteystiedot</p>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
+                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
                   Aloitetaan projektisi
                 </h1>
               </FadeIn>
@@ -126,11 +126,11 @@ const Yhteystiedot = () => {
       </HeroBackground>
 
       <section className="relative pb-32 overflow-hidden">
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
           {/* Contact info row */}
           <FadeIn delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-20">
               {/* Contact person */}
               <div className="flex items-start gap-6">
                 <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
@@ -168,8 +168,8 @@ const Yhteystiedot = () => {
 
           {/* Full-width form */}
           <FadeIn delay={0.2}>
-            <div className={`border rounded-3xl p-8 md:p-12 backdrop-blur-sm ${formBg}`}>
-              <h3 className={`text-2xl font-bold mb-2 ${headingText}`}>Ota yhteyttä</h3>
+            <div className={`border rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-sm ${formBg}`}>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${headingText}`}>Ota yhteyttä</h3>
               <p className={`text-sm mb-8 ${bodyText}`}>Täytä alla olevat tiedot, niin palaamme asiaan 24 tunnin sisällä.</p>
 
               <form className="space-y-6" onSubmit={e => e.preventDefault()}>
@@ -199,7 +199,7 @@ const Yhteystiedot = () => {
                 {/* Service selection */}
                 <div className="space-y-3">
                   <label className={`text-sm font-medium ml-1 ${bodyText}`}>Mitä tarvitset?</label>
-                  <div className="grid grid-cols-3 lg:grid-cols-6 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                     {serviceOptions.map((s) => (
                       <button
                         key={s.id}

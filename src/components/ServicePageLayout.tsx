@@ -113,14 +113,14 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <FadeIn delay={0.05}>
                 <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>{hero.label}</p>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
+                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
                   {hero.title}
                 </h1>
               </FadeIn>
@@ -167,10 +167,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
 
       {/* Content Sections */}
       {sections.map((section, i) => (
-        <section key={i} className="relative py-24 overflow-hidden">
-          <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <section key={i} className="relative py-14 sm:py-24 overflow-hidden">
+          <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
             <FadeIn>
-              <h2 className={`text-3xl md:text-5xl font-bold mb-6 max-w-3xl ${sectionHeading}`}>{section.title}</h2>
+              <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 max-w-3xl ${sectionHeading}`}>{section.title}</h2>
               {section.description && (
                 <p className={`text-lg max-w-2xl mb-10 leading-relaxed ${sectionDesc}`}>{section.description}</p>
               )}
@@ -198,14 +198,14 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       {audience && (
         <section className="relative py-24 overflow-hidden">
           <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
-          <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+          <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
             <FadeIn>
-              <h2 className={`text-3xl md:text-5xl font-bold mb-10 max-w-3xl ${sectionHeading}`}>{audience.title}</h2>
+              <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-10 max-w-3xl ${sectionHeading}`}>{audience.title}</h2>
             </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {audience.items.map((item, i) => (
                 <FadeIn key={i} delay={i * 0.08}>
-                  <div className={`border rounded-2xl p-8 transition-all duration-500 ${cardBg}`}>
+                  <div className={`border rounded-2xl p-5 sm:p-8 transition-all duration-500 ${cardBg}`}>
                     <CheckCircle2 size={20} className={`${bulletIcon} mb-4`} />
                     <p className={`leading-relaxed ${bulletText}`}>{item}</p>
                   </div>
@@ -217,11 +217,11 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       )}
 
       {/* Bottom CTA */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10 text-center">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 text-center">
           <FadeIn>
-            <h2 className={`text-3xl md:text-6xl font-bold mb-6 ${sectionHeading}`}>{cta.title}</h2>
+            <h2 className={`text-2xl sm:text-3xl md:text-6xl font-bold mb-4 sm:mb-6 ${sectionHeading}`}>{cta.title}</h2>
             <p className={`text-lg max-w-xl mx-auto mb-10 ${sectionDesc}`}>{cta.description}</p>
             <a href={cta.buttonHref} className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
               {cta.buttonText} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

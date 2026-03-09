@@ -8,13 +8,13 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
+    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
+      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <Link to="/" aria-label="FEIM etusivulle">
           <img
             src={feimLogo}
             alt="FEIM"
-            className="h-16 w-auto drop-shadow-lg"
+            className="h-10 sm:h-16 w-auto drop-shadow-lg"
             loading="eager"
             decoding="async"
             draggable={false}
@@ -80,11 +80,11 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile actions */}
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-2 sm:gap-3">
           <Link
             to="/yhteystiedot"
             onClick={() => setIsOpen(false)}
-            className="text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
+            className="text-xs sm:text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
           >
             Tilaa vedos
           </Link>
@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-full mt-2 left-0 right-0 mx-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col gap-1 shadow-xl lg:hidden z-50"
+            className="absolute top-full mt-2 left-0 right-0 mx-3 sm:mx-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-3 sm:p-4 flex flex-col gap-0.5 sm:gap-1 shadow-xl lg:hidden z-50"
           >
             <Link
               to="/"

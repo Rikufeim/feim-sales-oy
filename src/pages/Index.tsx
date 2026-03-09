@@ -115,10 +115,10 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
   const isHash = (href: string) => href.startsWith('#');
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
+    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
+      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <div onClick={() => { onNavigate('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="cursor-pointer">
-          <img src={feimLogo} alt="FEIM" className="h-16 w-auto drop-shadow-lg" />
+          <img src={feimLogo} alt="FEIM" className="h-10 sm:h-16 w-auto drop-shadow-lg" />
         </div>
         <div className="hidden lg:flex items-center gap-1">
           <Link to="/" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Etusivu</Link>
@@ -173,24 +173,24 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? '#000000' : '#ffffff'}, transparent)` }}
     />
 
-    <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+    <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
       <FadeIn delay={0.1}>
-        <h1 className={`text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
+        <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
           Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
+        <p className={`mt-6 sm:mt-8 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
           Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla ja kaupallisella älykkyydellä.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
+          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <a href="#palvelut" className={`inline-flex items-center justify-center gap-2 px-8 py-4 border font-medium rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
+          <a href="#palvelut" className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border font-medium text-sm sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
           </a>
         </div>
@@ -221,12 +221,12 @@ const servicesData = [
 ];
 
 const Services = () => (
-  <section id="palvelut" className="relative py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Palvelut</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-w-4xl">Verkkosivut, web-sovellukset ja digitaaliset tuotteet</h2>
-        <div className="text-neutral-400 text-lg max-w-2xl mb-6 space-y-4">
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl">Verkkosivut, web-sovellukset ja digitaaliset tuotteet</h2>
+        <div className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-6 space-y-3 sm:space-y-4">
           <p>
             FEIM suunnittelee ja rakentaa moderneja digitaalisia ratkaisuja — verkkosivuista ja landing pageista aina web-sovelluksiin ja uusiin tuoteideoihin.
           </p>
@@ -274,7 +274,7 @@ const whyData = [
 ];
 
 const WhyFeim = () => (
-  <section id="miksi-feim" className="relative py-32 overflow-hidden bg-black">
+  <section id="miksi-feim" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
     {/* Starfield background */}
     <div className="absolute inset-0 z-0">
       {Array.from({ length: 120 }).map((_, i) => (
@@ -296,12 +296,12 @@ const WhyFeim = () => (
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/8 rounded-full blur-[100px]" />
     </div>
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20">
         <div>
           <FadeIn>
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Miksi FEIM</p>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
+            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Miksi FEIM</p>
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
               Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
             </p>
@@ -354,20 +354,20 @@ const processSteps = [
 ];
 
 const Process = () => (
-  <section id="prosessi" className="relative py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section id="prosessi" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Prosessi</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Ideasta valmiiksi<br />— viidessä vaiheessa.</h2>
-        <p className="text-neutral-400 text-lg max-w-2xl mb-20">
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Prosessi</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Ideasta valmiiksi<br />— viidessä vaiheessa.</h2>
+        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-12 sm:mb-20">
           Selkeä prosessi varmistaa, että projekti etenee aikataulussa, budjetissa ja ilman yllätyksiä.
         </p>
       </FadeIn>
       <div className="space-y-0">
         {processSteps.map((step, i) => (
           <FadeIn key={i} delay={i * 0.08}>
-            <div className="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-t border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <span className="text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-20">{step.num}</span>
+            <div className="group flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-12 py-6 sm:py-10 border-t border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-16 sm:w-20">{step.num}</span>
               <div className="max-w-2xl">
                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">{step.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{step.desc}</p>
@@ -389,17 +389,17 @@ const showcaseItems = [
 ];
 
 const Showcase = () => (
-  <section id="referenssit" className="relative py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Työnäytteet</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Valikoituja projekteja</h2>
-        <p className="text-neutral-400 text-lg max-w-2xl mb-20">
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Työnäytteet</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Valikoituja projekteja</h2>
+        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-12 sm:mb-20">
           Jokainen projekti on uniikki kokonaisuus, joka on suunniteltu asiakkaan liiketoimintatavoitteiden pohjalta.
         </p>
       </FadeIn>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {showcaseItems.map((item, i) => (
           <FadeIn key={i} delay={i * 0.1}>
             <div className="group relative overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
@@ -442,12 +442,12 @@ const clientRefs = [
 ];
 
 const ClientRefs = () => (
-  <section id="referenssit" className="relative py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Töitämme</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Töitämme.</h2>
-        <p className="text-neutral-400 text-lg max-w-2xl mb-20">
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Töitämme</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Töitämme.</h2>
+        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-12 sm:mb-20">
           Jokainen asiakasprojekti on ainutlaatuinen — rakennettu liiketoimintatavoitteiden pohjalta, ei templaten mukaan.
         </p>
       </FadeIn>
@@ -510,12 +510,12 @@ const ClientRefs = () => (
 /* ─── 7. Tekoäly ─── */
 
 const AISection = () => (
-  <section id="tekoaly" className="relative py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+  <section id="tekoaly" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
         <FadeIn>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Tekoäly</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.08]">
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Tekoäly</p>
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-[1.08]">
             Tekoäly on<br />työkalu, ei trendi.
           </h2>
           <p className="text-neutral-400 text-lg leading-relaxed mb-6">
@@ -572,13 +572,13 @@ const FounderSection = () => {
   const closingColor = isDark ? 'text-neutral-500' : 'text-neutral-400';
 
   return (
-  <section className={`relative py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+  <section className={`relative py-16 sm:py-24 md:py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
+    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
       {/* Header */}
       <FadeIn>
         <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Perustajan terveiset</p>
-        <h2 className={`text-4xl md:text-6xl font-bold leading-[1.08] mb-16 max-w-4xl ${headingColor}`}>
+        <h2 className={`text-2xl sm:text-4xl md:text-6xl font-bold leading-[1.08] mb-10 sm:mb-16 max-w-4xl ${headingColor}`}>
           Tekoäly muuttaa kaiken —{' '}
           <span className={`bg-clip-text text-transparent bg-gradient-to-r ${gradientText}`}>me autamme hyödyntämään sen.</span>
         </h2>
@@ -638,11 +638,11 @@ const faqData = [
 ];
 
 const FAQ = () => (
-  <section id="ukk" className="relative py-32 overflow-hidden">
-    <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10">
+  <section id="ukk" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Usein kysyttyä</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">Vastauksia yleisimpiin kysymyksiin</h2>
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Usein kysyttyä</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-10 sm:mb-16">Vastauksia yleisimpiin kysymyksiin</h2>
       </FadeIn>
       <FadeIn delay={0.1}>
         <Accordion type="single" collapsible className="space-y-2">
@@ -699,23 +699,23 @@ const Contact = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   return (
-    <section id="yhteystiedot" className="relative py-32 md:py-40 overflow-hidden">
+    <section id="yhteystiedot" className="relative py-16 sm:py-24 md:py-40 overflow-hidden">
       <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
       }} />
 
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
         {/* ── Header ── */}
         <FadeIn delay={0.05}>
-          <div className="text-center mb-16">
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
-            <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Aloita tästä</p>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-4 sm:mb-6">
               Tilaa maksuton{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
               {' '}digitaalisesta ratkaisustasi
             </h2>
-            <p className="text-neutral-400 text-lg leading-relaxed max-w-3xl mx-auto">
+            <p className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               Suunnittelemme ja luonnostelemme kokonaisia digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin. Kerro, mitä tarvitset, ja me näytämme mitä se voisi olla.
             </p>
           </div>
@@ -723,7 +723,7 @@ const Contact = () => {
 
         {/* ── Full-width form ── */}
         <FadeIn delay={0.15}>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-sm">
+          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 lg:p-16 backdrop-blur-sm">
 
             <form className="space-y-8" onSubmit={e => e.preventDefault()}>
               {/* Row 1: 4 columns on desktop */}
@@ -753,13 +753,13 @@ const Contact = () => {
               {/* Service selection */}
               <div className="space-y-3">
                 <label className="text-sm font-medium text-neutral-400 ml-1">Mitä haluat tilata?</label>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                   {serviceOptions.map((s) => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => setSelectedService(s.id)}
-                      className={`py-3.5 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
+                      className={`py-3 sm:py-3.5 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
                         selectedService === s.id
                           ? 'bg-blue-500/15 border-blue-500/30 text-blue-300'
                           : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
@@ -786,9 +786,9 @@ const Contact = () => {
               </div>
 
               {/* Submit + info row */}
-              <div className="flex flex-col lg:flex-row items-center gap-6 pt-2">
+              <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 pt-2">
                 <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-base py-4 px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
+                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
                   Tilaa maksuton vedos
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -813,7 +813,7 @@ const Contact = () => {
 
         {/* ── Benefits ── */}
         <FadeIn delay={0.25}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 sm:mt-16">
             {vedosBullets.map((bullet, i) => (
               <div key={i} className="flex gap-3 items-start">
                 <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">

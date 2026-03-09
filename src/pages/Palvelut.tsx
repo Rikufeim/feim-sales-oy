@@ -60,26 +60,26 @@ const Palvelut = () => (
     </Helmet>
 
     {/* ── Hero ── */}
-    <section className="relative pt-40 md:pt-52 pb-24 overflow-hidden">
+    <section className="relative pt-28 sm:pt-40 md:pt-52 pb-16 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
         background: "radial-gradient(ellipse at 60% 0%, #0021ff1a 0%, transparent 55%), #000",
       }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
+      <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Palvelut</p>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Palvelut</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-4xl">
             Mitä rakennamme
           </h1>
         </FadeIn>
         <FadeIn delay={0.18}>
-          <p className="mt-8 text-xl text-neutral-400 max-w-2xl leading-relaxed">
+          <p className="mt-5 sm:mt-8 text-base sm:text-xl text-neutral-400 max-w-2xl leading-relaxed">
             Verkkosivuista web-sovelluksiin ja prototyyppeihin — suunnittelemme ja toteutamme moderneja digitaalisia ratkaisuja, jotka tukevat liiketoimintaa ja skaalautuvat tarpeen mukaan.
           </p>
         </FadeIn>
         <FadeIn delay={0.26}>
-          <div className="flex flex-col sm:flex-row gap-4 mt-12">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-12">
             <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group">
               Pyydä tarjous <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -92,8 +92,8 @@ const Palvelut = () => (
     </section>
 
     {/* ── Palvelulista ── */}
-    <section id="palvelut-lista" className="relative py-8 pb-32 overflow-hidden">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+    <section id="palvelut-lista" className="relative py-6 sm:py-8 pb-16 sm:pb-32 overflow-hidden">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <div className="border-t border-white/[0.08]">
           {services.map((s, i) => (
             <FadeIn key={i} delay={i * 0.07}>
@@ -124,13 +124,13 @@ const Palvelut = () => (
     </section>
 
     {/* ── Lähestymistapa ── */}
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 30% 50%, #0021ff12 0%, transparent 55%), #000" }} />
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-start">
           <FadeIn>
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Lähestymistapamme</p>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-8">
+            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Lähestymistapamme</p>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-6 sm:mb-8">
               Ei pelkkiä verkkosivuja —<br />kokonaisia digitaalisia ratkaisuja.
             </h2>
             <p className="text-neutral-400 text-lg leading-relaxed">
@@ -158,12 +158,12 @@ const Palvelut = () => (
     </section>
 
     {/* ── CTA ── */}
-    <section className="relative py-40 overflow-hidden">
+    <section className="relative py-20 sm:py-32 md:py-40 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 50% 60%, #0021ff1e 0%, transparent 55%), #000" }} />
-      <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10 text-center">
         <FadeIn>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.08]">Tilaa maksuton vedos</h2>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Aloita tästä</p>
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-[1.08]">Tilaa maksuton vedos</h2>
           <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
             Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
           </p>

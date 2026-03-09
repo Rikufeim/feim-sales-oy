@@ -68,14 +68,14 @@ const Referenssit = () => (
       <meta property="og:url" content="https://feim.fi/referenssit" />
     </Helmet>
 
-    <section className="relative pt-40 md:pt-52 pb-16 md:pb-24 overflow-hidden">
+    <section className="relative pt-28 sm:pt-40 md:pt-52 pb-10 sm:pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 40% 80%, #0021ff15 0%, transparent 45%), #000" }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full text-center">
+      <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full text-center">
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4 sm:mb-6">Referenssit</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">Valikoituja projekteja</h1>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">Valikoituja projekteja</h1>
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
@@ -86,10 +86,10 @@ const Referenssit = () => (
     </section>
 
     {categories.map((cat, catIndex) => (
-      <section key={cat.title} className="relative py-16 md:py-24 overflow-hidden">
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
+      <section key={cat.title} className="relative py-10 sm:py-16 md:py-24 overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
           <FadeIn delay={0.05}>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">{cat.title}</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6 sm:mb-10">{cat.title}</h2>
           </FadeIn>
           <div className={`grid grid-cols-1 ${cat.items.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-2'} gap-6 lg:gap-8`}>
             {cat.items.map((item, i) => (
@@ -102,12 +102,12 @@ const Referenssit = () => (
       </section>
     ))}
 
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 50% 50%, #0021ff15 0%, transparent 50%), #000" }} />
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <FadeIn>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Jokainen projekti on erilainen</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 sm:mb-6">Jokainen projekti on erilainen</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-10">
               Emme käytä valmiita malleja. Jokainen ratkaisu suunnitellaan alusta asti asiakkaan brändin, tavoitteiden ja kohderyhmän mukaan.
             </p>

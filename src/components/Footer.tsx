@@ -4,7 +4,7 @@ import { useTheme } from './ThemeContext';
 
 const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) => (
   <div className="flex justify-center select-none overflow-hidden py-4">
-    <h2 className={`flex text-6xl md:text-9xl font-black tracking-tighter transition-colors duration-300 ${isDark ? 'text-white/10' : 'text-black/10'}`}>
+    <h2 className={`flex text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter transition-colors duration-300 ${isDark ? 'text-white/10' : 'text-black/10'}`}>
       {text.split("").map((letter, index) => (
         <span key={index} className={`inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 cursor-default ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>{letter}</span>
       ))}
@@ -15,9 +15,9 @@ const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) =>
 const Footer = () => {
   const { isDark } = useTheme();
   return (
-    <footer className={`relative pt-24 pb-8 px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
+    <footer className={`relative pt-12 sm:pt-24 pb-6 sm:pb-8 px-4 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
       <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-16">
           <div className="md:col-span-2">
             <img src={feimLogo} alt="FEIM" className="h-16 w-auto mb-4" />
             <p className={`max-w-sm leading-relaxed ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
@@ -47,9 +47,9 @@ const Footer = () => {
 
         <div className={`w-full h-px mb-8 ${isDark ? 'bg-white/[0.06]' : 'bg-black/[0.08]'}`} />
 
-        <div className={`flex flex-col md:flex-row justify-between items-center text-sm gap-4 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
+        <div className={`flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm gap-3 sm:gap-4 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
           <p>&copy; {new Date().getFullYear()} FEIM Digital Studio. Kaikki oikeudet pidätetään.</p>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6 flex-wrap justify-center">
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Tietosuojaseloste</a>
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Käyttöehdot</a>
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Evästeasetukset</a>
