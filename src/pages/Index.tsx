@@ -179,7 +179,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.2}>
         <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
-          Suunnittelemme ja toteutamme premium-verkkosivuja, jotka yhdistävät modernin designin, teknisen huippulaadun ja kaupallisen älykkyyden — sivustoja, jotka vahvistavat brändiäsi ja tuottavat konkreettisia tuloksia.
+          Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla ja kaupallisella älykkyydellä.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
