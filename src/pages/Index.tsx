@@ -274,7 +274,28 @@ const whyData = [
 ];
 
 const WhyFeim = () => (
-  <section id="miksi-feim" className="relative py-32 overflow-hidden">
+  <section id="miksi-feim" className="relative py-32 overflow-hidden bg-black">
+    {/* Starfield background */}
+    <div className="absolute inset-0 z-0">
+      {Array.from({ length: 120 }).map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-white"
+          style={{
+            width: `${Math.random() * 2 + 0.5}px`,
+            height: `${Math.random() * 2 + 0.5}px`,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            opacity: Math.random() * 0.6 + 0.1,
+            animation: `twinkle ${Math.random() * 4 + 2}s ease-in-out infinite`,
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        />
+      ))}
+      {/* Subtle nebula glow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/8 rounded-full blur-[100px]" />
+    </div>
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div>
