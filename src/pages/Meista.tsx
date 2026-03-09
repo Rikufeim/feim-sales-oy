@@ -148,10 +148,10 @@ const Meista = () => {
       </section>
 
       {/* Values */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+      <section className="relative py-14 sm:py-24 overflow-hidden">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <FadeIn>
-            <h2 className={`text-3xl md:text-5xl font-bold mb-16 ${headingText}`}>Miten ajattelemme</h2>
+            <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-10 sm:mb-16 ${headingText}`}>Miten ajattelemme</h2>
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((v, i) => (
