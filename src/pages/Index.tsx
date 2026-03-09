@@ -786,26 +786,12 @@ const Contact = () => {
               </div>
 
               {/* Submit + info row */}
-              <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 pt-2">
+              <div className="pt-2">
                 <button type="submit"
                   className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
                   Tilaa maksuton vedos
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <div className="flex items-center gap-5">
-                  <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
-                    <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%] grayscale" />
-                  </div>
-                  <div>
-                    <p className="text-neutral-400 text-sm">
-                      <span className="text-white font-medium">Riku Miettinen</span> palaa sinulle henkilökohtaisesti.
-                    </p>
-                    <div className="flex items-center gap-4 mt-1">
-                      <a href="mailto:riku@feim.fi" className="text-neutral-500 text-xs hover:text-blue-400 transition-colors">riku@feim.fi</a>
-                      <a href="tel:+358413282218" className="text-neutral-500 text-xs hover:text-blue-400 transition-colors">041 328 2218</a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </form>
           </div>
