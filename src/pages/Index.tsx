@@ -8,6 +8,8 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
+import refLujainfra from '@/assets/ref-lujainfra.png';
+import refSodergard from '@/assets/ref-sodergard.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
