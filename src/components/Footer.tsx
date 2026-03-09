@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className={`relative pt-12 sm:pt-24 pb-6 sm:pb-8 px-4 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
       <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-16">
           <div className="md:col-span-2">
             <img src={feimLogo} alt="FEIM" className="h-16 w-auto mb-4" />
             <p className={`max-w-sm leading-relaxed ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
