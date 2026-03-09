@@ -131,14 +131,14 @@ const Meista = () => {
       </section>
 
       {/* Stats */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-12 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <FadeIn>
-            <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-y ${statsBorder}`}>
+            <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 py-10 sm:py-16 border-y ${statsBorder}`}>
               {stats.map((stat, i) => (
                 <div key={i} className="text-center">
-                  <p className={`text-4xl md:text-5xl font-bold ${headingText}`}>{stat.num}</p>
+                  <p className={`text-3xl sm:text-4xl md:text-5xl font-bold ${headingText}`}>{stat.num}</p>
                   <p className={`text-sm mt-2 ${labelColor}`}>{stat.label}</p>
                 </div>
               ))}
