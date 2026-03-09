@@ -424,8 +424,8 @@ const ClientRefs = () => (
   <section id="referenssit" className="relative py-32 overflow-hidden">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Referenssit</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Projekteja, joista<br />olemme ylpeitä.</h2>
+        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Töitämme</p>
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">Töitämme.</h2>
         <p className="text-neutral-400 text-lg max-w-2xl mb-20">
           Jokainen asiakasprojekti on ainutlaatuinen — rakennettu liiketoimintatavoitteiden pohjalta, ei templaten mukaan.
         </p>
