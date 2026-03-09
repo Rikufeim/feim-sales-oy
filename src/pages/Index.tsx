@@ -230,6 +230,7 @@ const Services = () => (
           <p>
             Autamme yrityksiä kasvamaan verkossa, mutta myös yksityisiä ja tiimejä, joilla on idea sovelluksesta, palvelusta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus.
           </p>
+        </div>
       </FadeIn>
 
       <div className="mt-16 space-y-0 divide-y divide-white/[0.06]">
