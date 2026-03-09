@@ -102,12 +102,12 @@ const Referenssit = () => (
       </section>
     ))}
 
-    <section className="relative py-24 md:py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 50% 50%, #0021ff15 0%, transparent 50%), #000" }} />
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <FadeIn>
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Jokainen projekti on erilainen</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 sm:mb-6">Jokainen projekti on erilainen</h2>
             <p className="text-neutral-400 text-lg leading-relaxed mb-10">
               Emme käytä valmiita malleja. Jokainen ratkaisu suunnitellaan alusta asti asiakkaan brändin, tavoitteiden ja kohderyhmän mukaan.
             </p>

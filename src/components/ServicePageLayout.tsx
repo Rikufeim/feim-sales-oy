@@ -217,11 +217,11 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       )}
 
       {/* Bottom CTA */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10 text-center">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10 text-center">
           <FadeIn>
-            <h2 className={`text-3xl md:text-6xl font-bold mb-6 ${sectionHeading}`}>{cta.title}</h2>
+            <h2 className={`text-2xl sm:text-3xl md:text-6xl font-bold mb-4 sm:mb-6 ${sectionHeading}`}>{cta.title}</h2>
             <p className={`text-lg max-w-xl mx-auto mb-10 ${sectionDesc}`}>{cta.description}</p>
             <a href={cta.buttonHref} className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
               {cta.buttonText} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

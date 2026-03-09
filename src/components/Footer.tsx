@@ -47,9 +47,9 @@ const Footer = () => {
 
         <div className={`w-full h-px mb-8 ${isDark ? 'bg-white/[0.06]' : 'bg-black/[0.08]'}`} />
 
-        <div className={`flex flex-col md:flex-row justify-between items-center text-sm gap-4 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
+        <div className={`flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm gap-3 sm:gap-4 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
           <p>&copy; {new Date().getFullYear()} FEIM Digital Studio. Kaikki oikeudet pidätetään.</p>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6 flex-wrap justify-center">
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Tietosuojaseloste</a>
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Käyttöehdot</a>
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Evästeasetukset</a>

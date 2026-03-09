@@ -158,12 +158,12 @@ const Palvelut = () => (
     </section>
 
     {/* ── CTA ── */}
-    <section className="relative py-40 overflow-hidden">
+    <section className="relative py-20 sm:py-32 md:py-40 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 50% 60%, #0021ff1e 0%, transparent 55%), #000" }} />
-      <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10 text-center">
         <FadeIn>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.08]">Tilaa maksuton vedos</h2>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Aloita tästä</p>
+          <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-[1.08]">Tilaa maksuton vedos</h2>
           <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
             Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
           </p>

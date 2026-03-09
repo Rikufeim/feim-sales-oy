@@ -813,7 +813,7 @@ const Contact = () => {
 
         {/* ── Benefits ── */}
         <FadeIn delay={0.25}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 sm:mt-16">
             {vedosBullets.map((bullet, i) => (
               <div key={i} className="flex gap-3 items-start">
                 <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">

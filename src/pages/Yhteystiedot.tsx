@@ -199,7 +199,7 @@ const Yhteystiedot = () => {
                 {/* Service selection */}
                 <div className="space-y-3">
                   <label className={`text-sm font-medium ml-1 ${bodyText}`}>Mitä tarvitset?</label>
-                  <div className="grid grid-cols-3 lg:grid-cols-6 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
                     {serviceOptions.map((s) => (
                       <button
                         key={s.id}
