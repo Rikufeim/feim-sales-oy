@@ -221,7 +221,7 @@ const servicesData = [
 ];
 
 const Services = () => (
-  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto">
+  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto content-auto">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
@@ -352,7 +352,7 @@ const processSteps = [
 ];
 
 const Process = () => (
-  <section id="prosessi" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="prosessi" className="relative py-16 sm:py-24 md:py-32 ov content-autoerflow-hidden">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Prosessi</p>
