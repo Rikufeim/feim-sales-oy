@@ -638,11 +638,11 @@ const faqData = [
 ];
 
 const FAQ = () => (
-  <section id="ukk" className="relative py-32 overflow-hidden">
-    <div className="max-w-4xl mx-auto px-6 lg:px-16 relative z-10">
+  <section id="ukk" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
-        <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4">Usein kysyttyä</p>
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">Vastauksia yleisimpiin kysymyksiin</h2>
+        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Usein kysyttyä</p>
+        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-10 sm:mb-16">Vastauksia yleisimpiin kysymyksiin</h2>
       </FadeIn>
       <FadeIn delay={0.1}>
         <Accordion type="single" collapsible className="space-y-2">
