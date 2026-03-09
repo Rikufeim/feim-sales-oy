@@ -60,16 +60,16 @@ const Palvelut = () => (
     </Helmet>
 
     {/* ── Hero ── */}
-    <section className="relative pt-40 md:pt-52 pb-24 overflow-hidden">
+    <section className="relative pt-28 sm:pt-40 md:pt-52 pb-16 sm:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{
         background: "radial-gradient(ellipse at 60% 0%, #0021ff1a 0%, transparent 55%), #000",
       }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
+      <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Palvelut</p>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Palvelut</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-4xl">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-4xl">
             Mitä rakennamme
           </h1>
         </FadeIn>
