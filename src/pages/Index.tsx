@@ -546,17 +546,6 @@ const FounderSection = () => {
             </blockquote>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <p className={`text-[17px] leading-relaxed pl-8 ${bodyColor}`}>
-              Hyödynnämme tekoälyä kaikessa mitä teemme — suunnittelussa, kehityksessä ja strategiassa. Se tarkoittaa nopeampia projekteja, älykkäämpiä ratkaisuja ja parempaa lopputulosta. Mutta tekoäly ei korvaa näkemystä — se vahvistaa sitä.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.25}>
-            <p className={`text-[17px] leading-relaxed pl-8 ${bodyColor}`}>
-              FEIM on kokonaisvaltainen digitaalinen kumppani. Rakennamme <strong className={strongColor}>verkkosivuja</strong> jotka myyvät ja erottuvat, <strong className={strongColor}>web-sovelluksia</strong> jotka automatisoivat ja skaalautuvat, sekä <strong className={strongColor}>prototyyppejä ja MVP:itä</strong> joilla ideat validoidaan nopeasti.
-            </p>
-          </FadeIn>
 
           <FadeIn delay={0.3}>
             <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
