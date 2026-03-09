@@ -578,7 +578,7 @@ const FounderSection = () => {
       {/* Header */}
       <FadeIn>
         <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Perustajan terveiset</p>
-        <h2 className={`text-4xl md:text-6xl font-bold leading-[1.08] mb-16 max-w-4xl ${headingColor}`}>
+        <h2 className={`text-2xl sm:text-4xl md:text-6xl font-bold leading-[1.08] mb-10 sm:mb-16 max-w-4xl ${headingColor}`}>
           Tekoäly muuttaa kaiken —{' '}
           <span className={`bg-clip-text text-transparent bg-gradient-to-r ${gradientText}`}>me autamme hyödyntämään sen.</span>
         </h2>
