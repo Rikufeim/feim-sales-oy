@@ -76,76 +76,11 @@ const Yhteystiedot = () => {
 
       
 
-      {/* Hero */}
-      <HeroBackground className="!min-h-screen flex items-end pb-20">
-        <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
-        
-        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-end">
-            <div className="lg:col-span-7">
-              <FadeIn delay={0.05}>
-                <p className={`text-xs sm:text-sm font-medium tracking-widest uppercase mb-4 sm:mb-6 ${labelColor}`}>Yhteystiedot</p>
-              </FadeIn>
-              <FadeIn delay={0.1}>
-                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
-                  Aloitetaan projektisi
-                </h1>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <p className={`mt-8 text-lg md:text-xl max-w-xl leading-relaxed ${bodyText}`}>
-                  Kerro mitä tarvitset, niin palaamme asiaan henkilökohtaisesti 24 tunnin sisällä.
-                </p>
-              </FadeIn>
-            </div>
-            
-            <div className="lg:col-span-5">
-              <FadeIn delay={0.25}>
-                <div className="space-y-4">
-                  {["Maksuton vedos", "Vastaus 24h sisällä", "Henkilökohtainen palvelu", "Ei sitoumuksia"].map((point, i) => {
-                    const icons = [Zap, TrendingUp, Target, Palette];
-                    const Icon = icons[i % icons.length];
-                    return (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                        className="flex items-center gap-3"
-                      >
-                        <Icon size={18} className={`shrink-0 ${iconColor}`} />
-                        <p className={`text-sm font-medium ${headingText}`}>{point}</p>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </HeroBackground>
+      {/* Hero - minimal spacer */}
+      <div className={`pt-28 sm:pt-36 md:pt-44 ${bg}`} />
 
       <section className="relative pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-
-          {/* Contact info row */}
-          <FadeIn delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20">
-              {/* What we do */}
-              <div className="space-y-4">
-                <h3 className={`text-lg font-semibold ${headingText}`}>Mitä teemme</h3>
-                <div className="space-y-3">
-                  {['Verkkosivut', 'Web-sovellukset', 'Prototyypit & MVP:t', 'Vibe-koodaus'].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className={`w-1.5 h-1.5 rounded-full ${dotColor}`} />
-                      <p className={`text-sm ${isDark ? 'text-neutral-300' : 'text-neutral-600'}`}>{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
           {/* Full-width form */}
           <FadeIn delay={0.2}>
             <div className={`border rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-sm ${formBg}`}>
