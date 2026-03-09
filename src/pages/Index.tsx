@@ -723,7 +723,7 @@ const Contact = () => {
 
         {/* ── Full-width form ── */}
         <FadeIn delay={0.15}>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-3xl p-8 md:p-12 lg:p-16 backdrop-blur-sm">
+          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 lg:p-16 backdrop-blur-sm">
 
             <form className="space-y-8" onSubmit={e => e.preventDefault()}>
               {/* Row 1: 4 columns on desktop */}
