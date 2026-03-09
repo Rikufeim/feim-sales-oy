@@ -67,20 +67,29 @@ const Navbar: React.FC = () => {
           </Link>
           <Link
             to="/yhteystiedot"
-            className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105"
+            className="ml-4 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105"
           >
             Tilaa vedos
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="lg:hidden text-neutral-200 hover:text-white"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Navigaatiovalikko"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile actions */}
+        <div className="lg:hidden flex items-center gap-3">
+          <Link
+            to="/yhteystiedot"
+            onClick={() => setIsOpen(false)}
+            className="text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
+          >
+            Tilaa vedos
+          </Link>
+          <button
+            className="text-neutral-200 hover:text-white"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Navigaatiovalikko"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -137,7 +146,7 @@ const Navbar: React.FC = () => {
             <Link
               to="/yhteystiedot"
               onClick={() => setIsOpen(false)}
-              className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl"
+              className="mt-2 text-center bg-primary text-primary-foreground hover:bg-primary/90 font-semibold py-3 px-4 rounded-xl transition-colors"
             >
               Tilaa vedos
             </Link>
