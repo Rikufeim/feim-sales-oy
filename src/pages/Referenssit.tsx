@@ -159,7 +159,7 @@ const Referenssit = () => (
             <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-200 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
               Aloita oma projektisi <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <div className="mt-12"><ContactCard /></div>
+            
           </div>
         </FadeIn>
       </div>
