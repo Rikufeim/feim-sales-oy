@@ -8,13 +8,13 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 py-6">
-      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
+    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
+      <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <Link to="/" aria-label="FEIM etusivulle">
           <img
             src={feimLogo}
             alt="FEIM"
-            className="h-16 w-auto drop-shadow-lg"
+            className="h-10 sm:h-16 w-auto drop-shadow-lg"
             loading="eager"
             decoding="async"
             draggable={false}
