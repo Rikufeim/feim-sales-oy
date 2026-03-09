@@ -120,7 +120,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>{hero.label}</p>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
+                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
                   {hero.title}
                 </h1>
               </FadeIn>
