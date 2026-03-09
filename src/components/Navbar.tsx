@@ -60,6 +60,12 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <Link
+            to="/referenssit"
+            className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5"
+          >
+            Referenssit
+          </Link>
+          <Link
             to="/meista"
             className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5"
           >
