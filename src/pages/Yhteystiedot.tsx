@@ -83,7 +83,8 @@ const Yhteystiedot = () => {
         <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
           <FadeIn delay={0.1}>
             <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
-              Aloitetaan projektisi
+              Aloitetaan{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">projektisi</span>
             </h1>
           </FadeIn>
         </div>
