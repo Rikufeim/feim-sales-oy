@@ -226,7 +226,7 @@ const Services = () => (
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
         <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl">Verkkosivut, web-sovellukset ja digitaaliset tuotteet</h2>
-        <div className="text-neutral-400 text-lg max-w-2xl mb-6 space-y-4">
+        <div className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-6 space-y-3 sm:space-y-4">
           <p>
             FEIM suunnittelee ja rakentaa moderneja digitaalisia ratkaisuja — verkkosivuista ja landing pageista aina web-sovelluksiin ja uusiin tuoteideoihin.
           </p>
