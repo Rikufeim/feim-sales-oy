@@ -146,12 +146,13 @@ const Yhteystiedot = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className={`text-sm font-medium ml-1 ${bodyText}`}>Lisätietoja</label>
-                    <div className={`border-2 border-dashed rounded-xl px-5 py-8 text-center transition-colors cursor-pointer hover:border-opacity-30 ${isDark ? 'border-white/[0.12] hover:bg-white/[0.02]' : 'border-black/[0.12] hover:bg-black/[0.02]'}`}>
-                      <Paperclip size={24} className={`mx-auto mb-3 ${bodyText}`} />
-                      <p className={`text-sm font-medium ${headingText}`}>Lisätietoja</p>
-                      <p className={`text-xs mt-1 ${bodyText}`}>PDF, DOC</p>
-                    </div>
+                    <label className={`text-sm font-medium ml-1 ${bodyText}`}>Liitetiedosto <span className={isDark ? 'text-neutral-600' : 'text-neutral-400'}>(valinnainen)</span></label>
+                    <label className={`block border-2 border-dashed rounded-xl px-5 py-6 sm:py-8 text-center transition-colors cursor-pointer ${isDark ? 'border-white/[0.12] hover:bg-white/[0.02]' : 'border-black/[0.12] hover:bg-black/[0.02]'}`}>
+                      <input type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" className="hidden" />
+                      <Paperclip size={22} className={`mx-auto mb-2 ${bodyText}`} />
+                      <p className={`text-sm font-medium ${headingText}`}>Valitse tiedosto</p>
+                      <p className={`text-xs mt-1 ${bodyText}`}>PDF, DOC, PNG, JPG</p>
+                    </label>
                   </div>
                 </div>
 
