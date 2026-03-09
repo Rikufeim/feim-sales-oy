@@ -202,10 +202,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             <FadeIn>
               <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-6 sm:mb-10 max-w-3xl ${sectionHeading}`}>{audience.title}</h2>
             </FadeIn>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
               {audience.items.map((item, i) => (
                 <FadeIn key={i} delay={i * 0.08}>
-                  <div className={`border rounded-2xl p-8 transition-all duration-500 ${cardBg}`}>
+                  <div className={`border rounded-2xl p-5 sm:p-8 transition-all duration-500 ${cardBg}`}>
                     <CheckCircle2 size={20} className={`${bulletIcon} mb-4`} />
                     <p className={`leading-relaxed ${bulletText}`}>{item}</p>
                   </div>
