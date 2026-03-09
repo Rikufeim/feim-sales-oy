@@ -126,11 +126,11 @@ const Yhteystiedot = () => {
       </HeroBackground>
 
       <section className="relative pb-32 overflow-hidden">
-        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+        <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
           {/* Contact info row */}
           <FadeIn delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 mb-12 sm:mb-20">
               {/* Contact person */}
               <div className="flex items-start gap-6">
                 <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
