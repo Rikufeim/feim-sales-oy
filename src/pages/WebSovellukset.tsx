@@ -23,7 +23,6 @@ const WebSovellukset = () => (
         bullets: [
           "SaaS-palvelut ja tilauspohjaiset tuotteet",
           "Asiakasportaalit ja itsepalvelualustat",
-          "Hallinta- ja varausjärjestelmät",
           "Digitaaliset alustat ja markkinapaikat",
           "Automatisoidut työkalut ja sisäiset järjestelmät",
           "Uudet digitaaliset tuotteet ja palvelukonseptit"
