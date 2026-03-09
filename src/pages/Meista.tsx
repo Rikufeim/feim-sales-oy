@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ContactCard from '@/components/ContactCard';
-import Navbar from '@/components/Navbar';
+
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import { Link } from 'react-router-dom';

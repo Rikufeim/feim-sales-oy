@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import HeroBackground from '@/components/HeroBackground';
 import feimLogo from '@/assets/feim-logo.png';

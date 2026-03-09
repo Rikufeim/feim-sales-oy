@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from "re
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/components/ThemeContext";
 import MessageBubble from "@/components/MessageBubble";
+import Navbar from "@/components/Navbar";
 import Index from "./pages/Index";
 import Verkkosivut from "./pages/Verkkosivut";
 import WebSovellukset from "./pages/WebSovellukset";
