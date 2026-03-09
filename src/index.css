@@ -232,3 +232,14 @@ html.theme-light button.bg-neutral-900 { color: #ffffff !important; }
   0%, 100% { opacity: 0.1; transform: scale(0.8); }
   50% { opacity: 0.8; transform: scale(1.2); }
 }
+
+/* GPU-accelerated section isolation for scroll performance */
+section {
+  contain: layout style;
+}
+
+/* Optimize off-screen sections */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
