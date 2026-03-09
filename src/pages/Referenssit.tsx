@@ -24,15 +24,9 @@ const categories = [
     ],
   },
   {
-    title: "Web-sovellukset",
+    title: "Web-sovellukset & Prototyypit",
     items: [
-      { id: 3, name: "FEIM Sales", description: "Myyntityökalu tiimien käyttöön — reaaliaikainen data ja hallintapaneeli", image: salesApp1, url: null },
-    ],
-  },
-  {
-    title: "Prototyypit",
-    items: [
-      { id: 4, name: "FEIM Sales Pro", description: "Kehitetty versio myyntisovelluksesta — prototyypistä tuotteeksi", image: salesApp2, url: null },
+      { id: 3, name: "FEIM Sales", description: "Myyntityökalu tiimien käyttöön — reaaliaikainen data, hallintapaneeli ja kehitetty prototyypistä valmiiksi tuotteeksi", image: salesApp1, url: null },
     ],
   },
 ];
