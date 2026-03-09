@@ -15,7 +15,7 @@ const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) =>
 const Footer = () => {
   const { isDark } = useTheme();
   return (
-    <footer className={`relative pt-10 sm:pt-24 pb-6 sm:pb-8 px-5 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
+    <footer className={`relative pt-10 sm:pt-24 pb-20 sm:pb-8 px-5 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
       <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
         {/* Mobile: stacked layout, Desktop: grid */}
         <div className="flex flex-col gap-8 md:grid md:grid-cols-4 md:gap-12 mb-10 sm:mb-16">
