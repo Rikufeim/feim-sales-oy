@@ -14,7 +14,7 @@ const MessageBubble: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.9 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="absolute bottom-14 right-0 w-64 rounded-2xl border border-white/10 bg-black backdrop-blur-xl shadow-2xl overflow-hidden"
+            className="absolute bottom-14 right-0 w-48 rounded-2xl border border-white/10 bg-black backdrop-blur-xl shadow-2xl overflow-hidden"
           >
             <div className="p-2 flex flex-col gap-1">
               <a
