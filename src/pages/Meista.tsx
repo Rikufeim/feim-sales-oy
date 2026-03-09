@@ -153,10 +153,10 @@ const Meista = () => {
           <FadeIn>
             <h2 className={`text-2xl sm:text-3xl md:text-5xl font-bold mb-10 sm:mb-16 ${headingText}`}>Miten ajattelemme</h2>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {values.map((v, i) => (
               <FadeIn key={i} delay={i * 0.06}>
-                <div className={`border rounded-2xl p-8 transition-all duration-500 h-full ${cardBg}`}>
+                <div className={`border rounded-2xl p-5 sm:p-8 transition-all duration-500 h-full ${cardBg}`}>
                   <h3 className={`text-xl font-semibold mb-3 ${headingText}`}>{v.title}</h3>
                   <p className={`leading-relaxed text-[15px] ${bodyText}`}>{v.desc}</p>
                 </div>
