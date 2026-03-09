@@ -387,7 +387,7 @@ const showcaseItems = [
 ];
 
 const Showcase = () => (
-  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
+  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto">
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <FadeIn>
         <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Työnäytteet</p>
