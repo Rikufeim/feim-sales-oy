@@ -715,7 +715,7 @@ const Contact = () => {
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
               {' '}digitaalisesta ratkaisustasi
             </h2>
-            <p className="text-neutral-400 text-lg leading-relaxed max-w-3xl mx-auto">
+            <p className="text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
               Suunnittelemme ja luonnostelemme kokonaisia digitaalisia ratkaisuja — verkkosivuista web-sovelluksiin ja prototyyppeihin. Kerro, mitä tarvitset, ja me näytämme mitä se voisi olla.
             </p>
           </div>
