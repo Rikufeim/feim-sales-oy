@@ -94,7 +94,7 @@ const Yhteystiedot = () => {
           {/* Full-width form */}
           <FadeIn delay={0.2}>
             <div className={`border rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-sm ${formBg}`}>
-              <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${headingText}`}>Ota yhteyttä</h3>
+              <h3 className={`text-xl sm:text-2xl font-bold mb-6 ${headingText}`}>Ota yhteyttä</h3>
               <p className={`text-sm mb-8 ${bodyText}`}>Täytä alla olevat tiedot, niin palaamme asiaan 24 tunnin sisällä.</p>
 
               <form className="space-y-6" onSubmit={e => e.preventDefault()}>
