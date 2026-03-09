@@ -75,28 +75,27 @@ const ReferenceCarousel = () => {
     <div className="relative w-full max-w-5xl mx-auto">
       {/* Two-layer grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="sync">
           {getVisibleItems().map((ref) => (
             <motion.div
               key={`${ref.id}-${ref.position}`}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -20 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ opacity: 0, filter: "blur(8px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, filter: "blur(8px)" }}
+              transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
               className="group relative"
             >
               <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/50 backdrop-blur-sm">
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="p-3 lg:p-4">
                   <img
                     src={ref.image}
                     alt={ref.name}
-                    className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-auto rounded-xl object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 
-                {/* Content overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+                {/* Content below image */}
+                <div className="px-4 pb-4 lg:px-5 lg:pb-5">
                   <p className="text-xs font-medium text-blue-400/80 tracking-wider uppercase mb-1">
                     {ref.category}
                   </p>
