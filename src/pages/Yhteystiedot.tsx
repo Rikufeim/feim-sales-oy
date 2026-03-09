@@ -94,8 +94,6 @@ const Yhteystiedot = () => {
           {/* Full-width form */}
           <FadeIn delay={0.2}>
             <div className={`border rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-sm ${formBg}`}>
-              <h3 className={`text-xl sm:text-2xl font-bold mb-6 ${headingText}`}>Ota yhteyttä</h3>
-              
 
               <form className="space-y-6" onSubmit={e => e.preventDefault()}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
