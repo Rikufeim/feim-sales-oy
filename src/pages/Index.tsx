@@ -704,13 +704,13 @@ const Contact = () => {
         backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
       }} />
 
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
         {/* ── Header ── */}
         <FadeIn delay={0.05}>
-          <div className="text-center mb-16">
-            <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-6">Aloita tästä</p>
-            <h2 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-6">
+          <div className="text-center mb-10 sm:mb-16">
+            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Aloita tästä</p>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-4 sm:mb-6">
               Tilaa maksuton{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
               {' '}digitaalisesta ratkaisustasi
