@@ -786,9 +786,9 @@ const Contact = () => {
               </div>
 
               {/* Submit + info row */}
-              <div className="flex flex-col lg:flex-row items-center gap-6 pt-2">
+              <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 pt-2">
                 <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-base py-4 px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
+                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
                   Tilaa maksuton vedos
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
