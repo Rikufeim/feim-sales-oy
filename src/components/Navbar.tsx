@@ -143,6 +143,13 @@ const Navbar: React.FC = () => {
               Prototyypit
             </Link>
             <Link
+              to="/referenssit"
+              onClick={() => setIsOpen(false)}
+              className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
+            >
+              Referenssit
+            </Link>
+            <Link
               to="/meista"
               onClick={() => setIsOpen(false)}
               className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all"
