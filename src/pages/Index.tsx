@@ -366,8 +366,8 @@ const Process = () => (
       <div className="space-y-0">
         {processSteps.map((step, i) => (
           <FadeIn key={i} delay={i * 0.08}>
-            <div className="group flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-t border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <span className="text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-20">{step.num}</span>
+            <div className="group flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-12 py-6 sm:py-10 border-t border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <span className="text-3xl sm:text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-16 sm:w-20">{step.num}</span>
               <div className="max-w-2xl">
                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">{step.title}</h3>
                 <p className="text-neutral-400 leading-relaxed">{step.desc}</p>
