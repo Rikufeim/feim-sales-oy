@@ -399,7 +399,7 @@ const Showcase = () => (
         </p>
       </FadeIn>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {showcaseItems.map((item, i) => (
           <FadeIn key={i} delay={i * 0.1}>
             <div className="group relative overflow-hidden rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12] transition-all duration-500">
