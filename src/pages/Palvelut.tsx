@@ -74,7 +74,7 @@ const Palvelut = () => (
           </h1>
         </FadeIn>
         <FadeIn delay={0.18}>
-          <p className="mt-8 text-xl text-neutral-400 max-w-2xl leading-relaxed">
+          <p className="mt-5 sm:mt-8 text-base sm:text-xl text-neutral-400 max-w-2xl leading-relaxed">
             Verkkosivuista web-sovelluksiin ja prototyyppeihin — suunnittelemme ja toteutamme moderneja digitaalisia ratkaisuja, jotka tukevat liiketoimintaa ja skaalautuvat tarpeen mukaan.
           </p>
         </FadeIn>
