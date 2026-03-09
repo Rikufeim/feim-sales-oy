@@ -85,7 +85,7 @@ const Meista = () => {
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
         
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
           <div className="lg:col-span-7 max-w-4xl">
             <FadeIn delay={0.05}>
               <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Meistä</p>
