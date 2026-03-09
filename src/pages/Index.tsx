@@ -951,7 +951,7 @@ const Index = () => {
       ) : (
         <main className="relative">
           {/* Unified page background accents */}
-          <Navbar />
+          
           <Hero onStartProject={handleStartProject} />
           <Services />
           <WhyFeim />

@@ -70,7 +70,7 @@ const Referenssit = () => (
       <meta property="og:url" content="https://feim.fi/referenssit" />
     </Helmet>
 
-    <Navbar />
+    
 
     {/* Hero */}
     <section className="relative pt-40 md:pt-52 pb-24 md:pb-32 overflow-hidden">

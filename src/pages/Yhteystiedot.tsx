@@ -74,7 +74,7 @@ const Yhteystiedot = () => {
         <meta property="og:url" content="https://feim.fi/yhteystiedot" />
       </Helmet>
 
-      <Navbar />
+      
 
       {/* Hero */}
       <HeroBackground className="!min-h-screen flex items-end pb-20">

@@ -109,10 +109,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
           }
         })}</script>
       </Helmet>
-
-      {/* Navigation */}
-      <Navbar />
-
       {/* Hero */}
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />

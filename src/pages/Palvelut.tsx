@@ -57,7 +57,7 @@ const Palvelut = () => (
       <meta property="og:url" content="https://feim.fi/palvelut" />
     </Helmet>
 
-    <Navbar />
+    
 
     {/* Hero — Compact overview with inline service anchors */}
     <section className="relative pt-32 md:pt-40 pb-8 overflow-hidden">
