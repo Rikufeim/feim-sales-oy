@@ -86,10 +86,10 @@ const Referenssit = () => (
     </section>
 
     {categories.map((cat, catIndex) => (
-      <section key={cat.title} className="relative py-16 md:py-24 overflow-hidden">
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
+      <section key={cat.title} className="relative py-10 sm:py-16 md:py-24 overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10">
           <FadeIn delay={0.05}>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10">{cat.title}</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6 sm:mb-10">{cat.title}</h2>
           </FadeIn>
           <div className={`grid grid-cols-1 ${cat.items.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-2'} gap-6 lg:gap-8`}>
             {cat.items.map((item, i) => (
