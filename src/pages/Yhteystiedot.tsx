@@ -76,8 +76,18 @@ const Yhteystiedot = () => {
 
       
 
-      {/* Hero - minimal spacer */}
-      <div className={`pt-28 sm:pt-36 md:pt-44 ${bg}`} />
+      {/* Hero */}
+      <HeroBackground className="!min-h-[60vh] sm:!min-h-[70vh] flex items-end pb-20">
+        <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
+        
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
+          <FadeIn delay={0.1}>
+            <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
+              Aloitetaan projektisi
+            </h1>
+          </FadeIn>
+        </div>
+      </HeroBackground>
 
       <section className="relative pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
