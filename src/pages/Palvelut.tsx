@@ -30,16 +30,6 @@ const services = [
     desc: "Ideasta ensimmäinen toimiva versio — klikattava prototyyppi tai MVP, jolla idean toimivuus voidaan todentaa ennen täyttä kehitystä.",
     link: "/prototyypit"
   },
-  {
-    num: "04",
-    title: "Landing page -sivut",
-    desc: "Konversioon optimoidut laskeutumissivut kampanjoille, tuotteille ja palveluille.",
-  },
-  {
-    num: "05",
-    title: "Jatkuva kehitys",
-    desc: "Jatkuva kehitys, optimointi ja ylläpito pitävät digitaalisen tuotteenne kilpailukykyisenä.",
-  },
 ];
 
 const pillars = [
