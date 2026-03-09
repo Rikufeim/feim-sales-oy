@@ -80,14 +80,14 @@ const Yhteystiedot = () => {
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
         
-        <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <FadeIn delay={0.05}>
-                <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Yhteystiedot</p>
+                <p className={`text-xs sm:text-sm font-medium tracking-widest uppercase mb-4 sm:mb-6 ${labelColor}`}>Yhteystiedot</p>
               </FadeIn>
               <FadeIn delay={0.1}>
-                <h1 className={`text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
+                <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
                   Aloitetaan projektisi
                 </h1>
               </FadeIn>
