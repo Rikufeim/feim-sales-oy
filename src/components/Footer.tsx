@@ -4,7 +4,7 @@ import { useTheme } from './ThemeContext';
 
 const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) => (
   <div className="flex justify-center select-none overflow-hidden py-4">
-    <h2 className={`flex text-6xl md:text-9xl font-black tracking-tighter transition-colors duration-300 ${isDark ? 'text-white/10' : 'text-black/10'}`}>
+    <h2 className={`flex text-4xl sm:text-6xl md:text-9xl font-black tracking-tighter transition-colors duration-300 ${isDark ? 'text-white/10' : 'text-black/10'}`}>
       {text.split("").map((letter, index) => (
         <span key={index} className={`inline-block transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-110 cursor-default ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>{letter}</span>
       ))}
