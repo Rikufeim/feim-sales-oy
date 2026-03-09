@@ -92,8 +92,8 @@ const Palvelut = () => (
     </section>
 
     {/* ── Palvelulista ── */}
-    <section id="palvelut-lista" className="relative py-8 pb-32 overflow-hidden">
-      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+    <section id="palvelut-lista" className="relative py-6 sm:py-8 pb-16 sm:pb-32 overflow-hidden">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <div className="border-t border-white/[0.08]">
           {services.map((s, i) => (
             <FadeIn key={i} delay={i * 0.07}>
