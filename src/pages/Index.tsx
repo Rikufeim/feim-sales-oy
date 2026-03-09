@@ -540,31 +540,22 @@ const FounderSection = () => {
         <div className="space-y-12">
           <FadeIn delay={0.15}>
             <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
-              <p className={`font-semibold text-xl md:text-2xl leading-relaxed ${quoteColor}`}>
-                Elämme aikaa, jossa tekoäly muuttaa perustavanlaatuisesti sen, miten digitaalisia tuotteita suunnitellaan ja rakennetaan. FEIM on rakennettu tämän murroksen ytimeen.
-              </p>
-            </blockquote>
-          </FadeIn>
-
-
-          <FadeIn delay={0.3}>
-            <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
               <p className={`font-semibold text-xl md:text-2xl leading-relaxed italic ${quoteColor}`}>
                 "Uskon, että tekoäly ei korvaa ihmisen luovuutta — se vapauttaa sen."
               </p>
             </blockquote>
           </FadeIn>
 
-          <FadeIn delay={0.35}>
+          <FadeIn delay={0.25}>
             <p className={`text-[17px] leading-relaxed pl-8 ${bodyColor}`}>
               Perustin FEIMin koska näin maailman, jossa luovuus ja teknologia eivät enää tarvitse olla erillisiä. Tekoäly on antanut meille työkalut, joilla kuka tahansa voi rakentaa jotain merkityksellistä — nopeammin, rohkeammin ja vapaammin kuin koskaan aiemmin. Se on mahdollisuus, ei uhka.
             </p>
           </FadeIn>
 
-          <FadeIn delay={0.4}>
+          <FadeIn delay={0.35}>
             <blockquote className={`border-l-2 ${quoteBorder} pl-8`}>
               <p className={`font-semibold text-lg md:text-xl leading-relaxed ${quoteColor}`}>
-                Jokaisella on oikeus luovuuteen. Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä.
+                Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä.
               </p>
             </blockquote>
           </FadeIn>
