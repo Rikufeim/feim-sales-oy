@@ -68,14 +68,14 @@ const Referenssit = () => (
       <meta property="og:url" content="https://feim.fi/referenssit" />
     </Helmet>
 
-    <section className="relative pt-40 md:pt-52 pb-16 md:pb-24 overflow-hidden">
+    <section className="relative pt-28 sm:pt-40 md:pt-52 pb-10 sm:pb-16 md:pb-24 overflow-hidden">
       <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(circle at 40% 80%, #0021ff15 0%, transparent 45%), #000" }} />
-      <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full text-center">
+      <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full text-center">
         <FadeIn delay={0.05}>
-          <p className="text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-6">Referenssit</p>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/80 tracking-widest uppercase mb-4 sm:mb-6">Referenssit</p>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">Valikoituja projekteja</h1>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white pb-4 leading-[1.12]">Valikoituja projekteja</h1>
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
