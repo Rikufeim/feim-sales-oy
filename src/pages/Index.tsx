@@ -173,19 +173,19 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? '#000000' : '#ffffff'}, transparent)` }}
     />
 
-    <div className="px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-32 md:pt-40">
+    <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
       <FadeIn delay={0.1}>
-        <h1 className={`text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
+        <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
           Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-8 text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
+        <p className={`mt-6 sm:mt-8 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
           Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla ja kaupallisella älykkyydellä.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
           <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
