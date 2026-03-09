@@ -618,12 +618,12 @@ const FounderSection = () => {
 const faqData = [
   { q: "Mitä verkkosivuprojekti maksaa?", a: "Jokainen projekti hinnoitellaan kiinteään hintaan projektin laajuuden perusteella. Landing page -sivujen hinnat alkavat muutamasta sadasta eurosta, ja laajemmat yrityssivustot räätälöidään tarpeen mukaan. Emme käytä tuntilaskutusta — tiedät aina etukäteen, mitä maksat." },
   { q: "Kuinka kauan projekti kestää?", a: "Tyypillinen verkkosivuprojekti valmistuu 2–6 viikossa riippuen laajuudesta. Landing page -sivut voivat valmistua viikossa, laajemmat kokonaisuudet 4–8 viikossa. Prosessimme on suunniteltu nopeaksi ilman laatukompromisseja." },
+  { q: "Mitä alustaa käytätte?", a: "Käytämme useita moderneja vibe-koodaus- ja tekoälytyökaluja riippuen projektin luonteesta. Pääasiallisina alustoina meillä on Lovable, Antigravity/Cursor sekä Beymflow. Näiden yhdistelmällä pystymme toimittamaan laadukkaita ratkaisuja nopeammin kuin perinteisellä kehityksellä." },
   { q: "Mitä palveluun sisältyy?", a: "Kaikki projektit sisältävät strategisen kartoituksen, UI/UX-suunnittelun, responsiivisen toteutuksen, SEO-perusoptimoinnin, suorituskykyoptimoinnin ja julkaisun. Jatkuva kehitys ja lisäpalvelut sovitaan erikseen." },
   { q: "Tehdäänkö myös hakukoneoptimointia?", a: "Kyllä. Jokainen sivusto rakennetaan hakukoneystävälliselle pohjalle: semanttinen HTML, optimoidut latausajat, meta-tiedot ja rakenteinen data ovat osa perustoimitusta. Laajempi SEO-strategia sovitaan erikseen." },
   { q: "Voiko sivustoa kehittää julkaisun jälkeen?", a: "Ehdottomasti. Digitaalinen maailma muuttuu jatkuvasti, ja sivustonne tulisi muuttua sen mukana. Tarjoamme jatkuvan kehityksen palvelua, jossa päivitämme, optimoimme ja laajennamme sivustoanne kuukausittain." },
   { q: "Toteutetaanko sivut mobiili edellä?", a: "Kyllä. Jokainen sivusto suunnitellaan ja toteutetaan responsiivisesti kaikille laitteille. Mobiilikokemus on meille yhtä tärkeä kuin työpöytäversio — usein jopa tärkeämpi." },
   { q: "Miten verkkosivusto tukee myyntiä?", a: "Rakennamme sivustot konversiokeskeisesti: selkeät toimintakehotukset, optimoidut käyttäjäpolut ja luottamusta herättävä design ohjaavat kävijöitä kohti yhteydenottoa tai ostopäätöstä." },
-  { q: "Mitä alustaa käytätte?", a: "Käytämme useita moderneja vibe-koodaus- ja tekoälytyökaluja riippuen projektin luonteesta. Pääasiallisina alustoina meillä on Lovable, Antigravity/Cursor sekä Beymflow. Näiden yhdistelmällä pystymme toimittamaan laadukkaita ratkaisuja nopeammin kuin perinteisellä kehityksellä." },
 ];
 
 const FAQ = () => (
