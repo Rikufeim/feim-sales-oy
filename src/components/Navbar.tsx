@@ -62,6 +62,12 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <Link
+            to="/tuotteet"
+            className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5"
+          >
+            Tuotteet
+          </Link>
+          <Link
             to="/referenssit"
             className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5"
           >
@@ -160,6 +166,13 @@ const Navbar: React.FC = () => {
               className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
               Referenssit
+            </Link>
+            <Link
+              to="/tuotteet"
+              onClick={() => setIsOpen(false)}
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
+            >
+              Tuotteet
             </Link>
             <Link
               to="/meista"
