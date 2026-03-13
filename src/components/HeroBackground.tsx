@@ -1,19 +1,40 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { MeshGradient } from "@paper-design/shaders-react";
 
 export const HeroBackground: React.FC<{ children?: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
+  const shaderRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const el = shaderRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: '100px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={`relative w-full min-h-screen overflow-hidden ${className}`}>
-      <div className="absolute inset-x-0 top-0 h-[60%] z-0" style={{ contain: 'strict', willChange: 'transform' }}>
-        <MeshGradient
-          style={{ width: '100%', height: '100%' }}
-          colors={["#000000", "#000000", "#001a66", "#000000"]}
-          speed={0.3}
-          distortion={0.8}
-          // @ts-ignore
-          brightness={0.5}
-          swirl={0.1}
-        />
+      <div
+        ref={shaderRef}
+        className="absolute inset-x-0 top-0 h-[60%] z-0"
+        style={{ contain: 'strict', willChange: 'transform' }}
+      >
+        {isVisible && (
+          <MeshGradient
+            style={{ width: '100%', height: '100%' }}
+            colors={["#000000", "#000000", "#001a66", "#000000"]}
+            speed={0.15}
+            distortion={0.6}
+            // @ts-ignore
+            brightness={0.5}
+            swirl={0.1}
+          />
+        )}
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black via-black to-transparent" />
       </div>
 

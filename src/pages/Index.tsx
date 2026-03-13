@@ -274,23 +274,7 @@ const WhyFeim = () => (
   <section id="miksi-feim" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
     {/* Starfield background — reduced count + GPU-optimized */}
     <div className="absolute inset-0 z-0" style={{ contain: 'strict' }}>
-      {Array.from({ length: 40 }).map((_, i) => (
-        <div
-          key={i}
-          className="absolute rounded-full bg-white"
-          style={{
-            width: `${(i % 3) * 0.7 + 0.5}px`,
-            height: `${(i % 3) * 0.7 + 0.5}px`,
-            top: `${(i * 2.5) % 100}%`,
-            left: `${(i * 7.3) % 100}%`,
-            opacity: (i % 5) * 0.12 + 0.1,
-            animation: `twinkle ${(i % 4) + 2}s ease-in-out infinite`,
-            animationDelay: `${(i % 5) * 1}s`,
-            willChange: 'opacity, transform',
-          }}
-        />
-      ))}
-      {/* Subtle nebula glow */}
+      {/* Subtle nebula glow — static, no per-element animations */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/[0.08] rounded-full blur-[100px]" />
     </div>
