@@ -14,7 +14,7 @@ const WebSovellukset = () => (
       title: "Rakennamme web-sovelluksia ja digitaalisia tuotteita",
       intro: "",
       cta: "",
-      ctaHref: "/yhteystiedot"
+      ctaHref: "/yhteystiedot#vedos"
     }}
     sections={[
       {
@@ -64,7 +64,7 @@ const WebSovellukset = () => (
       title: "Kerro ideastasi",
       description: "Olitpa vasta ideointivaiheessa tai sinulla on selkeä konsepti — keskustellaan miten lähdetään liikkeelle.",
       buttonText: "Keskustele sovellusideastasi",
-      buttonHref: "/yhteystiedot"
+      buttonHref: "/yhteystiedot#vedos"
     }}
   />
 );

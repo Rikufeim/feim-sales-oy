@@ -10,6 +10,15 @@ import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';
 import refSodergard from '@/assets/ref-sodergard.png';
+import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
+import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
+import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
+import svcWebapp1 from '@/assets/service-webapp-1.png';
+import svcWebapp2 from '@/assets/service-webapp-2.png';
+import svcWebapp3 from '@/assets/service-webapp-3.png';
+import svcProto1 from '@/assets/service-proto-1.png';
+import svcProto2 from '@/assets/service-proto-2.png';
+import svcProto3 from '@/assets/service-proto-3.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
@@ -135,8 +144,8 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             </div>
           </div>
           <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
-          <Link to="/yhteystiedot" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
-          <Link to="/yhteystiedot" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
+          <Link to="/yhteystiedot#vedos" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
+          <Link to="/yhteystiedot#vedos" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
           </Link>
         </div>
@@ -153,8 +162,8 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
             <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
             <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
-            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
-            <Link to="/yhteystiedot" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
+            <Link to="/yhteystiedot#vedos" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
+            <Link to="/yhteystiedot#vedos" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
         )}
       </AnimatePresence>
@@ -186,7 +195,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
-          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
@@ -204,60 +213,178 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
 
 const servicesData = [
   {
-    title: "Verkkosivut",
-    desc: "Modernit ja liiketoimintaa tukevat verkkosivut, jotka viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
-    link: "/verkkosivut"
+    id: "verkkosivut",
+    label: "Verkkosivut",
+    link: "/verkkosivut",
+    tagline: "Myyvät sivut, jotka rakentavat brändiä",
+    desc: "Rakennamme modernit verkkosivut, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
+    features: [
+      "Responsiivinen design kaikille laitteille",
+      "SEO-optimoitu rakenne alusta alkaen",
+      "Nopeat latausajat ja suorituskykyoptimointi",
+      "Konversio-optimoitu käyttökokemus",
+      "Analytiikka ja seuranta mukana",
+    ],
+    cta: "Tutustu verkkosivupalveluun",
+    images: [
+      { src: svcVerkkosivut1, alt: "Moderni yrityssivu – mockup" },
+      { src: svcVerkkosivut2, alt: "Digitaalisen kasvun verkkosivut" },
+      { src: svcVerkkosivut3, alt: "Landing page – mockup" },
+    ],
   },
   {
-    title: "Web-sovellukset",
-    desc: "Räätälöityjä web-sovelluksia — asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita.",
-    link: "/web-sovellukset"
+    id: "web-sovellukset",
+    label: "Web-sovellukset",
+    link: "/web-sovellukset",
+    tagline: "Räätälöityjä digitaalisia tuotteita",
+    desc: "Suunnittelemme ja rakennimme asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita — ideasta valmiiksi tuotteeksi.",
+    features: [
+      "Käyttäjälähtöinen UX-suunnittelu",
+      "Skaalautuva tekninen arkkitehtuuri",
+      "Integraatiot olemassaoleviin järjestelmiin",
+      "Toistuvat prosessit automatisoituna",
+      "Jatkuva kehitys ja ylläpito",
+    ],
+    cta: "Tutustu web-sovelluksiin",
+    images: [
+      { src: svcWebapp1, alt: "Analytics dashboard – web-sovellus" },
+      { src: svcWebapp2, alt: "Varausjärjestelmä – web-sovellus" },
+      { src: svcWebapp3, alt: "Tuotehallinta – web-sovellus" },
+    ],
   },
   {
-    title: "Prototyypit ja MVP:t",
-    desc: "Ideasta ensimmäinen versio — klikattava prototyyppi, MVP tai konsepti, jolla ideaa voidaan testata ja esitellä.",
-    link: "/prototyypit"
+    id: "prototyypit",
+    label: "Prototyypit & MVP",
+    link: "/prototyypit",
+    tagline: "Ideasta testattavaksi tuotteeksi nopeasti",
+    desc: "Validoimme ideasi nopeasti toimivalla prototyypillä tai MVP:llä — ennen kuin investoit täyteen tuotekehitykseen. Nopea tapa konkretisoida ja testata.",
+    features: [
+      "Klikattava prototyyppi päivissä",
+      "Käyttäjätestaus ennen rakentamista",
+      "Sijoittajille esitettävä demo-versio",
+      "Selkeä polku MVP:stä täyteen tuotteeseen",
+      "Lean-ajattelu ja nopeat iteraatiot",
+    ],
+    cta: "Tutustu prototyyppeihin",
+    images: [
+      { src: svcProto1, alt: "Prototyyppi – user flow" },
+      { src: svcProto2, alt: "Mobiiliprototyyppi – näyttövirta" },
+      { src: svcProto3, alt: "Design system – komponenttikirjasto" },
+    ],
   },
 ];
 
-const Services = () => (
-  <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden content-auto content-auto">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-      <FadeIn>
-        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
-        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 max-w-4xl">Verkkosivut, web-sovellukset ja digitaaliset tuotteet</h2>
-        <div className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-6 space-y-3 sm:space-y-4">
-          <p>
-            Autamme yrityksiä kasvamaan verkossa, mutta myös yksityisiä ja tiimejä, joilla on idea sovelluksesta, palvelusta tai digitaalisesta tuotteesta. Ideasta voidaan rakentaa nopeasti prototyyppi, testattava MVP tai valmis web-sovellus.
-          </p>
-        </div>
-      </FadeIn>
+const Services = () => {
+  const [active, setActive] = useState(0);
+  const s = servicesData[active];
 
-      <div className="mt-16 space-y-0 divide-y divide-white/[0.06]">
-        {servicesData.map((s, i) => (
-          <FadeIn key={i} delay={i * 0.06}>
-            {s.link ? (
-              <Link to={s.link} className="group flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 md:py-10 hover:pl-4 transition-all duration-500">
-                <div className="flex-1">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
-                    {s.title}
-                    <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 text-blue-400" />
-                  </h3>
-                </div>
-                <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-md md:text-right">{s.desc}</p>
-              </Link>
-            ) : (
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 py-8 md:py-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-white/60">{s.title}</h3>
-                <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-md md:text-right">{s.desc}</p>
+  return (
+    <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+        <FadeIn>
+          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-10 sm:mb-14 max-w-3xl">
+            Verkkosivut, web-sovellukset ja digitaaliset tuotteet
+          </h2>
+        </FadeIn>
+
+        {/* Mac-window card */}
+        <FadeIn delay={0.15}>
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden border border-b-transparent border-white/[0.08] bg-[#1a1a1a] shadow-2xl">
+            {/* Bottom fade to black */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent z-20" />
+
+            {/* Title bar */}
+            <div className="flex items-center gap-0 border-b border-white/[0.07] bg-[#232323]">
+              {/* Traffic lights */}
+              <div className="flex items-center gap-1.5 px-4 py-3.5 shrink-0">
+                <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <span className="w-3 h-3 rounded-full bg-[#28c840]" />
               </div>
-            )}
-          </FadeIn>
-        ))}
+              <div className="w-px h-6 bg-white/[0.08] mx-1 shrink-0" />
+              {/* Tabs */}
+              <div className="flex items-stretch overflow-x-auto scrollbar-none">
+                {servicesData.map((item, i) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActive(i)}
+                    className={`relative flex items-center gap-2 px-5 py-3.5 text-sm font-medium transition-colors duration-200 whitespace-nowrap border-r border-white/[0.07] ${
+                      active === i
+                        ? 'text-white bg-[#1a1a1a]'
+                        : 'text-neutral-500 hover:text-neutral-300 bg-[#232323]'
+                    }`}
+                  >
+                    {active === i && (
+                      <span className="absolute top-0 left-0 right-0 h-[2px] bg-blue-500 rounded-b" />
+                    )}
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Content area */}
+            <div className="p-8 sm:p-10 md:p-14 pb-24 sm:pb-32 md:pb-40">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
+                >
+                  {/* Left */}
+                  <div>
+                    <p className="text-xs font-medium text-blue-400/70 tracking-widest uppercase mb-3">{s.label}</p>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">{s.tagline}</h3>
+                    <p className="text-neutral-400 text-base leading-relaxed mb-8">{s.desc}</p>
+                    <Link
+                      to={s.link}
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-200 group"
+                    >
+                      {s.cta}
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+
+                  {/* Right — feature list */}
+                  <div className="flex flex-col gap-3">
+                    {s.features.map((f, i) => (
+                      <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                        <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
+                          <CheckCircle2 size={12} className="text-blue-400" />
+                        </span>
+                        <span className="text-sm text-neutral-300 leading-snug">{f}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Bottom images — full width */}
+                  <div className="lg:col-span-2 grid grid-cols-3 gap-3 sm:gap-4 mt-4">
+                    {s.images.map((img, i) => (
+                      <div key={i} className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video bg-white/[0.03]">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+          </div>
+          </div>
+        </FadeIn>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ─── 3. Miksi FEIM ─── */
 
@@ -289,7 +416,7 @@ const WhyFeim = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <Link to="/yhteystiedot" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
+            <Link to="/yhteystiedot#vedos" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
               Keskustellaan projektistanne <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </FadeIn>
@@ -682,10 +809,6 @@ const Contact = () => {
 
   return (
     <section id="yhteystiedot" className="relative py-16 sm:py-24 md:py-40 overflow-hidden content-auto">
-      <div className="absolute inset-0 z-[1] opacity-[0.03]" style={{
-        backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")"
-      }} />
-
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
         {/* ── Header ── */}

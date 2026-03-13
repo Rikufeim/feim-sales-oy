@@ -165,8 +165,8 @@ const PricingSection = () => {
                   
                   <p className={`text-neutral-500 text-xs leading-relaxed mb-6 border-t ${footerBorder} pt-6`}>{plan.footer}</p>
                   
-                  <Link
-                    to="/yhteystiedot"
+          <Link
+                    to="/yhteystiedot#vedos"
                     className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 group text-sm ${
                       plan.highlighted ? btnHighlighted : btnNormal
                     }`}
@@ -232,7 +232,7 @@ const Verkkosivut = () => (
         title: "Verkkosivut jotka tekevät enemmän kuin näyttävät hyvältä",
         intro: "",
         cta: "",
-        ctaHref: "/yhteystiedot"
+        ctaHref: "/yhteystiedot#vedos"
       }}
       sections={[
         {
@@ -263,7 +263,7 @@ const Verkkosivut = () => (
         title: "Tilaa maksuton vedos verkkosivustasi",
         description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",
         buttonText: "Tilaa maksuton vedos",
-        buttonHref: "/yhteystiedot"
+        buttonHref: "/yhteystiedot#vedos"
       }}
       pricingSlot={<PricingSection />}
     />

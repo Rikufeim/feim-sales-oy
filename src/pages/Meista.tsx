@@ -173,7 +173,7 @@ const Meista = () => {
           <FadeIn>
             <h2 className={`text-2xl sm:text-3xl md:text-6xl font-bold mb-4 sm:mb-6 ${headingText}`}>Kiinnostaako yhteistyö?</h2>
             <p className={`text-lg max-w-xl mx-auto mb-10 ${bodyText}`}>Kerro projektistasi — rakennetaan yhdessä jotain, millä on merkitystä.</p>
-            <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+            <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
               Ota yhteyttä <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             

@@ -15,7 +15,7 @@ const TextHoverEffect = ({ text, isDark }: { text: string; isDark: boolean }) =>
 const Footer = () => {
   const { isDark } = useTheme();
   return (
-    <footer className={`relative pt-10 sm:pt-24 pb-20 sm:pb-8 px-5 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
+    <footer className={`relative pt-10 sm:pt-24 pb-28 sm:pb-12 px-5 sm:px-6 overflow-hidden border-t ${isDark ? 'border-white/[0.04] bg-black' : 'border-black/[0.08] bg-neutral-100'}`}>
       <div className="relative z-10 max-w-7xl lg:max-w-[90rem] mx-auto">
         {/* Mobile: stacked layout, Desktop: grid */}
         <div className="flex flex-col gap-8 md:grid md:grid-cols-4 md:gap-12 mb-10 sm:mb-16">
@@ -50,7 +50,7 @@ const Footer = () => {
 
         <div className={`w-full h-px mb-6 sm:mb-8 ${isDark ? 'bg-white/[0.06]' : 'bg-black/[0.08]'}`} />
 
-        <div className={`flex flex-col items-start sm:items-center md:flex-row justify-between text-xs gap-3 sm:gap-4 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
+        <div className={`flex flex-col items-start sm:items-center md:flex-row justify-between text-xs gap-3 sm:gap-4 pr-24 md:pr-0 ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>
           <p>&copy; {new Date().getFullYear()} FEIM Digital Studio</p>
           <div className="flex gap-4 sm:gap-6 flex-wrap">
             <a href="#" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Tietosuojaseloste</a>

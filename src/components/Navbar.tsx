@@ -7,10 +7,9 @@ import feimLogo from "@/assets/feim-logo.png";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const isContactPage = location.pathname === "/yhteystiedot";
 
   return (
-    <nav className={`${isContactPage ? "fixed bg-black/70 backdrop-blur-xl" : "absolute"} top-0 left-0 right-0 z-50 py-4 sm:py-6`}>
+    <nav className="absolute top-0 left-0 right-0 z-50 py-4 sm:py-6">
       <div className="flex items-center justify-between w-full max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16">
         <Link to="/" aria-label="FEIM etusivulle">
           <img
@@ -81,18 +80,23 @@ const Navbar: React.FC = () => {
           </Link>
           <Link
             to="/yhteystiedot"
-            className="ml-4 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105"
+            className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5"
+          >
+            Yhteystiedot
+          </Link>
+          <Link
+            to="/tilaa-vedos"
+            className="ml-2 text-sm font-bold text-black bg-white hover:bg-neutral-100 transition-all duration-200 px-5 py-2 rounded-full hover:scale-105"
           >
             Tilaa vedos
           </Link>
         </div>
 
         {/* Mobile actions */}
-        <div className="lg:hidden flex items-center gap-2 sm:gap-3">
+        <div className="lg:hidden flex items-center gap-3">
           <Link
-            to="/yhteystiedot"
-            onClick={() => setIsOpen(false)}
-            className="text-xs sm:text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-transform duration-200 active:scale-[0.98]"
+            to="/tilaa-vedos"
+            className="text-xs font-bold text-black bg-white hover:bg-neutral-100 transition-all duration-200 px-4 py-2 rounded-full"
           >
             Tilaa vedos
           </Link>
@@ -184,9 +188,9 @@ const Navbar: React.FC = () => {
             <Link
               to="/yhteystiedot"
               onClick={() => setIsOpen(false)}
-              className="mt-4 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full transition-colors"
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
             >
-              Tilaa vedos
+              Yhteystiedot
             </Link>
           </motion.div>
         )}

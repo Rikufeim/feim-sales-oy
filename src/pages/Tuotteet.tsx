@@ -399,7 +399,7 @@ const Tuotteet = () => {
               Jos valmiit tuotteet eivät riitä, rakennamme sinulle juuri oikean kokonaisuuden — kerro tarpeestasi.
             </p>
             <Link
-              to="/yhteystiedot"
+              to="/yhteystiedot#vedos"
               className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group"
               style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}
             >

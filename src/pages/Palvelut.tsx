@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
+import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
+import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
+import svcWebapp1 from '@/assets/service-webapp-1.png';
+import svcWebapp2 from '@/assets/service-webapp-2.png';
+import svcWebapp3 from '@/assets/service-webapp-3.png';
+import svcProto1 from '@/assets/service-proto-1.png';
+import svcProto2 from '@/assets/service-proto-2.png';
+import svcProto3 from '@/assets/service-proto-3.png';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -16,19 +25,34 @@ const services = [
     num: "01",
     title: "Verkkosivut",
     desc: "Modernit, liiketoimintaa tukevat verkkosivut — suunniteltu brändin arvon viestimiseen ja kävijöiden muuttamiseen asiakkaiksi.",
-    link: "/verkkosivut"
+    link: "/verkkosivut",
+    images: [
+      { src: svcVerkkosivut1, alt: "Yrityssivu mockup" },
+      { src: svcVerkkosivut2, alt: "Digitaalinen kasvusivu" },
+      { src: svcVerkkosivut3, alt: "Landing page mockup" },
+    ],
   },
   {
     num: "02",
     title: "Web-sovellukset",
     desc: "Räätälöityjä web-sovelluksia: asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita.",
-    link: "/web-sovellukset"
+    link: "/web-sovellukset",
+    images: [
+      { src: svcWebapp1, alt: "Analytics dashboard" },
+      { src: svcWebapp2, alt: "Varausjärjestelmä" },
+      { src: svcWebapp3, alt: "Tuotehallinta" },
+    ],
   },
   {
     num: "03",
     title: "Prototyypit ja MVP:t",
     desc: "Ideasta ensimmäinen toimiva versio — klikattava prototyyppi tai MVP, jolla idean toimivuus voidaan todentaa ennen täyttä kehitystä.",
-    link: "/prototyypit"
+    link: "/prototyypit",
+    images: [
+      { src: svcProto1, alt: "User flow prototyyppi" },
+      { src: svcProto2, alt: "Mobiiliprototyyppi" },
+      { src: svcProto3, alt: "Design system" },
+    ],
   },
 ];
 
@@ -80,7 +104,7 @@ const Palvelut = () => (
         </FadeIn>
         <FadeIn delay={0.26}>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-12">
-            <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group">
+            <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group">
               Pyydä tarjous <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a href="#palvelut-lista" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 transition-all duration-300">
@@ -97,8 +121,9 @@ const Palvelut = () => (
         <div className="border-t border-white/[0.08]">
           {services.map((s, i) => (
             <FadeIn key={i} delay={i * 0.07}>
-              {s.link ? (
-                <Link to={s.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 py-12 border-b border-white/[0.08] hover:pl-2 transition-all duration-500">
+              <div className="py-12 border-b border-white/[0.08]">
+                {/* Header row */}
+                <Link to={s.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 hover:pl-2 transition-all duration-500 mb-8">
                   <div className="flex items-start gap-8 flex-1">
                     <span className="text-sm font-mono text-neutral-600 mt-1.5 shrink-0 w-8">{s.num}</span>
                     <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
@@ -108,15 +133,15 @@ const Palvelut = () => (
                   </div>
                   <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-1 pl-16 md:pl-0">{s.desc}</p>
                 </Link>
-              ) : (
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 py-12 border-b border-white/[0.08]">
-                  <div className="flex items-start gap-8 flex-1">
-                    <span className="text-sm font-mono text-neutral-700 mt-1.5 shrink-0 w-8">{s.num}</span>
-                    <h3 className="text-2xl md:text-3xl font-semibold text-neutral-600">{s.title}</h3>
-                  </div>
-                  <p className="text-neutral-600 text-[15px] leading-relaxed md:max-w-sm md:text-right pl-16 md:pl-0">{s.desc}</p>
+                {/* Image grid */}
+                <div className="pl-16 grid grid-cols-3 gap-3">
+                  {s.images.map((img, j) => (
+                    <div key={j} className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video">
+                      <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                    </div>
+                  ))}
                 </div>
-              )}
+              </div>
             </FadeIn>
           ))}
         </div>
@@ -167,7 +192,7 @@ const Palvelut = () => (
           <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
             Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
           </p>
-          <Link to="/yhteystiedot" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
+          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
             Tilaa maksuton vedos <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </FadeIn>

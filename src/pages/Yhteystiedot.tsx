@@ -6,8 +6,6 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '@/components/Footer';
 
 import rikuNightImg from '@/assets/riku-night.jpeg';
-import HeroBackground from '@/components/HeroBackground';
-import feimLogo from '@/assets/feim-logo.png';
 import { useTheme } from '@/components/ThemeContext';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -77,10 +75,8 @@ const Yhteystiedot = () => {
       
 
       {/* Hero */}
-      <HeroBackground className="!min-h-[60vh] sm:!min-h-[70vh] flex items-end pb-20">
-        <div className="absolute bottom-0 left-0 w-full h-48 z-10 pointer-events-none" style={{ background: `linear-gradient(to top, ${isDark ? '#000000' : '#ffffff'}, ${isDark ? 'rgba(0,0,0,0.8)' : 'rgba(255,255,255,0.8)'}, transparent)` }} />
-        
-        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
+      <section className="relative pt-28 sm:pt-40 md:pt-52 pb-16 sm:pb-24 overflow-hidden">
+        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-10 w-full">
           <FadeIn delay={0.1}>
             <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-6 leading-[1.08]`}>
               Aloitetaan{' '}
@@ -108,9 +104,9 @@ const Yhteystiedot = () => {
             </div>
           </FadeIn>
         </div>
-      </HeroBackground>
+      </section>
 
-      <section className="relative pb-32 overflow-hidden">
+      <section id="vedos" className="relative pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           {/* Full-width form */}
           <FadeIn delay={0.2}>
