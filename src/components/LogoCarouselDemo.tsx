@@ -27,8 +27,8 @@ const column3 = [allTexts[2], allTexts[5], allTexts[8]];
 
 const TextColumn = ({ texts, delayMs }: { texts: TextItem[]; delayMs: number }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
