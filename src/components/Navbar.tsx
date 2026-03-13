@@ -168,6 +168,13 @@ const Navbar: React.FC = () => {
               Referenssit
             </Link>
             <Link
+              to="/tuotteet"
+              onClick={() => setIsOpen(false)}
+              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
+            >
+              Tuotteet
+            </Link>
+            <Link
               to="/meista"
               onClick={() => setIsOpen(false)}
               className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
