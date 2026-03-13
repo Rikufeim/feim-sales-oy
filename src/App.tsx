@@ -25,6 +25,7 @@ import Palvelut from "./pages/Palvelut";
 import Referenssit from "./pages/Referenssit";
 import Meista from "./pages/Meista";
 import Yhteystiedot from "./pages/Yhteystiedot";
+import Tuotteet from "./pages/Tuotteet";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
