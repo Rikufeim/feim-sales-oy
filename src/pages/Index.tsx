@@ -255,17 +255,10 @@ const Services = () => {
   const s = servicesData[active];
 
   return (
-    <section id="palvelut" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
+    <section id="palvelut" className="relative -mt-6 sm:-mt-8 md:-mt-10 pb-16 sm:pb-24 md:pb-32 overflow-visible bg-black z-30">
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-        <FadeIn>
-          <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Palvelut</p>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-10 sm:mb-14 max-w-3xl">
-            Verkkosivut, web-sovellukset ja digitaaliset tuotteet
-          </h2>
-        </FadeIn>
-
         {/* Mac-window card */}
-        <FadeIn delay={0.15}>
+        <FadeIn>
           <div className="relative">
             <div className="rounded-2xl overflow-hidden border border-b-transparent border-white/[0.08] bg-[#1a1a1a] shadow-2xl">
             {/* Bottom fade to black */}
@@ -294,11 +287,6 @@ const Services = () => {
                   >
                     {active === i ? (
                       <>
-                        <motion.span
-                          layoutId="service-tab-light"
-                          className="absolute inset-0 rounded-sm bg-blue-500/10"
-                          transition={{ type: "spring", stiffness: 380, damping: 34 }}
-                        />
                         <motion.span
                           layoutId="service-tab-light-bar"
                           className="absolute top-0 left-2 right-2 h-[2px] rounded-b bg-gradient-to-r from-transparent via-blue-400 to-transparent"
@@ -389,8 +377,11 @@ const WhyFeim = () => (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20">
         <div>
           <FadeIn>
-            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Miksi FEIM</p>
-            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Rakennamme<br />digitaalista kilpailuetua.</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
+              Rakennamme
+              <br />
+              <span className="text-blue-400">digitaalista</span> kilpailuetua.
+            </h2>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
               Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
             </p>
@@ -666,10 +657,15 @@ const FounderSection = () => {
 
       {/* Header */}
       <FadeIn>
-        <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Perustajan terveiset</p>
-        <h2 className={`text-2xl sm:text-4xl md:text-6xl font-bold leading-[1.08] mb-10 sm:mb-16 max-w-4xl ${headingColor}`}>
-          Tekoäly muuttaa kaiken —{' '}
-          <span className={`bg-clip-text text-transparent bg-gradient-to-r ${gradientText}`}>me autamme hyödyntämään sen.</span>
+        <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Founder’s Note</p>
+        <h2 className={`text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.02] mb-10 sm:mb-16 max-w-5xl ${headingColor}`}>
+          <span className="block">Tulevaisuuden tuotteet</span>
+          <span className="block">
+            rakennetaan{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">
+              tekoälyllä.
+            </span>
+          </span>
         </h2>
       </FadeIn>
 
@@ -678,23 +674,31 @@ const FounderSection = () => {
         <div className="space-y-10">
           <FadeIn delay={0.15}>
             <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
-              Perustin FEIMin koska näin maailman, jossa luovuus ja teknologia eivät enää tarvitse olla erillisiä. Tekoäly on antanut meille työkalut, joilla kuka tahansa voi rakentaa jotain merkityksellistä — nopeammin, rohkeammin ja vapaammin kuin koskaan aiemmin.
+              Perustin FEIMin, koska näin maailman, jossa luovuus ja teknologia eivät ole toisistaan erillisiä. Kaikki lähtee halusta toteuttaa ideoita ja viedä ne valmiiksi — ilman hitaita ja kalliita projekteja.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.25}>
             <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
-              Jokaisella yrittäjällä, tiimillä ja visionäärillä on oikeus nähdä ideansa toteutuvan — ilman, että tekniset rajoitteet tai vanhat toimintamallit seisovat tiellä.
+              Hyödynnämme modernia AI-kehitystä ja vibe-koodaamista, joiden avulla ideat voidaan rakentaa ja testata murto-osassa perinteisestä kehitysajasta.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.35}>
-            <p className={`text-2xl md:text-3xl font-semibold leading-snug italic ${quoteColor}`}>
-              "Uskon, että tekoäly ei korvaa ihmisen luovuutta — se vapauttaa sen."
+            <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
+              Me varmistamme, että projekti ja sinun visio toteutuu.
             </p>
           </FadeIn>
 
           <FadeIn delay={0.45}>
+            <p className={`text-2xl md:text-3xl font-semibold leading-snug italic ${quoteColor}`}>
+              "Tekoäly ei korvaa luovuutta
+              <br />
+              se moninkertaistaa sen."
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.55}>
             <div className="mt-12 flex items-center gap-6">
               <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
                 <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
