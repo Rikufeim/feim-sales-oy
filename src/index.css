@@ -243,3 +243,12 @@ section {
   content-visibility: auto;
   contain-intrinsic-size: auto 800px;
 }
+
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.animate-progress {
+  animation: progress-fill linear forwards;
+}
