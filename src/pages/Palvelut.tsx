@@ -207,14 +207,6 @@ const Palvelut = () => {
                       <ArrowRight size={22} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
                     </motion.h3>
                   </div>
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-2"
-                  >
-                    {active.desc}
-                  </motion.p>
                 </Link>
 
                 <div className="grid grid-cols-3 gap-4">

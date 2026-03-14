@@ -229,7 +229,7 @@ const Verkkosivut = () => (
       }}
       hero={{
         label: "Verkkosivut",
-        title: "Verkkosivut jotka tekevät enemmän kuin näyttävät hyvältä",
+        title: "Verkkosivut jotka erottuvat",
         intro: "",
         cta: "",
         ctaHref: "/yhteystiedot#vedos"

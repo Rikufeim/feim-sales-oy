@@ -23,10 +23,8 @@ import WebSovellukset from "./pages/WebSovellukset";
 import Prototyypit from "./pages/Prototyypit";
 import Palvelut from "./pages/Palvelut";
 import Referenssit from "./pages/Referenssit";
-import Meista from "./pages/Meista";
 import Yhteystiedot from "./pages/Yhteystiedot";
 import TilaaVedos from "./pages/TilaaVedos";
-import Tuotteet from "./pages/Tuotteet";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
@@ -70,10 +68,8 @@ const App = () => (
                 <Route path="/web-sovellukset" element={<WebSovellukset />} />
                 <Route path="/prototyypit" element={<Prototyypit />} />
                 <Route path="/referenssit" element={<Referenssit />} />
-                <Route path="/meista" element={<Meista />} />
                 <Route path="/yhteystiedot" element={<Yhteystiedot />} />
                 <Route path="/tilaa-vedos" element={<TilaaVedos />} />
-                <Route path="/tuotteet" element={<Tuotteet />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

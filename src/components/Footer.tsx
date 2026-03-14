@@ -37,7 +37,6 @@ const Footer = () => {
             <div>
               <p className={`text-xs sm:text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>Yritys</p>
               <ul className={`space-y-2.5 sm:space-y-3 text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
-                <li><Link to="/meista" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Meistä</Link></li>
                 <li><Link to="/yhteystiedot" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Yhteystiedot</Link></li>
               </ul>
             </div>

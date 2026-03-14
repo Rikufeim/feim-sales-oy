@@ -10,15 +10,6 @@ import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';
 import refSodergard from '@/assets/ref-sodergard.png';
-import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
-import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
-import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
-import svcWebapp1 from '@/assets/service-webapp-1.png';
-import svcWebapp2 from '@/assets/service-webapp-2.png';
-import svcWebapp3 from '@/assets/service-webapp-3.png';
-import svcProto1 from '@/assets/service-proto-1.png';
-import svcProto2 from '@/assets/service-proto-2.png';
-import svcProto3 from '@/assets/service-proto-3.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
@@ -117,7 +108,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
 
   const navLinks = [
     { name: 'Etusivu', href: '/' },
-    { name: 'Meistä', href: '/meista' },
     { name: 'Yhteystiedot', href: '/yhteystiedot' },
   ];
 
@@ -143,7 +133,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
               </div>
             </div>
           </div>
-          <Link to="/meista" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Meistä</Link>
           <Link to="/yhteystiedot#vedos" className="text-sm font-medium text-neutral-400 hover:text-white transition-colors duration-200 px-4 py-2 rounded-full hover:bg-white/5">Yhteystiedot</Link>
           <Link to="/yhteystiedot#vedos" className="ml-4 text-sm font-semibold text-black bg-white hover:bg-neutral-200 px-6 py-2.5 rounded-full transition-all duration-300 hover:scale-105">
             Tilaa vedos
@@ -161,7 +150,6 @@ const Navigation = ({ onNavigate }: { onNavigate: (dest: string) => void }) => {
             <Link to="/verkkosivut" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Verkkosivut</Link>
             <Link to="/web-sovellukset" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Web-sovellukset</Link>
             <Link to="/prototyypit" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 pl-8 hover:bg-white/5 rounded-xl transition-all text-sm">Prototyypit</Link>
-            <Link to="/meista" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Meistä</Link>
             <Link to="/yhteystiedot#vedos" onClick={() => setIsOpen(false)} className="text-neutral-300 hover:text-white font-medium py-3 px-4 hover:bg-white/5 rounded-xl transition-all">Yhteystiedot</Link>
             <Link to="/yhteystiedot#vedos" onClick={() => setIsOpen(false)} className="mt-2 text-center text-black bg-white font-semibold py-3 px-4 rounded-xl">Tilaa vedos</Link>
           </motion.div>
@@ -216,6 +204,7 @@ const servicesData = [
     id: "verkkosivut",
     label: "Verkkosivut",
     link: "/verkkosivut",
+    panelBg: "#141414",
     tagline: "Myyvät sivut, jotka rakentavat brändiä",
     desc: "Rakennamme modernit verkkosivut, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
     features: [
@@ -226,16 +215,12 @@ const servicesData = [
       "Analytiikka ja seuranta mukana",
     ],
     cta: "Tutustu verkkosivupalveluun",
-    images: [
-      { src: svcVerkkosivut1, alt: "Moderni yrityssivu – mockup" },
-      { src: svcVerkkosivut2, alt: "Digitaalisen kasvun verkkosivut" },
-      { src: svcVerkkosivut3, alt: "Landing page – mockup" },
-    ],
   },
   {
     id: "web-sovellukset",
     label: "Web-sovellukset",
     link: "/web-sovellukset",
+    panelBg: "#242424",
     tagline: "Räätälöityjä digitaalisia tuotteita",
     desc: "Suunnittelemme ja rakennimme asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita — ideasta valmiiksi tuotteeksi.",
     features: [
@@ -246,16 +231,12 @@ const servicesData = [
       "Jatkuva kehitys ja ylläpito",
     ],
     cta: "Tutustu web-sovelluksiin",
-    images: [
-      { src: svcWebapp1, alt: "Analytics dashboard – web-sovellus" },
-      { src: svcWebapp2, alt: "Varausjärjestelmä – web-sovellus" },
-      { src: svcWebapp3, alt: "Tuotehallinta – web-sovellus" },
-    ],
   },
   {
     id: "prototyypit",
     label: "Prototyypit & MVP",
     link: "/prototyypit",
+    panelBg: "#1a1a1a",
     tagline: "Ideasta testattavaksi tuotteeksi nopeasti",
     desc: "Validoimme ideasi nopeasti toimivalla prototyypillä tai MVP:llä — ennen kuin investoit täyteen tuotekehitykseen. Nopea tapa konkretisoida ja testata.",
     features: [
@@ -266,11 +247,6 @@ const servicesData = [
       "Lean-ajattelu ja nopeat iteraatiot",
     ],
     cta: "Tutustu prototyyppeihin",
-    images: [
-      { src: svcProto1, alt: "Prototyyppi – user flow" },
-      { src: svcProto2, alt: "Mobiiliprototyyppi – näyttövirta" },
-      { src: svcProto3, alt: "Design system – komponenttikirjasto" },
-    ],
   },
 ];
 
@@ -316,9 +292,20 @@ const Services = () => {
                         : 'text-neutral-500 hover:text-neutral-300 bg-[#232323]'
                     }`}
                   >
-                    {active === i && (
-                      <span className="absolute top-0 left-0 right-0 h-[2px] bg-blue-500 rounded-b" />
-                    )}
+                    {active === i ? (
+                      <>
+                        <motion.span
+                          layoutId="service-tab-light"
+                          className="absolute inset-0 rounded-sm bg-blue-500/10"
+                          transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                        />
+                        <motion.span
+                          layoutId="service-tab-light-bar"
+                          className="absolute top-0 left-2 right-2 h-[2px] rounded-b bg-gradient-to-r from-transparent via-blue-400 to-transparent"
+                          transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                        />
+                      </>
+                    ) : null}
                     {item.label}
                   </button>
                 ))}
@@ -326,56 +313,49 @@ const Services = () => {
             </div>
 
             {/* Content area */}
-            <div className="p-8 sm:p-10 md:p-14 pb-24 sm:pb-32 md:pb-40">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
-                >
-                  {/* Left */}
-                  <div>
-                    <p className="text-xs font-medium text-blue-400/70 tracking-widest uppercase mb-3">{s.label}</p>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">{s.tagline}</h3>
-                    <p className="text-neutral-400 text-base leading-relaxed mb-8">{s.desc}</p>
-                    <Link
-                      to={s.link}
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-200 group"
-                    >
-                      {s.cta}
-                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </div>
+            <div className="p-6 sm:p-8 md:p-10 pb-20 sm:pb-24 md:pb-28">
+              <motion.div
+                animate={{ backgroundColor: s.panelBg }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-2xl border border-white/[0.08] p-6 sm:p-8 md:p-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    initial={{ opacity: 0, y: 16, scale: 0.995 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.995 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
+                  >
+                    {/* Left */}
+                    <div>
+                      <p className="text-xs font-medium text-blue-400/70 tracking-widest uppercase mb-3">{s.label}</p>
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">{s.tagline}</h3>
+                      <p className="text-neutral-400 text-base leading-relaxed mb-8">{s.desc}</p>
+                      <Link
+                        to={s.link}
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-200 group"
+                      >
+                        {s.cta}
+                        <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </div>
 
-                  {/* Right — feature list */}
-                  <div className="flex flex-col gap-3">
-                    {s.features.map((f, i) => (
-                      <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                        <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
-                          <CheckCircle2 size={12} className="text-blue-400" />
-                        </span>
-                        <span className="text-sm text-neutral-300 leading-snug">{f}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Bottom images — full width */}
-                  <div className="lg:col-span-2 grid grid-cols-3 gap-3 sm:gap-4 mt-4">
-                    {s.images.map((img, i) => (
-                      <div key={i} className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video bg-white/[0.03]">
-                        <img
-                          src={img.src}
-                          alt={img.alt}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                    {/* Right — feature list */}
+                    <div className="flex flex-col gap-3">
+                      {s.features.map((f, i) => (
+                        <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                          <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
+                            <CheckCircle2 size={12} className="text-blue-400" />
+                          </span>
+                          <span className="text-sm text-neutral-300 leading-snug">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </motion.div>
             </div>
 
           </div>
@@ -797,13 +777,6 @@ const serviceOptions = [
   },
 ];
 
-const vedosBullets = [
-  'Saat konkreettisen suunnan siihen, miten projektisi kannattaa rakentaa',
-  'Näet millaista FEIMin kanssa työskentely on — jo ennen yhteistyön alkua',
-  'Vedos auttaa hahmottamaan rakennetta, sisältöä ja käyttökokemusta',
-  'Maksuton vedos ei sido sinua mihinkään — mutta antaa selkeän lähtöpisteen jatkolle',
-];
-
 const Contact = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
@@ -902,19 +875,6 @@ const Contact = () => {
           </div>
         </FadeIn>
 
-        {/* ── Benefits ── */}
-        <FadeIn delay={0.25}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-10 sm:mt-16">
-            {vedosBullets.map((bullet, i) => (
-              <div key={i} className="flex gap-3 items-start">
-                <div className="shrink-0 w-6 h-6 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mt-0.5">
-                  <CheckCircle2 size={12} className="text-blue-400/80" />
-                </div>
-                <p className="text-neutral-400 leading-relaxed text-sm">{bullet}</p>
-              </div>
-            ))}
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
