@@ -141,60 +141,100 @@ const Palvelut = () => {
       </section>
 
       {/* ── Palvelulista — auto-cycling tabs ── */}
-      <section id="palvelut-lista" className="relative py-6 sm:py-8 pb-16 sm:pb-32 overflow-hidden">
+      <section id="palvelut-lista" className="relative py-12 sm:py-16 pb-16 sm:pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-          {/* Tab buttons */}
-          <div className="flex gap-2 sm:gap-4 mb-10 border-b border-white/[0.08] pb-6">
+
+          {/* Navigation tabs */}
+          <div className="relative flex gap-0 mb-14">
+            {/* Animated underline indicator */}
+            <motion.div
+              className="absolute bottom-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"
+              animate={{
+                left: `${(activeIndex / services.length) * 100}%`,
+                width: `${100 / services.length}%`,
+              }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-white/[0.06]" />
+
             {services.map((s, i) => (
               <button
                 key={i}
                 onClick={() => selectService(i)}
-                className={`relative flex items-center gap-3 px-4 sm:px-6 py-3 rounded-full text-left transition-all duration-300 ${
-                  activeIndex === i
-                    ? "bg-white/10 text-white"
-                    : "text-neutral-500 hover:text-neutral-300 hover:bg-white/5"
-                }`}
+                className="relative flex-1 group py-5 text-left transition-colors duration-500"
               >
-                <span className="text-xs font-mono text-neutral-600">{s.num}</span>
-                <span className="text-sm sm:text-base font-semibold">{s.title}</span>
-                {/* Progress bar */}
+                <div className="flex items-baseline gap-4 px-1">
+                  <span className={`text-xs font-mono transition-colors duration-500 ${
+                    activeIndex === i ? "text-blue-400" : "text-neutral-700"
+                  }`}>{s.num}</span>
+                  <span className={`text-lg sm:text-xl font-semibold transition-colors duration-500 ${
+                    activeIndex === i ? "text-white" : "text-neutral-600 group-hover:text-neutral-400"
+                  }`}>{s.title}</span>
+                </div>
+                {/* Progress bar for active tab */}
                 {activeIndex === i && (
-                  <span className="absolute bottom-0 left-0 h-[2px] bg-blue-500 rounded-full animate-progress" style={{ animationDuration: `${AUTO_CYCLE_MS}ms` }} />
+                  <motion.span
+                    key={`progress-${activeIndex}`}
+                    className="absolute bottom-0 left-0 h-[1px] bg-blue-500/60"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: AUTO_CYCLE_MS / 1000, ease: "linear" }}
+                  />
                 )}
               </button>
             ))}
           </div>
 
           {/* Active service content */}
-          <div className="relative min-h-[280px] sm:min-h-[320px]">
-            <AnimatePresence mode="popLayout">
+          <div className="relative overflow-hidden" style={{ minHeight: 340 }}>
+            <AnimatePresence mode="popLayout" initial={false}>
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
               >
-                <Link to={active.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 hover:pl-2 transition-all duration-500 mb-8">
-                  <div className="flex items-start gap-8 flex-1">
-                    <span className="text-sm font-mono text-neutral-600 mt-1.5 shrink-0 w-8">{active.num}</span>
-                    <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
+                <Link to={active.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 mb-10">
+                  <div className="flex items-start gap-6 flex-1">
+                    <motion.h3
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      className="text-2xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-4 leading-tight"
+                    >
                       {active.title}
-                      <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
-                    </h3>
+                      <ArrowRight size={22} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
+                    </motion.h3>
                   </div>
-                  <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-1 pl-16 md:pl-0">{active.desc}</p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-2"
+                  >
+                    {active.desc}
+                  </motion.p>
                 </Link>
-                <div className="pl-16 grid grid-cols-3 gap-3">
+
+                <div className="grid grid-cols-3 gap-4">
                   {active.images.map((img, j) => (
                     <motion.div
                       key={j}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: j * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.55,
+                        delay: 0.15 + j * 0.1,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="rounded-2xl overflow-hidden border border-white/[0.06] aspect-video bg-neutral-950 shadow-lg shadow-black/30"
                     >
-                      <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
                     </motion.div>
                   ))}
                 </div>
