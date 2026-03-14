@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -166,30 +166,41 @@ const Palvelut = () => {
           </div>
 
           {/* Active service content */}
-          <motion.div
-            key={activeIndex}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-          >
-            <Link to={active.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 hover:pl-2 transition-all duration-500 mb-8">
-              <div className="flex items-start gap-8 flex-1">
-                <span className="text-sm font-mono text-neutral-600 mt-1.5 shrink-0 w-8">{active.num}</span>
-                <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
-                  {active.title}
-                  <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
-                </h3>
-              </div>
-              <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-1 pl-16 md:pl-0">{active.desc}</p>
-            </Link>
-            <div className="pl-16 grid grid-cols-3 gap-3">
-              {active.images.map((img, j) => (
-                <div key={j} className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video">
-                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+          <div className="relative min-h-[280px] sm:min-h-[320px]">
+            <AnimatePresence mode="popLayout">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.98, filter: "blur(4px)" }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Link to={active.link} className="group flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-16 hover:pl-2 transition-all duration-500 mb-8">
+                  <div className="flex items-start gap-8 flex-1">
+                    <span className="text-sm font-mono text-neutral-600 mt-1.5 shrink-0 w-8">{active.num}</span>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-3">
+                      {active.title}
+                      <ArrowRight size={20} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
+                    </h3>
+                  </div>
+                  <p className="text-neutral-500 text-[15px] leading-relaxed md:max-w-sm md:text-right md:pt-1 pl-16 md:pl-0">{active.desc}</p>
+                </Link>
+                <div className="pl-16 grid grid-cols-3 gap-3">
+                  {active.images.map((img, j) => (
+                    <motion.div
+                      key={j}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: j * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="rounded-xl overflow-hidden border border-white/[0.07] aspect-video"
+                    >
+                      <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+                    </motion.div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
