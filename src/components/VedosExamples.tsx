@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 // Images
 import vedosLandingSaas from '@/assets/vedos-landing-saas.jpg';
@@ -109,10 +109,11 @@ const categories: Category[] = [
 
 const VedosCard = ({ item, onClick }: { item: VedosItem; onClick: () => void }) => (
   <motion.button
+    type="button"
     onClick={onClick}
-    className="group relative rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm text-left w-full cursor-pointer"
-    whileHover={{ scale: 1.02, y: -4 }}
-    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+    className="group relative rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.03] text-left w-full cursor-pointer touch-manipulation"
+    whileHover={{ scale: 1.01, y: -2 }}
+    transition={{ duration: 0.18, ease: 'easeOut' }}
   >
     {/* Hover glow */}
     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
@@ -149,18 +150,18 @@ const VedosModal = ({ item, onClose }: { item: VedosItem; onClose: () => void })
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.25 }}
+    transition={{ duration: 0.15 }}
   >
     {/* Backdrop */}
-    <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
+    <div className="absolute inset-0 bg-black/85" onClick={onClose} />
 
     {/* Modal */}
     <motion.div
-      className="relative w-full max-w-2xl rounded-2xl border border-white/[0.1] bg-neutral-950/95 backdrop-blur-xl overflow-hidden"
-      initial={{ scale: 0.92, opacity: 0 }}
+      className="relative w-full max-w-2xl rounded-2xl border border-white/[0.1] bg-neutral-950/95 overflow-hidden"
+      initial={{ scale: 0.98, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.92, opacity: 0 }}
-      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      exit={{ scale: 0.98, opacity: 0 }}
+      transition={{ duration: 0.18, ease: 'easeOut' }}
     >
       <button
         onClick={onClose}
@@ -202,10 +203,6 @@ interface VedosExamplesProps {
 const VedosExamples = ({ formRef }: VedosExamplesProps) => {
   const [selectedItem, setSelectedItem] = useState<VedosItem | null>(null);
 
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <section className="relative z-10 px-4 sm:px-6 lg:px-16 pb-16 sm:pb-24 max-w-7xl mx-auto">
       {/* Header */}
@@ -242,38 +239,15 @@ const VedosExamples = ({ formRef }: VedosExamplesProps) => {
           >
             <h3 className="text-base sm:text-lg font-semibold text-white/80 mb-6 pl-1">{cat.title}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {cat.items.map((item, j) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.5, delay: j * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                >
+              {cat.items.map((item) => (
+                <div key={item.title}>
                   <VedosCard item={item} onClick={() => setSelectedItem(item)} />
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
         ))}
       </div>
-
-      {/* CTA */}
-      <motion.div
-        className="text-center mt-16 sm:mt-20"
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <button
-          onClick={scrollToForm}
-          className="inline-flex items-center justify-center gap-2 font-bold text-sm py-4 px-10 rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98] bg-white text-black group"
-        >
-          Tilaa oma vedoksesi
-          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-        </button>
-      </motion.div>
 
       {/* Modal */}
       <AnimatePresence>

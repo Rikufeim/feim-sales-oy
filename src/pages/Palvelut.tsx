@@ -108,40 +108,8 @@ const Palvelut = () => {
         <meta property="og:url" content="https://feim.fi/palvelut" />
       </Helmet>
 
-      {/* ── Hero ── */}
-      <section className="relative pt-28 sm:pt-40 md:pt-52 pb-16 sm:pb-24 overflow-hidden">
-        <div className="absolute inset-0 z-0" style={{
-          background: "radial-gradient(ellipse at 60% 0%, #0021ff1a 0%, transparent 55%), #000",
-        }} />
-        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full">
-          <FadeIn delay={0.05}>
-            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Palvelut</p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-4xl">
-              Mitä rakennamme
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.18}>
-            <p className="mt-5 sm:mt-8 text-base sm:text-xl text-neutral-400 max-w-2xl leading-relaxed">
-              Verkkosivuista web-sovelluksiin ja prototyyppeihin — suunnittelemme ja toteutamme moderneja digitaalisia ratkaisuja, jotka tukevat liiketoimintaa ja skaalautuvat tarpeen mukaan.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.26}>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-12">
-              <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-full transition-all duration-300 hover:scale-105 group">
-                Pyydä tarjous <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a href="#palvelut-lista" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/15 text-white font-medium rounded-full hover:bg-white/5 transition-all duration-300">
-                Tutustu palveluihin
-              </a>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* ── Palvelulista — auto-cycling tabs ── */}
-      <section id="palvelut-lista" className="relative py-12 sm:py-16 pb-16 sm:pb-32 overflow-hidden">
+      <section id="palvelut-lista" className="relative pt-40 sm:pt-52 pb-16 sm:pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
           {/* Navigation tabs */}
@@ -245,7 +213,7 @@ const Palvelut = () => {
             <FadeIn>
               <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Lähestymistapamme</p>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-6 sm:mb-8">
-                Ei pelkkiä verkkosivuja —<br />kokonaisia digitaalisia ratkaisuja.
+                kokonaisia digitaalisia ratkaisuja.
               </h2>
               <p className="text-neutral-400 text-lg leading-relaxed">
                 FEIM ei ole mainostoimisto. Rakennamme kokonaisia digitaalisia tuotteita ja palveluja, jotka tukevat liiketoimintaa, ratkaisevat oikeita ongelmia ja skaalautuvat tarpeen mukaan.
@@ -281,8 +249,8 @@ const Palvelut = () => {
             <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
               Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
             </p>
-            <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group">
-              Tilaa maksuton vedos <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <Link to="/tilaa-vedos" className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105">
+              Tilaa maksuton vedos
             </Link>
           </FadeIn>
         </div>

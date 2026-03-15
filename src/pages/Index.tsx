@@ -8,8 +8,6 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
-import refLujainfra from '@/assets/ref-lujainfra.png';
-import refSodergard from '@/assets/ref-sodergard.png';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
@@ -183,13 +181,12 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
-          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <a href="#palvelut" className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border font-medium text-sm sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
+          <Link to="/palvelut" className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border font-medium text-sm sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
-          </a>
+          </Link>
         </div>
       </FadeIn>
     </div>
@@ -500,93 +497,6 @@ const Showcase = () => (
   </section>
 );
 
-/* ─── 6. Referenssit ─── */
-
-const clientRefs = [
-  {
-    name: "Lujainfra",
-    category: "Infra- ja maanrakennus • Verkkosivut",
-    desc: "Modernit verkkosivut luotettavalle infra- ja maanrakentamisen ammattilaiselle. Selkeä rakenne, vahva brändi ja toimiva mobiilikokemus.",
-    url: "https://lujainfra.fi/",
-    accent: "#F97316",
-    preview: refLujainfra,
-  },
-  {
-    name: "Restaurointi Södergård",
-    category: "Restaurointipalvelut • Verkkosivut",
-    desc: "Tyylikäs ja perinteitä kunnioittava verkkopresenssi rakennuskannan restaurointiyritykselle. Visuaalinen identiteetti, joka heijastaa osaamista ja arvoja.",
-    url: "https://srgd.fi/",
-    accent: "#B8973A",
-    preview: refSodergard,
-  },
-];
-
-const ClientRefs = () => (
-  <section id="referenssit" className="relative py-16 sm:py-24 md:py-32 overflow-hidden">
-    <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
-      <FadeIn>
-        <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3 sm:mb-4">Töitämme</p>
-        <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">Töitämme.</h2>
-        <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mb-12 sm:mb-20">
-          Jokainen asiakasprojekti on ainutlaatuinen — rakennettu liiketoimintatavoitteiden pohjalta, ei templaten mukaan.
-        </p>
-      </FadeIn>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {clientRefs.map((ref, i) => (
-          <FadeIn key={i} delay={i * 0.12}>
-            <a
-              href={ref.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block relative overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.02] hover:border-white/[0.15] transition-all duration-500 hover:-translate-y-1"
-            >
-              {/* Screenshot preview */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={ref.preview}
-                  alt={ref.name}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                {/* External link icon */}
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ExternalLink size={15} className="text-white" />
-                </div>
-              </div>
-
-              {/* Info */}
-              <div className="p-8">
-                <p className="text-xs font-medium tracking-widest uppercase mb-3" style={{ color: ref.accent }}>
-                  {ref.category}
-                </p>
-                <h3 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">
-                  {ref.name}
-                  <ArrowRight size={18} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-neutral-400" />
-                </h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">{ref.desc}</p>
-              </div>
-            </a>
-          </FadeIn>
-        ))}
-      </div>
-
-      <FadeIn delay={0.25}>
-        <div className="mt-12 text-center">
-          <Link
-            to="/referenssit"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-white border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-300 group"
-          >
-            Katso kaikki referenssit
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </FadeIn>
-    </div>
-  </section>
-);
-
 /* ─── 7. Tekoäly ─── */
 
 const AISection = () => (
@@ -636,7 +546,7 @@ const FounderSection = () => {
   
   // Light mode: dark blue/white editorial background inspired by reference
   const sectionBg = isDark 
-    ? '' 
+    ? 'bg-black'
     : 'bg-[#0c1425]';
   const sectionRounding = isDark ? '' : 'rounded-[2.5rem] mx-4 lg:mx-8';
   
@@ -653,12 +563,21 @@ const FounderSection = () => {
 
   return (
   <section className={`relative py-16 sm:py-24 md:py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
+    <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute top-0 inset-x-0 h-44 sm:h-56 bg-gradient-to-b from-[#15326f]/65 via-[#0f2452]/38 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-40 sm:h-52 bg-[radial-gradient(ellipse_at_top,rgba(45,96,210,0.35),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_18%_18%,rgba(16,38,88,0.48),transparent_58%),radial-gradient(ellipse_at_82%_82%,rgba(12,28,72,0.34),transparent_64%),radial-gradient(ellipse_at_52%_96%,rgba(10,24,64,0.24),transparent_66%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/52 via-black/16 to-black/58" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_48%,rgba(0,0,0,0.72)_100%)]" />
+      <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-black/75 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-24 sm:w-32 bg-gradient-to-l from-black/75 to-transparent" />
+    </div>
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
       {/* Header */}
       <FadeIn>
         <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Founder’s Note</p>
-        <h2 className={`text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.02] mb-10 sm:mb-16 max-w-5xl ${headingColor}`}>
+        <h2 className={`text-2xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-[0.01em] leading-[1.08] mb-10 sm:mb-16 max-w-4xl ${headingColor}`}>
           <span className="block">Tulevaisuuden tuotteet</span>
           <span className="block">
             rakennetaan{" "}
@@ -686,7 +605,7 @@ const FounderSection = () => {
 
           <FadeIn delay={0.35}>
             <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
-              Me varmistamme, että projekti ja sinun visio toteutuu.
+              Me varmistamme, että projekti ja visio toteutuu.
             </p>
           </FadeIn>
 
@@ -760,21 +679,18 @@ const FAQ = () => (
 const serviceOptions = [
   {
     id: 'verkkosivut',
-    icon: '🌐',
     title: 'Verkkosivut',
     desc: 'Myyvät, modernit ja liiketoimintaa tukevat sivut.',
     detail: 'Sopii yrityksille, jotka haluavat vahvemman digitaalisen ensivaikutelman ja enemmän yhteydenottoja.',
   },
   {
     id: 'web-sovellus',
-    icon: '⚙️',
     title: 'Web-sovellus',
     desc: 'Käyttöliittymä- ja tuoteajattelua yhdistävä kokonaisuus.',
     detail: 'Sopii palveluille, asiakasportaaleille, SaaS-ideoille ja digitaalisille työkaluille.',
   },
   {
     id: 'prototyyppi',
-    icon: '◆',
     title: 'Prototyyppi',
     desc: 'Nopea tapa konkretisoida idea ennen täyttä toteutusta.',
     detail: 'Sopii MVP-ajatteluun, konsepteihin, pitchaukseen ja tuotekehityksen alkuvaiheeseen.',
@@ -847,7 +763,7 @@ const Contact = () => {
                           : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
                       }`}
                     >
-                      {s.icon} {s.title}
+                      {s.title}
                     </button>
                   ))}
                 </div>
@@ -870,9 +786,8 @@ const Contact = () => {
               {/* Submit + info row */}
               <div className="pt-2">
                 <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] group flex items-center justify-center gap-2">
+                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
                   Tilaa maksuton vedos
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </form>
@@ -1007,7 +922,6 @@ const Index = () => {
           <Services />
           <WhyFeim />
           
-          <ClientRefs />
           <FounderSection />
           <FAQ />
           <Contact />

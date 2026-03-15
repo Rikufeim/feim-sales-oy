@@ -54,6 +54,7 @@ interface ServicePageProps {
 
 const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta, pricingSlot }) => {
   const { isDark } = useTheme();
+  const showBottomCtaArrow = !cta.buttonText.toLowerCase().includes('tilaa vedos') && !cta.buttonText.toLowerCase().includes('tilaa maksuton vedos');
 
   // Theme-aware classes
   const bg = isDark ? 'bg-black' : 'bg-white';
@@ -224,7 +225,8 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             <h2 className={`text-2xl sm:text-3xl md:text-6xl font-bold mb-4 sm:mb-6 ${sectionHeading}`}>{cta.title}</h2>
             <p className={`text-lg max-w-xl mx-auto mb-10 ${sectionDesc}`}>{cta.description}</p>
             <a href={cta.buttonHref} className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-lg rounded-full transition-all duration-300 hover:scale-105 group" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
-              {cta.buttonText} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              {cta.buttonText}
+              {showBottomCtaArrow && <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
             </a>
             
           </FadeIn>

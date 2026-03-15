@@ -1,6 +1,6 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
 import { motion } from 'framer-motion';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/components/ThemeContext';
 
@@ -167,11 +167,11 @@ const PricingSection = () => {
                   
           <Link
                     to="/yhteystiedot#vedos"
-                    className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 group text-sm ${
+                    className={`inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 text-sm ${
                       plan.highlighted ? btnHighlighted : btnNormal
                     }`}
                   >
-                    Tilaa vedos <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    Tilaa vedos
                   </Link>
                 </div>
               </FadeIn>
@@ -221,7 +221,6 @@ const Verkkosivut = () => (
   <>
     <ServicePageLayout
       heroVariant="commercial"
-      heroTrustPoints={["Nopeus & suorituskyky", "SEO-optimoitu", "Konversio-suunnittelu", "Premium design"]}
       seo={{
         title: "Verkkosivut yritykselle — FEIM Digital Studio",
         description: "FEIM suunnittelee ja rakentaa moderneja verkkosivuja, jotka tukevat liiketoimintaa, rakentavat brändiä ja muuttavat kävijät asiakkaiksi.",

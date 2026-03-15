@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <img src={feimLogo} alt="FEIM" className="h-12 sm:h-16 w-auto mb-3 sm:mb-4" />
             <p className={`max-w-sm text-sm sm:text-base leading-relaxed ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>
-              Moderni digitaalinen studio, joka suunnittelee ja toteuttaa premium-verkkosivuja ja digitaalisia kokemuksia yrityksille, jotka haluavat erottua.
+              Suunnittelemme ja rakennamme premium-verkkosivuja, web-sovelluksia sekä digitaalisia tuotteita yrityksille, jotka haluavat erottua.
             </p>
           </div>
           <div className="flex gap-12 md:contents">
