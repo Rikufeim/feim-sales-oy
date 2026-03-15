@@ -175,26 +175,13 @@ const VedosFormSection = ({ formRef, className, showHeading = true, compact = fa
                   className="space-y-5"
                   onSubmit={e => { e.preventDefault(); setSubmitted(true); }}
                 >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-neutral-400">
-                        Verkkosivujen osoite <span className="text-red-400/70">*</span>
-                      </label>
-                      <input
-                        type="url"
-                        placeholder="www.yritys.com"
-                        required
-                        className="w-full border border-white/[0.1] bg-white/[0.04] rounded-xl px-4 py-3.5 focus:outline-none focus:border-blue-500/50 transition-colors text-sm text-white placeholder-neutral-600"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-neutral-400">Yritys</label>
-                      <input
-                        type="text"
-                        placeholder="Yrityksen nimi"
-                        className="w-full border border-white/[0.1] bg-white/[0.04] rounded-xl px-4 py-3.5 focus:outline-none focus:border-blue-500/50 transition-colors text-sm text-white placeholder-neutral-600"
-                      />
-                    </div>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-medium text-neutral-400">Yritys</label>
+                    <input
+                      type="text"
+                      placeholder="Yrityksen nimi"
+                      className="w-full border border-white/[0.1] bg-white/[0.04] rounded-xl px-4 py-3.5 focus:outline-none focus:border-blue-500/50 transition-colors text-sm text-white placeholder-neutral-600"
+                    />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
