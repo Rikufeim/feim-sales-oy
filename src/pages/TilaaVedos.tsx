@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { ArrowRight, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
+import VedosExamples from '@/components/VedosExamples';
 import feimLogo from '@/assets/feim-logo.png';
 import rikuImg from '@/assets/riku-night.jpeg';
 
