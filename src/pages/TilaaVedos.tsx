@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 import { ArrowRight, Phone, Mail, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
+import VedosExamples from '@/components/VedosExamples';
 import feimLogo from '@/assets/feim-logo.png';
 import rikuImg from '@/assets/riku-night.jpeg';
 
@@ -54,6 +55,7 @@ const StarField = () => {
 const TilaaVedos = () => {
   const { setHidden } = useNavbarVisibility();
   const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setHidden(true);
@@ -86,8 +88,11 @@ const TilaaVedos = () => {
         </div>
       </header>
 
-      {/* Main content */}
-      <main className="relative z-10 px-4 sm:px-6 lg:px-16 pb-16 sm:pb-24 max-w-7xl mx-auto">
+      {/* Examples section */}
+      <VedosExamples formRef={formRef} />
+
+      {/* Main content — form */}
+      <main ref={formRef} className="relative z-10 px-4 sm:px-6 lg:px-16 pb-16 sm:pb-24 max-w-7xl mx-auto">
         <div className="border border-white/[0.07] rounded-2xl sm:rounded-3xl overflow-hidden bg-white/[0.03] backdrop-blur-sm">
           <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr]">
 
