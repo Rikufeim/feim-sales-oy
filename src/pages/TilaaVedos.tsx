@@ -55,6 +55,7 @@ const StarField = () => {
 const TilaaVedos = () => {
   const { setHidden } = useNavbarVisibility();
   const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setHidden(true);
