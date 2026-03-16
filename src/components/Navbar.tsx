@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
           <img
             src={feimLogo}
             alt="FEIM"
-            className="h-10 sm:h-16 w-auto drop-shadow-lg"
+            className="h-14 sm:h-20 w-auto drop-shadow-lg"
             loading="eager"
             decoding="async"
             draggable={false}
