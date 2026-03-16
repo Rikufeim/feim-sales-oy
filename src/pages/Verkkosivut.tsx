@@ -14,7 +14,7 @@ const pricingPlans = [
   {
     name: "Yksinkertainen käyntikortti",
     subtitle: "Landing page / 1 sivu",
-    price: "499",
+    price: "699",
     features: [
       "1-sivuinen landing page",
       "Moderni ja selkeä ulkoasu",
@@ -28,7 +28,7 @@ const pricingPlans = [
   {
     name: "Moderni käyntikortti",
     subtitle: "2–3 sivua",
-    price: "699",
+    price: "999",
     features: [
       "2–3 sivua",
       "Räätälöidyt komponentit ja visuaalinen toteutus",
@@ -43,7 +43,7 @@ const pricingPlans = [
   {
     name: "Multipage",
     subtitle: "4–7 sivua",
-    price: "899",
+    price: "1200",
     highlighted: true,
     features: [
       "4–7 sivua",
@@ -59,7 +59,7 @@ const pricingPlans = [
   {
     name: "Kasvupaketti",
     subtitle: "Täysi digitaalinen kokonaisuus",
-    price: "1200",
+    price: "1500",
     features: [
       "Laaja, räätälöity monisivuinen nettisivusto",
       "Edistynyt UI Design ja UX-ajattelu",
@@ -233,31 +233,7 @@ const Verkkosivut = () => (
         cta: "",
         ctaHref: "/yhteystiedot#vedos"
       }}
-      sections={[
-        {
-          title: "Mitä hyvät verkkosivut tekevät",
-          description: "Verkkosivusto on yrityksenne tärkein digitaalinen omaisuus. Se on ensivaikutelma, myyjä ja brändin ääni — samanaikaisesti, ympäri vuorokauden.",
-          bullets: [
-            "Selkeä viesti ja rakenne, joka ohjaa kävijää eteenpäin",
-            "Konversioon suunniteltu käyttäjäkokemus",
-            "Nopeus ja tekninen laatu — jokainen sekunti ratkaisee",
-            "Hakukoneystävällinen rakenne, joka tuo orgaanista liikennettä",
-            "Visuaalinen identiteetti, joka erottaa teidät kilpailijoista",
-            "Responsiivinen toteutus joka laitteelle"
-          ]
-        },
-        {
-          title: "Tekoälyagenteille optimoitu (GEO)",
-          description: "Perinteinen SEO ei enää riitä. Yhä useampi haku tapahtuu tekoälypohjaisten agenttien kautta — ChatGPT, Perplexity, Google AI Overviews. GEO (Generative Engine Optimization) varmistaa, että sivustonne löytyy myös niistä.",
-          bullets: [
-            "Rakenteinen data ja semanttinen HTML, jota tekoälyagentit ymmärtävät",
-            "Selkeä, korkealaatuinen sisältö, joka päätyy AI-vastauksiin",
-            "Optimoitu sivurakenne, joka palvelee sekä ihmisiä että koneita",
-            "Valmius toimia alustana AI-chatboteille ja -agenteille",
-            "Jatkuvasti kehittyvä optimointi hakuteknologian mukana"
-          ]
-        }
-      ]}
+      sections={[]}
       cta={{
         title: "Tilaa maksuton vedos verkkosivustasi",
         description: "Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miltä uusi sivustonne voisi näyttää.",

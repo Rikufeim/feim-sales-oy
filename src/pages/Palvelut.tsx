@@ -4,15 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
-import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
-import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
-import svcWebapp1 from '@/assets/service-webapp-1.png';
-import svcWebapp2 from '@/assets/service-webapp-2.png';
-import svcWebapp3 from '@/assets/service-webapp-3.png';
-import svcProto1 from '@/assets/service-proto-1.png';
-import svcProto2 from '@/assets/service-proto-2.png';
-import svcProto3 from '@/assets/service-proto-3.png';
+import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.webp';
+import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.webp';
+import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.webp';
+import svcWebapp1 from '@/assets/service-webapp-1.webp';
+import svcWebapp2 from '@/assets/service-webapp-2.webp';
+import svcWebapp3 from '@/assets/service-webapp-3.webp';
+import svcProto1 from '@/assets/service-proto-1.webp';
+import svcProto2 from '@/assets/service-proto-2.webp';
+import svcProto3 from '@/assets/service-proto-3.webp';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -75,6 +75,7 @@ const AUTO_CYCLE_MS = 5000;
 
 const Palvelut = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const resetTimer = useCallback(() => {
@@ -93,6 +94,26 @@ const Palvelut = () => {
     setActiveIndex(i);
     resetTimer();
   }, [resetTimer]);
+
+  const markImageLoaded = useCallback((src: string) => {
+    setLoadedImages(prev => (prev[src] ? prev : { ...prev, [src]: true }));
+  }, []);
+
+  useEffect(() => {
+    const nextIndex = (activeIndex + 1) % services.length;
+    const preloadSources = [
+      ...services[activeIndex].images.map((img) => img.src),
+      ...services[nextIndex].images.map((img) => img.src),
+    ];
+
+    preloadSources.forEach((src) => {
+      if (loadedImages[src]) return;
+      const preloader = new Image();
+      preloader.decoding = 'async';
+      preloader.onload = () => markImageLoaded(src);
+      preloader.src = src;
+    });
+  }, [activeIndex, loadedImages, markImageLoaded]);
 
   const active = services[activeIndex];
 
@@ -180,7 +201,7 @@ const Palvelut = () => {
                 <div className="grid grid-cols-3 gap-4">
                   {active.images.map((img, j) => (
                     <motion.div
-                      key={j}
+                      key={img.src}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
@@ -190,10 +211,19 @@ const Palvelut = () => {
                       }}
                       className="relative rounded-2xl overflow-hidden border border-white/[0.06] aspect-video bg-neutral-950 shadow-lg shadow-black/30"
                     >
+                      {!loadedImages[img.src] && (
+                        <div className="absolute inset-0 bg-neutral-900 animate-pulse" />
+                      )}
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        loading={activeIndex === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        fetchPriority={activeIndex === 0 && j === 0 ? "high" : "auto"}
+                        onLoad={() => markImageLoaded(img.src)}
+                        className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] ${
+                          loadedImages[img.src] ? "opacity-100" : "opacity-0"
+                        }`}
                       />
                       <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black to-transparent pointer-events-none" />
                     </motion.div>

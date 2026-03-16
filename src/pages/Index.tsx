@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ArrowRight, CheckCircle2, ChevronDown, Sparkles, ExternalLink } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown, Sparkles, ExternalLink, Paperclip } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,9 @@ import feimLogo from '@/assets/feim-logo.png';
 import rikuNightImg from '@/assets/riku-night.jpeg';
 import salesApp1 from '@/assets/sales-app-1.png';
 import salesApp2 from '@/assets/sales-app-2.png';
+import svcVerkkosivutImg from '@/assets/service-verkkosivut-1.webp';
+import svcWebappImg from '@/assets/service-webapp-1.webp';
+import svcProtoImg from '@/assets/service-proto-1.webp';
 import ContactCard from '@/components/ContactCard';
 import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
@@ -176,7 +179,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.2}>
         <p className={`mt-6 sm:mt-8 text-lg sm:text-xl md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
-          Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla.
+          Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe koodauksella.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
@@ -204,13 +207,8 @@ const servicesData = [
     panelBg: "#141414",
     tagline: "Myyvät sivut, jotka rakentavat brändiä",
     desc: "Rakennamme modernit verkkosivut, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, viestivät brändin arvon ja muuttavat kävijät asiakkaiksi.",
-    features: [
-      "Responsiivinen design kaikille laitteille",
-      "SEO-optimoitu rakenne alusta alkaen",
-      "Nopeat latausajat ja suorituskykyoptimointi",
-      "Konversio-optimoitu käyttökokemus",
-      "Analytiikka ja seuranta mukana",
-    ],
+    previewImage: svcVerkkosivutImg,
+    previewAlt: "Verkkosivu-ui preview",
     cta: "Tutustu verkkosivupalveluun",
   },
   {
@@ -220,13 +218,8 @@ const servicesData = [
     panelBg: "#242424",
     tagline: "Räätälöityjä digitaalisia tuotteita",
     desc: "Suunnittelemme ja rakennimme asiakasportaaleja, SaaS-palveluja, varausjärjestelmiä ja uusia digitaalisia tuotteita — ideasta valmiiksi tuotteeksi.",
-    features: [
-      "Käyttäjälähtöinen UX-suunnittelu",
-      "Skaalautuva tekninen arkkitehtuuri",
-      "Integraatiot olemassaoleviin järjestelmiin",
-      "Toistuvat prosessit automatisoituna",
-      "Jatkuva kehitys ja ylläpito",
-    ],
+    previewImage: svcWebappImg,
+    previewAlt: "Web-sovellus-ui preview",
     cta: "Tutustu web-sovelluksiin",
   },
   {
@@ -236,13 +229,8 @@ const servicesData = [
     panelBg: "#1a1a1a",
     tagline: "Ideasta testattavaksi tuotteeksi nopeasti",
     desc: "Validoimme ideasi nopeasti toimivalla prototyypillä tai MVP:llä — ennen kuin investoit täyteen tuotekehitykseen. Nopea tapa konkretisoida ja testata.",
-    features: [
-      "Klikattava prototyyppi päivissä",
-      "Käyttäjätestaus ennen rakentamista",
-      "Sijoittajille esitettävä demo-versio",
-      "Selkeä polku MVP:stä täyteen tuotteeseen",
-      "Lean-ajattelu ja nopeat iteraatiot",
-    ],
+    previewImage: svcProtoImg,
+    previewAlt: "Prototyyppi-ui preview",
     cta: "Tutustu prototyyppeihin",
   },
 ];
@@ -257,10 +245,13 @@ const Services = () => {
         {/* Mac-window card */}
         <FadeIn>
           <div className="relative">
-            <div className="rounded-2xl overflow-hidden border border-b-transparent border-white/[0.08] bg-[#1a1a1a] shadow-2xl">
-            {/* Bottom fade to black */}
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent z-20" />
-
+            <motion.div
+              key={`service-card-${active}`}
+              initial={{ opacity: 0.72 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative rounded-2xl overflow-hidden border border-b-transparent border-white/[0.08] bg-[#1a1a1a] shadow-2xl"
+            >
             {/* Title bar */}
             <div className="flex items-center gap-0 border-b border-white/[0.07] bg-[#232323]">
               {/* Traffic lights */}
@@ -327,23 +318,29 @@ const Services = () => {
                       </Link>
                     </div>
 
-                    {/* Right — feature list */}
-                    <div className="flex flex-col gap-3">
-                      {s.features.map((f, i) => (
-                        <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-                          <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={12} className="text-blue-400" />
-                          </span>
-                          <span className="text-base sm:text-sm text-neutral-300 leading-snug">{f}</span>
-                        </div>
-                      ))}
+                    {/* Right — section image preview */}
+                    <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0f1117]">
+                      <motion.img
+                        key={s.previewImage}
+                        src={s.previewImage}
+                        alt={s.previewAlt}
+                        className="relative z-10 w-full h-full aspect-[16/10] object-cover object-center scale-[1.04]"
+                        initial={{ opacity: 0, scale: 1.03 }}
+                        animate={{ opacity: 1, scale: 1.04 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.45, ease: "easeOut" }}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-28 bg-gradient-to-t from-black/95 via-black/55 to-transparent z-20" />
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </motion.div>
             </div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 sm:h-24 bg-gradient-to-t from-black/90 via-black/45 to-transparent z-20" />
 
-          </div>
+          </motion.div>
           </div>
         </FadeIn>
       </div>
@@ -351,7 +348,426 @@ const Services = () => {
   );
 };
 
-/* ─── 3. Miksi FEIM ─── */
+/* ─── 3. Landing paget ─── */
+
+const LandingPagesSection = () => {
+  const previewItems = [
+    { title: "Myyvä hero", desc: "Selkeä arvolupaus ja vahva CTA heti ensisilmäyksellä.", image: svcVerkkosivutImg },
+    { title: "Konversioblokit", desc: "Luottamus, referenssit ja tarjousosiot, jotka ohjaavat yhteydenottoon.", image: svcWebappImg },
+    { title: "Nopea tuotanto", desc: "Rakennamme valmiin landing pagen nopeasti ilman laadusta tinkimistä.", image: svcProtoImg },
+  ];
+
+  return (
+    <section id="landing-paget" className="relative py-16 sm:py-24 md:py-28 overflow-hidden bg-black">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_18%,rgba(0,33,255,0.08),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(0,33,255,0.06),transparent_58%)]" />
+      </div>
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
+        <FadeIn>
+          <p className="text-sm font-medium tracking-widest uppercase text-blue-400/70 mb-4">Landing paget</p>
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white max-w-4xl leading-tight">
+            Landing paget <span className="text-blue-400">salaman nopeasti</span>
+          </h2>
+          <p className="mt-5 text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+            Rakennamme laadukkaat landing paget minuuteissa. Vibe-koodaus prosessimme ansiosta sivut voidaan usein toimittaa ja julkaista jo muutamassa päivässä.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
+            {previewItems.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-4 sm:p-5"
+              >
+                <p className="text-white font-semibold mb-2">{item.title}</p>
+                <p className="text-sm text-neutral-400 mb-4">{item.desc}</p>
+                <div className="relative rounded-xl overflow-hidden border border-white/[0.08] bg-black/30">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-32 object-cover saturate-[0.92] brightness-[0.88]"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-black/25" />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/70 to-transparent" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <Link
+              to="/tilaa-vedos"
+              className="inline-flex items-center justify-center bg-white text-black font-bold text-sm py-3.5 px-8 rounded-xl hover:bg-neutral-200 transition-all duration-300"
+            >
+              Tilaa vedos
+            </Link>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
+
+const DinoGameSection = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    type Obstacle = {
+      x: number;
+      w: number;
+      h: number;
+      kind: 'block' | 'tall' | 'double';
+      bob: number;
+      phase: number;
+      passed: boolean;
+    };
+    type Cloud = {
+      x: number;
+      y: number;
+      w: number;
+      h: number;
+      speed: number;
+      alpha: number;
+    };
+
+    const state = {
+      width: 0,
+      height: 0,
+      groundY: 0,
+      dinoX: 80,
+      dinoY: 0,
+      dinoW: 56,
+      dinoH: 56,
+      velocityY: 0,
+      gravity: 1.05,
+      jumpPower: 18,
+      obstacleSpeed: 7.2,
+      obstacles: [] as Obstacle[],
+      clouds: [] as Cloud[],
+      groundOffset: 0,
+      obstacleSpawnMs: 0,
+      nextSpawnMs: 1200,
+      score: 0,
+      hasStarted: false,
+      gameOver: false,
+      jumpRequested: false,
+      lastTs: 0,
+      rafId: 0,
+    };
+    const logoImg = new Image();
+    let logoLoaded = false;
+    logoImg.src = feimLogo;
+    logoImg.onload = () => {
+      logoLoaded = true;
+    };
+
+    const rand = (min: number, max: number) => min + Math.random() * (max - min);
+
+    const initClouds = () => {
+      state.clouds = Array.from({ length: 8 }, () => ({
+        x: rand(0, state.width),
+        y: rand(18, Math.max(22, state.groundY - 90)),
+        w: rand(42, 118),
+        h: rand(10, 24),
+        speed: rand(0.22, 0.9),
+        alpha: rand(0.09, 0.22),
+      }));
+    };
+
+    const getObstacleRects = (obstacle: Obstacle) => {
+      const baseY = state.groundY - obstacle.h - Math.sin(obstacle.phase) * obstacle.bob;
+      if (obstacle.kind === 'double') {
+        const leftW = obstacle.w * 0.44;
+        const rightW = obstacle.w * 0.44;
+        return [
+          { x: obstacle.x, y: baseY + obstacle.h * 0.34, w: leftW, h: obstacle.h * 0.66 },
+          { x: obstacle.x + obstacle.w - rightW, y: baseY, w: rightW, h: obstacle.h },
+        ];
+      }
+      return [{ x: obstacle.x, y: baseY, w: obstacle.w, h: obstacle.h }];
+    };
+
+    const resetGame = () => {
+      state.obstacles = [];
+      state.obstacleSpawnMs = 0;
+      state.nextSpawnMs = 1200;
+      state.score = 0;
+      state.gameOver = false;
+      state.velocityY = 0;
+      state.dinoY = state.groundY - state.dinoH;
+      state.lastTs = 0;
+      state.jumpRequested = false;
+      state.groundOffset = 0;
+    };
+
+    const resize = () => {
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const cssWidth = Math.max(320, canvas.clientWidth);
+      const cssHeight = Math.max(220, canvas.clientHeight);
+
+      canvas.width = Math.floor(cssWidth * dpr);
+      canvas.height = Math.floor(cssHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      state.width = cssWidth;
+      state.height = cssHeight;
+      state.groundY = cssHeight - 28;
+      state.dinoY = Math.min(state.dinoY || state.groundY - state.dinoH, state.groundY - state.dinoH);
+      if (state.clouds.length === 0) initClouds();
+    };
+
+    const requestJump = () => {
+      if (state.gameOver) {
+        resetGame();
+        state.hasStarted = true;
+        return;
+      }
+      if (!state.hasStarted) {
+        state.hasStarted = true;
+        state.lastTs = 0;
+        return;
+      }
+      state.jumpRequested = true;
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyW') {
+        e.preventDefault();
+        requestJump();
+      }
+    };
+
+    const onPointerDown = () => {
+      requestJump();
+    };
+
+    const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
+      return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, state.width, state.height);
+
+      ctx.fillStyle = '#020617';
+      ctx.fillRect(0, 0, state.width, state.height);
+
+      state.clouds.forEach((cloud) => {
+        ctx.fillStyle = `rgba(147, 197, 253, ${cloud.alpha})`;
+        ctx.fillRect(cloud.x, cloud.y, cloud.w, cloud.h);
+        ctx.fillRect(cloud.x + cloud.w * 0.2, cloud.y - cloud.h * 0.45, cloud.w * 0.5, cloud.h * 0.6);
+      });
+
+      ctx.strokeStyle = 'rgba(59,130,246,0.15)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 6; i++) {
+        const y = 18 + i * 24;
+        ctx.beginPath();
+        ctx.moveTo((-state.groundOffset * (0.35 + i * 0.08)) % 42, y);
+        ctx.lineTo(state.width, y);
+        ctx.stroke();
+      }
+
+      ctx.strokeStyle = 'rgba(59,130,246,0.45)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, state.groundY);
+      ctx.lineTo(state.width, state.groundY);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(59,130,246,0.45)';
+      for (let x = -24 + (state.groundOffset % 24); x < state.width + 24; x += 24) {
+        ctx.fillRect(x, state.groundY + 6, 14, 3);
+      }
+
+      if (logoLoaded) {
+        const centerX = state.dinoX + state.dinoW / 2;
+        const centerY = state.dinoY + state.dinoH / 2;
+        const tilt = Math.max(-0.22, Math.min(0.22, state.velocityY / 26));
+        const stretchY = state.dinoY >= state.groundY - state.dinoH - 1 ? 0.96 : 1.04;
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(tilt);
+        ctx.scale(1.02, stretchY);
+        ctx.drawImage(logoImg, -state.dinoW / 2, -state.dinoH / 2, state.dinoW, state.dinoH);
+        ctx.restore();
+      } else {
+        ctx.fillStyle = '#3b82f6';
+        ctx.fillRect(state.dinoX, state.dinoY, state.dinoW, state.dinoH);
+      }
+
+      state.obstacles.forEach((obstacle) => {
+        const rects = getObstacleRects(obstacle);
+        rects.forEach((rect, idx) => {
+          ctx.fillStyle = obstacle.kind === 'tall' ? '#f8fafc' : obstacle.kind === 'double' ? '#cbd5e1' : '#e5e7eb';
+          ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
+          ctx.fillStyle = 'rgba(59,130,246,0.45)';
+          ctx.fillRect(rect.x, rect.y, rect.w, Math.max(2, rect.h * 0.08));
+          if (obstacle.kind === 'double' && idx === 1) {
+            ctx.fillStyle = 'rgba(59,130,246,0.25)';
+            ctx.fillRect(rect.x + rect.w * 0.2, rect.y + rect.h * 0.25, rect.w * 0.6, rect.h * 0.12);
+          }
+        });
+      });
+
+      ctx.fillStyle = '#93c5fd';
+      ctx.font = '600 16px Inter, system-ui, sans-serif';
+      ctx.fillText(`Pisteet: ${Math.floor(state.score)}`, 16, 26);
+
+      if (state.gameOver) {
+        ctx.fillStyle = 'rgba(0,0,0,0.55)';
+        ctx.fillRect(0, 0, state.width, state.height);
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 30px Inter, system-ui, sans-serif';
+        ctx.fillText('Peli ohi', state.width / 2, state.height / 2 - 18);
+        ctx.font = '500 16px Inter, system-ui, sans-serif';
+        ctx.fillStyle = '#bfdbfe';
+        ctx.fillText('Paina välilyöntiä tai klikkaa aloittaaksesi uudelleen', state.width / 2, state.height / 2 + 16);
+        ctx.restore();
+      }
+
+      if (!state.hasStarted && !state.gameOver) {
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.fillRect(0, 0, state.width, state.height);
+        ctx.save();
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '700 30px Inter, system-ui, sans-serif';
+        ctx.fillText('Aloita peli', state.width / 2, state.height / 2 - 18);
+        ctx.font = '500 16px Inter, system-ui, sans-serif';
+        ctx.fillStyle = '#bfdbfe';
+        ctx.fillText('Paina välilyöntiä tai klikkaa', state.width / 2, state.height / 2 + 16);
+        ctx.restore();
+      }
+    };
+
+    const loop = (ts: number) => {
+      if (!state.lastTs) state.lastTs = ts;
+      const dt = ts - state.lastTs;
+      state.lastTs = ts;
+      const factor = Math.min(2.5, Math.max(0.6, dt / 16.67));
+
+      if (state.hasStarted && !state.gameOver) {
+        const isGrounded = state.dinoY >= state.groundY - state.dinoH - 1;
+        if (state.jumpRequested && isGrounded) {
+          state.velocityY = -state.jumpPower;
+        }
+        state.jumpRequested = false;
+
+        state.velocityY += state.gravity * factor;
+        state.dinoY += state.velocityY * factor;
+        if (state.dinoY > state.groundY - state.dinoH) {
+          state.dinoY = state.groundY - state.dinoH;
+          state.velocityY = 0;
+        }
+
+        state.obstacleSpawnMs += dt;
+        if (state.obstacleSpawnMs >= state.nextSpawnMs) {
+          const roll = Math.random();
+          const kind: Obstacle['kind'] = roll < 0.45 ? 'block' : roll < 0.78 ? 'tall' : 'double';
+          const h = kind === 'tall' ? rand(56, 86) : kind === 'double' ? rand(48, 72) : rand(32, 56);
+          const w = kind === 'tall' ? rand(18, 28) : kind === 'double' ? rand(36, 50) : rand(20, 34);
+          state.obstacles.push({
+            x: state.width + 20,
+            w,
+            h,
+            kind,
+            bob: kind === 'tall' ? rand(3, 10) : rand(0, 5),
+            phase: rand(0, Math.PI * 2),
+            passed: false,
+          });
+          state.obstacleSpawnMs = 0;
+          const spawnBase = Math.max(580, 980 - state.score * 0.6);
+          state.nextSpawnMs = spawnBase + rand(220, 780);
+        }
+
+        state.obstacleSpeed = Math.min(11.2, 7.2 + state.score / 180);
+        state.groundOffset += state.obstacleSpeed * factor * 1.6;
+
+        state.clouds.forEach((cloud) => {
+          cloud.x -= cloud.speed * factor * (1 + state.score / 3000);
+          if (cloud.x + cloud.w < -20) {
+            cloud.x = state.width + rand(10, 120);
+            cloud.y = rand(18, Math.max(22, state.groundY - 90));
+            cloud.w = rand(42, 118);
+            cloud.h = rand(10, 24);
+            cloud.speed = rand(0.22, 0.9);
+            cloud.alpha = rand(0.09, 0.22);
+          }
+        });
+
+        state.obstacles.forEach((obstacle) => {
+          obstacle.x -= state.obstacleSpeed * factor;
+          obstacle.phase += 0.05 * factor;
+        });
+        state.obstacles = state.obstacles.filter((obstacle) => obstacle.x + obstacle.w > -20);
+
+        const dinoHitInsetX = Math.max(8, state.dinoW * 0.18);
+        const dinoHitInsetY = Math.max(6, state.dinoH * 0.14);
+        const dinoHitX = state.dinoX + dinoHitInsetX;
+        const dinoHitY = state.dinoY + dinoHitInsetY;
+        const dinoHitW = state.dinoW - dinoHitInsetX * 2;
+        const dinoHitH = state.dinoH - dinoHitInsetY * 2;
+        for (const obstacle of state.obstacles) {
+          if (!obstacle.passed && obstacle.x + obstacle.w < state.dinoX) {
+            obstacle.passed = true;
+            state.score += 14;
+          }
+          const rects = getObstacleRects(obstacle);
+          const hasCollision = rects.some((rect) => intersects(dinoHitX, dinoHitY, dinoHitW, dinoHitH, rect.x, rect.y, rect.w, rect.h));
+          if (hasCollision) {
+            state.gameOver = true;
+            break;
+          }
+        }
+
+        state.score += dt * 0.01;
+      }
+
+      draw();
+      state.rafId = window.requestAnimationFrame(loop);
+    };
+
+    resize();
+    resetGame();
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+    canvas.addEventListener('pointerdown', onPointerDown);
+    state.rafId = window.requestAnimationFrame(loop);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('keydown', onKeyDown);
+      canvas.removeEventListener('pointerdown', onPointerDown);
+      window.cancelAnimationFrame(state.rafId);
+    };
+  }, []);
+
+  return (
+    <section id="dino-peli" className="relative bg-black py-8 sm:py-10 md:py-12">
+      <canvas ref={canvasRef} className="block w-full h-[220px] sm:h-[260px] md:h-[300px] border-y border-white/10 bg-[#020617]" />
+    </section>
+  );
+};
+
+/* ─── 4. Miksi FEIM ─── */
 
 const whyData = [
   { title: "Verkkosivut, jotka myyvät", desc: "Rakennamme verkkosivuja, jotka eivät vain näytä hyvältä — ne tuottavat liidejä, rakentavat brändiä ja tukevat liiketoimintaa." },
@@ -544,11 +960,11 @@ const AISection = () => (
 const FounderSection = () => {
   const { isDark } = useTheme();
   
-  // Light mode: dark blue/white editorial background inspired by reference
+  // Keep founder section visually aligned with the rest of the page in both themes.
   const sectionBg = isDark 
     ? 'bg-black'
-    : 'bg-[#0c1425]';
-  const sectionRounding = isDark ? '' : 'rounded-[2.5rem] mx-4 lg:mx-8';
+    : 'bg-[#0b1220]';
+  const sectionRounding = '';
   
   // In light mode, force dark text styles to match dark bg
   const labelColor = isDark ? 'text-blue-400/70' : 'text-blue-300/70';
@@ -564,13 +980,10 @@ const FounderSection = () => {
   return (
   <section className={`relative py-16 sm:py-24 md:py-32 overflow-hidden ${sectionBg} ${sectionRounding}`}>
     <div className="absolute inset-0 pointer-events-none">
-      <div className="absolute top-0 inset-x-0 h-44 sm:h-56 bg-gradient-to-b from-[#15326f]/65 via-[#0f2452]/38 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-40 sm:h-52 bg-[radial-gradient(ellipse_at_top,rgba(45,96,210,0.35),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_18%_18%,rgba(16,38,88,0.48),transparent_58%),radial-gradient(ellipse_at_82%_82%,rgba(12,28,72,0.34),transparent_64%),radial-gradient(ellipse_at_52%_96%,rgba(10,24,64,0.24),transparent_66%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/52 via-black/16 to-black/58" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_48%,rgba(0,0,0,0.72)_100%)]" />
-      <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-black/75 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-24 sm:w-32 bg-gradient-to-l from-black/75 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#10192c]/78 via-[#0c1424]/72 to-[#0b1220]/80" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_14%_20%,rgba(64,120,255,0.10),transparent_60%),radial-gradient(ellipse_at_82%_86%,rgba(34,82,190,0.08),transparent_64%),radial-gradient(ellipse_at_50%_100%,rgba(10,24,64,0.16),transparent_72%)]" />
+      <div className="absolute top-0 inset-x-0 h-24 sm:h-28 bg-gradient-to-b from-black via-black/70 to-transparent" />
+      <div className="absolute bottom-0 inset-x-0 h-24 sm:h-28 bg-gradient-to-t from-black via-black/70 to-transparent" />
     </div>
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
@@ -578,12 +991,9 @@ const FounderSection = () => {
       <FadeIn>
         <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>Founder’s Note</p>
         <h2 className={`text-2xl sm:text-4xl md:text-5xl font-serif font-semibold tracking-[0.01em] leading-[1.08] mb-10 sm:mb-16 max-w-4xl ${headingColor}`}>
-          <span className="block">Tulevaisuuden tuotteet</span>
           <span className="block">
-            rakennetaan{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">
-              tekoälyllä.
-            </span>
+            Tulevaisuudessa rakennetaan{" "}
+            <span className="text-blue-400">tekoälyllä.</span>
           </span>
         </h2>
       </FadeIn>
@@ -702,12 +1112,18 @@ const Contact = () => {
 
   return (
     <section id="yhteystiedot" className="relative py-16 sm:py-24 md:py-40 overflow-hidden content-auto">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#05070d]/96 via-[#04060c]/94 to-[#03050a]/98" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_14%_20%,rgba(0,26,102,0.32),transparent_58%),radial-gradient(ellipse_at_82%_86%,rgba(0,26,102,0.24),transparent_62%),radial-gradient(ellipse_at_50%_100%,rgba(0,26,102,0.18),transparent_72%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/68 via-black/34 to-black/72" />
+        <div className="absolute top-0 inset-x-0 h-24 sm:h-28 bg-gradient-to-b from-black via-black/90 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-24 sm:h-28 bg-gradient-to-t from-black via-black/90 to-transparent" />
+      </div>
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
         {/* ── Header ── */}
         <FadeIn delay={0.05}>
           <div className="text-center mb-10 sm:mb-16">
-            <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Aloita tästä</p>
             <h2 className="text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-white leading-[1.08] mb-4 sm:mb-6">
               Tilaa maksuton{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-blue-300 to-blue-500">vedos</span>
@@ -721,30 +1137,29 @@ const Contact = () => {
 
         {/* ── Full-width form ── */}
         <FadeIn delay={0.15}>
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 lg:p-16 backdrop-blur-sm">
-
+          <div className="border border-white/[0.06] bg-white/[0.02] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 backdrop-blur-sm">
             <form className="space-y-8" onSubmit={e => e.preventDefault()}>
               {/* Row 1: 4 columns on desktop */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400 ml-1">Yritys</label>
                   <input type="text" placeholder="Yrityksen nimi" required
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                    className="w-full border border-white/[0.08] bg-white/[0.03] rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/40 transition-colors text-[15px] text-white placeholder-neutral-600" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400 ml-1">Nimi</label>
                   <input type="text" placeholder="Etunimi Sukunimi" required
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                    className="w-full border border-white/[0.08] bg-white/[0.03] rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/40 transition-colors text-[15px] text-white placeholder-neutral-600" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400 ml-1">Sähköpostiosoite</label>
                   <input type="email" placeholder="nimi@yritys.fi" required
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                    className="w-full border border-white/[0.08] bg-white/[0.03] rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/40 transition-colors text-[15px] text-white placeholder-neutral-600" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400 ml-1">Puhelinnumero</label>
                   <input type="tel" placeholder="+358 40 123 4567"
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors placeholder-neutral-600 text-[15px]" />
+                    className="w-full border border-white/[0.08] bg-white/[0.03] rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/40 transition-colors text-[15px] text-white placeholder-neutral-600" />
                 </div>
               </div>
 
@@ -757,7 +1172,7 @@ const Contact = () => {
                       key={s.id}
                       type="button"
                       onClick={() => setSelectedService(s.id)}
-                      className={`py-3.5 sm:py-3.5 px-5 rounded-xl text-base sm:text-sm font-medium transition-all duration-300 border ${
+                      className={`py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
                         selectedService === s.id
                           ? 'bg-blue-500/15 border-blue-500/30 text-blue-300'
                           : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
@@ -769,25 +1184,45 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Textareas side by side on desktop */}
+              {/* Description + attachment */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-neutral-400 ml-1">Kuvaus tarpeesta tai tavoitteesta</label>
-                  <textarea rows={4} placeholder="Kerro lyhyesti, mitä haluaisit rakentaa ja mitä tavoitteita projektillasi on."
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors resize-none placeholder-neutral-600 text-[15px]" />
+                  <label className="text-sm font-medium text-neutral-400 ml-1">Kerro projektistasi</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Kerro lyhyesti, mitä haluaisit rakentaa ja mitä tavoitteita projektillasi on."
+                    onInput={(e) => {
+                      const target = e.currentTarget;
+                      target.style.height = "auto";
+                      target.style.height = `${target.scrollHeight}px`;
+                    }}
+                    className="w-full border border-white/[0.08] bg-white/[0.03] rounded-xl px-5 py-4 focus:outline-none focus:border-blue-500/40 transition-colors resize-none overflow-hidden text-[15px] text-white placeholder-neutral-600"
+                  />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-neutral-400 ml-1">Lisätietoa tai aikataulu <span className="text-neutral-600">(valinnainen)</span></label>
-                  <textarea rows={4} placeholder="Esim. toivottu aikataulu tai budjettihaarukka"
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500/40 transition-colors resize-none placeholder-neutral-600 text-[15px]" />
+                  <label className="text-sm font-medium text-neutral-400 ml-1">Liitetiedosto <span className="text-neutral-600">(valinnainen)</span></label>
+                  <label className="block border-2 border-dashed border-white/[0.12] rounded-xl px-5 py-6 sm:py-8 text-center transition-colors cursor-pointer hover:bg-white/[0.02]">
+                    <input type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" className="hidden" />
+                    <Paperclip size={22} className="mx-auto mb-2 text-neutral-400" />
+                    <p className="text-sm font-medium text-white">Valitse tiedosto</p>
+                    <p className="text-xs mt-1 text-neutral-400">PDF, DOC, PNG, JPG</p>
+                  </label>
                 </div>
               </div>
 
-              {/* Submit + info row */}
+              <div className="flex items-start gap-3 mt-2 border-l-2 border-blue-400/30 pl-4">
+                <p className="text-xs leading-relaxed text-neutral-400">
+                  Tämä lomake kerää yhteystietosi, jotta voimme olla sinuun yhteydessä. Tutustu <a href="#" className="font-semibold underline text-white">tietosuojaselosteeseen</a> saadaksesi lisätietoja siitä, miten käsittelemme ja suojaamme tietojasi.
+                </p>
+              </div>
+
               <div className="pt-2">
-                 <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-base sm:text-base py-4 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
-                  Tilaa maksuton vedos
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto font-bold text-base py-4 px-12 rounded-xl transition-all hover:scale-[1.01] active:scale-[0.99] mt-2 group inline-flex items-center justify-center gap-2 bg-white text-black"
+                >
+                  Lähetä viesti
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </form>
@@ -920,6 +1355,8 @@ const Index = () => {
           
           <Hero onStartProject={handleStartProject} />
           <Services />
+          <LandingPagesSection />
+          <DinoGameSection />
           <WhyFeim />
           
           <FounderSection />
