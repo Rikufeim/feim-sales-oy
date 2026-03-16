@@ -17,6 +17,7 @@ import { useNavbarVisibility } from '@/components/NavbarVisibility';
 import HeroBackground from '@/components/HeroBackground';
 import { useTheme } from '@/components/ThemeContext';
 import InteractiveNeuralVortex from '@/components/ui/interactive-neural-vortex-background';
+import AnimatedBackgroundLines from '@/components/ui/animated-background-lines';
 
 /* ─── Utility Components ─── */
 
@@ -359,7 +360,7 @@ const LandingPagesSection = () => {
   ];
 
   return (
-    <section id="landing-paget" className="relative py-16 sm:py-24 md:py-28 overflow-hidden bg-black">
+    <section id="landing-paget" className="relative pt-8 pb-16 sm:pt-12 sm:pb-24 md:pt-16 md:pb-28 overflow-hidden bg-black">
       <div className="absolute inset-0 pointer-events-none">
         <InteractiveNeuralVortex backgroundOnly className="opacity-60" />
         <div className="absolute inset-0 bg-black/62" />
@@ -373,7 +374,9 @@ const LandingPagesSection = () => {
         <FadeIn>
           <p className="text-sm font-medium tracking-widest uppercase text-blue-400/70 mb-4">Landing paget</p>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white max-w-4xl leading-tight">
-            Landing paget <span className="text-blue-400">salaman nopeasti</span>
+            Erottuvat landing paget
+            <br />
+            <span className="text-blue-400">salaman nopeasti</span>
           </h2>
           <p className="mt-5 text-neutral-400 text-base sm:text-lg leading-relaxed max-w-3xl">
             Rakennamme laadukkaat landing paget minuuteissa. Vibe-koodaus prosessimme ansiosta sivut voidaan usein toimittaa ja julkaista jo muutamassa päivässä.
@@ -408,7 +411,13 @@ const LandingPagesSection = () => {
             ))}
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link
+              to="/verkkosivut"
+              className="inline-flex items-center justify-center border border-white/20 text-white font-semibold text-sm py-3.5 px-8 rounded-xl hover:bg-white/10 transition-all duration-300"
+            >
+              Tutustu lisää
+            </Link>
             <Link
               to="/tilaa-vedos"
               className="inline-flex items-center justify-center bg-white text-black font-bold text-sm py-3.5 px-8 rounded-xl hover:bg-neutral-200 transition-all duration-300"
@@ -463,6 +472,15 @@ const DinoGameSection = () => {
       r: number;
       phase: number;
     };
+    type Coin = {
+      x: number;
+      y: number;
+      r: number;
+      vx: number;
+      vy: number;
+      spin: number;
+      collected: boolean;
+    };
 
     const state = {
       width: 0,
@@ -474,16 +492,29 @@ const DinoGameSection = () => {
       targetX: 0,
       dinoVX: 0,
       obstacles: [] as Obstacle[],
+      coins: [] as Coin[],
       clouds: [] as Cloud[],
       stars: [] as Star[],
       obstacleSpawnMs: 0,
       nextSpawnMs: 850,
+      coinSpawnMs: 0,
+      nextCoinSpawnMs: 2200,
       score: 0,
       altitudeKm: 0,
+      scoreMultiplier: 1,
+      multiplierMs: 0,
       hasStarted: false,
       gameOver: false,
       leftPressed: false,
       rightPressed: false,
+      horizontalPadding: 8,
+      inputStep: 9,
+      spawnBaseMs: 760,
+      spawnMinMs: 250,
+      spawnAltitudeRate: 1.8,
+      obstacleSizeScale: 1,
+      obstacleSpeedScale: 1,
+      collisionInsetScale: 1,
       lastTs: 0,
       rafId: 0,
     };
@@ -520,10 +551,15 @@ const DinoGameSection = () => {
 
     const resetGame = () => {
       state.obstacles = [];
+      state.coins = [];
       state.obstacleSpawnMs = 0;
       state.nextSpawnMs = 850;
+      state.coinSpawnMs = 0;
+      state.nextCoinSpawnMs = 2200;
       state.score = 0;
       state.altitudeKm = 0;
+      state.scoreMultiplier = 1;
+      state.multiplierMs = 0;
       state.gameOver = false;
       state.dinoX = state.width * 0.5 - state.dinoW / 2;
       state.targetX = state.dinoX;
@@ -534,10 +570,27 @@ const DinoGameSection = () => {
       state.rightPressed = false;
     };
 
+    const applyResponsiveTuning = () => {
+      const isMobile = state.width < 640;
+      const isNarrow = state.width < 390;
+      const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+      state.horizontalPadding = isNarrow ? 6 : isMobile ? 8 : 10;
+      state.inputStep = isMobile ? 7.2 : 9;
+      state.spawnBaseMs = isMobile ? 920 : 760;
+      state.spawnMinMs = isMobile ? 340 : 250;
+      state.spawnAltitudeRate = isMobile ? 1.35 : 1.8;
+      state.obstacleSizeScale = isNarrow ? 0.84 : isMobile ? 0.9 : 1;
+      state.obstacleSpeedScale = isMobile ? 0.88 : 1;
+      state.collisionInsetScale = coarsePointer ? 1.15 : 1;
+      state.dinoW = isNarrow ? 48 : isMobile ? 52 : 56;
+      state.dinoH = state.dinoW;
+    };
+
     const resize = () => {
       const dpr = Math.max(1, window.devicePixelRatio || 1);
       const cssWidth = Math.max(320, canvas.clientWidth);
-      const cssHeight = Math.max(220, canvas.clientHeight);
+      const cssHeight = Math.max(320, canvas.clientHeight);
 
       canvas.width = Math.floor(cssWidth * dpr);
       canvas.height = Math.floor(cssHeight * dpr);
@@ -545,13 +598,15 @@ const DinoGameSection = () => {
 
       state.width = cssWidth;
       state.height = cssHeight;
+      applyResponsiveTuning();
+
       if (!state.hasStarted) {
         state.dinoX = cssWidth * 0.5 - state.dinoW / 2;
         state.targetX = state.dinoX;
         state.dinoY = cssHeight - state.dinoH - 20;
       } else {
-        state.dinoX = Math.min(Math.max(state.dinoX, 8), cssWidth - state.dinoW - 8);
-        state.targetX = Math.min(Math.max(state.targetX, 8), cssWidth - state.dinoW - 8);
+        state.dinoX = Math.min(Math.max(state.dinoX, state.horizontalPadding), cssWidth - state.dinoW - state.horizontalPadding);
+        state.targetX = Math.min(Math.max(state.targetX, state.horizontalPadding), cssWidth - state.dinoW - state.horizontalPadding);
         state.dinoY = Math.min(Math.max(state.dinoY, 10), cssHeight - state.dinoH - 8);
       }
       if (state.clouds.length === 0) initClouds();
@@ -600,28 +655,56 @@ const DinoGameSection = () => {
       }
     };
 
-    const onPointerDown = () => {
+    const updateTargetXFromPointer = (clientX: number) => {
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width) return;
+      const relativeX = clientX - rect.left;
+      const minCenter = state.dinoW / 2 + state.horizontalPadding;
+      const maxCenter = rect.width - state.dinoW / 2 - state.horizontalPadding;
+      const clampedCenter = Math.min(Math.max(relativeX, minCenter), maxCenter);
+      state.targetX = clampedCenter - state.dinoW / 2;
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
       requestStart();
+      updateTargetXFromPointer(e.clientX);
+      try {
+        canvas.setPointerCapture(e.pointerId);
+      } catch {
+        // Ignore unsupported pointer capture environments.
+      }
     };
 
     const onPointerMove = (e: PointerEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      if (!rect.width) return;
-      const relativeX = e.clientX - rect.left;
-      const clampedCenter = Math.min(Math.max(relativeX, state.dinoW / 2 + 8), rect.width - state.dinoW / 2 - 8);
-      state.targetX = clampedCenter - state.dinoW / 2;
+      updateTargetXFromPointer(e.clientX);
     };
 
     const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
       return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
     };
+    const circleIntersectsRect = (
+      cx: number,
+      cy: number,
+      cr: number,
+      rx: number,
+      ry: number,
+      rw: number,
+      rh: number
+    ) => {
+      const nearestX = Math.max(rx, Math.min(cx, rx + rw));
+      const nearestY = Math.max(ry, Math.min(cy, ry + rh));
+      const dx = cx - nearestX;
+      const dy = cy - nearestY;
+      return dx * dx + dy * dy <= cr * cr;
+    };
 
     const draw = () => {
       ctx.clearRect(0, 0, state.width, state.height);
       const ascentProgress = Math.min(1, state.score / 1800);
-      const topGradient = `rgba(${Math.round(3 + 2 * ascentProgress)}, ${Math.round(8 + 3 * ascentProgress)}, ${Math.round(18 - 10 * ascentProgress)}, 1)`;
-      const midGradient = `rgba(${Math.round(4 - 3 * ascentProgress)}, ${Math.round(11 - 7 * ascentProgress)}, ${Math.round(24 - 17 * ascentProgress)}, 1)`;
-      const bottomGradient = `rgba(${Math.round(8 + 4 * (1 - ascentProgress))}, ${Math.round(16 + 8 * (1 - ascentProgress))}, ${Math.round(34 - 26 * ascentProgress)}, 1)`;
+      const spaceProgress = Math.max(0, (ascentProgress - 0.52) / 0.48);
+      const topGradient = `rgba(${Math.round(3 * (1 - spaceProgress))}, ${Math.round(8 * (1 - spaceProgress))}, ${Math.round(18 * (1 - spaceProgress))}, 1)`;
+      const midGradient = `rgba(${Math.round(4 * (1 - spaceProgress))}, ${Math.round(11 * (1 - spaceProgress))}, ${Math.round(24 * (1 - spaceProgress))}, 1)`;
+      const bottomGradient = `rgba(${Math.round((8 + 4 * (1 - ascentProgress)) * (1 - spaceProgress))}, ${Math.round((16 + 8 * (1 - ascentProgress)) * (1 - spaceProgress))}, ${Math.round((34 - 26 * ascentProgress) * (1 - spaceProgress))}, 1)`;
       const skyGradient = ctx.createLinearGradient(0, 0, 0, state.height);
       skyGradient.addColorStop(0, topGradient);
       skyGradient.addColorStop(0.55, midGradient);
@@ -673,19 +756,43 @@ const DinoGameSection = () => {
           ctx.rotate(obstacle.spin);
           ctx.fillRect(-rect.w / 2, -rect.h / 2, rect.w, rect.h);
           ctx.restore();
-          ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
           ctx.fillStyle = 'rgba(59,130,246,0.45)';
           ctx.fillRect(rect.x, rect.y, rect.w, Math.max(2, rect.h * 0.08));
         });
+      });
+
+      state.coins.forEach((coin) => {
+        if (coin.collected) return;
+        const pulse = 0.86 + Math.sin(coin.spin) * 0.12;
+        ctx.save();
+        ctx.translate(coin.x, coin.y);
+        ctx.rotate(coin.spin * 0.35);
+        ctx.scale(pulse, 1);
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath();
+        ctx.arc(0, 0, coin.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#fde68a';
+        ctx.beginPath();
+        ctx.arc(-coin.r * 0.2, -coin.r * 0.2, coin.r * 0.45, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(161,98,7,0.55)';
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+        ctx.restore();
       });
 
       ctx.fillStyle = '#93c5fd';
       ctx.font = '600 16px Inter, system-ui, sans-serif';
       ctx.fillText(`Pisteet: ${Math.floor(state.score)}`, 16, 26);
       ctx.fillText(`Korkeus: ${Math.floor(state.altitudeKm)} km`, 16, 48);
+      if (state.scoreMultiplier > 1) {
+        ctx.fillStyle = '#facc15';
+        ctx.fillText(`Kerroin: ${state.scoreMultiplier}x`, 16, 70);
+      }
       if (state.altitudeKm >= 120) {
         ctx.fillStyle = '#e2e8f0';
-        ctx.fillText('Avaruus saavutettu', 16, 70);
+        ctx.fillText('Avaruus saavutettu', 16, state.scoreMultiplier > 1 ? 92 : 70);
       }
 
       if (state.gameOver) {
@@ -714,7 +821,8 @@ const DinoGameSection = () => {
         ctx.fillText('Hanki feimiä', state.width / 2, state.height / 2 - 26);
         ctx.font = '500 16px Inter, system-ui, sans-serif';
         ctx.fillStyle = '#bfdbfe';
-        ctx.fillText('Liiku: nuolinäppäimet / A-D / hiiri', state.width / 2, state.height / 2 + 8);
+        const controlsText = state.width < 640 ? 'Liiku: sormi tai pyyhkaisy' : 'Liiku: nuolinappaimet / A-D / hiiri';
+        ctx.fillText(controlsText, state.width / 2, state.height / 2 + 8);
         ctx.fillText('Vältä ylhäältä tippuvat esteet', state.width / 2, state.height / 2 + 30);
         ctx.restore();
       }
@@ -742,43 +850,67 @@ const DinoGameSection = () => {
 
       if (state.hasStarted && !state.gameOver) {
         const ascentProgress = Math.min(1, state.altitudeKm / 120);
+        if (state.multiplierMs > 0) {
+          state.multiplierMs = Math.max(0, state.multiplierMs - dt);
+          if (state.multiplierMs <= 0) {
+            state.scoreMultiplier = 1;
+          }
+        }
         const targetY = (state.height - state.dinoH - 20) + (state.height * 0.2 - (state.height - state.dinoH - 20)) * ascentProgress;
         state.dinoY += (targetY - state.dinoY) * 0.08 * factor;
 
         const keyDirection = (state.rightPressed ? 1 : 0) - (state.leftPressed ? 1 : 0);
         if (keyDirection !== 0) {
-          state.targetX += keyDirection * 9 * factor;
+          state.targetX += keyDirection * state.inputStep * factor;
         }
-        state.targetX = Math.min(Math.max(state.targetX, 8), state.width - state.dinoW - 8);
+        state.targetX = Math.min(Math.max(state.targetX, state.horizontalPadding), state.width - state.dinoW - state.horizontalPadding);
         const prevX = state.dinoX;
         state.dinoX += (state.targetX - state.dinoX) * 0.24 * factor;
-        state.dinoX = Math.min(Math.max(state.dinoX, 8), state.width - state.dinoW - 8);
+        state.dinoX = Math.min(Math.max(state.dinoX, state.horizontalPadding), state.width - state.dinoW - state.horizontalPadding);
         state.dinoVX = state.dinoX - prevX;
 
         state.obstacleSpawnMs += dt;
         if (state.obstacleSpawnMs >= state.nextSpawnMs) {
           const roll = Math.random();
           const kind: Obstacle['kind'] = roll < 0.46 ? 'meteor' : roll < 0.8 ? 'debris' : 'drone';
-          const h = kind === 'drone' ? rand(24, 36) : kind === 'meteor' ? rand(28, 44) : rand(20, 34);
-          const w = kind === 'drone' ? rand(34, 54) : kind === 'meteor' ? rand(22, 36) : rand(18, 28);
+          const hBase = kind === 'drone' ? rand(24, 36) : kind === 'meteor' ? rand(28, 44) : rand(20, 34);
+          const wBase = kind === 'drone' ? rand(34, 54) : kind === 'meteor' ? rand(22, 36) : rand(18, 28);
+          const h = hBase * state.obstacleSizeScale;
+          const w = wBase * state.obstacleSizeScale;
           state.obstacles.push({
-            x: rand(12, Math.max(12, state.width - w - 12)),
+            x: rand(state.horizontalPadding, Math.max(state.horizontalPadding, state.width - w - state.horizontalPadding)),
             y: -h - rand(12, 90),
             w,
             h,
             kind,
-            vx: rand(-0.9, 0.9),
-            vy: rand(3.2, 5.4) + ascentProgress * 2.4,
+            vx: rand(-0.9, 0.9) * state.obstacleSpeedScale,
+            vy: (rand(3.2, 5.4) + ascentProgress * 2.4) * state.obstacleSpeedScale,
             spin: rand(0, Math.PI * 2),
             spinV: rand(-0.05, 0.05),
             passed: false,
           });
           state.obstacleSpawnMs = 0;
-          state.nextSpawnMs = Math.max(250, 760 - state.altitudeKm * 1.8) + rand(120, 420);
+          state.nextSpawnMs = Math.max(state.spawnMinMs, state.spawnBaseMs - state.altitudeKm * state.spawnAltitudeRate) + rand(120, 420);
+        }
+
+        state.coinSpawnMs += dt;
+        if (state.coinSpawnMs >= state.nextCoinSpawnMs) {
+          const r = rand(8, 12);
+          state.coins.push({
+            x: rand(state.horizontalPadding + r, Math.max(state.horizontalPadding + r, state.width - state.horizontalPadding - r)),
+            y: -r - rand(20, 120),
+            r,
+            vx: rand(-0.45, 0.45) * state.obstacleSpeedScale,
+            vy: (rand(2.3, 3.8) + ascentProgress * 1.7) * state.obstacleSpeedScale,
+            spin: rand(0, Math.PI * 2),
+            collected: false,
+          });
+          state.coinSpawnMs = 0;
+          state.nextCoinSpawnMs = Math.max(1300, 2400 - state.altitudeKm * 5.5) + rand(140, 520);
         }
 
         state.altitudeKm += dt * 0.028;
-        state.score += dt * 0.03;
+        state.score += dt * 0.03 * state.scoreMultiplier;
         state.clouds.forEach((cloud) => {
           cloud.y += cloud.speed * factor * (0.7 + ascentProgress * 2.2);
           cloud.x += Math.sin((state.altitudeKm + cloud.y) * 0.01) * 0.08 * factor;
@@ -807,8 +939,16 @@ const DinoGameSection = () => {
         });
         state.obstacles = state.obstacles.filter((obstacle) => obstacle.y < state.height + 40);
 
-        const dinoHitInsetX = Math.max(8, state.dinoW * 0.18);
-        const dinoHitInsetY = Math.max(6, state.dinoH * 0.14);
+        state.coins.forEach((coin) => {
+          if (coin.collected) return;
+          coin.y += coin.vy * factor;
+          coin.x += coin.vx * factor;
+          coin.spin += 0.12 * factor;
+        });
+        state.coins = state.coins.filter((coin) => !coin.collected && coin.y < state.height + coin.r + 20);
+
+        const dinoHitInsetX = Math.max(8, state.dinoW * 0.18 * state.collisionInsetScale);
+        const dinoHitInsetY = Math.max(6, state.dinoH * 0.14 * state.collisionInsetScale);
         const dinoHitX = state.dinoX + dinoHitInsetX;
         const dinoHitY = state.dinoY + dinoHitInsetY;
         const dinoHitW = state.dinoW - dinoHitInsetX * 2;
@@ -816,13 +956,24 @@ const DinoGameSection = () => {
         for (const obstacle of state.obstacles) {
           if (!obstacle.passed && obstacle.y > state.dinoY + state.dinoH) {
             obstacle.passed = true;
-            state.score += 10;
+            state.score += 10 * state.scoreMultiplier;
           }
           const rects = getObstacleRects(obstacle);
           const hasCollision = rects.some((rect) => intersects(dinoHitX, dinoHitY, dinoHitW, dinoHitH, rect.x, rect.y, rect.w, rect.h));
           if (hasCollision) {
             state.gameOver = true;
             break;
+          }
+        }
+
+        for (const coin of state.coins) {
+          if (coin.collected) continue;
+          const hitCoin = circleIntersectsRect(coin.x, coin.y, coin.r, dinoHitX, dinoHitY, dinoHitW, dinoHitH);
+          if (hitCoin) {
+            coin.collected = true;
+            state.scoreMultiplier = 10;
+            state.multiplierMs = 5000;
+            state.score += 20;
           }
         }
       }
@@ -860,6 +1011,7 @@ const DinoGameSection = () => {
     window.addEventListener('keyup', onKeyUp);
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerenter', onPointerMove);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
     if (sectionRef.current) {
@@ -882,14 +1034,15 @@ const DinoGameSection = () => {
       window.removeEventListener('keyup', onKeyUp);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerenter', onPointerMove);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       observer?.disconnect();
     };
   }, []);
 
   return (
-    <section ref={sectionRef} id="dino-peli" className="relative bg-black py-8 sm:py-10 md:py-12">
-      <canvas ref={canvasRef} className="block w-full h-[220px] sm:h-[260px] md:h-[300px] border-b border-white/10 bg-[#020617]" />
+    <section ref={sectionRef} id="dino-peli" className="relative bg-black py-4 sm:py-8 md:py-10">
+      <canvas ref={canvasRef} className="block w-full h-[58vh] min-h-[320px] max-h-[520px] sm:h-[320px] md:h-[360px] border-b border-white/10 bg-[#020617]" />
     </section>
   );
 };
@@ -907,11 +1060,23 @@ const whyData = [
 
 const WhyFeim = () => (
   <section id="miksi-feim" className="relative py-16 sm:py-24 md:py-32 overflow-hidden bg-black">
-    {/* Starfield background — reduced count + GPU-optimized */}
-    <div className="absolute inset-0 z-0" style={{ contain: 'strict' }}>
-      {/* Subtle nebula glow — static, no per-element animations */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-900/[0.08] rounded-full blur-[100px]" />
+    <div className="absolute inset-0 z-0 pointer-events-none" style={{ contain: 'strict' }}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(21,34,70,0.22),rgba(2,4,10,0.86)_58%,#000_100%)]" />
+      <div
+        className="absolute -top-[18%] -left-[8%] h-[680px] w-[680px] rounded-full opacity-[0.08]"
+        style={{ background: 'radial-gradient(circle, #3b82f6 0%, rgba(59,130,246,0) 68%)' }}
+      />
+      <div
+        className="absolute bottom-[-22%] right-[-10%] h-[760px] w-[760px] rounded-full opacity-[0.06]"
+        style={{ background: 'radial-gradient(circle, #6366f1 0%, rgba(99,102,241,0) 70%)' }}
+      />
+      <div
+        className="absolute right-[18%] top-[26%] h-[420px] w-[420px] rounded-full opacity-[0.045]"
+        style={{ background: 'radial-gradient(circle, #22d3ee 0%, rgba(34,211,238,0) 72%)' }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.16)_1px,transparent_1px)] [background-size:3px_3px] opacity-[0.07]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/35" />
     </div>
     <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20">
@@ -920,7 +1085,7 @@ const WhyFeim = () => (
             <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
               Rakennamme
               <br />
-              <span className="text-blue-400">digitaalista</span> kilpailuetua.
+              <span className="text-blue-400">digitaalista etua.</span>
             </h2>
             <p className="text-neutral-400 text-lg leading-relaxed max-w-lg">
               Verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla vibe-koodauksella, joka yhdistää tekoälyn ja inhimillisen osaamisen.
@@ -1493,6 +1658,11 @@ const Index = () => {
           <WhyFeim />
           
           <FounderSection />
+          <AnimatedBackgroundLines
+            title="Valmiina rakentamaan tulevaisuutta?"
+            ctaLabel="Tilaa vedos"
+            ctaHref="/tilaa-vedos"
+          />
           <FAQ />
           <Contact />
           <Footer />

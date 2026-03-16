@@ -146,23 +146,23 @@ const WebsiteBenefitsSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Kotisivut ovat yrityksesi tehokkain markkinoinnin tyokalu.
+                  Kotisivut ovat yrityksesi tehokkain markkinoinnin työkalu.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
-                  Google on useimpien asiakkaiden ensisijainen tietolahde, joten hakukoneista loytyminen on valttamatonta.
-                  Hyvin optimoidut sivut nakyvat paremmin hakutuloksissa ja keravaat enemman asiakkaita.
-                  Visuaalisesti houkuttelevat ja responsiiviset sivut pitavat kayttajat kiinnostuneina ja toimivat kaikilla laitteilla.
+                  Google on useimpien asiakkaiden ensisijainen tietolähde, joten hakukoneista löytyminen on välttämätöntä.
+                  Hyvin optimoidut sivut näkyvät paremmin hakutuloksissa ja keräävät enemmän asiakkaita.
+                  Visuaalisesti houkuttelevat ja responsiiviset sivut pitävät käyttäjät kiinnostuneina ja toimivat kaikilla laitteilla.
                 </p>
               </div>
 
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Kotisivut ovat tarkein myyja.
+                  Kotisivut ovat tärkein myyjä.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
-                  Kotisivut luovat yrityksesta ensivaikutelman, joka vastaa palvelujesi tasoa.
-                  Hyvin suunnitellut kotisivut saastavat aikaasi, ohjaavat asiakkaat oikeaan paikkaan ja tekevat myynnin puolestasi.
-                  Rakennamme sivustot, jotka erottavat yrityksesi kilpailijoista ja ohjaavat kavijat toimimaan halutulla tavalla.
+                  Kotisivut luovat yrityksestä ensivaikutelman, joka vastaa palvelujesi tasoa.
+                  Hyvin suunnitellut kotisivut säästävät aikaasi, ohjaavat asiakkaat oikeaan paikkaan ja tekevät myynnin puolestasi.
+                  Rakennamme sivustot, jotka erottavat yrityksesi kilpailijoista ja ohjaavat kävijät toimimaan halutulla tavalla.
                 </p>
               </div>
             </div>
@@ -193,6 +193,10 @@ const PricingSection = () => {
   const btnNormal = isDark
     ? 'bg-white/[0.06] text-white border border-white/[0.1] hover:bg-white/[0.1]'
     : 'bg-black/[0.05] text-neutral-900 border border-black/[0.1] hover:bg-black/[0.1]';
+  const landingCtaCard = isDark
+    ? 'border border-blue-500/25 bg-blue-500/[0.08]'
+    : 'border border-black/[0.15] bg-black/[0.03]';
+  const landingCtaText = isDark ? 'text-blue-100' : 'text-neutral-700';
   const radialBg = isDark
     ? 'radial-gradient(circle at 50% 50%, #0021ff10 0%, transparent 50%), #000'
     : 'radial-gradient(circle at 50% 50%, #00000008 0%, transparent 50%), #fff';
@@ -209,6 +213,23 @@ const PricingSection = () => {
             <p className={`text-lg max-w-2xl mb-16 leading-relaxed ${desc}`}>
               Valitse yrityksellesi sopiva paketti. Kaikki hinnat + ALV.
             </p>
+          </FadeIn>
+
+          <FadeIn delay={0.05} className="mb-10">
+            <div className={`rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${landingCtaCard}`}>
+              <div>
+                <p className={`text-sm sm:text-base font-semibold ${heading}`}>Landing page nopeasti yrityksellesi</p>
+                <p className={`text-sm mt-1 ${landingCtaText}`}>Tilaa 1-sivuinen myyvä landing page -vedos ennen varsinaista toteutusta.</p>
+              </div>
+              <Link
+                to="/tilaa-vedos"
+                className={`inline-flex items-center justify-center px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 text-sm whitespace-nowrap ${
+                  isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'
+                }`}
+              >
+                Tilaa landing page -vedos
+              </Link>
+            </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
