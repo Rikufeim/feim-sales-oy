@@ -71,7 +71,7 @@ const pillars = [
   },
 ];
 
-const AUTO_CYCLE_MS = 10000;
+const AUTO_CYCLE_MS = 5000;
 
 const Palvelut = () => {
   const [activeIndex, setActiveIndex] = useState(0);
