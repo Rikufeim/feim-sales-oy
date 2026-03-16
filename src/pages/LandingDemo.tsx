@@ -48,7 +48,7 @@ const LandingDemo = () => {
           </p>
         </div>
 
-        <LandingBuilder className="min-h-[620px]" />
+        <LandingBuilder />
       </main>
     </div>
   );

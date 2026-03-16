@@ -16,6 +16,7 @@ import Footer from '@/components/Footer';
 import { useNavbarVisibility } from '@/components/NavbarVisibility';
 import HeroBackground from '@/components/HeroBackground';
 import { useTheme } from '@/components/ThemeContext';
+import InteractiveNeuralVortex from '@/components/ui/interactive-neural-vortex-background';
 
 /* ─── Utility Components ─── */
 
@@ -360,7 +361,13 @@ const LandingPagesSection = () => {
   return (
     <section id="landing-paget" className="relative py-16 sm:py-24 md:py-28 overflow-hidden bg-black">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_18%,rgba(0,33,255,0.08),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(0,33,255,0.06),transparent_58%)]" />
+        <InteractiveNeuralVortex backgroundOnly className="opacity-60" />
+        <div className="absolute inset-0 bg-black/62" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_18%,rgba(0,33,255,0.10),transparent_55%),radial-gradient(ellipse_at_80%_80%,rgba(0,33,255,0.08),transparent_58%)]" />
+        <div className="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-black via-black/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 sm:h-28 bg-gradient-to-t from-black via-black/85 to-transparent" />
+        <div className="absolute inset-y-0 left-0 w-10 sm:w-14 bg-gradient-to-r from-black/85 to-transparent" />
+        <div className="absolute inset-y-0 right-0 w-10 sm:w-14 bg-gradient-to-l from-black/85 to-transparent" />
       </div>
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         <FadeIn>
@@ -416,6 +423,7 @@ const LandingPagesSection = () => {
 };
 
 const DinoGameSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -424,14 +432,21 @@ const DinoGameSection = () => {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    const targetFrameMs = 1000 / 45;
+    let isInView = true;
+    let pageVisible = document.visibilityState !== 'hidden';
+    let observer: IntersectionObserver | null = null;
 
     type Obstacle = {
       x: number;
+      y: number;
       w: number;
       h: number;
-      kind: 'block' | 'tall' | 'double';
-      bob: number;
-      phase: number;
+      kind: 'meteor' | 'debris' | 'drone';
+      vx: number;
+      vy: number;
+      spin: number;
+      spinV: number;
       passed: boolean;
     };
     type Cloud = {
@@ -442,28 +457,33 @@ const DinoGameSection = () => {
       speed: number;
       alpha: number;
     };
+    type Star = {
+      x: number;
+      y: number;
+      r: number;
+      phase: number;
+    };
 
     const state = {
       width: 0,
       height: 0,
-      groundY: 0,
-      dinoX: 80,
+      dinoX: 0,
       dinoY: 0,
       dinoW: 56,
       dinoH: 56,
-      velocityY: 0,
-      gravity: 1.05,
-      jumpPower: 18,
-      obstacleSpeed: 7.2,
+      targetX: 0,
+      dinoVX: 0,
       obstacles: [] as Obstacle[],
       clouds: [] as Cloud[],
-      groundOffset: 0,
+      stars: [] as Star[],
       obstacleSpawnMs: 0,
-      nextSpawnMs: 1200,
+      nextSpawnMs: 850,
       score: 0,
+      altitudeKm: 0,
       hasStarted: false,
       gameOver: false,
-      jumpRequested: false,
+      leftPressed: false,
+      rightPressed: false,
       lastTs: 0,
       rafId: 0,
     };
@@ -479,38 +499,39 @@ const DinoGameSection = () => {
     const initClouds = () => {
       state.clouds = Array.from({ length: 8 }, () => ({
         x: rand(0, state.width),
-        y: rand(18, Math.max(22, state.groundY - 90)),
+        y: rand(18, Math.max(22, state.height * 0.85)),
         w: rand(42, 118),
         h: rand(10, 24),
-        speed: rand(0.22, 0.9),
+        speed: rand(0.25, 1.15),
         alpha: rand(0.09, 0.22),
       }));
     };
 
-    const getObstacleRects = (obstacle: Obstacle) => {
-      const baseY = state.groundY - obstacle.h - Math.sin(obstacle.phase) * obstacle.bob;
-      if (obstacle.kind === 'double') {
-        const leftW = obstacle.w * 0.44;
-        const rightW = obstacle.w * 0.44;
-        return [
-          { x: obstacle.x, y: baseY + obstacle.h * 0.34, w: leftW, h: obstacle.h * 0.66 },
-          { x: obstacle.x + obstacle.w - rightW, y: baseY, w: rightW, h: obstacle.h },
-        ];
-      }
-      return [{ x: obstacle.x, y: baseY, w: obstacle.w, h: obstacle.h }];
+    const initStars = () => {
+      state.stars = Array.from({ length: 80 }, () => ({
+        x: rand(0, state.width),
+        y: rand(8, state.height),
+        r: rand(0.6, 1.9),
+        phase: rand(0, Math.PI * 2),
+      }));
     };
+
+    const getObstacleRects = (obstacle: Obstacle) => [{ x: obstacle.x, y: obstacle.y, w: obstacle.w, h: obstacle.h }];
 
     const resetGame = () => {
       state.obstacles = [];
       state.obstacleSpawnMs = 0;
-      state.nextSpawnMs = 1200;
+      state.nextSpawnMs = 850;
       state.score = 0;
+      state.altitudeKm = 0;
       state.gameOver = false;
-      state.velocityY = 0;
-      state.dinoY = state.groundY - state.dinoH;
+      state.dinoX = state.width * 0.5 - state.dinoW / 2;
+      state.targetX = state.dinoX;
+      state.dinoY = state.height - state.dinoH - 20;
+      state.dinoVX = 0;
       state.lastTs = 0;
-      state.jumpRequested = false;
-      state.groundOffset = 0;
+      state.leftPressed = false;
+      state.rightPressed = false;
     };
 
     const resize = () => {
@@ -524,34 +545,71 @@ const DinoGameSection = () => {
 
       state.width = cssWidth;
       state.height = cssHeight;
-      state.groundY = cssHeight - 28;
-      state.dinoY = Math.min(state.dinoY || state.groundY - state.dinoH, state.groundY - state.dinoH);
+      if (!state.hasStarted) {
+        state.dinoX = cssWidth * 0.5 - state.dinoW / 2;
+        state.targetX = state.dinoX;
+        state.dinoY = cssHeight - state.dinoH - 20;
+      } else {
+        state.dinoX = Math.min(Math.max(state.dinoX, 8), cssWidth - state.dinoW - 8);
+        state.targetX = Math.min(Math.max(state.targetX, 8), cssWidth - state.dinoW - 8);
+        state.dinoY = Math.min(Math.max(state.dinoY, 10), cssHeight - state.dinoH - 8);
+      }
       if (state.clouds.length === 0) initClouds();
+      if (state.stars.length === 0) initStars();
     };
 
-    const requestJump = () => {
+    const requestStart = () => {
       if (state.gameOver) {
         resetGame();
         state.hasStarted = true;
+        startLoop();
         return;
       }
       if (!state.hasStarted) {
         state.hasStarted = true;
         state.lastTs = 0;
+        startLoop();
         return;
       }
-      state.jumpRequested = true;
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyW') {
+      if (e.code === 'Space') {
         e.preventDefault();
-        requestJump();
+        requestStart();
+        return;
+      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        e.preventDefault();
+        state.leftPressed = true;
+        return;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        e.preventDefault();
+        state.rightPressed = true;
+      }
+    };
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        state.leftPressed = false;
+        return;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        state.rightPressed = false;
       }
     };
 
     const onPointerDown = () => {
-      requestJump();
+      requestStart();
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width) return;
+      const relativeX = e.clientX - rect.left;
+      const clampedCenter = Math.min(Math.max(relativeX, state.dinoW / 2 + 8), rect.width - state.dinoW / 2 - 8);
+      state.targetX = clampedCenter - state.dinoW / 2;
     };
 
     const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
@@ -560,47 +618,45 @@ const DinoGameSection = () => {
 
     const draw = () => {
       ctx.clearRect(0, 0, state.width, state.height);
-
-      ctx.fillStyle = '#020617';
+      const ascentProgress = Math.min(1, state.score / 1800);
+      const topGradient = `rgba(${Math.round(3 + 2 * ascentProgress)}, ${Math.round(8 + 3 * ascentProgress)}, ${Math.round(18 - 10 * ascentProgress)}, 1)`;
+      const midGradient = `rgba(${Math.round(4 - 3 * ascentProgress)}, ${Math.round(11 - 7 * ascentProgress)}, ${Math.round(24 - 17 * ascentProgress)}, 1)`;
+      const bottomGradient = `rgba(${Math.round(8 + 4 * (1 - ascentProgress))}, ${Math.round(16 + 8 * (1 - ascentProgress))}, ${Math.round(34 - 26 * ascentProgress)}, 1)`;
+      const skyGradient = ctx.createLinearGradient(0, 0, 0, state.height);
+      skyGradient.addColorStop(0, topGradient);
+      skyGradient.addColorStop(0.55, midGradient);
+      skyGradient.addColorStop(1, bottomGradient);
+      ctx.fillStyle = skyGradient;
       ctx.fillRect(0, 0, state.width, state.height);
 
+      const starFade = Math.max(0, (ascentProgress - 0.18) / 0.72);
+      const twinkleTs = performance.now() * 0.0024;
+      state.stars.forEach((star) => {
+        const twinkle = 0.45 + 0.55 * Math.sin(twinkleTs + star.phase);
+        const alpha = starFade * (0.12 + twinkle * 0.78);
+        if (alpha <= 0.01) return;
+        ctx.fillStyle = `rgba(226, 232, 240, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
       state.clouds.forEach((cloud) => {
-        ctx.fillStyle = `rgba(147, 197, 253, ${cloud.alpha})`;
+        const cloudAlpha = cloud.alpha * (1 - ascentProgress * 1.15);
+        if (cloudAlpha <= 0.01) return;
+        ctx.fillStyle = `rgba(147, 197, 253, ${cloudAlpha})`;
         ctx.fillRect(cloud.x, cloud.y, cloud.w, cloud.h);
         ctx.fillRect(cloud.x + cloud.w * 0.2, cloud.y - cloud.h * 0.45, cloud.w * 0.5, cloud.h * 0.6);
       });
 
-      ctx.strokeStyle = 'rgba(59,130,246,0.15)';
-      ctx.lineWidth = 1;
-      for (let i = 0; i < 6; i++) {
-        const y = 18 + i * 24;
-        ctx.beginPath();
-        ctx.moveTo((-state.groundOffset * (0.35 + i * 0.08)) % 42, y);
-        ctx.lineTo(state.width, y);
-        ctx.stroke();
-      }
-
-      ctx.strokeStyle = 'rgba(59,130,246,0.45)';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(0, state.groundY);
-      ctx.lineTo(state.width, state.groundY);
-      ctx.stroke();
-
-      ctx.fillStyle = 'rgba(59,130,246,0.45)';
-      for (let x = -24 + (state.groundOffset % 24); x < state.width + 24; x += 24) {
-        ctx.fillRect(x, state.groundY + 6, 14, 3);
-      }
-
       if (logoLoaded) {
         const centerX = state.dinoX + state.dinoW / 2;
         const centerY = state.dinoY + state.dinoH / 2;
-        const tilt = Math.max(-0.22, Math.min(0.22, state.velocityY / 26));
-        const stretchY = state.dinoY >= state.groundY - state.dinoH - 1 ? 0.96 : 1.04;
+        const tilt = Math.max(-0.26, Math.min(0.26, state.dinoVX / 12));
         ctx.save();
         ctx.translate(centerX, centerY);
         ctx.rotate(tilt);
-        ctx.scale(1.02, stretchY);
+        ctx.scale(1.02, 1.02);
         ctx.drawImage(logoImg, -state.dinoW / 2, -state.dinoH / 2, state.dinoW, state.dinoH);
         ctx.restore();
       } else {
@@ -610,21 +666,27 @@ const DinoGameSection = () => {
 
       state.obstacles.forEach((obstacle) => {
         const rects = getObstacleRects(obstacle);
-        rects.forEach((rect, idx) => {
-          ctx.fillStyle = obstacle.kind === 'tall' ? '#f8fafc' : obstacle.kind === 'double' ? '#cbd5e1' : '#e5e7eb';
+        rects.forEach((rect) => {
+          ctx.fillStyle = obstacle.kind === 'meteor' ? '#f97316' : obstacle.kind === 'drone' ? '#e2e8f0' : '#cbd5e1';
+          ctx.save();
+          ctx.translate(rect.x + rect.w / 2, rect.y + rect.h / 2);
+          ctx.rotate(obstacle.spin);
+          ctx.fillRect(-rect.w / 2, -rect.h / 2, rect.w, rect.h);
+          ctx.restore();
           ctx.fillRect(rect.x, rect.y, rect.w, rect.h);
           ctx.fillStyle = 'rgba(59,130,246,0.45)';
           ctx.fillRect(rect.x, rect.y, rect.w, Math.max(2, rect.h * 0.08));
-          if (obstacle.kind === 'double' && idx === 1) {
-            ctx.fillStyle = 'rgba(59,130,246,0.25)';
-            ctx.fillRect(rect.x + rect.w * 0.2, rect.y + rect.h * 0.25, rect.w * 0.6, rect.h * 0.12);
-          }
         });
       });
 
       ctx.fillStyle = '#93c5fd';
       ctx.font = '600 16px Inter, system-ui, sans-serif';
       ctx.fillText(`Pisteet: ${Math.floor(state.score)}`, 16, 26);
+      ctx.fillText(`Korkeus: ${Math.floor(state.altitudeKm)} km`, 16, 48);
+      if (state.altitudeKm >= 120) {
+        ctx.fillStyle = '#e2e8f0';
+        ctx.fillText('Avaruus saavutettu', 16, 70);
+      }
 
       if (state.gameOver) {
         ctx.fillStyle = 'rgba(0,0,0,0.55)';
@@ -649,74 +711,101 @@ const DinoGameSection = () => {
         ctx.textBaseline = 'middle';
         ctx.fillStyle = '#ffffff';
         ctx.font = '700 30px Inter, system-ui, sans-serif';
-        ctx.fillText('Aloita peli', state.width / 2, state.height / 2 - 18);
+        ctx.fillText('Hanki feimiä', state.width / 2, state.height / 2 - 26);
         ctx.font = '500 16px Inter, system-ui, sans-serif';
         ctx.fillStyle = '#bfdbfe';
-        ctx.fillText('Paina välilyöntiä tai klikkaa', state.width / 2, state.height / 2 + 16);
+        ctx.fillText('Liiku: nuolinäppäimet / A-D / hiiri', state.width / 2, state.height / 2 + 8);
+        ctx.fillText('Vältä ylhäältä tippuvat esteet', state.width / 2, state.height / 2 + 30);
         ctx.restore();
       }
     };
 
     const loop = (ts: number) => {
+      const shouldAnimate = state.hasStarted && !state.gameOver && isInView && pageVisible;
+      if (!shouldAnimate) {
+        if (state.rafId) {
+          window.cancelAnimationFrame(state.rafId);
+          state.rafId = 0;
+        }
+        draw();
+        return;
+      }
       if (!state.lastTs) state.lastTs = ts;
-      const dt = ts - state.lastTs;
+      const rawDt = ts - state.lastTs;
+      if (rawDt < targetFrameMs) {
+        state.rafId = window.requestAnimationFrame(loop);
+        return;
+      }
+      const dt = Math.min(50, rawDt);
       state.lastTs = ts;
       const factor = Math.min(2.5, Math.max(0.6, dt / 16.67));
 
       if (state.hasStarted && !state.gameOver) {
-        const isGrounded = state.dinoY >= state.groundY - state.dinoH - 1;
-        if (state.jumpRequested && isGrounded) {
-          state.velocityY = -state.jumpPower;
-        }
-        state.jumpRequested = false;
+        const ascentProgress = Math.min(1, state.altitudeKm / 120);
+        const targetY = (state.height - state.dinoH - 20) + (state.height * 0.2 - (state.height - state.dinoH - 20)) * ascentProgress;
+        state.dinoY += (targetY - state.dinoY) * 0.08 * factor;
 
-        state.velocityY += state.gravity * factor;
-        state.dinoY += state.velocityY * factor;
-        if (state.dinoY > state.groundY - state.dinoH) {
-          state.dinoY = state.groundY - state.dinoH;
-          state.velocityY = 0;
+        const keyDirection = (state.rightPressed ? 1 : 0) - (state.leftPressed ? 1 : 0);
+        if (keyDirection !== 0) {
+          state.targetX += keyDirection * 9 * factor;
         }
+        state.targetX = Math.min(Math.max(state.targetX, 8), state.width - state.dinoW - 8);
+        const prevX = state.dinoX;
+        state.dinoX += (state.targetX - state.dinoX) * 0.24 * factor;
+        state.dinoX = Math.min(Math.max(state.dinoX, 8), state.width - state.dinoW - 8);
+        state.dinoVX = state.dinoX - prevX;
 
         state.obstacleSpawnMs += dt;
         if (state.obstacleSpawnMs >= state.nextSpawnMs) {
           const roll = Math.random();
-          const kind: Obstacle['kind'] = roll < 0.45 ? 'block' : roll < 0.78 ? 'tall' : 'double';
-          const h = kind === 'tall' ? rand(56, 86) : kind === 'double' ? rand(48, 72) : rand(32, 56);
-          const w = kind === 'tall' ? rand(18, 28) : kind === 'double' ? rand(36, 50) : rand(20, 34);
+          const kind: Obstacle['kind'] = roll < 0.46 ? 'meteor' : roll < 0.8 ? 'debris' : 'drone';
+          const h = kind === 'drone' ? rand(24, 36) : kind === 'meteor' ? rand(28, 44) : rand(20, 34);
+          const w = kind === 'drone' ? rand(34, 54) : kind === 'meteor' ? rand(22, 36) : rand(18, 28);
           state.obstacles.push({
-            x: state.width + 20,
+            x: rand(12, Math.max(12, state.width - w - 12)),
+            y: -h - rand(12, 90),
             w,
             h,
             kind,
-            bob: kind === 'tall' ? rand(3, 10) : rand(0, 5),
-            phase: rand(0, Math.PI * 2),
+            vx: rand(-0.9, 0.9),
+            vy: rand(3.2, 5.4) + ascentProgress * 2.4,
+            spin: rand(0, Math.PI * 2),
+            spinV: rand(-0.05, 0.05),
             passed: false,
           });
           state.obstacleSpawnMs = 0;
-          const spawnBase = Math.max(580, 980 - state.score * 0.6);
-          state.nextSpawnMs = spawnBase + rand(220, 780);
+          state.nextSpawnMs = Math.max(250, 760 - state.altitudeKm * 1.8) + rand(120, 420);
         }
 
-        state.obstacleSpeed = Math.min(11.2, 7.2 + state.score / 180);
-        state.groundOffset += state.obstacleSpeed * factor * 1.6;
-
+        state.altitudeKm += dt * 0.028;
+        state.score += dt * 0.03;
         state.clouds.forEach((cloud) => {
-          cloud.x -= cloud.speed * factor * (1 + state.score / 3000);
-          if (cloud.x + cloud.w < -20) {
-            cloud.x = state.width + rand(10, 120);
-            cloud.y = rand(18, Math.max(22, state.groundY - 90));
+          cloud.y += cloud.speed * factor * (0.7 + ascentProgress * 2.2);
+          cloud.x += Math.sin((state.altitudeKm + cloud.y) * 0.01) * 0.08 * factor;
+          if (cloud.y > state.height + 30) {
+            cloud.y = -cloud.h - rand(8, 70);
+            cloud.x = rand(0, Math.max(0, state.width - cloud.w));
             cloud.w = rand(42, 118);
             cloud.h = rand(10, 24);
-            cloud.speed = rand(0.22, 0.9);
+            cloud.speed = rand(0.25, 1.15);
             cloud.alpha = rand(0.09, 0.22);
           }
         });
 
-        state.obstacles.forEach((obstacle) => {
-          obstacle.x -= state.obstacleSpeed * factor;
-          obstacle.phase += 0.05 * factor;
+        state.stars.forEach((star) => {
+          star.y += (0.2 + ascentProgress * 2.6 + star.r * 0.18) * factor;
+          if (star.y > state.height + 3) {
+            star.y = -rand(2, 36);
+            star.x = rand(0, state.width);
+          }
         });
-        state.obstacles = state.obstacles.filter((obstacle) => obstacle.x + obstacle.w > -20);
+
+        state.obstacles.forEach((obstacle) => {
+          obstacle.y += obstacle.vy * factor;
+          obstacle.x += obstacle.vx * factor;
+          obstacle.spin += obstacle.spinV * factor;
+        });
+        state.obstacles = state.obstacles.filter((obstacle) => obstacle.y < state.height + 40);
 
         const dinoHitInsetX = Math.max(8, state.dinoW * 0.18);
         const dinoHitInsetY = Math.max(6, state.dinoH * 0.14);
@@ -725,9 +814,9 @@ const DinoGameSection = () => {
         const dinoHitW = state.dinoW - dinoHitInsetX * 2;
         const dinoHitH = state.dinoH - dinoHitInsetY * 2;
         for (const obstacle of state.obstacles) {
-          if (!obstacle.passed && obstacle.x + obstacle.w < state.dinoX) {
+          if (!obstacle.passed && obstacle.y > state.dinoY + state.dinoH) {
             obstacle.passed = true;
-            state.score += 14;
+            state.score += 10;
           }
           const rects = getObstacleRects(obstacle);
           const hasCollision = rects.some((rect) => intersects(dinoHitX, dinoHitY, dinoHitW, dinoHitH, rect.x, rect.y, rect.w, rect.h));
@@ -736,33 +825,71 @@ const DinoGameSection = () => {
             break;
           }
         }
-
-        state.score += dt * 0.01;
       }
 
       draw();
       state.rafId = window.requestAnimationFrame(loop);
     };
 
+    const startLoop = () => {
+      const shouldAnimate = state.hasStarted && !state.gameOver && isInView && pageVisible;
+      if (!shouldAnimate || state.rafId) return;
+      state.lastTs = 0;
+      state.rafId = window.requestAnimationFrame(loop);
+    };
+
+    const stopLoop = () => {
+      if (!state.rafId) return;
+      window.cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    };
+
+    const onVisibilityChange = () => {
+      pageVisible = document.visibilityState !== 'hidden';
+      if (pageVisible) startLoop();
+      else stopLoop();
+      draw();
+    };
+
     resize();
     resetGame();
+    draw();
 
     window.addEventListener('resize', resize);
     window.addEventListener('keydown', onKeyDown, { passive: false });
+    window.addEventListener('keyup', onKeyUp);
     canvas.addEventListener('pointerdown', onPointerDown);
-    state.rafId = window.requestAnimationFrame(loop);
+    canvas.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    if (sectionRef.current) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          isInView = !!entries[0]?.isIntersecting;
+          if (isInView) startLoop();
+          else stopLoop();
+          draw();
+        },
+        { threshold: 0.08 }
+      );
+      observer.observe(sectionRef.current);
+    }
 
     return () => {
+      stopLoop();
       window.removeEventListener('resize', resize);
       window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
       canvas.removeEventListener('pointerdown', onPointerDown);
-      window.cancelAnimationFrame(state.rafId);
+      canvas.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      observer?.disconnect();
     };
   }, []);
 
   return (
-    <section id="dino-peli" className="relative bg-black py-8 sm:py-10 md:py-12">
-      <canvas ref={canvasRef} className="block w-full h-[220px] sm:h-[260px] md:h-[300px] border-y border-white/10 bg-[#020617]" />
+    <section ref={sectionRef} id="dino-peli" className="relative bg-black py-8 sm:py-10 md:py-12">
+      <canvas ref={canvasRef} className="block w-full h-[220px] sm:h-[260px] md:h-[300px] border-b border-white/10 bg-[#020617]" />
     </section>
   );
 };
@@ -999,7 +1126,6 @@ const FounderSection = () => {
       </FadeIn>
 
       <div className="max-w-3xl">
-        {/* Clean text flow without border lines */}
         <div className="space-y-10">
           <FadeIn delay={0.15}>
             <p className={`text-lg md:text-xl leading-relaxed ${bodyColor}`}>
@@ -1028,18 +1154,25 @@ const FounderSection = () => {
           </FadeIn>
 
           <FadeIn delay={0.55}>
-            <div className="mt-12 flex items-center gap-6">
-              <div className="w-20 h-20 rounded-full overflow-hidden shrink-0">
-                <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_20%]" />
+            <div className="mt-2 flex items-center gap-5">
+              <div className="w-36 h-36 md:w-44 md:h-44 rounded-full overflow-hidden shrink-0">
+                <img src={rikuNightImg} alt="Riku Miettinen" className="w-full h-full object-cover object-[center_18%]" />
               </div>
               <div>
-                <p className={`font-semibold text-lg ${nameColor}`}>Riku Miettinen</p>
+                <p className={`font-semibold text-xl ${nameColor}`}>Riku Miettinen</p>
                 <p className={`text-sm ${bodyColor}`}>Founder, FEIM</p>
+                <a
+                  href="https://wa.me/358413282218"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center rounded-full border border-white/20 bg-black px-3 py-1.5 text-xs font-medium text-white transition hover:border-white/35 hover:bg-neutral-900"
+                >
+                  Ota yhteyttä WhatsAppissa
+                </a>
               </div>
             </div>
           </FadeIn>
         </div>
-
       </div>
     </div>
   </section>

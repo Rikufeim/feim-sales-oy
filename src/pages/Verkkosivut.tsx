@@ -3,6 +3,12 @@ import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/components/ThemeContext';
+import serviceVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
+import serviceVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
+import serviceVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
+import refLujainfra from '@/assets/ref-lujainfra.png';
+import refSodergard from '@/assets/ref-sodergard.png';
+import referenssi1 from '@/assets/referenssi-1.jpeg';
 
 const FadeIn = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
   <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.7, delay, ease: "easeOut" }} className={className}>
@@ -97,6 +103,76 @@ const maintenancePlans = [
   },
 ];
 
+const mobileShowcaseImages = [
+  serviceVerkkosivut1,
+  serviceVerkkosivut2,
+  serviceVerkkosivut3,
+  refLujainfra,
+  refSodergard,
+  referenssi1,
+];
+
+const WebsiteBenefitsSection = () => {
+  const { isDark } = useTheme();
+  const heading = isDark ? 'text-white' : 'text-neutral-900';
+  const body = isDark ? 'text-neutral-300' : 'text-neutral-700';
+  const frame = isDark
+    ? 'border-white/[0.14] bg-white/[0.04] shadow-[0_16px_50px_rgba(0,0,0,0.35)]'
+    : 'border-black/[0.12] bg-black/[0.03] shadow-[0_14px_42px_rgba(0,0,0,0.12)]';
+
+  return (
+    <section className="relative py-20 sm:py-24">
+      <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-start">
+          <FadeIn>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[560px]">
+              {mobileShowcaseImages.map((image, i) => (
+                <div key={i} className={`rounded-[1.8rem] border p-1.5 ${frame}`}>
+                  <div className="rounded-[1.35rem] overflow-hidden bg-black">
+                    <img
+                      src={image}
+                      alt={`Mobiilinäkymä ${i + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full aspect-[10/19] object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.08}>
+            <div className="space-y-8">
+              <div>
+                <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
+                  Kotisivut ovat yrityksesi tehokkain markkinoinnin tyokalu.
+                </h3>
+                <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
+                  Google on useimpien asiakkaiden ensisijainen tietolahde, joten hakukoneista loytyminen on valttamatonta.
+                  Hyvin optimoidut sivut nakyvat paremmin hakutuloksissa ja keravaat enemman asiakkaita.
+                  Visuaalisesti houkuttelevat ja responsiiviset sivut pitavat kayttajat kiinnostuneina ja toimivat kaikilla laitteilla.
+                </p>
+              </div>
+
+              <div>
+                <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
+                  Kotisivut ovat tarkein myyja.
+                </h3>
+                <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
+                  Kotisivut luovat yrityksesta ensivaikutelman, joka vastaa palvelujesi tasoa.
+                  Hyvin suunnitellut kotisivut saastavat aikaasi, ohjaavat asiakkaat oikeaan paikkaan ja tekevat myynnin puolestasi.
+                  Rakennamme sivustot, jotka erottavat yrityksesi kilpailijoista ja ohjaavat kavijat toimimaan halutulla tavalla.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const PricingSection = () => {
   const { isDark } = useTheme();
 
@@ -123,6 +199,8 @@ const PricingSection = () => {
 
   return (
     <>
+      <WebsiteBenefitsSection />
+
       {/* Main pricing */}
       <section className="relative py-24 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 // Images
 import vedosLandingSaas from '@/assets/vedos-landing-saas.jpg';
@@ -144,57 +145,81 @@ const VedosCard = ({ item, onClick }: { item: VedosItem; onClick: () => void }) 
   </motion.button>
 );
 
-const VedosModal = ({ item, onClose }: { item: VedosItem; onClose: () => void }) => (
-  <motion.div
-    className="fixed inset-0 z-50 flex items-center justify-center p-4"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.15 }}
-  >
-    {/* Backdrop */}
-    <div className="absolute inset-0 bg-black/85" onClick={onClose} />
+const VedosModal = ({ item, onClose }: { item: VedosItem; onClose: () => void }) => {
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
 
-    {/* Modal */}
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onClose]);
+
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <motion.div
-      className="relative w-full max-w-2xl rounded-2xl border border-white/[0.1] bg-neutral-950/95 overflow-hidden"
-      initial={{ scale: 0.98, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.98, opacity: 0 }}
-      transition={{ duration: 0.18, ease: 'easeOut' }}
+      className="fixed inset-0 z-[120]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
     >
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-white/[0.08] hover:bg-white/[0.15] transition-colors text-white/60 hover:text-white"
-      >
-        <X size={16} />
-      </button>
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/85" onClick={onClose} />
 
-      {/* Large preview */}
-      <div className="aspect-video overflow-hidden">
-        <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
-      </div>
+      {/* Modal */}
+      <div className="fixed inset-0 z-[121] flex items-center justify-center p-4">
+        <motion.div
+          className="relative w-[min(92vw,48rem)] max-h-[90vh] overflow-y-auto rounded-2xl border border-white/[0.1] bg-neutral-950/95"
+          initial={{ scale: 0.98, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.98, opacity: 0 }}
+          transition={{ duration: 0.18, ease: 'easeOut' }}
+        >
+        <button
+          onClick={onClose}
+          aria-label="Sulje esimerkki"
+          className="absolute top-4 right-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-white/35 bg-black/70 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.35),0_8px_24px_rgba(0,0,0,0.55)] backdrop-blur-sm transition-colors hover:bg-black/80"
+        >
+          <X size={18} strokeWidth={2.5} />
+        </button>
 
-      <div className="p-6 sm:p-8">
-        <span className="text-[10px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400/80 border border-blue-500/20 mb-4 inline-block">
-          {item.tag}
-        </span>
-        <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-        <p className="text-sm text-neutral-400 mb-6">{item.description}</p>
-
-        <div className="space-y-1.5">
-          <p className="text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-3">Vedos sisältää:</p>
-          {item.modalContent.map((line, i) => (
-            <div key={i} className="flex items-center gap-2.5 text-sm text-neutral-300">
-              <span className="w-1 h-1 rounded-full bg-blue-500/60 shrink-0" />
-              {line}
-            </div>
-          ))}
+        {/* Large preview */}
+        <div className="aspect-video overflow-hidden">
+          <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
         </div>
+
+        <div className="p-6 sm:p-8">
+          <span className="text-[10px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400/80 border border-blue-500/20 mb-4 inline-block">
+            {item.tag}
+          </span>
+          <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+          <p className="text-sm text-neutral-400 mb-6">{item.description}</p>
+
+          <div className="space-y-1.5">
+            <p className="text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-3">Vedos sisältää:</p>
+            {item.modalContent.map((line, i) => (
+              <div key={i} className="flex items-center gap-2.5 text-sm text-neutral-300">
+                <span className="w-1 h-1 rounded-full bg-blue-500/60 shrink-0" />
+                {line}
+              </div>
+            ))}
+          </div>
+        </div>
+        </motion.div>
       </div>
-    </motion.div>
-  </motion.div>
-);
+    </motion.div>,
+    document.body
+  );
+};
 
 interface VedosExamplesProps {
   formRef: React.RefObject<HTMLDivElement | null>;

@@ -10,28 +10,45 @@ import rikuImg from '@/assets/riku-night.jpeg';
 
 /* ─── Animated background stars ─── */
 const StarField = () => {
-  const stars = useMemo(() =>
-    Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 1.5 + 0.5,
-      opacity: Math.random() * 0.4 + 0.1,
-      duration: Math.random() * 4 + 3,
-      delay: Math.random() * 5,
-    })), []
+  const stars = useMemo(
+    () =>
+      Array.from({ length: 150 }, (_, i) => {
+        const layer = Math.random();
+        const isBright = layer > 0.86;
+        return {
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: isBright ? Math.random() * 1.9 + 1.1 : Math.random() * 1.1 + 0.45,
+          opacity: isBright ? Math.random() * 0.35 + 0.45 : Math.random() * 0.35 + 0.12,
+          duration: isBright ? Math.random() * 4.5 + 3.5 : Math.random() * 8 + 5,
+          delay: Math.random() * 8,
+          blur: isBright ? 0 : Math.random() > 0.75 ? 0.3 : 0,
+          glow: isBright ? Math.random() * 10 + 6 : 0,
+          z: layer > 0.66 ? 1 : layer > 0.33 ? 0.8 : 0.6,
+        };
+      }),
+    []
   );
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Nebula glow */}
-      <div className="absolute top-[15%] left-[20%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
-        style={{ background: 'radial-gradient(circle, #3b82f6, transparent 70%)' }} />
-      <div className="absolute bottom-[10%] right-[15%] w-[400px] h-[400px] rounded-full opacity-[0.03]"
-        style={{ background: 'radial-gradient(circle, #6366f1, transparent 70%)' }} />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(21,34,70,0.22),rgba(2,4,10,0.86)_58%,#000_100%)]" />
 
-      {/* Stars */}
-      {stars.map(s => (
+      <div
+        className="absolute -top-[18%] -left-[8%] w-[680px] h-[680px] rounded-full opacity-[0.08]"
+        style={{ background: "radial-gradient(circle, #3b82f6 0%, rgba(59,130,246,0) 68%)" }}
+      />
+      <div
+        className="absolute bottom-[-22%] right-[-10%] w-[760px] h-[760px] rounded-full opacity-[0.06]"
+        style={{ background: "radial-gradient(circle, #6366f1 0%, rgba(99,102,241,0) 70%)" }}
+      />
+      <div
+        className="absolute top-[26%] right-[18%] w-[420px] h-[420px] rounded-full opacity-[0.045]"
+        style={{ background: "radial-gradient(circle, #22d3ee 0%, rgba(34,211,238,0) 72%)" }}
+      />
+
+      {stars.map((s) => (
         <div
           key={s.id}
           className="absolute rounded-full bg-white"
@@ -41,14 +58,16 @@ const StarField = () => {
             width: s.size,
             height: s.size,
             opacity: s.opacity,
-            animation: `star-pulse ${s.duration}s ease-in-out ${s.delay}s infinite alternate`,
+            filter: s.blur ? `blur(${s.blur}px)` : undefined,
+            transform: `scale(${s.z})`,
+            boxShadow: s.glow ? `0 0 ${s.glow}px rgba(255,255,255,0.8)` : undefined,
+            animation: `twinkle ${s.duration}s ease-in-out ${s.delay}s infinite`,
           }}
         />
       ))}
 
-      {/* Gradient overlays for blending */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/25 to-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-black/35" />
     </div>
   );
 };
