@@ -111,48 +111,48 @@ const Navbar: React.FC = () => {
               <X size={28} />
             </button>
 
-            <Link
-              to="/"
-              onClick={() => setIsOpen(false)}
-              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
-            >
-              Etusivu
-            </Link>
-            <Link
-              to="/palvelut"
-              onClick={() => setIsOpen(false)}
-              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
-            >
-              Palvelut
-            </Link>
-            <Link
-              to="/verkkosivut"
-              onClick={() => setIsOpen(false)}
-              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
-            >
-              Verkkosivut
-            </Link>
-            <Link
-              to="/web-sovellukset"
-              onClick={() => setIsOpen(false)}
-              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
-            >
-              Web-sovellukset
-            </Link>
-            <Link
-              to="/prototyypit"
-              onClick={() => setIsOpen(false)}
-              className="text-lg text-white/50 hover:text-white/80 font-medium py-2 px-6 rounded-xl transition-colors"
-            >
-              Prototyypit
-            </Link>
-            <Link
-              to="/yhteystiedot"
-              onClick={() => setIsOpen(false)}
-              className="text-2xl text-white/80 hover:text-white font-medium py-3 px-6 rounded-xl transition-colors"
-            >
-              Yhteystiedot
-            </Link>
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="text-2xl text-white/80 hover:text-white font-semibold py-4 px-8 rounded-xl transition-colors"
+          >
+            Etusivu
+          </Link>
+          <Link
+            to="/palvelut"
+            onClick={() => setIsOpen(false)}
+            className="text-2xl text-white/80 hover:text-white font-semibold py-4 px-8 rounded-xl transition-colors"
+          >
+            Palvelut
+          </Link>
+          <Link
+            to="/verkkosivut"
+            onClick={() => setIsOpen(false)}
+            className="text-xl text-white/50 hover:text-white/80 font-medium py-3 px-8 rounded-xl transition-colors"
+          >
+            Verkkosivut
+          </Link>
+          <Link
+            to="/web-sovellukset"
+            onClick={() => setIsOpen(false)}
+            className="text-xl text-white/50 hover:text-white/80 font-medium py-3 px-8 rounded-xl transition-colors"
+          >
+            Web-sovellukset
+          </Link>
+          <Link
+            to="/prototyypit"
+            onClick={() => setIsOpen(false)}
+            className="text-xl text-white/50 hover:text-white/80 font-medium py-3 px-8 rounded-xl transition-colors"
+          >
+            Prototyypit
+          </Link>
+          <Link
+            to="/yhteystiedot"
+            onClick={() => setIsOpen(false)}
+            className="text-2xl text-white/80 hover:text-white font-semibold py-4 px-8 rounded-xl transition-colors"
+          >
+            Yhteystiedot
+          </Link>
           </motion.div>
         )}
       </AnimatePresence>
