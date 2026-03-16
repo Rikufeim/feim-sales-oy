@@ -146,23 +146,25 @@ const WebsiteBenefitsSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Kotisivut ovat yrityksesi tehokkain markkinoinnin työkalu.
+                  Verkkosivu, joka tuntuu brändiltäsi.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
-                  Google on useimpien asiakkaiden ensisijainen tietolähde, joten hakukoneista löytyminen on välttämätöntä.
-                  Hyvin optimoidut sivut näkyvät paremmin hakutuloksissa ja keräävät enemmän asiakkaita.
-                  Visuaalisesti houkuttelevat ja responsiiviset sivut pitävät käyttäjät kiinnostuneina ja toimivat kaikilla laitteilla.
+                  Useimmat asiakkaat kohtaavat yrityksesi ensimmäistä kertaa verkossa. Siksi verkkosivujen ei pitäisi olla vain informatiiviset – niiden pitää välittää sama laatu, tunne ja uskottavuus kuin yrityksesi oikeasti edustaa.
+                  <br />
+                  <br />
+                  Hyödynnämme vibe-koodausta, jossa brändisi visuaalinen identiteetti, tunnelma ja liiketoiminnan tavoitteet käännetään suoraan toimivaksi digitaaliseksi kokemukseksi.
                 </p>
               </div>
 
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Kotisivut ovat tärkein myyjä.
+                  Sivusto, joka tekee myyntiä puolestasi.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
-                  Kotisivut luovat yrityksestä ensivaikutelman, joka vastaa palvelujesi tasoa.
-                  Hyvin suunnitellut kotisivut säästävät aikaasi, ohjaavat asiakkaat oikeaan paikkaan ja tekevät myynnin puolestasi.
-                  Rakennamme sivustot, jotka erottavat yrityksesi kilpailijoista ja ohjaavat kävijät toimimaan halutulla tavalla.
+                  Hyvin rakennettu verkkosivusto ei ole pelkkä käyntikortti – se on yrityksesi tehokkain myyntityökalu. Sen tehtävä on ohjata kävijää, rakentaa luottamusta ja tehdä yhteydenotosta mahdollisimman helppoa.
+                  <br />
+                  <br />
+                  Rakennamme sivustoja, jotka ovat nopeita, responsiivisia ja suunniteltu konversio edellä. Jokainen elementti palvelee yhtä tarkoitusta: muuttaa kävijät asiakkaiksi.
                 </p>
               </div>
             </div>

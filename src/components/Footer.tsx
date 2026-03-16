@@ -27,17 +27,21 @@ const Footer = () => {
           </div>
           <div className="flex gap-12 md:contents">
             <div>
+              <p className={`text-xs sm:text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>Pikalinkit</p>
+              <ul className={`space-y-2.5 sm:space-y-3 text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
+                <li><Link to="/" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Etusivu</Link></li>
+                <li><a href="/#landing-paget" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Landing paget</a></li>
+                <li><a href="/#dino-peli" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Peli</a></li>
+                <li><a href="/#yhteystiedot" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Yhteystiedot</a></li>
+              </ul>
+            </div>
+            <div>
               <p className={`text-xs sm:text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>Palvelut</p>
               <ul className={`space-y-2.5 sm:space-y-3 text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
                 <li><Link to="/verkkosivut" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Verkkosivut</Link></li>
                 <li><Link to="/web-sovellukset" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Web-sovellukset</Link></li>
                 <li><Link to="/prototyypit" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Prototyypit</Link></li>
-              </ul>
-            </div>
-            <div>
-              <p className={`text-xs sm:text-sm font-semibold uppercase tracking-wider mb-3 sm:mb-4 ${isDark ? 'text-neutral-300' : 'text-neutral-700'}`}>Yritys</p>
-              <ul className={`space-y-2.5 sm:space-y-3 text-sm ${isDark ? 'text-neutral-500' : 'text-neutral-500'}`}>
-                <li><Link to="/yhteystiedot" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Yhteystiedot</Link></li>
+                <li><Link to="/tilaa-vedos" className={`transition-colors ${isDark ? 'hover:text-white' : 'hover:text-black'}`}>Tilaa vedos</Link></li>
               </ul>
             </div>
           </div>
