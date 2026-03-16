@@ -320,7 +320,7 @@ const Services = () => {
                       <p className="text-neutral-400 text-base sm:text-base leading-relaxed mb-8">{s.desc}</p>
                       <Link
                         to={s.link}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-200 group"
+                        className="inline-flex items-center gap-2 text-base font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-7 py-3.5 rounded-full transition-all duration-200 group"
                       >
                         {s.cta}
                         <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
