@@ -334,7 +334,7 @@ const Services = () => {
                           <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
                             <CheckCircle2 size={12} className="text-blue-400" />
                           </span>
-                          <span className="text-sm text-neutral-300 leading-snug">{f}</span>
+                          <span className="text-base sm:text-sm text-neutral-300 leading-snug">{f}</span>
                         </div>
                       ))}
                     </div>
