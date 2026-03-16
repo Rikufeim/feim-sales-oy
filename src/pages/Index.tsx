@@ -170,21 +170,21 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
 
     <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
       <FadeIn delay={0.1}>
-        <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
+         <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold pb-4 leading-[1.05] max-w-5xl ${isDark ? 'bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400' : 'text-neutral-900'}`}>
           Sivut, jotka <Cover>ajattelevat.</Cover>
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-6 sm:mt-8 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
+        <p className={`mt-6 sm:mt-8 text-lg sm:text-xl md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
           Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla.
         </p>
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
-          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center px-8 py-4 font-bold text-base sm:text-base rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
           </Link>
-          <Link to="/palvelut" className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border font-medium text-sm sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
+          <Link to="/palvelut" className={`inline-flex items-center justify-center gap-2 px-8 py-4 border font-medium text-base sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
           </Link>
         </div>
@@ -315,12 +315,12 @@ const Services = () => {
                   >
                     {/* Left */}
                     <div>
-                      <p className="text-xs font-medium text-blue-400/70 tracking-widest uppercase mb-3">{s.label}</p>
+                      <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-3">{s.label}</p>
                       <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">{s.tagline}</h3>
-                      <p className="text-neutral-400 text-base leading-relaxed mb-8">{s.desc}</p>
+                      <p className="text-neutral-400 text-base sm:text-base leading-relaxed mb-8">{s.desc}</p>
                       <Link
                         to={s.link}
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-6 py-3 rounded-full transition-all duration-200 group"
+                        className="inline-flex items-center gap-2 text-base font-semibold text-white bg-white/10 hover:bg-white/15 border border-white/10 hover:border-white/20 px-7 py-3.5 rounded-full transition-all duration-200 group"
                       >
                         {s.cta}
                         <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -334,7 +334,7 @@ const Services = () => {
                           <span className="mt-0.5 w-5 h-5 rounded-full bg-blue-500/15 flex items-center justify-center shrink-0">
                             <CheckCircle2 size={12} className="text-blue-400" />
                           </span>
-                          <span className="text-sm text-neutral-300 leading-snug">{f}</span>
+                          <span className="text-base sm:text-sm text-neutral-300 leading-snug">{f}</span>
                         </div>
                       ))}
                     </div>
@@ -384,7 +384,7 @@ const WhyFeim = () => (
             </p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <Link to="/yhteystiedot#vedos" className="inline-flex items-center gap-2 mt-10 text-white font-medium border border-white/15 px-6 py-3 rounded-full hover:bg-white/5 transition-all group">
+            <Link to="/yhteystiedot#vedos" className="inline-flex items-center gap-2 mt-10 text-white font-medium text-base border border-white/15 px-7 py-3.5 rounded-full hover:bg-white/5 transition-all group">
               Keskustellaan projektistanne <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </FadeIn>
@@ -444,10 +444,10 @@ const Process = () => (
         {processSteps.map((step, i) => (
           <FadeIn key={i} delay={i * 0.08}>
             <div className="group flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-12 py-6 sm:py-10 border-t border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <span className="text-3xl sm:text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-16 sm:w-20">{step.num}</span>
+              <span className="text-4xl sm:text-4xl md:text-5xl font-black text-white/10 group-hover:text-blue-500/30 transition-colors shrink-0 w-16 sm:w-20">{step.num}</span>
               <div className="max-w-2xl">
                 <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">{step.title}</h3>
-                <p className="text-neutral-400 leading-relaxed">{step.desc}</p>
+                <p className="text-neutral-400 text-base leading-relaxed">{step.desc}</p>
               </div>
             </div>
           </FadeIn>
@@ -660,10 +660,10 @@ const FAQ = () => (
         <Accordion type="single" collapsible className="space-y-2">
           {faqData.map((item, i) => (
             <AccordionItem key={i} value={`faq-${i}`} className="border-white/[0.06] hover:border-white/[0.12] transition-colors rounded-xl px-2">
-              <AccordionTrigger className="text-white text-left text-lg font-medium py-6 hover:no-underline">
+               <AccordionTrigger className="text-white text-left text-lg sm:text-lg font-medium py-6 hover:no-underline">
                 {item.q}
               </AccordionTrigger>
-              <AccordionContent className="text-neutral-400 leading-relaxed pb-6 text-[15px]">
+              <AccordionContent className="text-neutral-400 leading-relaxed pb-6 text-base sm:text-[15px]">
                 {item.a}
               </AccordionContent>
             </AccordionItem>
@@ -752,12 +752,12 @@ const Contact = () => {
               <div className="space-y-3">
                 <label className="text-sm font-medium text-neutral-400 ml-1">Mitä haluat tilata?</label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
-                  {serviceOptions.map((s) => (
+                   {serviceOptions.map((s) => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => setSelectedService(s.id)}
-                      className={`py-3 sm:py-3.5 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
+                      className={`py-3.5 sm:py-3.5 px-5 rounded-xl text-base sm:text-sm font-medium transition-all duration-300 border ${
                         selectedService === s.id
                           ? 'bg-blue-500/15 border-blue-500/30 text-blue-300'
                           : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'
@@ -785,8 +785,8 @@ const Contact = () => {
 
               {/* Submit + info row */}
               <div className="pt-2">
-                <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
+                 <button type="submit"
+                  className="w-full lg:w-auto bg-white text-black font-bold text-base sm:text-base py-4 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
                   Tilaa maksuton vedos
                 </button>
               </div>

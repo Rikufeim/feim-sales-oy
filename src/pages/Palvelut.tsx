@@ -109,7 +109,7 @@ const Palvelut = () => {
       </Helmet>
 
       {/* ── Palvelulista — auto-cycling tabs ── */}
-      <section id="palvelut-lista" className="relative pt-40 sm:pt-52 pb-16 sm:pb-32 overflow-hidden">
+      <section id="palvelut-lista" className="relative pt-32 sm:pt-52 pb-16 sm:pb-32 overflow-hidden">
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
 
           {/* Navigation tabs */}
@@ -132,10 +132,10 @@ const Palvelut = () => {
                 className="relative flex-1 group py-5 text-left transition-colors duration-500"
               >
                 <div className="flex items-baseline gap-4 px-1">
-                  <span className={`text-xs font-mono transition-colors duration-500 ${
+                  <span className={`text-sm font-mono transition-colors duration-500 ${
                     activeIndex === i ? "text-blue-400" : "text-neutral-700"
                   }`}>{s.num}</span>
-                  <span className={`text-lg sm:text-xl font-semibold transition-colors duration-500 ${
+                  <span className={`text-xl sm:text-xl font-semibold transition-colors duration-500 ${
                     activeIndex === i ? "text-white" : "text-neutral-600 group-hover:text-neutral-400"
                   }`}>{s.title}</span>
                 </div>
@@ -169,7 +169,7 @@ const Palvelut = () => {
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                      className="text-2xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-4 leading-tight"
+                      className="text-3xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-4 leading-tight"
                     >
                       {active.title}
                       <ArrowRight size={22} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
@@ -211,8 +211,8 @@ const Palvelut = () => {
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-start">
             <FadeIn>
-              <p className="text-xs sm:text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Lähestymistapamme</p>
-              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-6 sm:mb-8">
+              <p className="text-sm font-medium text-blue-400/70 tracking-widest uppercase mb-4 sm:mb-6">Lähestymistapamme</p>
+              <h2 className="text-3xl sm:text-3xl md:text-5xl font-bold text-white leading-[1.1] mb-6 sm:mb-8">
                 kokonaisia digitaalisia ratkaisuja.
               </h2>
               <p className="text-neutral-400 text-lg leading-relaxed">
@@ -249,7 +249,7 @@ const Palvelut = () => {
             <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
               Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
             </p>
-            <Link to="/tilaa-vedos" className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105">
+            <Link to="/tilaa-vedos" className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg sm:text-lg rounded-full transition-all duration-300 hover:scale-105">
               Tilaa maksuton vedos
             </Link>
           </FadeIn>
