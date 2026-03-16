@@ -132,10 +132,10 @@ const Palvelut = () => {
                 className="relative flex-1 group py-5 text-left transition-colors duration-500"
               >
                 <div className="flex items-baseline gap-4 px-1">
-                  <span className={`text-xs font-mono transition-colors duration-500 ${
+                  <span className={`text-sm font-mono transition-colors duration-500 ${
                     activeIndex === i ? "text-blue-400" : "text-neutral-700"
                   }`}>{s.num}</span>
-                  <span className={`text-lg sm:text-xl font-semibold transition-colors duration-500 ${
+                  <span className={`text-xl sm:text-xl font-semibold transition-colors duration-500 ${
                     activeIndex === i ? "text-white" : "text-neutral-600 group-hover:text-neutral-400"
                   }`}>{s.title}</span>
                 </div>
