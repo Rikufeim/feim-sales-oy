@@ -181,10 +181,10 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
       </FadeIn>
       <FadeIn delay={0.3}>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10">
-          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
+          <Link to="/yhteystiedot#vedos" className="inline-flex items-center justify-center px-8 py-4 font-bold text-base sm:text-base rounded-full transition-all duration-300 hover:scale-105" style={{ backgroundColor: isDark ? '#ffffff' : '#171717', color: isDark ? '#000000' : '#ffffff' }}>
             Pyydä tarjous
           </Link>
-          <Link to="/palvelut" className={`inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border font-medium text-sm sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
+          <Link to="/palvelut" className={`inline-flex items-center justify-center gap-2 px-8 py-4 border font-medium text-base sm:text-base rounded-full transition-all duration-300 ${isDark ? 'border-white/15 text-white hover:bg-white/5' : 'border-black/15 text-neutral-800 hover:bg-black/5'}`}>
             Tutustu palveluihin
           </Link>
         </div>
