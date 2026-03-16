@@ -175,7 +175,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
         </h1>
       </FadeIn>
       <FadeIn delay={0.2}>
-        <p className={`mt-6 sm:mt-8 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
+        <p className={`mt-6 sm:mt-8 text-lg sm:text-xl md:text-xl max-w-2xl leading-relaxed font-medium ${isDark ? 'text-neutral-400' : 'text-neutral-700'}`}>
           Suunnittelemme ja toteutamme verkkosivuja, web-sovelluksia ja prototyyppejä — modernilla designilla, teknisellä huippulaadulla.
         </p>
       </FadeIn>
