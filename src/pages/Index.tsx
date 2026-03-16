@@ -752,12 +752,12 @@ const Contact = () => {
               <div className="space-y-3">
                 <label className="text-sm font-medium text-neutral-400 ml-1">Mitä haluat tilata?</label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
-                  {serviceOptions.map((s) => (
+                   {serviceOptions.map((s) => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => setSelectedService(s.id)}
-                      className={`py-3 sm:py-3.5 px-4 rounded-xl text-sm font-medium transition-all duration-300 border ${
+                      className={`py-3.5 sm:py-3.5 px-5 rounded-xl text-base sm:text-sm font-medium transition-all duration-300 border ${
                         selectedService === s.id
                           ? 'bg-blue-500/15 border-blue-500/30 text-blue-300'
                           : 'bg-white/[0.02] border-white/[0.08] text-neutral-400 hover:text-white hover:border-white/[0.15]'

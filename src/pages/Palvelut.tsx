@@ -249,7 +249,7 @@ const Palvelut = () => {
             <p className="text-neutral-400 text-lg max-w-lg mx-auto mb-12 leading-relaxed">
               Kerro projektistasi ja saat konkreettisen ehdotuksen siitä, miten kannattaa lähteä liikkeelle.
             </p>
-            <Link to="/tilaa-vedos" className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg rounded-full transition-all duration-300 hover:scale-105">
+            <Link to="/tilaa-vedos" className="inline-flex items-center justify-center px-10 py-5 bg-white hover:bg-neutral-100 text-black font-bold text-lg sm:text-lg rounded-full transition-all duration-300 hover:scale-105">
               Tilaa maksuton vedos
             </Link>
           </FadeIn>

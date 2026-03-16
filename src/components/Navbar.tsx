@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden flex items-center gap-3">
           <Link
             to="/tilaa-vedos"
-            className="text-xs font-bold text-black bg-white hover:bg-neutral-100 transition-all duration-200 px-4 py-2 rounded-full"
+            className="text-sm font-bold text-black bg-white hover:bg-neutral-100 transition-all duration-200 px-5 py-2.5 rounded-full"
           >
             Tilaa vedos
           </Link>
