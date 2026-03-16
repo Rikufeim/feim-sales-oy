@@ -785,8 +785,8 @@ const Contact = () => {
 
               {/* Submit + info row */}
               <div className="pt-2">
-                <button type="submit"
-                  className="w-full lg:w-auto bg-white text-black font-bold text-sm sm:text-base py-3.5 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
+                 <button type="submit"
+                  className="w-full lg:w-auto bg-white text-black font-bold text-base sm:text-base py-4 sm:py-4 px-10 sm:px-16 rounded-xl hover:bg-neutral-200 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center">
                   Tilaa maksuton vedos
                 </button>
               </div>
