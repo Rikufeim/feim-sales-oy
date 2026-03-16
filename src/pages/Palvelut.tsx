@@ -169,7 +169,7 @@ const Palvelut = () => {
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                      className="text-2xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-4 leading-tight"
+                      className="text-3xl md:text-4xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 flex items-center gap-4 leading-tight"
                     >
                       {active.title}
                       <ArrowRight size={22} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-blue-400 shrink-0" />
