@@ -439,9 +439,10 @@ const DinoGameSection = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
-    const targetFrameMs = 1000 / 45;
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const targetFrameMs = isTouchDevice ? 1000 / 30 : 1000 / 45;
     let isInView = true;
     let pageVisible = document.visibilityState !== 'hidden';
     let observer: IntersectionObserver | null = null;
@@ -539,7 +540,8 @@ const DinoGameSection = () => {
     };
 
     const initStars = () => {
-      state.stars = Array.from({ length: 80 }, () => ({
+      const starCount = isTouchDevice ? 35 : 80;
+      state.stars = Array.from({ length: starCount }, () => ({
         x: rand(0, state.width),
         y: rand(8, state.height),
         r: rand(0.6, 1.9),
@@ -588,7 +590,8 @@ const DinoGameSection = () => {
     };
 
     const resize = () => {
-      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const rawDpr = window.devicePixelRatio || 1;
+      const dpr = isTouchDevice ? Math.min(rawDpr, 2) : rawDpr;
       const cssWidth = Math.max(320, canvas.clientWidth);
       const cssHeight = Math.max(320, canvas.clientHeight);
 
@@ -666,6 +669,7 @@ const DinoGameSection = () => {
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      e.preventDefault();
       requestStart();
       updateTargetXFromPointer(e.clientX);
       try {
@@ -676,7 +680,14 @@ const DinoGameSection = () => {
     };
 
     const onPointerMove = (e: PointerEvent) => {
+      e.preventDefault();
       updateTargetXFromPointer(e.clientX);
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch {}
     };
 
     const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
@@ -1009,8 +1020,9 @@ const DinoGameSection = () => {
     window.addEventListener('resize', resize);
     window.addEventListener('keydown', onKeyDown, { passive: false });
     window.addEventListener('keyup', onKeyUp);
-    canvas.addEventListener('pointerdown', onPointerDown);
-    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerdown', onPointerDown, { passive: false });
+    canvas.addEventListener('pointermove', onPointerMove, { passive: false });
+    canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointerenter', onPointerMove);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
@@ -1034,6 +1046,7 @@ const DinoGameSection = () => {
       window.removeEventListener('keyup', onKeyUp);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointerenter', onPointerMove);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       observer?.disconnect();
@@ -1042,7 +1055,7 @@ const DinoGameSection = () => {
 
   return (
     <section ref={sectionRef} id="dino-peli" className="relative bg-black py-4 sm:py-8 md:py-10">
-      <canvas ref={canvasRef} className="block w-full h-[58vh] min-h-[320px] max-h-[520px] sm:h-[320px] md:h-[360px] border-b border-white/10 bg-[#020617]" />
+      <canvas ref={canvasRef} className="block w-full h-[58vh] min-h-[320px] max-h-[520px] sm:h-[320px] md:h-[360px] border-b border-white/10 bg-[#020617]" style={{ touchAction: 'none' }} />
     </section>
   );
 };
