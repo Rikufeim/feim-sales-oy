@@ -1020,8 +1020,9 @@ const DinoGameSection = () => {
     window.addEventListener('resize', resize);
     window.addEventListener('keydown', onKeyDown, { passive: false });
     window.addEventListener('keyup', onKeyUp);
-    canvas.addEventListener('pointerdown', onPointerDown);
-    canvas.addEventListener('pointermove', onPointerMove);
+    canvas.addEventListener('pointerdown', onPointerDown, { passive: false });
+    canvas.addEventListener('pointermove', onPointerMove, { passive: false });
+    canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointerenter', onPointerMove);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
