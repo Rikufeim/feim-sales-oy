@@ -125,20 +125,10 @@ const WebsiteBenefitsSection = () => {
       <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16 items-start">
           <FadeIn>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 max-w-[560px]">
-              {mobileShowcaseImages.map((image, i) => (
-                <div key={i} className={`rounded-[1.8rem] border p-1.5 ${frame}`}>
-                  <div className="rounded-[1.35rem] overflow-hidden bg-black">
-                    <img
-                      src={image}
-                      alt={`Mobiilinäkymä ${i + 1}`}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full aspect-[10/19] object-cover"
-                    />
-                  </div>
-                </div>
-              ))}
+            <div className="flex items-center justify-center h-full min-h-[400px]">
+              <h2 className={`text-4xl sm:text-5xl md:text-6xl font-extrabold italic text-center leading-tight ${heading}`}>
+                Yrityksesi<br /><span className="text-[hsl(217,91%,60%)]">tähän?</span>
+              </h2>
             </div>
           </FadeIn>
 
