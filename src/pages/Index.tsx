@@ -1046,6 +1046,7 @@ const DinoGameSection = () => {
       window.removeEventListener('keyup', onKeyUp);
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
+      canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointerenter', onPointerMove);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       observer?.disconnect();
@@ -1054,7 +1055,7 @@ const DinoGameSection = () => {
 
   return (
     <section ref={sectionRef} id="dino-peli" className="relative bg-black py-4 sm:py-8 md:py-10">
-      <canvas ref={canvasRef} className="block w-full h-[58vh] min-h-[320px] max-h-[520px] sm:h-[320px] md:h-[360px] border-b border-white/10 bg-[#020617]" />
+      <canvas ref={canvasRef} className="block w-full h-[58vh] min-h-[320px] max-h-[520px] sm:h-[320px] md:h-[360px] border-b border-white/10 bg-[#020617]" style={{ touchAction: 'none' }} />
     </section>
   );
 };
