@@ -590,7 +590,8 @@ const DinoGameSection = () => {
     };
 
     const resize = () => {
-      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      const rawDpr = window.devicePixelRatio || 1;
+      const dpr = isTouchDevice ? Math.min(rawDpr, 2) : rawDpr;
       const cssWidth = Math.max(320, canvas.clientWidth);
       const cssHeight = Math.max(320, canvas.clientHeight);
 
