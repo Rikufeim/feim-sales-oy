@@ -146,7 +146,7 @@ const WebsiteBenefitsSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Verkkosivu, joka tuntuu <span className="text-primary">brändiltäsi.</span>
+                  Verkkosivu, joka tuntuu brändiltäsi.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
                   Useimmat asiakkaat kohtaavat yrityksesi ensimmäistä kertaa verkossa. Siksi verkkosivujen ei pitäisi olla vain informatiiviset – niiden pitää välittää sama laatu, tunne ja uskottavuus kuin yrityksesi oikeasti edustaa.
@@ -158,7 +158,7 @@ const WebsiteBenefitsSection = () => {
 
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Sivusto, joka tekee <span className="text-primary">myyntiä</span> puolestasi.
+                  Sivusto, joka tekee myyntiä puolestasi.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
                   Hyvin rakennettu verkkosivusto ei ole pelkkä käyntikortti – se on yrityksesi tehokkain myyntityökalu. Sen tehtävä on ohjata kävijää, rakentaa luottamusta ja tehdä yhteydenotosta mahdollisimman helppoa.
