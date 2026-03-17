@@ -146,7 +146,7 @@ const WebsiteBenefitsSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Verkkosivu, joka tuntuu <span className="text-primary">brändiltäsi.</span>
+                  Verkkosivu, joka tuntuu <span className="text-[hsl(217,91%,60%)]">brändiltäsi.</span>
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
                   Useimmat asiakkaat kohtaavat yrityksesi ensimmäistä kertaa verkossa. Siksi verkkosivujen ei pitäisi olla vain informatiiviset – niiden pitää välittää sama laatu, tunne ja uskottavuus kuin yrityksesi oikeasti edustaa.
