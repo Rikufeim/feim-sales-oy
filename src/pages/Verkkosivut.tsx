@@ -158,7 +158,7 @@ const WebsiteBenefitsSection = () => {
 
               <div>
                 <h3 className={`text-2xl sm:text-3xl font-bold leading-tight mb-4 ${heading}`}>
-                  Sivusto, joka tekee myyntiä puolestasi.
+                  Sivusto, joka tekee <span className="text-primary">myyntiä</span> puolestasi.
                 </h3>
                 <p className={`text-base sm:text-lg leading-relaxed ${body}`}>
                   Hyvin rakennettu verkkosivusto ei ole pelkkä käyntikortti – se on yrityksesi tehokkain myyntityökalu. Sen tehtävä on ohjata kävijää, rakentaa luottamusta ja tehdä yhteydenotosta mahdollisimman helppoa.
