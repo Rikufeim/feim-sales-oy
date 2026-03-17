@@ -439,9 +439,10 @@ const DinoGameSection = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
-    const targetFrameMs = 1000 / 45;
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    const targetFrameMs = isTouchDevice ? 1000 / 30 : 1000 / 45;
     let isInView = true;
     let pageVisible = document.visibilityState !== 'hidden';
     let observer: IntersectionObserver | null = null;
