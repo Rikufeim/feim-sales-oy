@@ -540,7 +540,8 @@ const DinoGameSection = () => {
     };
 
     const initStars = () => {
-      state.stars = Array.from({ length: 80 }, () => ({
+      const starCount = isTouchDevice ? 35 : 80;
+      state.stars = Array.from({ length: starCount }, () => ({
         x: rand(0, state.width),
         y: rand(8, state.height),
         r: rand(0.6, 1.9),
