@@ -291,7 +291,7 @@ const PricingSection = () => {
             <div className="text-center mb-16">
               <h2 className={`text-4xl sm:text-5xl md:text-7xl font-extrabold italic leading-tight mb-6 ${heading}`}>
                 Ylläpitopalvelu alkaen<br />
-                <span className="text-[hsl(217,91%,60%)]">35€ / kk</span>
+                <span className="text-[hsl(217,91%,60%)]">200€ / v</span>
               </h2>
               <p className={`text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${desc}`}>
                 Tekninen ylläpitopalvelu pitää kotisivusi aina ajan tasalla. Varmistamme, että sivut toimivat moitteettomasti vuoden jokaisena päivänä. Päivitykset ja varmuuskopiot huoletta. Nopeus ja tietoturva aina huippuluokkaa. Tuki ja apu, kun sitä tarvitset.
