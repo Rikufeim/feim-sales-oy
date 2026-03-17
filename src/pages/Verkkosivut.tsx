@@ -285,13 +285,21 @@ const PricingSection = () => {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0" style={{ background: radialBg }} />
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
+
+          {/* Big centered headline */}
           <FadeIn>
-            <h2 className={`text-3xl md:text-5xl font-bold mb-4 max-w-3xl ${heading}`}>Ylläpito</h2>
-            <p className={`text-lg max-w-2xl mb-12 leading-relaxed ${desc}`}>
-              Pidä sivustosi ajan tasalla ja toimintakunnossa.
-            </p>
+            <div className="text-center mb-16">
+              <h2 className={`text-4xl sm:text-5xl md:text-7xl font-extrabold italic leading-tight mb-6 ${heading}`}>
+                Ylläpitopalvelu alkaen<br />
+                <span className="text-[hsl(217,91%,60%)]">35€ / kk</span>
+              </h2>
+              <p className={`text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${desc}`}>
+                Tekninen ylläpitopalvelu pitää kotisivusi aina ajan tasalla. Varmistamme, että sivut toimivat moitteettomasti vuoden jokaisena päivänä. Päivitykset ja varmuuskopiot huoletta. Nopeus ja tietoturva aina huippuluokkaa. Tuki ja apu, kun sitä tarvitset.
+              </p>
+            </div>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {maintenancePlans.map((plan, i) => (
               <FadeIn key={i} delay={i * 0.08}>
                 <div className={`rounded-2xl p-8 transition-all duration-500 h-full flex flex-col ${cardBase}`}>
