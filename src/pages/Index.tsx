@@ -669,6 +669,7 @@ const DinoGameSection = () => {
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      e.preventDefault();
       requestStart();
       updateTargetXFromPointer(e.clientX);
       try {
@@ -679,7 +680,14 @@ const DinoGameSection = () => {
     };
 
     const onPointerMove = (e: PointerEvent) => {
+      e.preventDefault();
       updateTargetXFromPointer(e.clientX);
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch {}
     };
 
     const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
