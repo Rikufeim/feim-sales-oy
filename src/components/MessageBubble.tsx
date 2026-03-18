@@ -45,7 +45,7 @@ const MessageBubble: React.FC = () => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-12 h-12 rounded-tl-2xl bg-transparent text-white flex items-center justify-center transition-transform duration-300 hover:scale-105"
+        className="w-12 h-12 rounded-tl-2xl bg-black text-white flex items-center justify-center transition-transform duration-300 hover:scale-105"
         aria-label="Ota yhteyttä"
       >
         <AnimatePresence mode="wait">
