@@ -439,13 +439,17 @@ const DinoGameSection = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d', { alpha: false });
+    const ctx = canvas.getContext('2d') ?? canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
+
+    const resizeTarget = canvas.parentElement ?? canvas;
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     const targetFrameMs = isTouchDevice ? 1000 / 30 : 1000 / 45;
     let isInView = true;
     let pageVisible = document.visibilityState !== 'hidden';
     let observer: IntersectionObserver | null = null;
+    let resizeObserver: ResizeObserver | null = null;
+    let redrawFrameId = 0;
 
     type Obstacle = {
       x: number;
@@ -521,10 +525,6 @@ const DinoGameSection = () => {
     };
     const logoImg = new Image();
     let logoLoaded = false;
-    logoImg.src = feimLogo;
-    logoImg.onload = () => {
-      logoLoaded = true;
-    };
 
     const rand = (min: number, max: number) => min + Math.random() * (max - min);
 
@@ -592,8 +592,8 @@ const DinoGameSection = () => {
     const resize = () => {
       const rawDpr = window.devicePixelRatio || 1;
       const dpr = isTouchDevice ? Math.min(rawDpr, 2) : rawDpr;
-      const cssWidth = Math.max(320, canvas.clientWidth);
-      const cssHeight = Math.max(320, canvas.clientHeight);
+      const cssWidth = Math.max(320, canvas.clientWidth, resizeTarget.clientWidth);
+      const cssHeight = Math.max(320, canvas.clientHeight, resizeTarget.clientHeight);
 
       canvas.width = Math.floor(cssWidth * dpr);
       canvas.height = Math.floor(cssHeight * dpr);
@@ -614,99 +614,6 @@ const DinoGameSection = () => {
       }
       if (state.clouds.length === 0) initClouds();
       if (state.stars.length === 0) initStars();
-    };
-
-    const requestStart = () => {
-      if (state.gameOver) {
-        resetGame();
-        state.hasStarted = true;
-        startLoop();
-        return;
-      }
-      if (!state.hasStarted) {
-        state.hasStarted = true;
-        state.lastTs = 0;
-        startLoop();
-        return;
-      }
-    };
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        requestStart();
-        return;
-      }
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        e.preventDefault();
-        state.leftPressed = true;
-        return;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        e.preventDefault();
-        state.rightPressed = true;
-      }
-    };
-
-    const onKeyUp = (e: KeyboardEvent) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        state.leftPressed = false;
-        return;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        state.rightPressed = false;
-      }
-    };
-
-    const updateTargetXFromPointer = (clientX: number) => {
-      const rect = canvas.getBoundingClientRect();
-      if (!rect.width) return;
-      const relativeX = clientX - rect.left;
-      const minCenter = state.dinoW / 2 + state.horizontalPadding;
-      const maxCenter = rect.width - state.dinoW / 2 - state.horizontalPadding;
-      const clampedCenter = Math.min(Math.max(relativeX, minCenter), maxCenter);
-      state.targetX = clampedCenter - state.dinoW / 2;
-    };
-
-    const onPointerDown = (e: PointerEvent) => {
-      e.preventDefault();
-      requestStart();
-      updateTargetXFromPointer(e.clientX);
-      try {
-        canvas.setPointerCapture(e.pointerId);
-      } catch {
-        // Ignore unsupported pointer capture environments.
-      }
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      e.preventDefault();
-      updateTargetXFromPointer(e.clientX);
-    };
-
-    const onPointerUp = (e: PointerEvent) => {
-      try {
-        canvas.releasePointerCapture(e.pointerId);
-      } catch {}
-    };
-
-    const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
-      return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
-    };
-    const circleIntersectsRect = (
-      cx: number,
-      cy: number,
-      cr: number,
-      rx: number,
-      ry: number,
-      rw: number,
-      rh: number
-    ) => {
-      const nearestX = Math.max(rx, Math.min(cx, rx + rw));
-      const nearestY = Math.max(ry, Math.min(cy, ry + rh));
-      const dx = cx - nearestX;
-      const dy = cy - nearestY;
-      return dx * dx + dy * dy <= cr * cr;
     };
 
     const draw = () => {
@@ -837,6 +744,116 @@ const DinoGameSection = () => {
         ctx.fillText('Vältä ylhäältä tippuvat esteet', state.width / 2, state.height / 2 + 30);
         ctx.restore();
       }
+    };
+
+    const scheduleRedraw = () => {
+      if (redrawFrameId) {
+        window.cancelAnimationFrame(redrawFrameId);
+      }
+      redrawFrameId = window.requestAnimationFrame(() => {
+        redrawFrameId = 0;
+        resize();
+        draw();
+      });
+    };
+
+    logoImg.src = feimLogo;
+    logoImg.onload = () => {
+      logoLoaded = true;
+      scheduleRedraw();
+    };
+
+    const requestStart = () => {
+      if (state.gameOver) {
+        resetGame();
+        state.hasStarted = true;
+        startLoop();
+        return;
+      }
+      if (!state.hasStarted) {
+        state.hasStarted = true;
+        state.lastTs = 0;
+        startLoop();
+        return;
+      }
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        requestStart();
+        return;
+      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        e.preventDefault();
+        state.leftPressed = true;
+        return;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        e.preventDefault();
+        state.rightPressed = true;
+      }
+    };
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        state.leftPressed = false;
+        return;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        state.rightPressed = false;
+      }
+    };
+
+    const updateTargetXFromPointer = (clientX: number) => {
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width) return;
+      const relativeX = clientX - rect.left;
+      const minCenter = state.dinoW / 2 + state.horizontalPadding;
+      const maxCenter = rect.width - state.dinoW / 2 - state.horizontalPadding;
+      const clampedCenter = Math.min(Math.max(relativeX, minCenter), maxCenter);
+      state.targetX = clampedCenter - state.dinoW / 2;
+    };
+
+    const onPointerDown = (e: PointerEvent) => {
+      e.preventDefault();
+      requestStart();
+      updateTargetXFromPointer(e.clientX);
+      try {
+        canvas.setPointerCapture(e.pointerId);
+      } catch {
+        // Ignore unsupported pointer capture environments.
+      }
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      e.preventDefault();
+      updateTargetXFromPointer(e.clientX);
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      try {
+        canvas.releasePointerCapture(e.pointerId);
+      } catch {}
+    };
+
+    const intersects = (ax: number, ay: number, aw: number, ah: number, bx: number, by: number, bw: number, bh: number) => {
+      return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+    };
+    const circleIntersectsRect = (
+      cx: number,
+      cy: number,
+      cr: number,
+      rx: number,
+      ry: number,
+      rw: number,
+      rh: number
+    ) => {
+      const nearestX = Math.max(rx, Math.min(cx, rx + rw));
+      const nearestY = Math.max(ry, Math.min(cy, ry + rh));
+      const dx = cx - nearestX;
+      const dy = cy - nearestY;
+      return dx * dx + dy * dy <= cr * cr;
     };
 
     const loop = (ts: number) => {
@@ -1010,14 +1027,15 @@ const DinoGameSection = () => {
       pageVisible = document.visibilityState !== 'hidden';
       if (pageVisible) startLoop();
       else stopLoop();
-      draw();
+      scheduleRedraw();
     };
 
     resize();
     resetGame();
     draw();
+    scheduleRedraw();
 
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', scheduleRedraw);
     window.addEventListener('keydown', onKeyDown, { passive: false });
     window.addEventListener('keyup', onKeyUp);
     canvas.addEventListener('pointerdown', onPointerDown, { passive: false });
@@ -1026,13 +1044,20 @@ const DinoGameSection = () => {
     canvas.addEventListener('pointerenter', onPointerMove);
     document.addEventListener('visibilitychange', onVisibilityChange);
 
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(() => {
+        scheduleRedraw();
+      });
+      resizeObserver.observe(resizeTarget);
+    }
+
     if (sectionRef.current) {
       observer = new IntersectionObserver(
         (entries) => {
           isInView = !!entries[0]?.isIntersecting;
           if (isInView) startLoop();
           else stopLoop();
-          draw();
+          scheduleRedraw();
         },
         { threshold: 0.08 }
       );
@@ -1041,7 +1066,11 @@ const DinoGameSection = () => {
 
     return () => {
       stopLoop();
-      window.removeEventListener('resize', resize);
+      if (redrawFrameId) {
+        window.cancelAnimationFrame(redrawFrameId);
+      }
+      logoImg.onload = null;
+      window.removeEventListener('resize', scheduleRedraw);
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
       canvas.removeEventListener('pointerdown', onPointerDown);
@@ -1049,14 +1078,15 @@ const DinoGameSection = () => {
       canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointerenter', onPointerMove);
       document.removeEventListener('visibilitychange', onVisibilityChange);
+      resizeObserver?.disconnect();
       observer?.disconnect();
     };
   }, []);
 
   return (
-    <section ref={sectionRef} id="dino-peli" className="relative bg-black py-4 sm:py-8 md:py-10">
-      <div className="w-full h-[50vh] min-h-[300px] max-h-[520px] sm:h-[320px] md:h-[360px]">
-        <canvas ref={canvasRef} className="block w-full h-full border-b border-white/10 bg-[#020617]" style={{ touchAction: 'none' }} />
+    <section ref={sectionRef} id="dino-peli" className="relative bg-background py-4 sm:py-8 md:py-10">
+      <div className="h-[50vh] max-h-[520px] min-h-[300px] w-full sm:h-[320px] md:h-[360px]">
+        <canvas ref={canvasRef} className="block h-full w-full border-b border-white/10 bg-background" style={{ touchAction: 'none' }} />
       </div>
     </section>
   );
