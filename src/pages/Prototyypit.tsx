@@ -54,7 +54,8 @@ const Prototyypit = () => (
       buttonText: "Tilaa maksuton vedos",
       buttonHref: "/yhteystiedot#vedos"
     }}
-  />
+    />
+  </>
 );
 
 export default Prototyypit;
