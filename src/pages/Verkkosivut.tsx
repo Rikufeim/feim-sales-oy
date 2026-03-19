@@ -320,6 +320,7 @@ const PricingSection = () => {
 const Verkkosivut = () => (
   <>
     <ServicePageLayout
+      heroImage={heroVerkkosivut}
       heroVariant="commercial"
       seo={{
         title: "Verkkosivut yritykselle — FEIM Digital Studio",
