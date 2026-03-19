@@ -1,10 +1,7 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
-import OceanBackground from '@/components/OceanBackground';
 
 const Prototyypit = () => (
-  <>
-    <OceanBackground />
-    <ServicePageLayout
+  <ServicePageLayout
     heroVariant="creative"
     seo={{
       title: "Prototyypit ja MVP — FEIM Digital Studio",
@@ -54,8 +51,7 @@ const Prototyypit = () => (
       buttonText: "Tilaa maksuton vedos",
       buttonHref: "/yhteystiedot#vedos"
     }}
-    />
-  </>
+  />
 );
 
 export default Prototyypit;
