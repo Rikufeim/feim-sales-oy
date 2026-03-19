@@ -202,11 +202,21 @@ const PricingSection = () => {
 
       {/* Main pricing */}
       <section className="relative pt-32 sm:pt-48 md:pt-56 lg:pt-44 pb-24 overflow-hidden">
+        {/* Desktop bg */}
         <img
           src={hinnastoBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none hidden sm:block"
           style={{ objectPosition: 'center 40%' }}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
+        {/* Mobile bg */}
+        <img
+          src={hinnastoBgMobile}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none block sm:hidden"
           loading="eager"
           decoding="async"
           fetchPriority="high"
