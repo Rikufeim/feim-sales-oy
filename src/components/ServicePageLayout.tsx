@@ -123,7 +123,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 alt={hero.title}
                 className={`w-full ${
                   heroVariant === 'creative'
-                    ? 'h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] object-contain object-top'
+                    ? 'h-auto max-h-[85vh] object-contain object-top'
                     : 'h-[45vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] object-cover object-center'
                 }`}
               />
