@@ -116,10 +116,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
         {heroImage && (
-          <div className={`absolute inset-x-0 top-0 z-10 w-full overflow-hidden ${
+          <div className={`absolute z-10 w-full overflow-hidden ${
             heroVariant === 'creative'
-              ? 'h-[54vh] sm:h-[58vh] md:h-[62vh] lg:h-[68vh]'
-              : 'h-[50vh] sm:h-[60vh] md:h-[65vh] lg:h-[70vh]'
+              ? 'inset-x-0 top-0 h-[54vh] sm:h-[58vh] md:h-[62vh] lg:h-[68vh]'
+              : 'inset-0'
           }`}>
             <FadeIn className="w-full h-full">
               <img
@@ -128,7 +128,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 className={`w-full h-full ${
                   heroVariant === 'creative'
                     ? 'object-contain object-top'
-                    : 'object-cover object-center scale-105'
+                    : 'object-cover object-center'
                 }`}
               />
               <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-30`} />
@@ -138,7 +138,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         )}
 
         <div className={`px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full ${
-          heroVariant === 'creative' ? 'pt-[58vh] sm:pt-[62vh] md:pt-[66vh] lg:pt-[72vh]' : 'pt-24 sm:pt-32 md:pt-40'
+          heroVariant === 'creative' ? 'pt-[50vh] sm:pt-[54vh] md:pt-[58vh] lg:pt-[64vh]' : 'pt-24 sm:pt-32 md:pt-40'
         }`}>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
