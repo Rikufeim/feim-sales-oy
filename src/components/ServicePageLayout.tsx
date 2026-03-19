@@ -112,7 +112,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         })}</script>
       </Helmet>
       {/* Hero */}
-      <HeroBackground className="!min-h-screen flex items-end pb-20">
+      <HeroBackground className={heroVariant === 'creative' ? '!min-h-[128vh] sm:!min-h-[132vh] lg:!min-h-[120vh] flex items-start pb-12' : '!min-h-screen flex items-end pb-20'}>
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
         {heroImage && (
@@ -123,7 +123,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 alt={hero.title}
                 className={`w-full ${
                   heroVariant === 'creative'
-                    ? 'h-auto max-h-[85vh] object-contain object-top'
+                    ? 'h-[54vh] sm:h-[58vh] md:h-[62vh] lg:h-[68vh] object-contain object-top'
                     : 'h-[45vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] object-cover object-center'
                 }`}
               />
@@ -133,7 +133,10 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
           </div>
         )}
 
-        <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
+        <div className={`px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full ${
+          heroVariant === 'creative' ? 'pt-[58vh] sm:pt-[62vh] md:pt-[66vh] lg:pt-[72vh]' : 'pt-24 sm:pt-32 md:pt-40'
+        }`}>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <FadeIn delay={0.05}>
