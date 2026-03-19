@@ -200,9 +200,9 @@ const PricingSection = () => {
       <WebsiteBenefitsSection />
 
       {/* Main pricing */}
-      <section className="relative py-24 overflow-hidden">
-        <img src={hinnastoBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+      <section className="relative pt-64 pb-24 overflow-hidden">
+        <img src={hinnastoBg} alt="" className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/50 to-black/80 pointer-events-none" />
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
 
           <FadeIn delay={0.05} className="mb-10">
