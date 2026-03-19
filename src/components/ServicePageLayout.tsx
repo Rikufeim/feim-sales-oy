@@ -115,6 +115,16 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       <HeroBackground className="!min-h-screen flex items-end pb-20">
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
+        {heroImage && (
+          <div className="absolute inset-x-0 top-0 z-10 w-full">
+            <FadeIn>
+              <img src={heroImage} alt={hero.title} className="w-full h-[50vh] sm:h-[55vh] object-cover" />
+              <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-30`} />
+              <div className={`absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t ${fadeGradient} to-transparent`} />
+            </FadeIn>
+          </div>
+        )}
+
         <div className="px-4 sm:px-6 lg:px-16 max-w-7xl lg:max-w-[90rem] mx-auto relative z-20 w-full pt-24 sm:pt-32 md:pt-40">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
@@ -141,11 +151,6 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
             </div>
             
             <div className="lg:col-span-5 flex items-end">
-              {heroImage && (
-                <FadeIn delay={0.2} className="w-full">
-                  <img src={heroImage} alt={hero.title} className="w-full h-auto rounded-2xl object-cover max-h-[400px]" />
-                </FadeIn>
-              )}
               <FadeIn delay={0.25}>
                 <div className="space-y-4">
                   {(heroTrustPoints || []).map((point, i) => {
