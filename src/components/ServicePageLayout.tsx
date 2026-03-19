@@ -113,7 +113,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
       </Helmet>
       {/* Hero */}
       <HeroBackground className={heroVariant === 'creative' ? '!min-h-[128vh] sm:!min-h-[132vh] lg:!min-h-[120vh] flex items-start pb-12' : '!min-h-screen flex items-end pb-20'}>
-        <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
+        <div className={`absolute bottom-0 left-0 w-full h-36 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
         {heroImage && (
           <div className={`absolute z-10 w-full overflow-hidden ${
@@ -128,12 +128,12 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 className={`w-full h-full ${
                   heroVariant === 'creative'
                     ? 'object-contain object-top'
-                    : 'object-cover object-center'
+                    : 'object-cover object-top'
                 }`}
               />
-              <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-30`} />
-              <div className={`absolute inset-x-0 top-0 h-48 bg-gradient-to-b ${fadeGradient} to-transparent`} />
-              <div className={`absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t ${fadeGradient} to-transparent`} />
+              <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-[0.08]`} />
+              <div className={`absolute inset-x-0 top-0 h-20 bg-gradient-to-b ${fadeGradient} to-transparent opacity-60`} />
+              <div className={`absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t ${fadeGradient} to-transparent`} />
             </FadeIn>
           </div>
         )}
@@ -144,9 +144,11 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-7">
-              <FadeIn delay={0.05}>
-                <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>{hero.label}</p>
-              </FadeIn>
+              {hero.label && (
+                <FadeIn delay={0.05}>
+                  <p className={`text-sm font-medium tracking-widest uppercase mb-6 ${labelColor}`}>{hero.label}</p>
+                </FadeIn>
+              )}
               <FadeIn delay={0.1}>
                 <h1 className={`text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b ${headingGrad} pb-4 leading-[1.08]`}>
                   {hero.title}

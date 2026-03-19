@@ -439,7 +439,7 @@ const DinoGameSection = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d') ?? canvas.getContext('2d', { alpha: false });
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
     const resizeTarget = canvas.parentElement ?? canvas;
@@ -618,37 +618,213 @@ const DinoGameSection = () => {
 
     const draw = () => {
       ctx.clearRect(0, 0, state.width, state.height);
-      const ascentProgress = Math.min(1, state.score / 1800);
-      const spaceProgress = Math.max(0, (ascentProgress - 0.52) / 0.48);
-      const topGradient = `rgba(${Math.round(3 * (1 - spaceProgress))}, ${Math.round(8 * (1 - spaceProgress))}, ${Math.round(18 * (1 - spaceProgress))}, 1)`;
-      const midGradient = `rgba(${Math.round(4 * (1 - spaceProgress))}, ${Math.round(11 * (1 - spaceProgress))}, ${Math.round(24 * (1 - spaceProgress))}, 1)`;
-      const bottomGradient = `rgba(${Math.round((8 + 4 * (1 - ascentProgress)) * (1 - spaceProgress))}, ${Math.round((16 + 8 * (1 - ascentProgress)) * (1 - spaceProgress))}, ${Math.round((34 - 26 * ascentProgress) * (1 - spaceProgress))}, 1)`;
-      const skyGradient = ctx.createLinearGradient(0, 0, 0, state.height);
-      skyGradient.addColorStop(0, topGradient);
-      skyGradient.addColorStop(0.55, midGradient);
-      skyGradient.addColorStop(1, bottomGradient);
-      ctx.fillStyle = skyGradient;
+      const altNorm = Math.min(1, state.altitudeKm / 380);
+      const ss = (t: number) => { const c = Math.max(0, Math.min(1, t)); return c * c * (3 - 2 * c); };
+      const mix = (a: number, b: number, t: number) => a + (b - a) * t;
+      const fade = (lo: number, hi: number) => ss((altNorm - lo) / (hi - lo));
+      const now = performance.now();
+      const twinkleTs = now * 0.0024;
+
+      const P1 = 0.16, P2 = 0.30, P3 = 0.48, P4 = 0.60, P5 = 0.80;
+      const waterT   = ss(Math.min(1, altNorm / P1));
+      const surfaceT = altNorm > P1 ? ss(Math.min(1, (altNorm - P1) / (P2 - P1))) : 0;
+      const skyT     = altNorm > P2 ? ss(Math.min(1, (altNorm - P2) / (P3 - P2))) : 0;
+      const sunsetT  = altNorm > P3 ? ss(Math.min(1, (altNorm - P3) / (P4 - P3))) : 0;
+      const nightT   = altNorm > P4 ? ss(Math.min(1, (altNorm - P4) / (P5 - P4))) : 0;
+      const spaceT   = altNorm > P5 ? ss(Math.min(1, (altNorm - P5) / (1  - P5))) : 0;
+
+      let tR: number, tG: number, tB: number;
+      let mR: number, mG: number, mB: number;
+      let bR: number, bG: number, bB: number;
+
+      if (altNorm <= P1) {
+        tR=mix(1,12,waterT); tG=mix(6,48,waterT); tB=mix(18,92,waterT);
+        mR=mix(1,16,waterT); mG=mix(8,60,waterT); mB=mix(24,108,waterT);
+        bR=mix(2,22,waterT); bG=mix(10,72,waterT); bB=mix(28,120,waterT);
+      } else if (altNorm <= P2) {
+        tR=mix(12,88,surfaceT); tG=mix(48,168,surfaceT); tB=mix(92,226,surfaceT);
+        mR=mix(16,102,surfaceT); mG=mix(60,184,surfaceT); mB=mix(108,232,surfaceT);
+        bR=mix(22,62,surfaceT); bG=mix(72,138,surfaceT); bB=mix(120,80,surfaceT);
+      } else if (altNorm <= P3) {
+        tR=mix(88,78,skyT); tG=mix(168,105,skyT); tB=mix(226,165,skyT);
+        mR=mix(102,88,skyT); mG=mix(184,135,skyT); mB=mix(232,185,skyT);
+        bR=mix(62,52,skyT); bG=mix(138,95,skyT); bB=mix(80,155,skyT);
+      } else if (altNorm <= P4) {
+        const warm = Math.sin(sunsetT * Math.PI);
+        tR=mix(78,18,sunsetT)+warm*25; tG=mix(105,10,sunsetT)+warm*8; tB=mix(165,42,sunsetT)-warm*40;
+        mR=mix(88,30,sunsetT)+warm*65; mG=mix(135,18,sunsetT)+warm*30; mB=mix(185,35,sunsetT)-warm*55;
+        bR=mix(52,14,sunsetT)+warm*45; bG=mix(95,10,sunsetT)+warm*18; bB=mix(155,32,sunsetT)-warm*45;
+      } else if (altNorm <= P5) {
+        tR=mix(18,4,nightT); tG=mix(10,4,nightT); tB=mix(42,22,nightT);
+        mR=mix(30,4,nightT); mG=mix(18,4,nightT); mB=mix(35,20,nightT);
+        bR=mix(14,3,nightT); bG=mix(10,3,nightT); bB=mix(32,16,nightT);
+      } else {
+        tR=mix(4,0,spaceT); tG=mix(4,0,spaceT); tB=mix(22,0,spaceT);
+        mR=mix(4,0,spaceT); mG=mix(4,0,spaceT); mB=mix(20,0,spaceT);
+        bR=mix(3,0,spaceT); bG=mix(3,0,spaceT); bB=mix(16,0,spaceT);
+      }
+
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, state.height);
+      bgGrad.addColorStop(0, `rgb(${Math.round(Math.max(0,tR))},${Math.round(Math.max(0,tG))},${Math.round(Math.max(0,tB))})`);
+      bgGrad.addColorStop(0.5, `rgb(${Math.round(Math.max(0,mR))},${Math.round(Math.max(0,mG))},${Math.round(Math.max(0,mB))})`);
+      bgGrad.addColorStop(1, `rgb(${Math.round(Math.max(0,bR))},${Math.round(Math.max(0,bG))},${Math.round(Math.max(0,bB))})`);
+      ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, state.width, state.height);
 
-      const starFade = Math.max(0, (ascentProgress - 0.18) / 0.72);
-      const twinkleTs = performance.now() * 0.0024;
-      state.stars.forEach((star) => {
-        const twinkle = 0.45 + 0.55 * Math.sin(twinkleTs + star.phase);
-        const alpha = starFade * (0.12 + twinkle * 0.78);
-        if (alpha <= 0.01) return;
-        ctx.fillStyle = `rgba(226, 232, 240, ${alpha})`;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
+      const sunsetGlow = fade(0.46, 0.52) * (1 - fade(0.58, 0.66));
+      if (sunsetGlow > 0.01) {
+        const glowGrad = ctx.createLinearGradient(0, state.height * 0.4, 0, state.height);
+        glowGrad.addColorStop(0, 'rgba(200,80,30,0)');
+        glowGrad.addColorStop(0.4, `rgba(200,90,35,${sunsetGlow * 0.12})`);
+        glowGrad.addColorStop(0.7, `rgba(180,60,25,${sunsetGlow * 0.08})`);
+        glowGrad.addColorStop(1, 'rgba(120,30,15,0)');
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(0, state.height * 0.4, state.width, state.height * 0.6);
+      }
 
-      state.clouds.forEach((cloud) => {
-        const cloudAlpha = cloud.alpha * (1 - ascentProgress * 1.15);
-        if (cloudAlpha <= 0.01) return;
-        ctx.fillStyle = `rgba(147, 197, 253, ${cloudAlpha})`;
-        ctx.fillRect(cloud.x, cloud.y, cloud.w, cloud.h);
-        ctx.fillRect(cloud.x + cloud.w * 0.2, cloud.y - cloud.h * 0.45, cloud.w * 0.5, cloud.h * 0.6);
-      });
+      const rayVis = fade(0, 0.04) * (1 - fade(0.04, 0.22));
+      if (rayVis > 0.003) {
+        ctx.save();
+        ctx.globalAlpha = (0.02 + rayVis * 0.04);
+        for (let i = 0; i < 4; i++) {
+          ctx.fillStyle = `rgba(65,190,235,${0.35 + i * 0.05})`;
+          ctx.fillRect(state.width * (0.08 + i * 0.24), 0, 18 + i * 14, state.height);
+        }
+        ctx.restore();
+      }
+
+      const surfVis = fade(0.12, 0.20) * (1 - fade(0.28, 0.40));
+      if (surfVis > 0.01) {
+        const lineY = state.height * (0.42 - fade(0.15, 0.36) * 0.4);
+        ctx.save();
+        ctx.globalAlpha = surfVis * 0.45;
+        ctx.beginPath();
+        ctx.moveTo(0, lineY + 8);
+        for (let x = 0; x <= state.width; x += 6) {
+          ctx.lineTo(x, lineY + Math.sin(x * 0.014 + now * 0.0012) * 3 + Math.sin(x * 0.032 + now * 0.002));
+        }
+        ctx.lineTo(state.width, lineY + 14);
+        ctx.lineTo(0, lineY + 14);
+        ctx.closePath();
+        const shg = ctx.createLinearGradient(0, lineY - 3, 0, lineY + 14);
+        shg.addColorStop(0, 'rgba(170,225,255,0.04)');
+        shg.addColorStop(0.4, 'rgba(210,240,255,0.55)');
+        shg.addColorStop(0.5, 'rgba(255,255,255,0.75)');
+        shg.addColorStop(0.6, 'rgba(210,240,255,0.55)');
+        shg.addColorStop(1, 'rgba(170,225,255,0.02)');
+        ctx.fillStyle = shg;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      const groundVis = fade(0.20, 0.30) * (1 - fade(0.38, 0.50));
+      if (groundVis > 0.01) {
+        const gH = 40 * groundVis;
+        ctx.fillStyle = `rgba(28,78,22,${groundVis * 0.55})`;
+        ctx.beginPath();
+        ctx.moveTo(0, state.height);
+        for (let x = 0; x <= state.width; x += 10) {
+          ctx.lineTo(x, state.height - gH + Math.sin(x * 0.008 + 2.5) * 6 + Math.sin(x * 0.02) * 2);
+        }
+        ctx.lineTo(state.width, state.height);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      const planktonVis = 1 - fade(0.18, 0.28);
+      if (planktonVis > 0.01) {
+        for (let i = 0; i < Math.min(25, state.stars.length); i++) {
+          const s = state.stars[i];
+          const dx = Math.sin(twinkleTs * 0.4 + s.phase * 3) * 2;
+          const dy = Math.cos(twinkleTs * 0.28 + s.phase * 2) * 1.5;
+          ctx.fillStyle = `rgba(150,200,220,${(0.12 + 0.08 * Math.sin(twinkleTs * 0.7 + s.phase)) * planktonVis})`;
+          ctx.fillRect(s.x + dx - 0.6, s.y + dy - 0.6, 1.6, 1.6);
+        }
+      }
+
+      const bubbleVis = 1 - fade(0.16, 0.28);
+      if (bubbleVis > 0.01) {
+        state.stars.forEach((star) => {
+          const wobble = Math.sin(twinkleTs * 1.2 + star.phase) * 3;
+          const alpha = (0.08 + 0.16 * Math.sin(twinkleTs * 0.9 + star.phase)) * bubbleVis;
+          if (alpha <= 0.005) return;
+          ctx.strokeStyle = `rgba(100,210,255,${alpha})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath();
+          ctx.arc(star.x + wobble, star.y, star.r * 2.4, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+      }
+
+      const starVis = fade(0.54, 0.68);
+      if (starVis > 0.01) {
+        const bright = 0.1 + starVis * 0.9;
+        state.stars.forEach((star) => {
+          const tw = 0.45 + 0.55 * Math.sin(twinkleTs + star.phase);
+          const alpha = bright * (0.08 + tw * 0.72) * starVis;
+          if (alpha <= 0.005) return;
+          ctx.fillStyle = `rgba(224,230,242,${alpha})`;
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      const moonVis = fade(0.58, 0.66) * (1 - fade(0.88, 0.96));
+      if (moonVis > 0.01) {
+        const mx = state.width * 0.78;
+        const my = state.height * 0.18;
+        const mr = 18;
+        ctx.fillStyle = `rgba(230,225,200,${moonVis * 0.7})`;
+        ctx.beginPath();
+        ctx.arc(mx, my, mr, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = `rgba(255,250,235,${moonVis * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(mx, my, mr * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = `rgba(210,205,180,${moonVis * 0.4})`;
+        ctx.beginPath();
+        ctx.arc(mx - 4, my - 3, mr * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(mx + 5, my + 5, mr * 0.18, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      const fluffyVis = fade(0.26, 0.36) * (1 - fade(0.48, 0.58));
+      if (fluffyVis > 0.01) {
+        state.clouds.forEach((cloud) => {
+          const a = Math.min(0.36, cloud.alpha * 2.5 * fluffyVis);
+          if (a <= 0.006) return;
+          ctx.fillStyle = `rgba(245,248,255,${a})`;
+          ctx.beginPath();
+          ctx.ellipse(cloud.x + cloud.w * 0.5, cloud.y + cloud.h * 0.5, cloud.w * 0.52, cloud.h * 0.56, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = `rgba(240,244,255,${a * 0.78})`;
+          ctx.beginPath();
+          ctx.ellipse(cloud.x + cloud.w * 0.22, cloud.y - cloud.h * 0.06, cloud.w * 0.3, cloud.h * 0.4, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.beginPath();
+          ctx.ellipse(cloud.x + cloud.w * 0.74, cloud.y + cloud.h * 0.1, cloud.w * 0.27, cloud.h * 0.38, 0, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      const sunsetCloudVis = fade(0.44, 0.52) * (1 - fade(0.62, 0.72));
+      if (sunsetCloudVis > 0.01) {
+        state.clouds.forEach((cloud) => {
+          const a = cloud.alpha * sunsetCloudVis * 1.4;
+          if (a <= 0.006) return;
+          const warmth = fade(0.48, 0.56);
+          const r = Math.round(mix(180, 120, warmth));
+          const g = Math.round(mix(140, 60, warmth));
+          const b = Math.round(mix(160, 80, warmth));
+          ctx.fillStyle = `rgba(${r},${g},${b},${Math.min(0.22, a)})`;
+          ctx.fillRect(cloud.x, cloud.y, cloud.w * 1.6, cloud.h * 0.32);
+          ctx.fillRect(cloud.x + cloud.w * 0.15, cloud.y - cloud.h * 0.12, cloud.w, cloud.h * 0.24);
+        });
+      }
 
       if (logoLoaded) {
         const centerX = state.dinoX + state.dinoW / 2;
@@ -700,17 +876,49 @@ const DinoGameSection = () => {
         ctx.restore();
       });
 
-      ctx.fillStyle = '#93c5fd';
       ctx.font = '600 16px Inter, system-ui, sans-serif';
+      const hudAN = Math.min(1, state.altitudeKm / 380);
+      let hudColor: string;
+      let altLabel: string;
+      if (hudAN <= 0.16) {
+        hudColor = '#7dd3fc';
+        altLabel = `Vesi \u00b7 -${Math.max(0, Math.round(61 - state.altitudeKm))}m`;
+      } else if (hudAN <= 0.30) {
+        hudColor = '#86efac';
+        altLabel = `Maanpinta \u00b7 ${Math.round(state.altitudeKm - 61)}m`;
+      } else if (hudAN <= 0.48) {
+        hudColor = '#93c5fd';
+        altLabel = `Taivas \u00b7 ${Math.max(0, Math.round((state.altitudeKm - 114) * 0.15))}km`;
+      } else if (hudAN <= 0.60) {
+        hudColor = '#fbbf24';
+        altLabel = `Ilta \u00b7 ${Math.round(10 + (state.altitudeKm - 182) * 0.5)}km`;
+      } else if (hudAN <= 0.80) {
+        hudColor = '#a78bfa';
+        altLabel = `Y\u00f6 \u00b7 ${Math.round(20 + (state.altitudeKm - 228) * 0.7)}km`;
+      } else {
+        hudColor = '#c4b5fd';
+        altLabel = `Avaruus \u00b7 ${Math.round(80 + (state.altitudeKm - 304) * 4)}km`;
+      }
+      ctx.fillStyle = hudColor;
       ctx.fillText(`Pisteet: ${Math.floor(state.score)}`, 16, 26);
-      ctx.fillText(`Korkeus: ${Math.floor(state.altitudeKm)} km`, 16, 48);
+      ctx.fillText(altLabel, 16, 48);
       if (state.scoreMultiplier > 1) {
         ctx.fillStyle = '#facc15';
         ctx.fillText(`Kerroin: ${state.scoreMultiplier}x`, 16, 70);
       }
-      if (state.altitudeKm >= 120) {
+      const statusY = state.scoreMultiplier > 1 ? 92 : 70;
+      if (hudAN > 0.14 && hudAN <= 0.22) {
+        ctx.fillStyle = '#86efac';
+        ctx.fillText('Pinta saavutettu!', 16, statusY);
+      } else if (hudAN > 0.47 && hudAN <= 0.54) {
+        ctx.fillStyle = '#fbbf24';
+        ctx.fillText('Aurinko laskee...', 16, statusY);
+      } else if (hudAN > 0.58 && hudAN <= 0.66) {
+        ctx.fillStyle = '#a78bfa';
+        ctx.fillText('Y\u00f6 saapuu...', 16, statusY);
+      } else if (hudAN > 0.78 && hudAN <= 0.86) {
         ctx.fillStyle = '#e2e8f0';
-        ctx.fillText('Avaruus saavutettu', 16, state.scoreMultiplier > 1 ? 92 : 70);
+        ctx.fillText('Avaruus saavutettu!', 16, statusY);
       }
 
       if (state.gameOver) {
@@ -741,7 +949,7 @@ const DinoGameSection = () => {
         ctx.fillStyle = '#bfdbfe';
         const controlsText = state.width < 640 ? 'Liiku: sormi tai pyyhkaisy' : 'Liiku: nuolinappaimet / A-D / hiiri';
         ctx.fillText(controlsText, state.width / 2, state.height / 2 + 8);
-        ctx.fillText('Vältä ylhäältä tippuvat esteet', state.width / 2, state.height / 2 + 30);
+        ctx.fillText('Nouse merenpohjasta avaruuteen!', state.width / 2, state.height / 2 + 30);
         ctx.restore();
       }
     };
@@ -937,7 +1145,7 @@ const DinoGameSection = () => {
           state.nextCoinSpawnMs = Math.max(1300, 2400 - state.altitudeKm * 5.5) + rand(140, 520);
         }
 
-        state.altitudeKm += dt * 0.028;
+        state.altitudeKm += dt * 0.006;
         state.score += dt * 0.03 * state.scoreMultiplier;
         state.clouds.forEach((cloud) => {
           cloud.y += cloud.speed * factor * (0.7 + ascentProgress * 2.2);

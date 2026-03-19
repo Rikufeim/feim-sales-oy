@@ -345,7 +345,7 @@ const Verkkosivut = () => (
         url: "https://feim.fi/verkkosivut"
       }}
       hero={{
-        label: "Verkkosivut",
+        label: "",
         title: "Verkkosivut jotka erottuvat",
         intro: "",
         cta: "",
