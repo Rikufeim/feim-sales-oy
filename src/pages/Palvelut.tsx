@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import backgroundFeim from '@/assets/background-feim.png';
 import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.webp';
 import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.webp';
 import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.webp';
@@ -268,6 +269,11 @@ const Palvelut = () => {
           </div>
         </div>
       </section>
+
+      {/* Background image divider */}
+      <div className="relative w-full h-[40vh] sm:h-[50vh] overflow-hidden">
+        <img src={backgroundFeim} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none" />
+      </div>
 
       {/* ── CTA ── */}
       <section className="relative py-20 sm:py-32 md:py-40 overflow-hidden">
