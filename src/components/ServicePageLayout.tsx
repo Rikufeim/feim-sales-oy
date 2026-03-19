@@ -53,7 +53,7 @@ interface ServicePageProps {
   pricingSlot?: React.ReactNode;
 }
 
-const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroTrustPoints, sections, audience, cta, pricingSlot }) => {
+const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant = 'commercial', heroImage, heroTrustPoints, sections, audience, cta, pricingSlot }) => {
   const { isDark } = useTheme();
   const showBottomCtaArrow = !cta.buttonText.toLowerCase().includes('tilaa vedos') && !cta.buttonText.toLowerCase().includes('tilaa maksuton vedos');
 
