@@ -217,11 +217,12 @@ const PricingSection = () => {
           src={hinnastoBgMobile}
           alt=""
           className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none block sm:hidden"
+          style={{ objectPosition: 'center 35%' }}
           loading="eager"
           decoding="async"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/40 to-black/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/30 sm:via-black/40 to-black/80 pointer-events-none" />
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
 
           <FadeIn delay={0.05} className="mb-10">
