@@ -116,9 +116,9 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
         <div className={`absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t ${fadeGradient} to-transparent z-20 pointer-events-none`} />
         
         {heroImage && (
-          <div className="absolute inset-x-0 top-0 z-10 w-full">
+          <div className="absolute inset-x-0 top-[-10%] z-10 w-full">
             <FadeIn>
-              <img src={heroImage} alt={hero.title} className="w-full h-[50vh] sm:h-[55vh] object-cover" />
+              <img src={heroImage} alt={hero.title} className="w-full h-[60vh] sm:h-[65vh] object-cover" />
               <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-30`} />
               <div className={`absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t ${fadeGradient} to-transparent`} />
             </FadeIn>

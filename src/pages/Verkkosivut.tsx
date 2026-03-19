@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@/components/ThemeContext';
 import serviceVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
 import heroVerkkosivut from '@/assets/hero-verkkosivut.png';
+import hinnastoBg from '@/assets/hinnasto-bg.png';
 import serviceVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
 import serviceVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';
@@ -200,13 +201,9 @@ const PricingSection = () => {
 
       {/* Main pricing */}
       <section className="relative py-24 overflow-hidden">
+        <img src={hinnastoBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
         <div className="max-w-7xl lg:max-w-[90rem] mx-auto px-6 lg:px-16 relative z-10">
-          <FadeIn>
-            <h2 className={`text-3xl md:text-5xl font-bold mb-4 max-w-3xl ${heading}`}>Hinnasto</h2>
-            <p className={`text-lg max-w-2xl mb-16 leading-relaxed ${desc}`}>
-              Valitse yrityksellesi sopiva paketti. Kaikki hinnat + ALV.
-            </p>
-          </FadeIn>
 
           <FadeIn delay={0.05} className="mb-10">
             <div className={`rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 ${landingCtaCard}`}>
