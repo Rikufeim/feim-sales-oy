@@ -132,6 +132,7 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
                 }`}
               />
               <div className={`absolute inset-0 bg-gradient-to-b ${fadeGradient} to-transparent opacity-30`} />
+              <div className={`absolute inset-x-0 top-0 h-48 bg-gradient-to-b ${fadeGradient} to-transparent`} />
               <div className={`absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t ${fadeGradient} to-transparent`} />
             </FadeIn>
           </div>
