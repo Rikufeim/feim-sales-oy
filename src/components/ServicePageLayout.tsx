@@ -37,6 +37,7 @@ interface ServicePageProps {
     ctaHref: string;
   };
   heroVariant?: 'commercial' | 'technical' | 'creative';
+  heroImage?: string;
   heroTrustPoints?: string[];
   sections: ServiceSection[];
   audience?: {
