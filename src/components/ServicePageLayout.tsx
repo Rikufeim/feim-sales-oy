@@ -140,7 +140,12 @@ const ServicePageLayout: React.FC<ServicePageProps> = ({ seo, hero, heroVariant 
               )}
             </div>
             
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 flex items-end">
+              {heroImage && (
+                <FadeIn delay={0.2} className="w-full">
+                  <img src={heroImage} alt={hero.title} className="w-full h-auto rounded-2xl object-cover max-h-[400px]" />
+                </FadeIn>
+              )}
               <FadeIn delay={0.25}>
                 <div className="space-y-4">
                   {(heroTrustPoints || []).map((point, i) => {
