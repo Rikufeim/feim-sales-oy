@@ -6,6 +6,7 @@ import { useTheme } from '@/components/ThemeContext';
 import serviceVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
 import heroVerkkosivut from '@/assets/hero-verkkosivut.webp';
 import hinnastoBg from '@/assets/hinnasto-bg.webp';
+import hinnastoBgMobile from '@/assets/hinnasto-bg-mobile.webp';
 import serviceVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
 import serviceVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';
@@ -201,11 +202,21 @@ const PricingSection = () => {
 
       {/* Main pricing */}
       <section className="relative pt-32 sm:pt-48 md:pt-56 lg:pt-44 pb-24 overflow-hidden">
+        {/* Desktop bg */}
         <img
           src={hinnastoBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none hidden sm:block"
           style={{ objectPosition: 'center 40%' }}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
+        {/* Mobile bg */}
+        <img
+          src={hinnastoBgMobile}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none block sm:hidden"
           loading="eager"
           decoding="async"
           fetchPriority="high"
