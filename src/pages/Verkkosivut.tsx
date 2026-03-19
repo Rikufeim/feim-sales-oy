@@ -6,6 +6,7 @@ import { useTheme } from '@/components/ThemeContext';
 import serviceVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
 import heroVerkkosivut from '@/assets/hero-verkkosivut.webp';
 import hinnastoBg from '@/assets/hinnasto-bg.webp';
+import hinnastoBgMobile from '@/assets/hinnasto-bg-mobile.webp';
 import serviceVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
 import serviceVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';

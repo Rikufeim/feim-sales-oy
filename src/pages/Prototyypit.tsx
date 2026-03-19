@@ -1,4 +1,7 @@
 import ServicePageLayout from '@/components/ServicePageLayout';
+import heroProtoDesktop from '@/assets/hero-proto-desktop.webp';
+import heroProtoMobile from '@/assets/hero-proto-mobile.webp';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Prototyypit = () => (
   <ServicePageLayout
