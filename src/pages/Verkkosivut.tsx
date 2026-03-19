@@ -4,6 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@/components/ThemeContext';
 import serviceVerkkosivut1 from '@/assets/service-verkkosivut-1.png';
+import heroVerkkosivut from '@/assets/hero-verkkosivut.png';
 import serviceVerkkosivut2 from '@/assets/service-verkkosivut-2.png';
 import serviceVerkkosivut3 from '@/assets/service-verkkosivut-3.png';
 import refLujainfra from '@/assets/ref-lujainfra.png';
