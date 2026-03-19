@@ -200,7 +200,7 @@ const PricingSection = () => {
       <WebsiteBenefitsSection />
 
       {/* Main pricing */}
-      <section className="relative pt-48 sm:pt-56 md:pt-64 lg:pt-72 pb-24 overflow-hidden">
+      <section className="relative pt-48 sm:pt-56 md:pt-64 lg:pt-44 pb-24 overflow-hidden">
         <img
           src={hinnastoBg}
           alt=""
