@@ -559,7 +559,7 @@ const DinoGameSection = () => {
       state.coinSpawnMs = 0;
       state.nextCoinSpawnMs = 2200;
       state.score = 0;
-      state.altitudeKm = 0;
+      state.altitudeKm = 61;
       state.scoreMultiplier = 1;
       state.multiplierMs = 0;
       state.gameOver = false;
@@ -638,13 +638,13 @@ const DinoGameSection = () => {
       let bR: number, bG: number, bB: number;
 
       if (altNorm <= P1) {
-        tR=mix(1,12,waterT); tG=mix(6,48,waterT); tB=mix(18,92,waterT);
-        mR=mix(1,16,waterT); mG=mix(8,60,waterT); mB=mix(24,108,waterT);
-        bR=mix(2,22,waterT); bG=mix(10,72,waterT); bB=mix(28,120,waterT);
+        tR = 0; tG = 0; tB = 0;
+        mR = 0; mG = 0; mB = 0;
+        bR = 0; bG = 0; bB = 0;
       } else if (altNorm <= P2) {
-        tR=mix(12,88,surfaceT); tG=mix(48,168,surfaceT); tB=mix(92,226,surfaceT);
-        mR=mix(16,102,surfaceT); mG=mix(60,184,surfaceT); mB=mix(108,232,surfaceT);
-        bR=mix(22,62,surfaceT); bG=mix(72,138,surfaceT); bB=mix(120,80,surfaceT);
+        tR=mix(0,88,surfaceT); tG=mix(0,168,surfaceT); tB=mix(0,226,surfaceT);
+        mR=mix(0,102,surfaceT); mG=mix(0,184,surfaceT); mB=mix(0,232,surfaceT);
+        bR=mix(0,62,surfaceT); bG=mix(0,138,surfaceT); bB=mix(0,80,surfaceT);
       } else if (altNorm <= P3) {
         tR=mix(88,78,skyT); tG=mix(168,105,skyT); tB=mix(226,165,skyT);
         mR=mix(102,88,skyT); mG=mix(184,135,skyT); mB=mix(232,185,skyT);
@@ -680,41 +680,6 @@ const DinoGameSection = () => {
         glowGrad.addColorStop(1, 'rgba(120,30,15,0)');
         ctx.fillStyle = glowGrad;
         ctx.fillRect(0, state.height * 0.4, state.width, state.height * 0.6);
-      }
-
-      const rayVis = fade(0, 0.04) * (1 - fade(0.04, 0.22));
-      if (rayVis > 0.003) {
-        ctx.save();
-        ctx.globalAlpha = (0.02 + rayVis * 0.04);
-        for (let i = 0; i < 4; i++) {
-          ctx.fillStyle = `rgba(65,190,235,${0.35 + i * 0.05})`;
-          ctx.fillRect(state.width * (0.08 + i * 0.24), 0, 18 + i * 14, state.height);
-        }
-        ctx.restore();
-      }
-
-      const surfVis = fade(0.12, 0.20) * (1 - fade(0.28, 0.40));
-      if (surfVis > 0.01) {
-        const lineY = state.height * (0.42 - fade(0.15, 0.36) * 0.4);
-        ctx.save();
-        ctx.globalAlpha = surfVis * 0.45;
-        ctx.beginPath();
-        ctx.moveTo(0, lineY + 8);
-        for (let x = 0; x <= state.width; x += 6) {
-          ctx.lineTo(x, lineY + Math.sin(x * 0.014 + now * 0.0012) * 3 + Math.sin(x * 0.032 + now * 0.002));
-        }
-        ctx.lineTo(state.width, lineY + 14);
-        ctx.lineTo(0, lineY + 14);
-        ctx.closePath();
-        const shg = ctx.createLinearGradient(0, lineY - 3, 0, lineY + 14);
-        shg.addColorStop(0, 'rgba(170,225,255,0.04)');
-        shg.addColorStop(0.4, 'rgba(210,240,255,0.55)');
-        shg.addColorStop(0.5, 'rgba(255,255,255,0.75)');
-        shg.addColorStop(0.6, 'rgba(210,240,255,0.55)');
-        shg.addColorStop(1, 'rgba(170,225,255,0.02)');
-        ctx.fillStyle = shg;
-        ctx.fill();
-        ctx.restore();
       }
 
       const groundVis = fade(0.20, 0.30) * (1 - fade(0.38, 0.50));
@@ -877,49 +842,10 @@ const DinoGameSection = () => {
       });
 
       ctx.font = '600 16px Inter, system-ui, sans-serif';
-      const hudAN = Math.min(1, state.altitudeKm / 380);
-      let hudColor: string;
-      let altLabel: string;
-      if (hudAN <= 0.16) {
-        hudColor = '#7dd3fc';
-        altLabel = `Vesi \u00b7 -${Math.max(0, Math.round(61 - state.altitudeKm))}m`;
-      } else if (hudAN <= 0.30) {
-        hudColor = '#86efac';
-        altLabel = `Maanpinta \u00b7 ${Math.round(state.altitudeKm - 61)}m`;
-      } else if (hudAN <= 0.48) {
-        hudColor = '#93c5fd';
-        altLabel = `Taivas \u00b7 ${Math.max(0, Math.round((state.altitudeKm - 114) * 0.15))}km`;
-      } else if (hudAN <= 0.60) {
-        hudColor = '#fbbf24';
-        altLabel = `Ilta \u00b7 ${Math.round(10 + (state.altitudeKm - 182) * 0.5)}km`;
-      } else if (hudAN <= 0.80) {
-        hudColor = '#a78bfa';
-        altLabel = `Y\u00f6 \u00b7 ${Math.round(20 + (state.altitudeKm - 228) * 0.7)}km`;
-      } else {
-        hudColor = '#c4b5fd';
-        altLabel = `Avaruus \u00b7 ${Math.round(80 + (state.altitudeKm - 304) * 4)}km`;
-      }
-      ctx.fillStyle = hudColor;
+      const meters = Math.max(0, Math.round((state.altitudeKm - 61) * 1000));
+      ctx.fillStyle = '#93c5fd';
       ctx.fillText(`Pisteet: ${Math.floor(state.score)}`, 16, 26);
-      ctx.fillText(altLabel, 16, 48);
-      if (state.scoreMultiplier > 1) {
-        ctx.fillStyle = '#facc15';
-        ctx.fillText(`Kerroin: ${state.scoreMultiplier}x`, 16, 70);
-      }
-      const statusY = state.scoreMultiplier > 1 ? 92 : 70;
-      if (hudAN > 0.14 && hudAN <= 0.22) {
-        ctx.fillStyle = '#86efac';
-        ctx.fillText('Pinta saavutettu!', 16, statusY);
-      } else if (hudAN > 0.47 && hudAN <= 0.54) {
-        ctx.fillStyle = '#fbbf24';
-        ctx.fillText('Aurinko laskee...', 16, statusY);
-      } else if (hudAN > 0.58 && hudAN <= 0.66) {
-        ctx.fillStyle = '#a78bfa';
-        ctx.fillText('Y\u00f6 saapuu...', 16, statusY);
-      } else if (hudAN > 0.78 && hudAN <= 0.86) {
-        ctx.fillStyle = '#e2e8f0';
-        ctx.fillText('Avaruus saavutettu!', 16, statusY);
-      }
+      ctx.fillText(`Metrit: ${meters} m`, 16, 48);
 
       if (state.gameOver) {
         ctx.fillStyle = 'rgba(0,0,0,0.55)';
@@ -949,7 +875,7 @@ const DinoGameSection = () => {
         ctx.fillStyle = '#bfdbfe';
         const controlsText = state.width < 640 ? 'Liiku: sormi tai pyyhkaisy' : 'Liiku: nuolinappaimet / A-D / hiiri';
         ctx.fillText(controlsText, state.width / 2, state.height / 2 + 8);
-        ctx.fillText('Nouse merenpohjasta avaruuteen!', state.width / 2, state.height / 2 + 30);
+        ctx.fillText('Nouse avaruuteen!', state.width / 2, state.height / 2 + 30);
         ctx.restore();
       }
     };
@@ -1207,7 +1133,7 @@ const DinoGameSection = () => {
           const hitCoin = circleIntersectsRect(coin.x, coin.y, coin.r, dinoHitX, dinoHitY, dinoHitW, dinoHitH);
           if (hitCoin) {
             coin.collected = true;
-            state.scoreMultiplier = 10;
+            state.scoreMultiplier = 100;
             state.multiplierMs = 5000;
             state.score += 20;
           }
