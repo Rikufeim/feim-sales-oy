@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import backgroundFeim from '@/assets/background-feim.png';
 import svcVerkkosivut1 from '@/assets/service-verkkosivut-1.webp';
 import svcVerkkosivut2 from '@/assets/service-verkkosivut-2.webp';
 import svcVerkkosivut3 from '@/assets/service-verkkosivut-3.webp';
